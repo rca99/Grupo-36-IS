@@ -18,3 +18,5 @@
 ##### Encabezado 5
 
 > Esto es una cita. Rafael Cantero
+
+`git init`
