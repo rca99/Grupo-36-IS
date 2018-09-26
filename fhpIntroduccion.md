@@ -18,8 +18,9 @@
 
 * GitHub
 
+	* GitHub no es Git
 	* Creacion de repositorios.
-	* Comandos gitHubI.
+	* Comandos gitHub.
 
 ***
 ***
