@@ -28,4 +28,4 @@ grtht
 ~~~
 
 
-![logo de la uco] (https://www.uco.es/internacionalcoopera/imagen/LOGO3.jpg)
+![logo de la uco](https://www.uco.es/internacionalcoopera/imagen/LOGO3.jpg)
