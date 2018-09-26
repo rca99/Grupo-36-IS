@@ -17,11 +17,11 @@ El proceso de creación de repositorios remotos es sencillo.
 
 ![Nuevos repositorio](http://www.malgreve.net/wp-content/uploads/2014/02/GitHub-Create-New-Repository.png)
 
-La información del repositorio aparece una vez se crea el mismo.
+La **información del repositorio** aparece una vez se crea el mismo.
 
 ![Información repositorio](https://d186loudes4jlv.cloudfront.net/git/images/github_new_repo3.png)
 
-Para acceder al link del respositorio remoto una vez este contenga algún fichero se hace a través de la opción clonar o descargar el repositorio
+Para acceder al link del respositorio remoto una vez este contenga algún fichero se hace a través de la opción **clonar o descargar el repositorio**
 
 ![Clone or download](https://services.github.com/on-demand/images/gifs/github-cli/git-clone.gif)
 
