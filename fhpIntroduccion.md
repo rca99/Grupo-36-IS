@@ -7,16 +7,17 @@
 
 ## Indice de contenidos
 
-* Descripción de Git y GitHub
-	* Principales ventajas de Git y GitHub
+* Descripción de Git y GitHub.
+	* Principales ventajas de Git y GitHub.
 * Git
-	* Configuración Básica
-	* Ramas o Branches
+	* Instalación.
+	* Configuración Básica.
+	* Ramas o Branches.
 
 * GitHub
 
-	* Creacion de repositorios
-	* Comandos gitHubI
+	* Creacion de repositorios.
+	* Comandos gitHubI.
 
 ***
 ***
@@ -59,6 +60,17 @@
 
 
 # **Git**
+
+## Instalación
+
+Para la instalación de Git en su ordenador se recomienda visitar la web del desarrollador, [Git](https://git-scm.com/downloads "Everything is local"), y seguir las indicaciones según su sistema operativo
+
+## Configuración Básica
+
+> A continuación se presentan los principales comandos de ejecución básica de *Git* que se ejecutarán desde el ***terminal de comandos*** de su sistema operativo. En windows existe la opción de instalar un terminal de comandos mejorado y adaptado a git.
+
+
+
 
 
 
