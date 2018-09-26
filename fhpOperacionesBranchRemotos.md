@@ -2,12 +2,12 @@
 
 **Creación**
 
-*Crear branch local
-*Hacer cambios en dicho branch
-*Hacer commit
-*Copiar el branch al repositorio_remoto
+* Crear branch local
+* Hacer cambios en dicho branch
+* Hacer commit
+* Copiar el branch al repositorio remoto
 
-	git push -u origin branch-remoto
+	git push -u origin branch_remoto
 
 **Copia**
 
