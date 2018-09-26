@@ -12,6 +12,8 @@
 * Git
 	* Instalación.
 	* Configuración Básica.
+	* Los tres estados de Git.
+	* Comandos Básicos.
 	* Ramas o Branches.
 
 * GitHub
@@ -68,6 +70,39 @@ Para la instalación de Git en su ordenador se recomienda visitar la web del des
 ## Configuración Básica
 
 > A continuación se presentan los principales comandos de ejecución básica de *Git* que se ejecutarán desde el ***terminal de comandos*** de su sistema operativo. En windows existe la opción de instalar un terminal de comandos mejorado y adaptado a git.
+
+**Nombre del administrador**
+
+	git config --glogal user.name "Fernando Herrera Poch"
+
+
+**Correo electrónico**
+
+	git config --glogal user.mail a52hepof@uco.es
+
+**Correo electrónico**
+
+	git config --glogal user.mail a52hepof@uco.es
+
+**Editor de texto**
+
+	git config --glogal core.editor "gedit"
+
+**Color de la interfaz**
+
+	git config --glogal color.ui true
+
+**Listado de la configuración**
+
+	git config --list
+
+El listado de la configuración informa además de los parámetros antes indicados, del repositorio remoto en caso de existir.
+
+## Los tres estados de Git
+
+![Los tres estados de Git](https://git-scm.com/figures/18333fig0106-tn.png)
+
+
 
 
 
