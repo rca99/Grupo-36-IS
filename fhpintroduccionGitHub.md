@@ -7,6 +7,7 @@
 
 ## Creación de respositorios
 
+Lo primero que hay que hacer es acceder a gitHub y si no tienes cuenta, crear una.
 
 > Debes saber que la opción gratuita **no incluye la posibilidad de repositorios privados**
 
