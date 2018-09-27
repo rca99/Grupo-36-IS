@@ -1,7 +1,0 @@
-Fichero inicial para modificar
-
-Este es el primer cambio
-Este el segundo cambio
-
-Entre ramas
-hola
