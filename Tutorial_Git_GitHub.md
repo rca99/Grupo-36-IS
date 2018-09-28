@@ -344,6 +344,9 @@ Para acceder al link del respositorio remoto una vez este contenga algún ficher
 
 ![Clone or download](https://services.github.com/on-demand/images/gifs/github-cli/git-clone.gif)
 
+
+## Comandos GitHub
+
 ### Comandos GitHub I
 
 Para añadir un repositorio remoto
@@ -388,18 +391,18 @@ Para clonar un repositorio remoto
 * Commit de los cambios
 * Añadir cambios a repositorio remoto:
 
-	git push
+		git push
 	
 **REMOTO → LOCAL**
 
 * Sincronización unión:
 
-	git fetch origin
-	git merge origin/master
+		git fetch origin
+		git merge origin/master
 
 * En un solo paso:
 
-	git pull
+		git pull
 
 ### Operaciones con Branches remotos
 
