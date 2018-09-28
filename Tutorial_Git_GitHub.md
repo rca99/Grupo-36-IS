@@ -314,6 +314,9 @@ Para aplicar el cambio del stash
 
 	git stash apply nombre_stash
 	git stash pop nombre_stash'
+	
+***
+***
 
 # **GitHub**
 
@@ -344,6 +347,7 @@ Para acceder al link del respositorio remoto una vez este contenga algún ficher
 
 ![Clone or download](https://services.github.com/on-demand/images/gifs/github-cli/git-clone.gif)
 
+***
 
 ## Comandos GitHub
 
