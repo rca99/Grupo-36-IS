@@ -238,6 +238,8 @@ Comparar un commit con el actual
 Comparar dos commits
 
 	git diff id .. id nombre_archivo
+	
+***
 
 ## Ramas
 
@@ -247,23 +249,23 @@ Es la forma para separar la linea actual de desarrollo con respecto a la princip
 
 ### Comandos ramas I
 
-Para ver el listado de ramas:
+Para ver el listado de ramas
 
 	git branch
 
-Para crear una nueva rama:
+Para crear una nueva rama
 
 	git branch nombre_rama
 
-Para cambiarnos a otra rama:
+Para cambiarnos a otra rama
 
 	git checkout nombre_rama
 
-Para crear una rama y moverse en un solo paso:
+Para crear una rama y moverse en un solo paso
 
 	git checkout -b nombre_rama
 
-Para comparar ramas:
+Para comparar ramas
 
 	git diff nombre_rama .. nombre_rama
 
@@ -277,12 +279,12 @@ Para renombrar ramas
 
 	git branch -m nombre_antiguo nombre_nuevo
 
-Para eliminar ramas:
+Para eliminar ramas
 
 	git branch -d nombre_rama
 	git branch -D nombre_rama
 
-Para integrar ramas a la actual:
+Para integrar ramas a la actual
 
 	git merge nombre_rama
 
