@@ -70,28 +70,28 @@ Para la instalación de Git en su ordenador se recomienda visitar la web del des
 
 > A continuación se presentan los principales comandos de ejecución básica de *Git* que se ejecutarán desde el ***terminal de comandos*** de su sistema operativo. En windows existe la opción de instalar un terminal de comandos mejorado y adaptado a git.
 
-Nombre del administrador
+**Nombre del administrador**
 
 	git config --glogal user.name "Fernando Herrera Poch"
 
 
-Correo electrónico
+**Correo electrónico**
 
 	git config --glogal user.mail a52hepof@uco.es
 
-Correo electrónico
+**Correo electrónico**
 
 	git config --glogal user.mail a52hepof@uco.es
 
-Editor de texto
+**Editor de texto**
 
 	git config --glogal core.editor "gedit"
 
-Color de la interfaz
+**Color de la interfaz**
 
 	git config --glogal color.ui true
 
-Listado de la configuración
+**Listado de la configuración**
 
 	git config --list
 
@@ -105,19 +105,19 @@ El listado de la configuración informa además de los parámetros antes indicad
 
 ### Comandos básicos I
 
-Iniciar repositorio en un directorio
+**Iniciar repositorio en un directorio**
 
 	git init
 
-Agregar cambios al area de staging
+**Agregar cambios al area de staging**
 
 	git add
 
-Validar cambios en el repositorio
+**Validar cambios en el repositorio**
 
 	git commit -m "Mensaje"
 
-Hacer los dos pasos anteriores en uno
+**Hacer los dos pasos anteriores en uno**
 
 	git commit -m "Mensaje"
 
@@ -127,99 +127,101 @@ Historial de commits
 
 ### Comandos básicos II
 
-Ayuda del listado anterior
+**Ayuda del listado anterior**
 
 	git help log
 
-Listar los 5 commits más recientes
+**Listar los 5 commits más recientes**
 
 	git log -n 5
 
-Listar los commits desde una fecha
+**Listar los commits desde una fecha**
 
 	git log --since=2018-09-26
 
-Listar los commits por autor
+**Listar los commits por autor**
 
 	git log --author="Antonio"	
 
-Ver cambios en el directorio
+**Ver cambios en el directorio**
 
 	git status
 
 ### Comandos básicos III
 
-Ver diferencia entre ficheros en el directorio y el repositorio git
+**Ver diferencia entre ficheros en el directorio y el repositorio git**
 
 	git diff
 
-Ver diferencia entre ficheros en el *staging* y el repositorio
+**Ver diferencia entre ficheros en el *staging* y el repositorio**
 
 	git diff --staged
 
-Eliminar archivos
+**Eliminar archivos**
 
 	git rm archivo
 	git commit -m "Mensaje"
 
-Mover o renombrar archivos
+**Mover o renombrar archivos**
 
 	git mv antiguo nuevo
 	git commit -m "Mensaje"
 
 ### Comandos básicos IV
 
-Deshacer cambios con git
+**Deshacer cambios con git**
 
 	git checkout -- nombre_fichero
 
-Retirar archivos del staging
+**Retirar archivos del staging**
 
 	git reset HEAD nombre_fichero
 
-Complementar último commit
+**Complementar último commit**
 
 	git commit amend -m "Mensaje"
 
-Recuperar versión de un fichero commit antiguo
+**Recuperar versión de un fichero commit antiguo**
 
 	git checkout <id_commit> -- nombre archivo
 
-Revertir un commit
+**Revertir un commit**
 
 	git revert <id_commit>
 
 ### Comandos básicos V
 
-Deshacer multiples cambios en el repositorio
+**Deshacer multiples cambios en el repositorio**
 
 	git reset -- soft < id_commit >
 	git reset -- mixed < id_commit >
 	git reset -- hard < id_commit >
 
-Listar archivos que git no controla
+**Listar archivos que git no controla**
 
 	git clean -n
 
-Eliminar archivos que git no controla
+**Eliminar archivos que git no controla**
 
 	git clean -f
 
-Ignorar archivos en el repositorio: .gitignore
+**Ignorar archivos en el repositorio:**
+
+.gitignore
 
 ### Comandos básicos VI
 
-Listar el contenido del repositorio de git
+**Listar el contenido del repositorio de git**
 
 	git ls - tree master
 	git ls - tree master ^^^
 	git ls - tree master ~3
 
-Log en una línea
+**Log en una línea**
 
 	git log -- oneline
 
-Log con los tres  últimos commits en una línea
+**Log con los tres  últimos commits en una línea**
 
 	git log -- oneline -3
 
@@ -227,15 +229,15 @@ Para mas opciones consultar documentación de git.
 
 ### Comandos básicos VII
 
-Examinar el contenido de un commit
+**Examinar el contenido de un commit**
 
 	git show <id >
 
-Comparar un commit con el actual
+**Comparar un commit con el actual**
 
 	git diff < id > nombre_archivo
 
-Comparar dos commits
+**Comparar dos commits**
 
 	git diff id .. id nombre_archivo
 	
@@ -249,37 +251,37 @@ Es la forma para separar la linea actual de desarrollo con respecto a la princip
 
 ### Comandos ramas I
 
-Para ver el listado de ramas
+**Para ver el listado de ramas**
 
 	git branch
 
-Para crear una nueva rama
+**Para crear una nueva rama**
 
 	git branch nombre_rama
 
-Para cambiarnos a otra rama
+**Para cambiarnos a otra rama**
 
 	git checkout nombre_rama
 
-Para crear una rama y moverse en un solo paso
+**Para crear una rama y moverse en un solo paso**
 
 	git checkout -b nombre_rama
 
-Para comparar ramas
+**Para comparar ramas**
 
 	git diff nombre_rama .. nombre_rama
 
 ### Comandos ramas II
 
-Para ver ramas identicas a la actual
+**Para ver ramas identicas a la actual**
 
 	git branch --merged
 
-Para renombrar ramas
+**Para renombrar ramas**
 
 	git branch -m nombre_antiguo nombre_nuevo
 
-Para eliminar ramas
+**Para eliminar ramas**
 
 	git branch -d nombre_rama
 	git branch -D nombre_rama
@@ -294,23 +296,23 @@ Para resolver conflictos
 
 ### Comandos ramas III
 
-Para almacenar cambios temporales
+**Para almacenar cambios temporales**
 
 	git stash save "Mensaje"
 
-Para listar cambios
+**Para listar cambios**
 
 	git stash list
 
-Para ver el contenido de un cambio temporal
+**Para ver el contenido de un cambio temporal**
 
 	git stash show -p nombre_stash
 
-Para eliminar un cambio temporal
+**Para eliminar un cambio temporal**
 
 	git stash drop nombre_stash
 
-Para aplicar el cambio del stash
+**Para aplicar el cambio del stash**
 
 	git stash apply nombre_stash
 	git stash pop nombre_stash'
@@ -353,37 +355,37 @@ Para acceder al link del respositorio remoto una vez este contenga algún ficher
 
 ### Comandos GitHub I
 
-Para añadir un repositorio remoto
+**Para añadir un repositorio remoto**
 
 	git remote add origin url
 
-Para ver los repositorios remotos
+**Para ver los repositorios remotos**
 
 	git remote -v
 
-Para eliminar un repositorio remoto
+**Para eliminar un repositorio remoto**
 
 	git remote rm origin
 
-Para añadir cambios del repositorio local al remoto
+**Para añadir cambios del repositorio local al remoto**
 
 	git push -u origin master
 
-Para añadir cambios del repositorio remoto al local
+**Para añadir cambios del repositorio remoto al local**
 
 	git pull
 
 ### Comandos GitHub II
 
-Para ver branches remotos
+**Para ver branches remotos**
 
 	git branch -r
 
-Para ver todos los branches
+**Para ver todos los branches**
 
 	git branch -a
 
-Para clonar un repositorio remoto
+**Para clonar un repositorio remoto**
 
 	git clone url
 
