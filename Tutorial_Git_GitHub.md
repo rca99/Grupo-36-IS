@@ -319,6 +319,8 @@ Para aplicar el cambio del stash
 
 ## GitHub no es Git
 
+Github y git no son lo mismo. Mientras que git es un sistema de control de versiones, github es la plataforma remota que aloja y sustenta dichos repositorios git.
+
 ![gitHub no es git](https://www.appcoda.com/wp-content/uploads/2018/04/git-notequal-github.png)
 
 
@@ -342,11 +344,7 @@ Para acceder al link del respositorio remoto una vez este contenga algún ficher
 
 ![Clone or download](https://services.github.com/on-demand/images/gifs/github-cli/git-clone.gif)
 
-# **GitHub**
-
-Github y git no son lo mismo. Mientras que git es un sistema de control de versiones, github es la plataforma remota que aloja y sustenta dichos repositorios git.
-
-## Comandos GitHub I
+### Comandos GitHub I
 
 Para añadir un repositorio remoto
 
@@ -368,7 +366,7 @@ Para añadir cambios del repositorio remoto al local
 
 	git pull
 
-## Comandos github II
+### Comandos GitHub II
 
 Para ver branches remotos
 
@@ -384,26 +382,24 @@ Para clonar un repositorio remoto
 
 ### Dar seguimiento a branches remotos
 
-* LOCAL → REMOTO
+**LOCAL → REMOTO**
 
-	* Cambios en el repositorio local
-	* Commit de los cambios
-	* Añadir cambios a repositorio remoto:
+* Cambios en el repositorio local
+* Commit de los cambios
+* Añadir cambios a repositorio remoto:
 
-		git push
+	git push
 	
-* REMOTO → LOCAL
+**REMOTO → LOCAL**
 
-	* Sincronización unión:
+* Sincronización unión:
 
-	~~~
 	git fetch origin
 	git merge origin/master
-	~~~
 
-	* En un solo paso:
+* En un solo paso:
 
-		git pull
+	git pull
 
 ### Operaciones con Branches remotos
 
