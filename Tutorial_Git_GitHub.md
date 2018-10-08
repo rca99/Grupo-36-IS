@@ -72,16 +72,16 @@ Para la instalación de Git en su ordenador se recomienda visitar la web del des
 
 **Nombre del administrador**
 
-	git config --glogal user.name "Fernando Herrera Poch"
+	git config --global user.name "Fernando Herrera Poch"
 
 
 **Correo electrónico**
 
-	git config --glogal user.mail a52hepof@uco.es
+	git config --global user.mail a52hepof@uco.es
 
 **Correo electrónico**
 
-	git config --glogal user.mail a52hepof@uco.es
+	git config --global user.mail a52hepof@uco.es
 
 **Editor de texto**
 
@@ -286,11 +286,11 @@ Es la forma para separar la linea actual de desarrollo con respecto a la princip
 	git branch -d nombre_rama
 	git branch -D nombre_rama
 
-Para integrar ramas a la actual
+**Para integrar ramas a la actual**
 
 	git merge nombre_rama
 
-Para resolver conflictos
+**Para resolver conflictos**
 
 	git merge --abort
 
