@@ -11,7 +11,9 @@
 
 ## Partes interesadas
 
+**Profesor:** Gestiona y mantiene la base de datos de los alumnos
 
+**Alumnos**: Cursan la asginatura impartida por el profesor
 
 ***
 
@@ -30,19 +32,25 @@
 
 ### Funcionales
 
-  1 Introducir un alumno
+  1 Introducir un alumno: El profesor podrá introducir un nuevo alumno
   
-  2 Modificar un alumno
+  2 Modificar un alumno: El profesor tendrá la opción de modificar los datos de un alumno
+ 
+  3 Gestion de líderes: El sistema dará la posibilidad de gestionar los líderes de los grupos de acuerdo a las restricciones impuestas por el cliente (no pudiendo haber más de un líder por grupo)
   
-  3 Gestion de líderes
+  4 Mostrar alumnos: El sistema podrá mostrar uno, varios o todo los alumnos
   
-  4 Mostrar alumnos
+  5 Eliminar un alumno: El sistema permitirá borrar un alumno de la base de datos
   
-  5 Eliminar un alumno
+  6 Guardar copia de seguridad: El sistema dará la opción de realizar una copia de seguridad con los nuevos datos
   
-  6 Guardar copia de seguridad
+  7 Cargar copia de seguridad: A su vez, el sistema también dará la opción de cargar copias anteriores
   
-  7 Cargar copia de seguridad
+ 
+  
+  
+  
+  
 ### No funcionales
 
   1 Sistema operativo Linux obligatorio, multiplataforma opcional
