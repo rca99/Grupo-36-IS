@@ -34,22 +34,33 @@
 
   **1 Introducir un alumno:** El profesor podrá introducir un nuevo alumno
   
-  **2 Modificar un alumno:** El profesor tendrá la opción de modificar los datos de un alumno
+  **2 Buscar un alumno:** El sistema deberá buscar un alumno o varios de acuerdo a unas directrices
+  
+  **3 Modificar un alumno:** El profesor tendrá la opción de modificar los datos de un alumno
  
-  **3 Gestion de líderes:** El sistema dará la posibilidad de gestionar los líderes de los grupos de acuerdo a las restricciones impuestas por el cliente (no pudiendo haber más de un líder por grupo)
+  **4 Gestion de líderes:** El sistema dará la posibilidad de gestionar los líderes de los grupos de acuerdo a las restricciones impuestas por el cliente (no pudiendo haber más de un líder por grupo)
   
-  **4 Mostrar alumnos:** El sistema podrá mostrar uno, varios o todo los alumnos
+  **5 Mostrar alumnos:** El sistema podrá mostrar uno, varios o todo los alumnos
   
-  <ins>5 Eliminar un alumno:**</ins> El sistema permitirá borrar un alumno de la base de datos
+  <ins>6 Eliminar un alumno:** El sistema permitirá borrar un alumno de la base de datos
   
-  **6 Guardar copia de seguridad:** El sistema dará la opción de realizar una copia de seguridad con los nuevos datos
+  **7 Guardar copia de seguridad:** El sistema dará la opción de realizar una copia de seguridad con los nuevos datos
   
-  **7 Cargar copia de seguridad:** A su vez, el sistema también dará la opción de cargar copias anteriores
+  **8 Cargar copia de seguridad:** A su vez, el sistema también dará la opción de cargar copias anteriores
+ 
   
- Requisito | Prioridad
- --|:--:
- 1. Mostrar alumno | 1
- 2
+ Identificador | Requisito | Prioridad
+ :--:|:--:|:--:
+ 001 | Buscar alumno | 1
+ 002 | Gestión de líderes | 1
+ 003|Introducir alumno|2
+ 004|Guardar copia de seguridad|2
+ 005|Cargar copia de seguridad|2
+ 006|Mostrar alumno|3
+ 007|Modificar alumno|4
+ 008|Eliminar alumno|5
+ 
+ 
   
   
   
