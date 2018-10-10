@@ -13,7 +13,7 @@
 
 **Profesor:** Gestiona y mantiene la base de datos de los alumnos
 
-**Alumnos**: Cursan la asginatura impartida por el profesor
+**Alumnos:** Cursan la asginatura impartida por el profesor
 
 ***
 
@@ -32,7 +32,7 @@
 
 ### Funcionales
 
-  1 Introducir un alumno: El profesor podrá introducir un nuevo alumno
+  __1 Introducir un alumno:__ El profesor podrá introducir un nuevo alumno
   
   2 Modificar un alumno: El profesor tendrá la opción de modificar los datos de un alumno
  
