@@ -32,7 +32,7 @@
 
 ### Funcionales
 
-  __1 Introducir un alumno:__ El profesor podrá introducir un nuevo alumno
+  [1 Introducir un alumno:] El profesor podrá introducir un nuevo alumno
   
   2 Modificar un alumno: El profesor tendrá la opción de modificar los datos de un alumno
  
