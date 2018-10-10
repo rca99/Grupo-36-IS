@@ -2,7 +2,7 @@
 **Repositorio grupo 36 IS UCO**
 
 *Integrantes del grupo:*
-* Rafael Cantero Alén
+* <ins>Rafael Cantero Alén</ins>
 * Carlos Freire Caballero
 * Fernando Herrera Poch
 
