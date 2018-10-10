@@ -7,8 +7,8 @@
   * Funcionales
   * No funcionales
 
-***
 
+***
 
 ## Partes interesadas
 
@@ -16,10 +16,8 @@
 
 **Alumnos:** Cursan la asginatura impartida por el profesor
 
+
 ***
-
-
-
 
 ## Base de datos
 
@@ -36,9 +34,8 @@ El sistema almacenará los siguientes parámetros correspondientes a un alumno:
   * Equipo al que pertenece
   * Líder (Sí/No)
 
+
 ***
-
-
 
 ## Requisitos
 
@@ -61,22 +58,18 @@ El sistema almacenará los siguientes parámetros correspondientes a un alumno:
   **8 Cargar copia de seguridad:** A su vez, el sistema también dará la opción de cargar copias anteriores
  
   
- Identificador | Requisito | Prioridad
- :--:|:--:|:--:
- 001|Buscar alumno|1
- 002|Gestión de líderes|1
- 003|Introducir alumno|2
- 004|Guardar copia de seguridad|2
- 005|Cargar copia de seguridad|2
- 006|Mostrar alumno|3
- 007|Modificar alumno|4
- 008|Eliminar alumno|5
+   Identificador | Requisito | Prioridad
+   :--:|:--:|:--:
+   001|Buscar alumno|1
+   002|Gestión de líderes|1
+   003|Introducir alumno|2
+   004|Guardar copia de seguridad|2
+   005|Cargar copia de seguridad|2
+   006|Mostrar alumno|3
+   007|Modificar alumno|4
+   008|Eliminar alumno|5
  
  
-  
-  
-  
-  
 ### <ins>No Funcionales</ins>
 
   1 Sistema operativo Linux obligatorio, multiplataforma opcional
@@ -96,8 +89,4 @@ El sistema almacenará los siguientes parámetros correspondientes a un alumno:
   8 Únicamente tendrá acceso el profesor de la asignatura
   
 
-
-
 ***
-
-
