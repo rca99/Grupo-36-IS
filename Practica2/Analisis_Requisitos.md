@@ -19,7 +19,7 @@
 
 ***
 
-## Base de datos
+## Datos almacenados por la aplicación
 
 El sistema almacenará los siguientes parámetros correspondientes a un alumno:
   * DNI
@@ -60,14 +60,14 @@ El sistema almacenará los siguientes parámetros correspondientes a un alumno:
   
    Identificador | Requisito | Prioridad
    :--:|:--:|:--:
-   001|Buscar alumno|1
-   002|Gestión de líderes|1
-   003|Introducir alumno|2
+   001|Introducir alumno|1
+   002|Buscar alumno|1
+   003|Gestión de líderes|2
    004|Guardar copia de seguridad|2
    005|Cargar copia de seguridad|2
    006|Mostrar alumno|3
    007|Modificar alumno|4
-   008|Eliminar alumno|5
+   008|Eliminar alumno|4
  
  
 ### <ins>No Funcionales</ins>
