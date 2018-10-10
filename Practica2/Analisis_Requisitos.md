@@ -72,21 +72,21 @@ El sistema almacenará los siguientes parámetros correspondientes a un alumno:
  
 ### <ins>No Funcionales</ins>
 
-  1 Sistema operativo Linux obligatorio, multiplataforma opcional
+  **1.** Sistema operativo Linux obligatorio, multiplataforma opcional
   
-  2 Lenguaje de Programación C++
+  **2.** Lenguaje de Programación C++
   
-  3 Lenguaje de documentación Markdown
+  **3.** Lenguaje de documentación Markdown
   
-  4 Utilización de ficheros binarios para almancenar la información
+  **4.** Utilización de ficheros binarios para almancenar la información
   
-  5 Máximo 150 alumnos
+  **5.** Máximo 150 alumnos
   
-  6 Interfaz obligatoria línea de comandos, opcional gráfica
+  **6.** Interfaz obligatoria línea de comandos, opcional gráfica
   
-  7 Sólo sirve para el año actual
+  **7.** Sólo sirve para el año actual
   
-  8 Únicamente tendrá acceso el profesor de la asignatura
+  **8.** Únicamente tendrá acceso el profesor de la asignatura
   
 
 ***
