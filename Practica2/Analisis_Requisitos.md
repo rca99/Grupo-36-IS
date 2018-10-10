@@ -3,6 +3,7 @@
 * Partes interesadas
 * Base de datos
 * Requisitos
+
   * Funcionales
   * No funcionales
 
@@ -22,7 +23,18 @@
 
 ## Base de datos
 
-
+El sistema almacenará los siguientes parámetros correspondientes a un alumno:
+  * DNI
+  * Nombre
+  * Apellidos
+  * Fecha de nacimiento
+  * Teléfono
+  * Email Corporativo
+  * Domicilio
+  * Curso más alto en el que se ha matriculado
+  * Nota
+  * Equipo al que pertenece
+  * Líder (Sí/No)
 
 ***
 
@@ -30,7 +42,7 @@
 
 ## Requisitos
 
-### Funcionales
+### <ins>Funcionales</ins>
 
   **1 Introducir un alumno:** El profesor podrá introducir un nuevo alumno
   
@@ -42,7 +54,7 @@
   
   **5 Mostrar alumnos:** El sistema podrá mostrar uno, varios o todo los alumnos
   
-  <ins>6 Eliminar un alumno:** El sistema permitirá borrar un alumno de la base de datos
+  **6 Eliminar un alumno:** El sistema permitirá borrar un alumno de la base de datos
   
   **7 Guardar copia de seguridad:** El sistema dará la opción de realizar una copia de seguridad con los nuevos datos
   
@@ -51,8 +63,8 @@
   
  Identificador | Requisito | Prioridad
  :--:|:--:|:--:
- 001 | Buscar alumno | 1
- 002 | Gestión de líderes | 1
+ 001|Buscar alumno|1
+ 002|Gestión de líderes|1
  003|Introducir alumno|2
  004|Guardar copia de seguridad|2
  005|Cargar copia de seguridad|2
@@ -65,7 +77,7 @@
   
   
   
-### No funcionales
+### <ins>No Funcionales</ins>
 
   1 Sistema operativo Linux obligatorio, multiplataforma opcional
   
