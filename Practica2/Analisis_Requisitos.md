@@ -47,7 +47,7 @@
   **7 Cargar copia de seguridad:** A su vez, el sistema también dará la opción de cargar copias anteriores
   
  Requisito | Prioridad
- --|--
+ --|:--:
  Mostrar alumno | 1
   
   
