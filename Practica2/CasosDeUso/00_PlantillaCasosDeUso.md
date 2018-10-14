@@ -5,6 +5,7 @@
 **Breve descripcion**: 
 
 **Actores principales**
+
 **Actores segundarios**
 
 ### Precondiciones
