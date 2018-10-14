@@ -1,5 +1,5 @@
 
-##Nombre Caso de Uso
+## Nombre Caso de Uso
 
 **ID: XXX**
 **Breve descripcion**: 
@@ -7,21 +7,21 @@
 **Actores principales**
 **Actores segundarios**
 
-###Precondiciones
+### Precondiciones
 
 1 Condicion
 2 Condicion
 
-###Flujo principal
+### Flujo principal
 
 *
 *
 
-###Postcondiciones
+### Postcondiciones
 
 *
 *
 
-##Flujos alternativos
+## Flujos alternativos
 
 
