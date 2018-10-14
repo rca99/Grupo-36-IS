@@ -11,6 +11,7 @@
 ### Precondiciones
 
 1 Condicion
+
 2 Condicion
 
 ### Flujo principal
