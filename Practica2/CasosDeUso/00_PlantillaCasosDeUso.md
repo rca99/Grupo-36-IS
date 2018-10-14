@@ -2,11 +2,11 @@
 ## Nombre Caso de Uso
 
 **ID: XXX**
-**Breve descripcion**: 
+**Breve descripcion:** 
 
-**Actores principales**
+**Actores principales:**
 
-**Actores segundarios**
+**Actores segundarios:**
 
 ### Precondiciones
 
