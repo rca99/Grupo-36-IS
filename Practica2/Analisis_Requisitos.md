@@ -1,7 +1,7 @@
 # Análisis de Requisitos
 
 * Partes interesadas
-* Base de datos
+* Datos almacenados por la aplicación
 * Requisitos
 
   * Funcionales
