@@ -18,7 +18,7 @@
 1 El caso de uso comienza cuando el usuario necesita introducir un alumno.
 2 El sistema recoge los datos obligatorios de un alumno.
 3 Se comprobara que el alumno no existe en el sistema.
-4 El sistema comprueba que el alumno no pertenece a otro grupo
+4 El sistema comprueba que el grupo que ha elegido el alumno tiene ya lider.
 
 ### Postcondiciones
 
@@ -29,4 +29,5 @@ B El sistema muestra un mensaje indicando que la insercion ha sido correcta most
 ## Flujos alternativos
 
 2.1 Si no introduce los datos obligatorios muestra un mensaje de error, indicando los datos que faltan por introducir
-3.1 El sistema no permite la insercion de un alumno que ya existe en el sistema
+3.1 El sistema no permite la insercion de un alumno que ya existe en el sistema y muestra un mensaje de error.
+4.1 El sistema no permite indicar que un alumno es lider de un grupo que ya tenga lider.
