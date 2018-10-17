@@ -15,7 +15,16 @@ __Prioridad: 1__
 
 * Los datos que interesa introducir de los alumnos son:
 
-    1 Datos obligatorios: DNI, nombre, apellidos, tlf, correo electronico corporativo, domicilio, curso mas alto matriculado, fechaNacimiento.
+    1 Datos obligatorios: 
+    
+    * DNI
+    * Nombre 
+    * Apellidos
+    * Teléfono
+    * Correo electrónico corporativo
+    * Domicilio
+    * Curso más alto matriculado
+    * Fecha de nacimiento
 
     2 Datos no obligatorios: **equipo al que pertenece, lider (que puede tomar los valores Si/No)**
 
