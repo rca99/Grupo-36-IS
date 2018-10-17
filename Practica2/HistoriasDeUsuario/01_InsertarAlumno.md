@@ -29,7 +29,7 @@ __Prioridad: 1__
     2 Datos no obligatorios: 
     
     * Equipo al que pertenece
-    * Líder (que puede tomar los valores Si/No)
+    * Líder (que puede tomar los valores Sí/No)
 
 * Se introducira máximo un lider por equipo
 * No puede haber usuarios repetidos
