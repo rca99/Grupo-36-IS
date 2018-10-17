@@ -113,9 +113,9 @@ El listado de la configuración informa además de los parámetros antes indicad
 
 	git add
 
-**Validar cambios en el repositorio**
+**Validar cambios en el repositorio pasando por alto errores**
 
-	git commit -m "Mensaje"
+	git commit -m "Mensaje" --no-verify
 
 **Hacer los dos pasos anteriores en uno**
 
