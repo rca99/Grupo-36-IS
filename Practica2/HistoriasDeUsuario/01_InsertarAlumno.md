@@ -15,11 +15,24 @@ __Prioridad: 1__
 
 * Los datos que interesa introducir de los alumnos son:
 
-    1 Datos obligatorios: DNI, nombre, apellidos, tlf, correo electronico corporativo, domicilio, curso mas alto matriculado, fechaNacimiento.
+    1 Datos obligatorios: 
+    
+    * DNI
+    * Nombre 
+    * Apellidos
+    * Teléfono
+    * Correo electrónico corporativo
+    * Domicilio
+    * Curso más alto matriculado
+    * Fecha de nacimiento
 
-    2 Datos no obligatorios: **equipo al que pertenece, lider (que puede tomar los valores Si/No)**
+    2 Datos no obligatorios: 
+    
+    * Equipo al que pertenece
+    * Líder (que puede tomar los valores Sí/No)
 
-* Se introducira maximo un lider por equipo
+* Se introducira máximo un lider por equipo
 * No puede haber usuarios repetidos
+* Se tendrá la opción de introducir tanto manualmente como cargando una copia de seguridad
 
 ---
