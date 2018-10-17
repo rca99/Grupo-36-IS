@@ -26,7 +26,10 @@ __Prioridad: 1__
     * Curso más alto matriculado
     * Fecha de nacimiento
 
-    2 Datos no obligatorios: **equipo al que pertenece, lider (que puede tomar los valores Si/No)**
+    2 Datos no obligatorios: 
+    
+    * Equipo al que pertenece
+    * Líder (que puede tomar los valores Si/No)
 
 * Se introducira máximo un lider por equipo
 * No puede haber usuarios repetidos
