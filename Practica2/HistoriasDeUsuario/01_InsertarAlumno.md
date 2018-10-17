@@ -28,7 +28,8 @@ __Prioridad: 1__
 
     2 Datos no obligatorios: **equipo al que pertenece, lider (que puede tomar los valores Si/No)**
 
-* Se introducira maximo un lider por equipo
+* Se introducira máximo un lider por equipo
 * No puede haber usuarios repetidos
+* Se tendrá la opción de introducir tanto manualmente como cargando una copia de seguridad
 
 ---
