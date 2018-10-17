@@ -13,6 +13,7 @@ __Prioridad: 2__
 
 ---
 
+* Un grupo puede tener o no un líder
 * Cada grupo ha de tener un solo lider.
 
 
