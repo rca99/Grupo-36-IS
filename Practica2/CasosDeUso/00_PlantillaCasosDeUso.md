@@ -2,7 +2,7 @@
 ## Insertar Alumno
 
 **ID: XXX**
-**Breve descripcion: El profesorpodra introducir los datos de un alumno** 
+**Breve descripcion: El profesor podrá introducir los datos de un alumno** 
 
 **Actores principales: Profesor**
 
