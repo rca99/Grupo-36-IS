@@ -3,7 +3,7 @@
 
 **ID: 7**
 
-**Breve descripcion: El profesor podra realizar una copia de seguridad de los alumnos registrados en el sistema **
+**Breve descripcion: El profesor podra realizar una copia de seguridad de los alumnos registrados en el sistema**
 
 **Actores principales: Profesor**
 
