@@ -1,8 +1,8 @@
 
 ## Insertar Alumno
 
-**ID: XXX**
-**Breve descripcion: El profesorpodra introducir los datos de un alumno** 
+**ID: 1**
+**Breve descripcion: El profesor podra introducir los datos de un alumno** 
 
 **Actores principales: Profesor**
 
@@ -26,6 +26,10 @@
 
 5 El sistema comprueba que el grupo que ha elegido el alumno tiene ya lider.
 
+6 El sistema introduce el alumno.
+
+7 El sistema comprueba la insercion del alumno en el sistema
+
 ### Postcondiciones
 
 **A** El sistema se actualiza con la introduccion del alumno
@@ -42,3 +46,5 @@
 4.1 El sistema no permite la insercion de un alumno que ya existe en el sistema y muestra un mensaje de error.
 
 5.1 El sistema no permite indicar que un alumno es lider de un grupo que ya tenga lider.
+
+6.1 Si el sistema no ha podido realizar la insercion del alumno indica que esta no ha podido ser realizada e indicando que vuelva a realizarla

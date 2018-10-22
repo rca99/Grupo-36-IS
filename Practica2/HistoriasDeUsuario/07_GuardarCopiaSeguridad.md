@@ -3,9 +3,9 @@
 
 ### **ID:** 007 **Guardar Copia de Seguridad**
 
-Como profesor quiero poder guardar una copia de los cambios realizados en la base de datos en un fichero binario externo
+Como profesor quiero poder guardar una copia de los datos que doy de alta en el sistema
 
-__Prioridad: 4__
+__Prioridad: 2__
 
 ---
 
