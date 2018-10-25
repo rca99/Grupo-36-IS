@@ -25,6 +25,7 @@
 ### Postcondiciones
 
 A El sistema actualiza el sistema con la nueva información del alumno
+
 B El sistema muestra un mensaje indicando que la modificación ha sido correcta
  
 
