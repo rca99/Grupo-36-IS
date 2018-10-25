@@ -1,5 +1,5 @@
 
-## Insertar Alumno
+## Buscar Alumno
 
 **ID: 2**
 
