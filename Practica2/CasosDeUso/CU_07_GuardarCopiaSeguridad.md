@@ -23,7 +23,7 @@
 
 3 El sistema actualiza los datos de los alumnos en el fichero binario que almacena la base de datos
 
-4 El sistema comprueba que la base de datos se ha cargado correctamente
+4 El sistema comprueba que la base de datos se ha guardado correctamente
 
 
 ### Postcondiciones
