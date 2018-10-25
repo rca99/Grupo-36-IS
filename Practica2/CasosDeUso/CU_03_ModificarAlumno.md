@@ -2,7 +2,7 @@
 
 **ID: 3**
 
-**Breve descripcion: El profesor podrá introducir los datos de un alumno** 
+**Breve descripcion: El profesor podrá modificar los datos de un alumno** 
 
 **Actores principales: Profesor**
 
