@@ -34,11 +34,6 @@
 
 A El sistema se actualiza conforme a los cambios aplicados en los lideres
 
-B 
- 
-
 ## Flujos alternativos
 
-3.1 Si el sistema no encuentra al alumno recibido, se muestra un mensaje de error
-
-3.1 
+3.1 Si el sistema no encuentra ningún alumno pertenciente al grupo recibido, muestra un mensaje de error
