@@ -22,6 +22,8 @@
 
 4 El sistema muestra campo a campo los datos del alumno, dando la opción de modificarlo si se desea
 
+4.1 Si se mofica el campo de líder, el sistema comprobará que el grupo al que pertenece el alumno tenga líder o no
+
 ### Postcondiciones
 
 A El sistema actualiza el sistema con la nueva información del alumno
