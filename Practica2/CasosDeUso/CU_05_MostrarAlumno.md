@@ -30,6 +30,6 @@ A El sistema debe mostrar en blanco los datos del alumno no obligatorios que no 
 
 2.1 Si el sistema no encuentra a un alumno al que se ha pedido mostrar al buscarlo en el sistema, dará un mensaje de error.
 
-3.1 Si hay dos alumnos que posean la misma información en el campo según el que mostrar a los alumnos ordenados(por ejemplo, el curso mas alto en el que se este matriculado), se mostraran ordenados segun otro de los criterios disponibles.
+3.1 Si hay dos alumnos que posean la misma información en el campo según el que mostrar a los alumnos ordenados(por ejemplo, el curso mas alto en el que se este matriculado), se mostraran ordenados segun otro de los criterios disponibles, bien por apellido o por DNI en útlima instancia.
 
 4.1 Si el sistema no es capaz de mostrar ningun alumno con los criterios establecidos dara un mensaje de error y pedira al usuario que cambie los criterios escogidos.
