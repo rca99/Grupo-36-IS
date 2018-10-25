@@ -5,3 +5,5 @@ revision gestion de lideres
 revision diagrama de casos de uso
 
 poner tildes
+
+como poner que guardaremo una copia de seguridad al salir?
