@@ -3,7 +3,7 @@
 
 ### **ID:** 004 **Gestion de lideres**
 
-Como **profesor, usuario de la aplicacion** quiero *gestionar los lideres de cada equipo* para *saber que grupo tiene lider y que no puede haber mas de un lider por grupo*
+Como **profesor, usuario de la aplicacion** quiero *gestionar los lideres de cada equipo* para *saber que grupo tiene lider*
 
 __Prioridad: 2__
 
@@ -13,7 +13,8 @@ __Prioridad: 2__
 
 ---
 
-* Un grupo puede tener o no un líder
+* Un grupo puede tener o no un líder.
+* Cada vez que se muestren los alumnos, aquel que es lider se resaltara con un formato que lo distinga del resto.
 * Cada grupo ha de tener un solo lider.
 
 
