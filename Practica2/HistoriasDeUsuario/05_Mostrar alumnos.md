@@ -1,6 +1,6 @@
 ## (Anverso)
 
-### **ID:** 005 **Mostrar alumnos**
+### **ID:** 005 **Mostrar Alumnos**
 Como **profesor, usuario de la aplicación**, quiero *disponer de una herramienta que me permita mostrar los datos de los alumnos*
 
 **Prioridad: 3**
