@@ -15,6 +15,4 @@ __Prioridad: 4__
 
 * Quiero tener la posibilidad de modificar todos y cada uno de los campos por los que un alumno está compuesto.
 
-* 
-
 ---
