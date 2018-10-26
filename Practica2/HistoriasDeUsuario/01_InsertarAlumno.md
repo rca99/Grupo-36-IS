@@ -3,7 +3,7 @@
 
 ### **ID:** 001 **Insertar Alumno**
 
-Como **profesor, usuario de la aplicación** quiero poder insertar los datos correspondientes a un alumno para controlar los grupos.
+Como **profesor, usuario de la aplicación** quiero poder insertar los datos correspondientes a un alumno para *controlar los grupos.*
 
 __Prioridad: 1__
 
