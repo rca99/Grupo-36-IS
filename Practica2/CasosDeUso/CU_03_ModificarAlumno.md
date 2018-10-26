@@ -20,7 +20,7 @@
 
 3 El sistema busca al alumno en cuestión por DNI o por apellido
 
-4 El sistema muestra campo a campo los datos del alumno, dando la opción de modificarlo si se desea
+4 El sistema muestra los datos del alumno, dando la opción de modificar aquellos que se deseen.
 
 4.1 Si se mofica el campo de líder, el sistema comprobará que el grupo al que pertenece el alumno tenga líder o no
 
@@ -37,4 +37,6 @@ B El sistema muestra un mensaje indicando que la modificación ha sido correcta
 
 3.1 El sistema no permite la modificación de un alumno que no se encuentra almacenado en la aplicación
 
-4.1 Se comprobará que el campo modificado cumple el formato asociado a su campo, mostrando un mensaje de error en caso de qué no sea así. 
+4.1 Si se desean dejar en blanco alguno de los campos obligatorios, el sistema no permitirá guardar los cambios volviendo al punto 4 del proceso.
+
+4.1.1 Se comprobará que el campo modificado cumple el formato asociado a su campo, mostrando un mensaje de error en caso de qué no sea así. 
