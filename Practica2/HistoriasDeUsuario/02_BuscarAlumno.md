@@ -13,6 +13,6 @@ __Prioridad: 1__
 
 ---
 
-* El sistema me permitirá buscar por DNI, por apellido o por curso más alto matriculado
+* El sistema me permitirá buscar por DNI, por apellido o por curso más alto matriculado.
 
 ---
