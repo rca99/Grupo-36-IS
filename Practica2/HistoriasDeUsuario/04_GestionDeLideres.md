@@ -1,7 +1,7 @@
 ## (Anverso)
 ---
 
-### **ID:** 004 **Gestion de lideres**
+### **ID:** 004 **Gestión de líderes**
 
 Como **profesor, usuario de la aplicación** quiero poder *gestionar los líderes de cada equipo* para *saber qué grupo tiene lider.*
 
