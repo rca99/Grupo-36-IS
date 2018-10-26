@@ -1,7 +1,7 @@
 ## (Anverso)
 ---
 
-### **ID:** 001 **Insertar Alumno**
+### **ID:** 001 **Insertar alumno**
 
 Como **profesor, usuario de la aplicación** quiero poder insertar los datos correspondientes a un alumno para *controlar los grupos.*
 
