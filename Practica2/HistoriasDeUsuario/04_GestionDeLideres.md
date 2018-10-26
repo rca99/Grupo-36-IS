@@ -14,7 +14,7 @@ __Prioridad: 2__
 ---
 
 * Un grupo puede tener o no un líder.
-* Cada vez que se muestren los alumnos, aquel que es líder se resaltará con un formato que lo distinga del resto.
 * Cada grupo ha de tener únicamente un lider.
+* Cada vez que se muestren los alumnos, aquel que es líder se resaltará con un formato que lo distinga del resto.
 
 ---
