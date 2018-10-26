@@ -31,8 +31,8 @@ __Prioridad: 1__
     * Equipo al que pertenece
     * Líder (que puede tomar los valores Sí/No)
 
-* Se introducira máximo un líder por equipo
-* No puede haber usuarios repetidos
+* Se introducirá máximo un líder por equipo y mínimo ningúno
+* No puede haber alumnos repetidos
 * Se tendrá la opción de introducir tanto manualmente como cargando una copia de seguridad
 
 ---
