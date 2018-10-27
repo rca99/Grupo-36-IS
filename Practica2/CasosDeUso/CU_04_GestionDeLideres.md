@@ -28,7 +28,7 @@
 
 ### Postcondiciones
 
-**A** El sistema se actualiza si el sistema permite indicar que el alumno es líder.
+**A** El sistema se actualiza si la aplicación permite indicar que el alumno es líder.
 
 ## Flujos alternativos
 
