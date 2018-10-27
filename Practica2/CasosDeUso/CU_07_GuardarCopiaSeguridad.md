@@ -3,11 +3,11 @@
 
 **ID: 7**
 
-**Breve descripcion: El profesor podra realizar una copia de seguridad de los alumnos registrados en el sistema**
+**Breve descripcion: El profesor podra realizar una copia de seguridad de los alumnos registrados en el sistema.**
 
-**Actores principales: Profesor**
+**Actores principales: Profesor.**
 
-**Actores segundarios: Alumno**
+**Actores segundarios: Alumno.**
 
 ### Precondiciones
 
@@ -19,18 +19,18 @@
 
 1 El caso de uso comienza cuando el usuario requiere realizar copia de seguidad.
 
-2 El sistema comprueba si hay alumnos dados de alta
+2 El sistema comprueba si hay alumnos dados de alta.
 
-3 El sistema actualiza los datos de los alumnos en el fichero binario que almacena la base de datos
+3 El sistema actualiza los datos de los alumnos en el fichero binario que almacena la base de datos.
 
-4 El sistema comprueba que la base de datos se ha guardado correctamente
+4 El sistema comprueba que la base de datos se ha guardado correctamente.
 
 
 ### Postcondiciones
 
 **A** En caso de no existir alumnos el sistema informa que no es necesaria la copia de seguridad.
 
-**B** El sistema informa de los alumnos que se han actualizado en la base de datos 
+**B** El sistema muestra un mensaje indicando que los datos se han guardado correctamente.
  
 ## Flujos alternativos
 
@@ -41,6 +41,6 @@
     2.1.1 Si ha cargado la base de datos, indicara que no hay alumnos y se le indicara que proceda a insertar alumnos antes de realizar la copia de seguridad.
     2.1.2 Si no ha cargado la base de datos, se le indica que la cargue.
 
-3.1 Si no existe el fichero binario se procedera a crearlo
+3.1 Si no existe el fichero binario se procedera a crearlo.
 
 4.1. Si no se insertan correctamente los datos da un mensaje de error, informando de los alumnos que hay en la base de datos e indicando que vuelva a realizar la copia.
