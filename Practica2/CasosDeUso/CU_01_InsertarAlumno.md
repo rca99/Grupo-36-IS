@@ -22,7 +22,7 @@
 
 3 El sistema recoge los datos obligatorios de un alumno y aquellos no obligatorios que el profesor desee introducir.
 
-3.1 Los datos de nombre, apellidos, grupo y DNI serán convertidos a mayúsculas por el sistema.
+3.1 Los datos de nombre, apellidos y DNI serán convertidos a mayúsculas por el sistema.
 
 4 Se comprobará que el alumno no existe ya en el sistema.
 
