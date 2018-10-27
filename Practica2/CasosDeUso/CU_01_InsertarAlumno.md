@@ -21,7 +21,9 @@
 
 2 El sistema comprueba el numero de alumnos que existen en el sistema. 
 
-3 El sistema recoge los datos obligatorios de un alumno.
+3 El sistema recoge los datos obligatorios de un alumno y aquellos no obligatorios que el profesor desee introducir.
+
+3.1 Los datos de nombre, apellidos, grupo y DNI serán convertidos a mayúscula por el sistema.
 
 4 Se comprobara que el alumno no existe en el sistema.
 
@@ -36,6 +38,8 @@
 **A** El sistema se actualiza con la introduccion del alumno
 
 **B** El sistema muestra un mensaje indicando que la insercion ha sido correcta mostrando el nombre y dni del alumno introducido
+
+**C** El nombre del grupo, nombre del alumno, DNI del alumno, 
  
 
 ## Flujos alternativos

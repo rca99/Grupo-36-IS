@@ -3,7 +3,7 @@
 
 ### **ID:** 002 **Buscar alumno**
 
-Como **profesor, usuario de la aplicacion** quiero *poder disponer de una herramienta de busqueda de los alumnos* para *acceder a informacion de interes de los mismos*
+Como **profesor, usuario de la aplicación** quiero *poder disponer de una herramienta de búsqueda de los alumnos* para *acceder a información de interés de los mismos*.
 
 __Prioridad: 1__
 
@@ -13,8 +13,6 @@ __Prioridad: 1__
 
 ---
 
-* El sistema me permitira buscar por DNI y apellido
-
-* 
+* El sistema me permitirá buscar por DNI, por apellido o por curso más alto matriculado.
 
 ---

@@ -2,7 +2,7 @@
 
 **ID: 4**
 
-**Breve descripción: El profesor podrá gestionar qué alumnos realizan la función de líder del grupo** 
+**Breve descripción: El sistema verifica si un alumno puede ser o no líder del grupo** 
 
 **Actores principales: Profesor**
 
@@ -10,30 +10,26 @@
 
 ### Precondiciones
 
-* El alumno seleccionado deberá existir en el sistema
+* El alumno estará identificado en el sistema con su nombre, apellidos y grupo al que pertenece.
 
 ### Flujo principal
 
-1 El caso de uso comienza cuando el usuario desea administrar los líderes de los grupos
+1 El caso de uso comienza cuando el profesor desea indicar si un alumno es líder de un grupo.
 
-2 El sistema recibe el grupo con el que se quiere interactuar
+2 El sistema recibe el grupo con el que se quiere interactuar.
 
 3 El sistema busca los alumnos que pertenecen a dicho grupo.
 
-4 El sistema lista los alumnos del grupo.
+4 El sistema comprueba si algún alumno del grupo es líder.
 
-5 El sistema indicara si el grupo tiene líder o no.
+4.1 Si tiene líder, el sistema no permitirá asignar como líder a dicho alumno.
 
-5.1 Si tiene líder, el sistema permitirá modificarlo y asignar al grupo un nuevo líder, dejarlo sin líder o no realizar ningún cambio.
-
-5.2 Si no tiene líder, el sistema permitirá asignarlo o dejarlo sin líder.
-
-6 El sistema muestra un mensaje indicando que el sistema ha sido o no actualizado según la opción indicada.
+4.2 Si no tiene líder, el sistema permitirá asignar como líder a dicho alumno.
 
 ### Postcondiciones
 
-A El sistema se actualiza conforme a los cambios aplicados en los líderes
+A El sistema se actualiza si el sistema permite indicar que el alumno es líder.
 
 ## Flujos alternativos
 
-3.1 Si el sistema no encuentra ningún alumno pertenciente al grupo recibido, muestra un mensaje de error
+4.1 No se puede asignar al alumno como líder ya que el grupo tiene un líder y sale del caso de uso.

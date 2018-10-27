@@ -6,4 +6,4 @@ revision diagrama de casos de uso
 
 poner tildes
 
-como poner que guardaremos una copia de seguridad al salir?
+como poner que guardaremos una copia de seguridad al salir? Como un caso de uso
