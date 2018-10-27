@@ -2,15 +2,15 @@
 
 **ID: 4**
 
-**Breve descripción: El sistema verifica si un alumno puede ser o no líder del grupo** 
+**Breve descripción: El sistema verifica si un alumno puede ser o no líder del grupo.** 
 
-**Actores principales: Profesor**
+**Actores principales: Profesor.**
 
-**Actores segundarios: Alumno**
+**Actores segundarios: Alumno.**
 
 ### Precondiciones
 
-* El alumno estará identificado en el sistema con su nombre, apellidos y grupo al que pertenece.
+* El alumno estará identificado en el sistema con su DNI, nombre, apellidos y grupo al que pertenece.
 
 ### Flujo principal
 
@@ -28,8 +28,8 @@
 
 ### Postcondiciones
 
-A El sistema se actualiza si el sistema permite indicar que el alumno es líder.
+**A** El sistema se actualiza si el sistema permite indicar que el alumno es líder.
 
 ## Flujos alternativos
 
-4.1 No se puede asignar al alumno como líder ya que el grupo tiene un líder y sale del caso de uso.
+    4.1.1 No se puede asignar al alumno como líder ya que el grupo tiene un líder y sale del caso de uso.
