@@ -3,7 +3,7 @@
 
 **ID: 7**
 
-**Breve descripcion: El profesor podrá realizar una copia de seguridad de los alumnos registrados en el sistema.**
+**Breve descripción: El profesor podrá realizar una copia de seguridad de los alumnos registrados en el sistema.**
 
 **Actores principales: Profesor.**
 
@@ -11,8 +11,8 @@
 
 ### Precondiciones
 
-* La aplicacion debe tener alumnos dados de alta.
-* Los datos se guardaran en un archivo binario.
+* La aplicación debe tener alumnos dados de alta.
+* Los datos se guardarán en un archivo binario.
 
 
 ### Flujo principal
@@ -34,7 +34,7 @@
  
 ## Flujos alternativos
 
-1.1 En caso de que el profesor no haya indicado realizar copia de seguridad, al salir de la aplicación y si hay alumnos dados de alta en el sistema, se consultara al profesor si quiere realizar la copia de seguridad.
+1.1 En caso de que el profesor no haya indicado realizar copia de seguridad, al salir de la aplicación y si hay alumnos dados de alta en el sistema, se consultaá al profesor si quiere realizar la copia de seguridad.
 
 2.1 Si no hay alumnos en la base de datos, el sistema consulta al profesor si ha cargado la base de datos.
 
