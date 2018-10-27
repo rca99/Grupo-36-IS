@@ -24,7 +24,7 @@
 
 ### Postcondiciones
 
-**A** El sistema informa de cual de las copias de seguridad existentes ha sido cargada.
+**A** El sistema muestra un mensaje de confirmación de la carga y de cuál de las copias de seguridad existentes ha sido cargada.
 
 **B** El sistema permite al usuario sobrescribir los datos de esa copia de seguridad.
 
