@@ -26,9 +26,9 @@
 
 ### Postcondiciones
 
-A El sistema se actualiza con la nueva información del alumno.
+**A** El sistema se actualiza con la nueva información del alumno.
 
-B El sistema muestra un mensaje indicando que la modificación ha sido correcta.
+**B** El sistema muestra un mensaje indicando que la modificación ha sido correcta.
  
 
 ## Flujos alternativos
