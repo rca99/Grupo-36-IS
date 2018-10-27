@@ -3,7 +3,7 @@
 
 **ID: 2**
 
-**Breve descripcion: El profesor podra buscar los alumnos introducidos en la base de datos por Grupo, DNI y apellidos** 
+**Breve descripción: El profesor podrá buscar los alumnos introducidos en la base de datos por Grupo, DNI, apellidos** 
 
 **Actores principales: Profesor**
 
