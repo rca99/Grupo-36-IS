@@ -38,8 +38,10 @@
     2.1.1 Si ha cargado la base de datos, indicara que no hay alumnos y que proceda a insertar alumnos antes de buscarlos.
     2.1.2 Si no ha cargado la base de datos, se le indica que la cargue.
 
-3.1 Se comprueba que los datos introducidos son del tipo y formato correcto, Si no lo son se indica que se introduzcan adecuadamente.
+3.1 Se comprueba que los datos introducidos son del tipo y formato correcto, si no lo son se indica que se introduzcan adecuadamente.
 
 4.1 En caso de no existir el alumno muestra un mensaje indicando que el alumno no existe en la base de datos y se regresa al paso 1.
 
 4.2 En caso de que el grupo no tenga alumnos asociados, se muestra un mensaje indicando de que el grupo está vacío.
+
+4.3 En caso de que exista más de un alumno con el mismo apellido, el sistema indica al profesor que introduzca el DNI para filtrar.
