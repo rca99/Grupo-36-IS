@@ -2,11 +2,11 @@
 
 **ID: 6**
 
-**Breve descripcion: El profesor podrá eliminar un alumno de la base de datos** 
+**Breve descripcion: El profesor podrá eliminar un alumno de la base de datos.** 
 
-**Actores principales: Profesor**
+**Actores principales: Profesor.**
 
-**Actores segundarios: Alumno**
+**Actores segundarios: Alumno.**
 
 ### Precondiciones
 
