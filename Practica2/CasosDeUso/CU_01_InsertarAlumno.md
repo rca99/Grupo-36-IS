@@ -3,31 +3,30 @@
 
 **ID: 1**
 
-**Breve descripcion: El profesor podra introducir los datos de un alumno** 
+**Breve descripcion: El profesor podrá introducir los datos de un alumno.** 
 
-**Actores principales: Profesor**
+**Actores principales: Profesor.**
 
-**Actores segundarios: Alumno**
+**Actores segundarios: Alumno.**
 
 ### Precondiciones
 
-* El alumno a insertar no puede existir en el sistema.
-* El alumno no es lider de otro grupo.
-* El numero de alumnos del sistema sera menor a 150.
+* El alumno a insertar no puede existir en el sistema
+* El numero de alumnos del sistema será menor a 150.
 
 ### Flujo principal
 
 1 El caso de uso comienza cuando el usuario necesita introducir un alumno.
 
-2 El sistema comprueba el numero de alumnos que existen en el sistema. 
+2 El sistema comprueba el número de alumnos que existen en el sistema. 
 
 3 El sistema recoge los datos obligatorios de un alumno y aquellos no obligatorios que el profesor desee introducir.
 
-3.1 Los datos de nombre, apellidos, grupo y DNI serán convertidos a mayúscula por el sistema.
+3.1 Los datos de nombre, apellidos, grupo y DNI serán convertidos a mayúsculas por el sistema.
 
-4 Se comprobara que el alumno no existe en el sistema.
+4 Se comprobará que el alumno no existe ya en el sistema.
 
-5 El sistema comprueba que el grupo que ha elegido el alumno tiene ya lider.
+5 El sistema comprueba si el grupo que ha elegido el alumno tiene ya lider.
 
 6 El sistema introduce el alumno.
 
@@ -38,17 +37,16 @@
 **A** El sistema se actualiza con la introduccion del alumno
 
 **B** El sistema muestra un mensaje indicando que la insercion ha sido correcta mostrando el nombre y dni del alumno introducido
-
-**C** El nombre del grupo, nombre del alumno, DNI del alumno, 
  
-
 ## Flujos alternativos
 
 2.1 Si en el sistema hay 150 alumnos dados de alta, se muestra un error indicando que no se puede introducir el alumno.
 
 3.1 Si no introduce los datos obligatorios muestra un mensaje de error, indicando los datos que faltan por introducir.
 
-3.2 Si el usuario introduce que un alumno es líder entonces deberá indicar obligatoriamente el grupo al que pertenece.
+3.2 Por defecto, el campo líder valdrá NO.
+
+3.3 Si el usuario introduce que un alumno es líder entonces deberá indicar obligatoriamente el grupo al que pertenece.
 
 4.1 El sistema no permite la insercion de un alumno que ya existe en el sistema y muestra un mensaje de error.
 
