@@ -13,6 +13,6 @@ __Prioridad: 1__
 
 ---
 
-* El sistema me permitirá buscar por DNI o por apellido.
+* El sistema me permitirá buscar por DNI, por apellido o por grupo.
 
 ---
