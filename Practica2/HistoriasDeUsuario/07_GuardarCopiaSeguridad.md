@@ -3,7 +3,7 @@
 
 ### **ID:** 007 **Guardar copia de seguridad**
 
-Como profesor quiero poder guardar una copia de los datos que introduzco en el sistema.
+Como **profesor** quiero poder guardar una copia de los datos que introduzco en el sistema.
 
 __Prioridad: 2__
 
