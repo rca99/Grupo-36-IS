@@ -3,7 +3,7 @@
 
 **ID: 1**
 
-**Breve descripcion: El profesor podrá introducir los datos de un alumno.** 
+**Breve descripción: El profesor podrá introducir los datos de un alumno.** 
 
 **Actores principales: Profesor.**
 
@@ -11,8 +11,8 @@
 
 ### Precondiciones
 
-* El alumno a insertar no puede existir en el sistema
-* El numero de alumnos del sistema será menor a 150.
+* El alumno a insertar no puede existir en el sistema.
+* El número de alumnos del sistema será menor a 150.
 
 ### Flujo principal
 
@@ -30,13 +30,13 @@
 
 6 El sistema introduce el alumno.
 
-7 El sistema comprueba la insercion del alumno en el sistema.
+7 El sistema comprueba la inserción del alumno en el sistema.
 
 ### Postcondiciones
 
-**A** El sistema se actualiza con la introduccion del alumno
+**A** El sistema se actualiza con la introducción del alumno.
 
-**B** El sistema muestra un mensaje indicando que la insercion ha sido correcta mostrando el nombre y dni del alumno introducido
+**B** El sistema muestra un mensaje indicando que la inserción ha sido correcta mostrando el nombre y dni del alumno introducido.
  
 ## Flujos alternativos
 
@@ -48,8 +48,8 @@
 
 3.3 Si el usuario introduce que un alumno es líder entonces deberá indicar obligatoriamente el grupo al que pertenece.
 
-4.1 El sistema no permite la insercion de un alumno que ya existe en el sistema y muestra un mensaje de error.
+4.1 El sistema no permite la insercioón de un alumno que ya existe en el sistema y muestra un mensaje de error.
 
-5.1 El sistema no permite indicar que un alumno es lider de un grupo que ya tenga lider.
+5.1 El sistema no permite indicar que un alumno es líder de un grupo que ya tenga líder.
 
-6.1 Si el sistema no ha podido realizar la insercion del alumno indica que esta no ha podido ser realizada e indicando que vuelva a realizarla.
+6.1 Si el sistema no ha podido realizar la inserción del alumno indica que esta no ha podido ser realizada y que vuelva a intentarlo.
