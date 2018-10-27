@@ -3,7 +3,7 @@
 
 ### **ID:** 006 **Eliminar alumno**
 
-Como profesor quiero tener la opción de eliminar un alumno de la base de datos.
+Como **profesor** quiero tener la opción de eliminar un alumno de la base de datos.
 
 __Prioridad: 4__
 
