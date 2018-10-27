@@ -32,4 +32,4 @@
 
 ## Flujos alternativos
 
-    4.1.1 No se puede asignar al alumno como líder ya que el grupo tiene un líder y sale del caso de uso.
+4.1.1 No se puede asignar al alumno como líder ya que el grupo tiene un líder y sale del caso de uso.
