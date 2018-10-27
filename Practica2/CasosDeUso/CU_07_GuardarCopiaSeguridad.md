@@ -3,7 +3,7 @@
 
 **ID: 7**
 
-**Breve descripcion: El profesor podra realizar una copia de seguridad de los alumnos registrados en el sistema.**
+**Breve descripcion: El profesor podrá realizar una copia de seguridad de los alumnos registrados en el sistema.**
 
 **Actores principales: Profesor.**
 
@@ -28,19 +28,19 @@
 
 ### Postcondiciones
 
-**A** En caso de no existir alumnos el sistema informa que no es necesaria la copia de seguridad.
+**A** El sistema muestra un mensaje indicando que los datos se han guardado correctamente.
 
-**B** El sistema muestra un mensaje indicando que los datos se han guardado correctamente.
+**B** En caso de no existir alumnos el sistema informa que no es necesaria la copia de seguridad.
  
 ## Flujos alternativos
 
-1.1 En caso de que el profesor no hay indicado realizar copia de seguridad, al salir de la aplicacion y si hay alumnos dados de alta en el sistema, se consultara al profesor si quiere realizar la copia de seguridad.
+1.1 En caso de que el profesor no haya indicado realizar copia de seguridad, al salir de la aplicación y si hay alumnos dados de alta en el sistema, se consultara al profesor si quiere realizar la copia de seguridad.
 
 2.1 Si no hay alumnos en la base de datos, el sistema consulta al profesor si ha cargado la base de datos.
 
-    2.1.1 Si ha cargado la base de datos, indicara que no hay alumnos y se le indicara que proceda a insertar alumnos antes de realizar la copia de seguridad.
+    2.1.1 Si ha cargado la base de datos, indicará que no hay alumnos y que proceda a insertar alumnos antes de realizar la copia de seguridad.
     2.1.2 Si no ha cargado la base de datos, se le indica que la cargue.
 
-3.1 Si no existe el fichero binario se procedera a crearlo.
+3.1 Si no existe el fichero binario se procederá a crearlo.
 
-4.1. Si no se insertan correctamente los datos da un mensaje de error, informando de los alumnos que hay en la base de datos e indicando que vuelva a realizar la copia.
+4.1. Si no se insertan correctamente los datos da un mensaje de error, indicando que vuelva a realizar la copia.
