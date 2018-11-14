@@ -1,7 +1,7 @@
 ## (Anverso)
 ---
 
-### **ID:** 007 **Guardar copia de seguridad**
+### **ID:** 007 **Guardar base de datos**
 
 Como **profesor** quiero poder guardar una copia de los datos que introduzco en el sistema.
 
