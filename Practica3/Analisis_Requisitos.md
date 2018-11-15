@@ -12,7 +12,7 @@
 
 ## Partes interesadas
 
-**Profesores:** Gestionan y mantienen la base de datos de los alumnos. Formado por el coordinador y los ayudantes. Las funciones que realizan son las mismas, salvo que el coordinador pueden realizar copias de seguridad externas.
+**Profesores:** Gestionan y mantienen la base de datos de los alumnos. Formado por el coordinador y los ayudantes. Las funciones que realizan son las mismas, salvo que el coordinador puede realizar copias de seguridad externas.
 
 **Alumnos:** Cursan la asginatura impartida por el profesor.
 
