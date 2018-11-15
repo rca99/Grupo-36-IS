@@ -97,7 +97,7 @@ El sistema almacenará los siguientes parámetros correspondientes a un alumno:
 
   **8.** Únicamente sirve para el año actual.
 
-  **9.** Tendrán acceso sólo aquellos profesores que figuren en las credenciales cedidas por la Universidad que incluyen usuario, contraseña y rol.
+  **9.** Tendrán acceso solo aquellos profesores que figuren en las credenciales cedidas por la Universidad que incluyen usuario, contraseña y rol.
 
 
 ***
