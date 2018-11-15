@@ -51,7 +51,7 @@ El sistema almacenará los siguientes parámetros correspondientes a un alumno:
 
   **4 Gestión de líderes:** El sistema dará la posibilidad de gestionar los líderes de los grupos de acuerdo a las restricciones impuestas por el cliente (no pudiendo haber más de un líder por grupo).
 
-  **5 Mostrar alumnos:** El sistema podrá mostrar uno, varios o todo los alumnos.
+  **5 Mostrar alumnos:** El sistema podrá mostrar uno, varios o todos los alumnos.
 
   **6 Eliminar un alumno:** El sistema permitirá borrar un alumno de la base de datos.
 
