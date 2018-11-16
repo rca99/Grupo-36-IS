@@ -1,8 +1,8 @@
-## Cargar Copia de Seguridad
+## Cargar Copia de Seguridad Externa
 
-**ID: 8**
+**ID: 9**
 
-**Breve descripción: El profesor podrá cargar una copia de seguridad de los datos de los alumnos registrados.** 
+**Breve descripción: El profesor podrá cargar una copia de seguridad de los datos de los alumnos registrados.**
 
 **Actores principales: Profesor.**
 
@@ -20,7 +20,7 @@
 
 3 El sistema carga la copia de seguridad designada por el usuario.
 
-4 El sistema comprueba que la base de datos se ha cargado correctamente. 
+4 El sistema comprueba que la base de datos se ha cargado correctamente.
 
 ### Postcondiciones
 
