@@ -42,7 +42,7 @@ C En caso de cargar la base de datos o copia de seguridad muestra el número de 
 
 3.1 Si no se introducen las credenciales correctas el sistema informa al usuario y da tres oportunidades de acceso. En caso de no introducir las credenciales correctas en estas tres ocasiones, se sale de la aplicación.
 
-4.1 En caso de no haber sido podible cargar la base de datos mostrará un mensaje informando de la causa.
+4.1 En caso de no haber sido posible cargar la base de datos mostrará un mensaje informando de la causa.
 
 4.1.1 No existe base de datos o copia de seguridad que cargar.
 
