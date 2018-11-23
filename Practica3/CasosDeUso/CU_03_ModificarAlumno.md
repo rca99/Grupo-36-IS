@@ -36,5 +36,3 @@
 3.1 El sistema no permite la modificación de un alumno que no se encuentra almacenado en la aplicación.
 
 4.1 Si se desean dejar en blanco alguno de los campos obligatorios, el sistema no permitirá guardar los cambios volviendo al punto 4 del proceso.
-
-    4.1.1 Se comprobará que el campo modificado cumple el formato asociado a su campo, mostrando un mensaje de error en caso de qué no sea así. 

@@ -21,9 +21,7 @@
 
 3 El sistema recoge los datos necesarios (DNI, apellidos o grupo) para buscar.
 
-4 El sistema convierte a mayúsculas los datos (DNI o apellidos) que hay que buscar.
-
-5 El sistema busca el alumno por DNI, apellidos o grupo.
+4 El sistema busca el alumno por DNI, apellidos o grupo.
 
 ### Postcondiciones
 
