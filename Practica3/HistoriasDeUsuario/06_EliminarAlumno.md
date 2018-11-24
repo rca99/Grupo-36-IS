@@ -15,6 +15,5 @@ __Prioridad: 4__
 
 * Quiero poder eliminar un alumno mediante su DNI o su apellido.
 
-* En caso de eliminar por apellido y existir más de un alumno con este, se deberá introducir el DNI para filtrar el alumno que se desea eliminar.
 
 ---

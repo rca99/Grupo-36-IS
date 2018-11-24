@@ -33,6 +33,5 @@ __Prioridad: 1__
 
 * Se introducirá máximo un líder por equipo y mínimo ninguno.
 * No puede haber alumnos repetidos.
-* Se tendrá la opción de introducir tanto manualmente como cargando una copia de seguridad.
 
 ---
