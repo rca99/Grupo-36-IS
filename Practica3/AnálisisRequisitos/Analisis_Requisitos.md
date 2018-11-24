@@ -44,11 +44,11 @@ Los indicados en negrita son datos no obligatorios.
 
   **0 Acceso a la aplicación:** Los profesores podrán acceder a la aplicación mediante sus credenciales de la Universidad.
 
-  **1 Introducir un alumno:** Los profesores podrá introducir un nuevo alumno.
+  **1 Introducir un alumno:** Los profesores podrán introducir un nuevo alumno.
 
   **2 Buscar un alumno:** El sistema deberá buscar un alumno o varios de acuerdo a unas directrices.
 
-  **3 Modificar un alumno:** Los profesores tendrá la opción de modificar los datos de un alumno.
+  **3 Modificar un alumno:** Los profesores tendrán la opción de modificar los datos de un alumno.
 
   **4 Gestión de líderes:** El sistema dará la posibilidad de gestionar los líderes de los grupos de acuerdo a las restricciones impuestas por el cliente (no pudiendo haber más de un líder por grupo).
 
@@ -64,7 +64,7 @@ Los indicados en negrita son datos no obligatorios.
 
   **10 Cargar copia de seguridad externa:** El sistema también dará la opción de cargar la copia de seguridad externa.
 
-  **11 Salir de la aplicación:** El sistema dará consultará si se desea guardar la base de datos o bien realizar la copia de seguridad externa, sólo para el caso del Coordinador.
+  **11 Salir de la aplicación:** El sistema consultará si se desea guardar la base de datos o bien realizar la copia de seguridad externa, sólo para el caso del Coordinador.
 
 
    Identificador | Requisito | Prioridad
@@ -80,7 +80,7 @@ Los indicados en negrita son datos no obligatorios.
    005|Mostrar alumno|3
    003|Modificar alumno|4
    006|Eliminar alumno|4
-   007|Salir de la aplicación|5
+   011|Salir de la aplicación|5
 
 
 ### <ins>No Funcionales</ins>
@@ -91,7 +91,7 @@ Los indicados en negrita son datos no obligatorios.
 
   **3.** Lenguaje de documentación Markdown.
 
-  **4.** Utilización de ficheros binarios para almancenar la información, tanto la de los alumnos como las credenciales de los profesores.
+  **4.** Utilización de ficheros binarios para almacenar la información, tanto la de los alumnos como las credenciales de los profesores.
 
   **5.** Utilización de Drive para almacenar la información en un servidor externo.
 
