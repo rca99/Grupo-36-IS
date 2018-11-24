@@ -3,9 +3,9 @@
 
 **ID: 1**
 
-**Breve descripción: El profesor podrá introducir los datos de un alumno.**
+**Breve descripción: Los profesores podrán introducir los datos de un alumno.**
 
-**Actores principales: Profesor.**
+**Actores principales: Profesores.**
 
 **Actores segundarios: Alumno.**
 
@@ -24,7 +24,7 @@
 
 4 Se comprobará que el alumno no existe ya en el sistema.
 
-5 Si el alumno no existe en el sistema se introducen los datos obligatorios y aquellos opcionales que se desean indicar.
+4.1 Si el alumno no existe en el sistema se introducen los datos obligatorios y aquellos opcionales que se desean indicar.
 
 5 El sistema comprueba si el grupo que ha elegido el alumno tiene ya lider.
 
@@ -50,7 +50,7 @@
 
 4.3 Si el usuario introduce que un alumno es líder entonces deberá indicar obligatoriamente el grupo al que pertenece.
 
-5.1 El sistema no permite la insercioón de un alumno que ya existe en el sistema y muestra un mensaje de error.
+5.1 El sistema no permite la inserción de un alumno que ya existe en el sistema y muestra un mensaje de error.
 
 6.1 El sistema no permite indicar que un alumno es líder de un grupo que ya tenga líder.
 
