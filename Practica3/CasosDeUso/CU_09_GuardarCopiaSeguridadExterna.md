@@ -1,6 +1,6 @@
 ## Guardar Copia de Seguridad Externa
 
-**ID: 10**
+**ID: 09**
 
 **Breve descripción: El Coordinador podrá guardar la copia de seguridad externa en un servidor remoto.**
 
