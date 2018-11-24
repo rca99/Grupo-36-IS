@@ -18,7 +18,7 @@
 
 2 El sistema carga la copia de seguridad externa.
 
-4 El sistema comprueba que la base de datos se ha cargado correctamente.
+3 El sistema comprueba que la base de datos se ha cargado correctamente.
 
 ### Postcondiciones
 
@@ -28,6 +28,6 @@
 
 ## Flujos alternativos
 
-2.1 Si no hay copia de seguridad externa guardadas, el sistema pedirá al usuario que cree una copia de seguridad.
+2.1 Si no hay copias de seguridad externas guardadas, el sistema pedirá al usuario que cree una copia de seguridad.
 
-4.1 Si el sistema no es capaz de cargar la copia de seguridad da un mensaje de error, indicando que no ha sido posible cargar esa copia de seguridad.
+3.1 Si el sistema no es capaz de cargar la copia de seguridad da un mensaje de error, indicando que no ha sido posible cargar esa copia de seguridad.
