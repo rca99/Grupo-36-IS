@@ -3,9 +3,9 @@
 
 **ID: 1**
 
-**Breve descripción: Los profesores podrán introducir los datos de un alumno.**
+**Breve descripción: El profesor podrá introducir los datos de un alumno.**
 
-**Actores principales: Profesores.**
+**Actores principales: Profesor.**
 
 **Actores segundarios: Alumno.**
 
