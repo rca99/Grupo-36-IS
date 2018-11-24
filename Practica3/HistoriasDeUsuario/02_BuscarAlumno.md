@@ -14,6 +14,6 @@ __Prioridad: 1__
 ---
 
 * El sistema me permitirá buscar por DNI, por apellido o por grupo.
-* En caso de eliminar por apellido y existir más de un alumno con este, se deberá introducir el DNI para filtrar el alumno que se desea eliminar.
+* En caso de buscar por apellido y existir más de un alumno con este, se deberá introducir el DNI para filtrar el alumno que se desea eliminar.
 
 ---
