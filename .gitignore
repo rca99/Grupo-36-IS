@@ -1,2 +1,5 @@
+*.vpp.lck
+*.vpp.vux
+*.vpp.bak
 *.pdf
 /soporte
