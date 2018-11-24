@@ -3,7 +3,7 @@
 
 ### **ID:** 000 **Acceso a la aplicación**
 
-Como **profesores de la aplicación** quieremos acceder a la aplicación de gestión de alumnos.
+Como **profesores de la aplicación** queremos acceder a la aplicación de gestión de alumnos.
 
 __Prioridad: 1__
 
