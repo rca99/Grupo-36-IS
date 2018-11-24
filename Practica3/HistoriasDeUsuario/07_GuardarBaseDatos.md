@@ -14,6 +14,6 @@ __Prioridad: 2__
 ---
 
 * Quiero tener la opción de salvar los cambios realizados mientras utilizo la aplicación.
-* Al cerrar el programa, quiero que se me dé la opción de guardar o no los cambios realizados.
+
 
 ---

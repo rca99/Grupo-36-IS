@@ -63,6 +63,8 @@ El sistema almacenará los siguientes parámetros correspondientes a un alumno:
 
   **10 Cargar copia de seguridad externa:** El sistema también dará la opción de cargar la copia de seguridad externa.
 
+  **11 Salir de la aplicación:** El sistema dará consultará si se desea guardar la base de datos o bien realizar la copia de seguridad externa, sólo para el caso del Coordinador.
+
 
    Identificador | Requisito | Prioridad
    :--:|:--:|:--:
@@ -77,6 +79,7 @@ El sistema almacenará los siguientes parámetros correspondientes a un alumno:
    005|Mostrar alumno|3
    003|Modificar alumno|4
    006|Eliminar alumno|4
+   007|Salir de la aplicación|5
 
 
 ### <ins>No Funcionales</ins>

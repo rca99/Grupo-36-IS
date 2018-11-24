@@ -2,34 +2,36 @@
 
 **ID: 10**
 
-**Breve descripción: El profesor podrá cargar una copia de seguridad de los datos de los alumnos registrados.**
+**Breve descripción: El Coordinador podrá guardar la copia de seguridad externa en un servidor remoto.**
 
-**Actores principales: Profesor.**
+**Actores principales: Coordinador.**
 
 **Actores segundarios: Alumno.**
 
 ### Precondiciones
 
-* La copia de seguridad a cargar debe haber sido previamente guardada.
+* Debe existir previamente una base de datos de la cual crear la copia de seguridad externa.
 
 ### Flujo principal
 
-1 El caso de uso comienza cuando el usuario necesita cargar una copia de seguridad.
+1 El caso de uso comienza cuando el usuario requiere guardar la copia de seguridad externa
 
-2 El sistema comprueba si hay copias de seguridad guardadas y da la opción al usuario de elegir cuál quiere mostrar.
+2 El sistema comprueba si existe el fichero de base de datos que guardar.
 
-3 El sistema carga la copia de seguridad designada por el usuario.
+3 El sistema conecta con el repositorio remoto.
 
-4 El sistema comprueba que la base de datos se ha cargado correctamente.
+4 El sistema envía el fichero de base de datos al fichero remoto y guarda la copia de seguridad externa.
 
 ### Postcondiciones
 
-**A** El sistema muestra un mensaje de confirmación de la carga y de cuál de las copias de seguridad existentes ha sido cargada.
+**A** El sistema muestra un mensaje de confirmación de realización de la copia de seguridad externa.
 
-**B** El sistema permite al usuario sobrescribir los datos de esa copia de seguridad.
+
 
 ## Flujos alternativos
 
-2.1 Si no hay copias de seguridad guardadas, el sistema pedirá al usuario que cree una copia de seguridad.
+2.1 Si no hay fichero de base de datos, el sistema indicará al usuario que cree una copia de seguridad antes de realizar la copia de  seguridad externa.
 
-4.1 Si el sistema no es capaz de cargar la copia de seguridad da un mensaje de error, indicando que no ha sido posible cargar esa copia de seguridad.
+3.1 Si el sistema no es capaz conectar con el repositorio remoto informa con un mensaje de error.
+
+4.1 Si el sistema no realiza la copia de seguridad externa da un mensaje de error.
