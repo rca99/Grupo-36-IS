@@ -3,11 +3,11 @@
 
 **ID: 00**
 
-**Breve descripcion: Los profesores podrán acceder a la aplicación mediante sus credenciales de la Universidad.**
+**Breve descripción: Los profesores podrán acceder a la aplicación mediante sus credenciales de la Universidad.**
 
-**Actores principales: Procesor coordinador y profesores ayundantes**
+**Actores principales: Profesor coordinador y profesores ayudantes**
 
-**Actores segundarios: -**
+**Actores secundarios: -**
 
 ### Precondiciones
 
@@ -20,7 +20,7 @@
 
 2 El profesor introducirá su usuario y contraseña habitual de moodle.
 
-3 El sistema comprobará si exite el usario y que la contraseña introducida es correcta.
+3 El sistema comprobará si existe el usuario y que la contraseña introducida sea correcta.
 
 4 Opcionalmente, el sistema consultará si se desea cargar la base de datos de alumnos en caso de existir.
 
