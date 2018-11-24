@@ -31,9 +31,10 @@ El sistema almacenará los siguientes parámetros correspondientes a un alumno:
   * Domicilio.
   * Curso más alto en el que se ha matriculado.
   * Nota.
-  * Equipo al que pertenece.
-  * Líder (Sí/No).
+  * **Equipo al que pertenece.**
+  * **Líder (Sí/No).**
 
+Los indicados en negrita son datos no obligatorios.
 
 ***
 

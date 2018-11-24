@@ -20,13 +20,15 @@
 
 2 El sistema comprueba el número de alumnos que existen en el sistema.
 
-3 El sistema recoge los datos obligatorios de un alumno y aquellos no obligatorios que el profesor desee introducir.
-
-3.1 Los datos de nombre, apellidos y DNI serán convertidos a mayúsculas por el sistema.
+3 El sistema recoge los datos de dni, nombre y apellidos para comprobar si el alumno existe en el sistema
 
 4 Se comprobará que el alumno no existe ya en el sistema.
 
+5 Si el alumno no existe en el sistema se introducen los datos obligatorios y aquellos opcionales que se desean indicar.
+
 5 El sistema comprueba si el grupo que ha elegido el alumno tiene ya lider.
+
+5.1 Si el grupo que ha elegido el alumno no tiene líder permite asignar este alumno como líder del grupo
 
 6 El sistema introduce el alumno.
 

@@ -22,14 +22,11 @@
 
 4 El sistema comprueba si algún alumno del grupo es líder.
 
-4.1 Si tiene líder, el sistema no permitirá asignar como líder a dicho alumno.
-
-4.2 Si no tiene líder, el sistema permitirá asignar como líder a dicho alumno.
 
 ### Postcondiciones
 
-**A** El sistema se actualiza si la aplicación permite indicar que el alumno es líder.
+**A** El sistema indica si un grupo tiene líder o no lo tiene.
 
 ## Flujos alternativos
 
-4.1.1 No se puede asignar al alumno como líder ya que el grupo tiene un líder y sale del caso de uso.
+

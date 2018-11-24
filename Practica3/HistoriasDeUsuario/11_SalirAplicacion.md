@@ -1,9 +1,9 @@
 ## (Anverso)
 
-### **ID:** 010 **Cargar copia de seguridad externa**
+### **ID:** 011 **Salir Aplicación**
 Como **usuario de la aplicación**, quiero *poder salir de la misma.*
 
-**Prioridad:2**
+**Prioridad:5**
 
 ## (Reverso)
 
