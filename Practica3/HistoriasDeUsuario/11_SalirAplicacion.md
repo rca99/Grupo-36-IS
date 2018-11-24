@@ -3,7 +3,7 @@
 ### **ID:** 011 **Salir Aplicación**
 Como **usuario de la aplicación**, quiero *poder salir del sistema.*
 
-**Prioridad:5**
+**Prioridad: 5**
 
 ## (Reverso)
 
