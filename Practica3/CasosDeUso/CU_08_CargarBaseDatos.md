@@ -16,7 +16,7 @@
 
 1 El caso de uso comienza cuando el usuario necesita cargar una copia de seguridad.
 
-2 El sistema comprueba si hay existe el fichero de base de datos.
+2 El sistema comprueba si existe el fichero de base de datos.
 
 3 El sistema carga la base de datos.
 
@@ -32,4 +32,4 @@
 
 2.1 Si no existe fichero de base de datos, el sistema pedirá al usuario que debe guardar antes la base de datos.
 
-4.1 Si el sistema no es capaz de cargar la base de datos.
+4.1 Si el sistema no es capaz de cargar la base de datos, dará un mensaje de error.

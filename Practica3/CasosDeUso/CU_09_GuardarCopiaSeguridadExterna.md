@@ -32,6 +32,6 @@
 
 2.1 Si no hay fichero de base de datos, el sistema indicará al usuario que cree una copia de seguridad antes de realizar la copia de  seguridad externa.
 
-3.1 Si el sistema no es capaz conectar con el repositorio remoto informa con un mensaje de error.
+3.1 Si el sistema no es capaz de conectar con el repositorio remoto informa con un mensaje de error.
 
 4.1 Si el sistema no realiza la copia de seguridad externa da un mensaje de error.
