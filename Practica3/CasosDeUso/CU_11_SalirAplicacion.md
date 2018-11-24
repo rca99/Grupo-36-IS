@@ -16,7 +16,9 @@
 
 1 El caso de uso comienza cuando el usuario necesita salir de la aplicación.
 
-2 El sistema consulta si se quiere guardar la base de datos y/o de realizar la copia de seguridad externa en caso de ser el Coordinador.
+2 El sistema solicita confirmación para salir de la aplicación
+
+3 El sistema consulta si se quiere guardar la base de datos y/o de realizar la copia de seguridad externa en caso de ser el Coordinador.
 
 3 La aplicación se cierra.
 
@@ -27,6 +29,8 @@
 
 
 ## Flujos alternativos
+
+2.1 Si se indica que no se quiere salir de la aplicación vuelve al menú principal de la aplicación.
 
 3.1 Si no es posible cerrar la aplicación en ese momento se muestra un mensaje de error.
 

@@ -1,7 +1,7 @@
 
 ## Acceso a la aplicación
 
-**ID: 0**
+**ID: 00**
 
 **Breve descripcion: Los profesores podrán acceder a la aplicación mediante sus credenciales de la Universidad.**
 
