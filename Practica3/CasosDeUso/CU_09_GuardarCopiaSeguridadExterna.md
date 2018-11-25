@@ -11,6 +11,7 @@
 ### Precondiciones
 
 * Debe existir previamente una base de datos de la cual crear la copia de seguridad externa.
+* Debe haber una conexión a internet activa para acceder al repositorio remoto.
 
 ### Flujo principal
 

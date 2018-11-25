@@ -11,6 +11,7 @@
 ### Precondiciones
 
 * La copia de seguridad externa a cargar debe haber sido previamente guardada.
+* Debe haber una conexión a internet activa para acceder al repositorio remoto.
 
 ### Flujo principal
 
