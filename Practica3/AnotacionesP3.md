@@ -5,3 +5,4 @@
 * En el **SD_00 y SD_11** el tema del menú de la aplicación 
 * Líneas de vida y numeración
 * Flechas continua o discontinuas
+* **SD_09: GuardarCopiadeSeguridadExterna** contemplar el error de no conectarse al repositorio remoto o no contemplarlo?
