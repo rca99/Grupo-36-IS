@@ -4,3 +4,4 @@
 
 * En el **SD_00 y SD_11** el tema del menú de la aplicación 
 * Líneas de vida y numeración
+* Flechas continua o discontinuas
