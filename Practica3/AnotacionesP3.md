@@ -6,3 +6,4 @@
 * Líneas de vida y numeración
 * Flechas continua o discontinuas
 * **SD_09: GuardarCopiadeSeguridadExterna y SD_10: CargarCopiadeSeguridadExterna** contemplar el error de no conectarse al repositorio remoto o no contemplarlo?
+* **SD_03: ModificarAlumno** Si modifica los parámetros obligatorios y no cumple el formato debería iniciar un bucle loop mientras no se cumpla dicho formato?
