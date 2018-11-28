@@ -31,10 +31,6 @@ HU_11_SalirAplicacion
 
 djfpowjfpowejfopew
 
-Esto es una prueba chachi de la integración de ramas para trabajar de forma pro con el github.
-Además tengo que decir que después de instalar sublime en el nuevo sistema operativo Lubuntu, esto va fenomenal, incluso tiene en cuenta 
-las tildes y, por tanto, Charlii está supercontento y superorgulloso
-
 
 **Scrum Master:**Rafael Cantero Alén
 
