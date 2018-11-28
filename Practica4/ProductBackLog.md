@@ -1,40 +1,24 @@
 #Product BackLog
 
-# HOLA ESTO ES UN TITILO MUY BONITO JEJE
-## ESTE ES OTRO TITULO MUY BONITO PERO MAS PEQUEÑO
-### jaja salu2
-#### Callese viejo lesbiano
-##### Fernando pringao
-###### ¿FUNCIONARÁ?
-
-**TANTO TITULO PA QUÉ**
-
 Funcionalidad | Prioridad | Horas de programación estimadas
-   :--:|:--:|
-Definir Clases|1|
-Definir menú aplicación
-HU_00_AccesoAplicacion|5|
-HU_01_InsertarAlumno
-HU_02_BuscarAlumno
-HU_03_ModificarAlumno
-HU_04_GestionDeLideres
-HU_05_MostrarAlumnos
-HU_06_EliminarAlumno
-HU_07_GuardarBaseDatos
-HU_08_CargarBaseDatos
-HU_09_GuardarCopiaSeguridadExterna
-HU_10_CargarCopiaSeguridadExterna
-HU_11_SalirAplicacion
-<<<<<<< HEAD
-oiewjoeijferoij
-=======
-asdfadsfadsf asdfadsfadsf asdfadsf asdfadsf asdf asdf asdf asdf as
->>>>>>> f359b0a0de986428ae751c8443da6182a332a56e
+   :--:|:--:|:--:
+Definir Clases|1|1
+Definir Menú Aplicación|4|1
+HU_00_AccesoAplicacion|5|2
+HU_01_InsertarAlumno|1|2
+HU_02_BuscarAlumno|1|3
+HU_03_ModificarAlumno|3|2
+HU_04_GestionDeLideres|2|1
+HU_05_MostrarAlumnos|3|3
+HU_06_EliminarAlumno|3|1
+HU_07_GuardarBaseDatos|2|3
+HU_08_CargarBaseDatos|2|2
+HU_09_GuardarCopiaSeguridadExterna|5|1
+HU_10_CargarCopiaSeguridadExterna|5|1
+HU_11_SalirAplicacion|5|1
 
-**_Horas totales de programación estimadas_**
+**_Horas totales de programación estimadas_:** 24
 
-djfpowjfpowejfopew
+**Scrum Master:** Rafael Cantero Alén
 
-
-**Scrum Master:**Rafael Cantero Alén
-
+	En función del tamaño de los SD asignamos las horas.
