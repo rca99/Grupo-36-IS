@@ -1,14 +1,5 @@
 #Product BackLog
 
-# HOLA ESTO ES UN TITILO MUY BONITO JEJE
-## ESTE ES OTRO TITULO MUY BONITO PERO MAS PEQUEÑO
-### jaja salu2
-#### Callese viejo lesbiano
-##### Fernando pringao
-###### ¿FUNCIONARÁ?
-
-**TANTO TITULO PA QUÉ**
-
 Funcionalidad | Prioridad | Horas de programación estimadas
    :--:|:--:|
 Definir Clases|1|
@@ -25,16 +16,8 @@ HU_08_CargarBaseDatos
 HU_09_GuardarCopiaSeguridadExterna
 HU_10_CargarCopiaSeguridadExterna
 HU_11_SalirAplicacion
-<<<<<<< HEAD
-oiewjoeijferoij
-=======
-asdfadsfadsf asdfadsfadsf asdfadsf asdfadsf asdf asdf asdf asdf as
->>>>>>> f359b0a0de986428ae751c8443da6182a332a56e
 
 **_Horas totales de programación estimadas_**
-
-djfpowjfpowejfopew
-
 
 **Scrum Master:**Rafael Cantero Alén
 
