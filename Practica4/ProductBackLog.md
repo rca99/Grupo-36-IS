@@ -25,7 +25,11 @@ HU_08_CargarBaseDatos
 HU_09_GuardarCopiaSeguridadExterna
 HU_10_CargarCopiaSeguridadExterna
 HU_11_SalirAplicacion
+<<<<<<< HEAD
 oiewjoeijferoij
+=======
+asdfadsfadsf asdfadsfadsf asdfadsf asdfadsf asdf asdf asdf asdf as
+>>>>>>> f359b0a0de986428ae751c8443da6182a332a56e
 
 **_Horas totales de programación estimadas_**
 
