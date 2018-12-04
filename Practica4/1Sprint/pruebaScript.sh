@@ -30,7 +30,7 @@ git remote set-url origin https://a52hepof:vn9rn7rz@github.com/rca99/Grupo-36-IS
 
 cd 1Sprint
 git push -u origin master
-#rm gestionAlumnos.bin
+rm gestionAlumnos.bin
 echo copia de seguridad realizada
 
 ##descarga copia de seguridad externa
