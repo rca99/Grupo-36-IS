@@ -16,9 +16,8 @@ git status;
 git add .;
 read TXT;
 git commit -am 'actualización'
-git push -u https://a52hepof:vn9rn7rz@git@github.com:rca99/Grupo-36-IS.git --all
-echo "a52hepof"
-echo "vn9rn7rz"
+git push -u https://a52hepof:vn9rn7rz@github.com:rca99/Grupo-36-IS.git --all
+
 
 
 
