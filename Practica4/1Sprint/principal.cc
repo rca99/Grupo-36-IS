@@ -2,10 +2,13 @@
 
 #include "BD.h"
 #include <stdio.h>//para system
+#include <iostream>
+
+using namespace std;
 
 int main(int argc, char const *argv[])
 {
-
+	string usuario="a52hepof";
 	BD b;
 	b.guardarBD();	/* code */
 	b.cargarBD();
@@ -17,7 +20,7 @@ int main(int argc, char const *argv[])
 	system("git add .");
 	system("git commit -am 'actualización'");
 	system("git push -u origin master");
-	system("a52hepof");
+	cin>>usuario;
 	system("vn9rn7rz");
 
 	return 0;
