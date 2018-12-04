@@ -34,9 +34,9 @@ rm gestionAlumnos.bin
 echo copia de seguridad realizada
 
 ##descarga copia de seguridad externa
-## /usr/bin/firefox -new-window https://github.com/rca99/Grupo-36-IS/raw/master/Practica4/1Sprint/gestionAlumnos.bin
+/usr/bin/firefox -new-window https://github.com/rca99/Grupo-36-IS/raw/master/Practica4/1Sprint/gestionAlumnos.bin -O /media/fernando/09AB211B6A3EF30F/101/segundo/IS/Practica4/1Sprint 
 
-wget https://github.com/rca99/Grupo-36-IS/raw/master/Practica4/1Sprint/gestionAlumnos.bin -O /media/fernando/09AB211B6A3EF30F/101/segundo/IS/Practica4/1Sprint 
+#wget https://github.com/rca99/Grupo-36-IS/raw/master/Practica4/1Sprint/gestionAlumnos.bin 
 
 git remote set-url origin https://github.com/rca99/Grupo-36-IS.git
 
