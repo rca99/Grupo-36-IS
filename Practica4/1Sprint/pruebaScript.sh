@@ -16,9 +16,10 @@ git status;
 git add .;
 read TXT;
 git commit -am 'actualización'
-git push -u https://github.com/rca99/Grupo-36-IS.git --all
-
 Username for 'https://github.com': <a52hepof>
 Password for 'https://USERNAME@github.com': <vn9rn7rz>
+git push -u https://github.com/rca99/Grupo-36-IS.git --all
+
+
 
 
