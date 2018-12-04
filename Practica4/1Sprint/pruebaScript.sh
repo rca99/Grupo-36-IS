@@ -1,5 +1,11 @@
 #! /bin/bash
 #Le pasamos dos parametros e imprime el que esta en la posicion 1 y 2
+#if [ ! -d '.git' ]; then
+#	echo 'Esta carpeta no contiene un repositorio Git'
+#	exit -1
+#fi
+
+
 echo "Hola" $1;
 echo "Hola" $2;
 echo "Nombre del fichero:" $0;
