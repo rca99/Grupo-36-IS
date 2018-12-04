@@ -15,6 +15,6 @@ echo "Todos los parametros menos el 0": $*;
 git status;
 git add .;
 git commit -am 'actualización'
-git push -u origin master
+git push -u origin -all
 echo "a52hepof"
 echo "vn9rn7rz"
