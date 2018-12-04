@@ -17,10 +17,7 @@ int main(int argc, char const *argv[])
 	system("git pull origin master");
 	getchar();
 
-	system("git status");
-	system("git add .");
-	system("git commit -am 'actualización'");
-	system("git push -u origin master");
+
 
 	
 
