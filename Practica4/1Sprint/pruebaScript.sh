@@ -17,7 +17,8 @@ echo "Todos los parametros menos el 0": $*;
 echo "Introduce la fecha de la Copia de seguridad:"
 read TXT;
 #git add gestionAlumnos.bin;
-mv  gestionAlumnos.bin gestionAlumnos+'$TXT'.bin
+read NOMBREARCHIVO=gestionAlumnos+'$TXT'.bin;
+mv  gestionAlumnos.bin  NOMBREARCHIVO;
 
 git status;
 cd ..
