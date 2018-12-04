@@ -16,6 +16,9 @@ echo "Todos los parametros menos el 0": $*;
 git status;
 
 #git add gestionAlumnos.bin;
+
+
+cd ..
 git add .;
 clear;
 echo "Introduce la fecha de la Copia de seguridad:"
@@ -29,6 +32,7 @@ git remote set-url origin https://a52hepof:vn9rn7rz@github.com/rca99/Grupo-36-IS
 git push -u origin master
 rm gestionAlumnos.bin
 echo copia de seguridad realizada
+
 git add .;
 git commit -m "Borrado copia seguridad local"
 git push -u origin master
