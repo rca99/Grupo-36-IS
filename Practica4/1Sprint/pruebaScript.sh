@@ -33,7 +33,7 @@ git push -u origin master
 rm gestionAlumnos.bin
 echo copia de seguridad realizada
 
- /usr/bin/firefox -new-window //https://github.com/rca99/Grupo-36-IS/archive/master.zip
+ /usr/bin/firefox -new-window https://github.com/rca99/Grupo-36-IS/archive/master.zip
 
 git remote set-url origin https://github.com/rca99/Grupo-36-IS.git
 
