@@ -6,12 +6,12 @@
 #fi
 
 
-echo "Hola" $1;
-echo "Hola" $2;
+echo "-" $1;
+echo "-" $2;
 echo "Nombre del fichero:" $0;
 echo "Numero de parametros": $#;
 echo "Todos los parametros menos el 0": $*;
-ga.o
+./ga.o
 git status;
 git add gestionAlumnos.bin;
 echo "Introduce la fecha de la Copia de seguridad:"
