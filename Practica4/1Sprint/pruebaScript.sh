@@ -33,7 +33,7 @@ git push -u origin master
 rm gestionAlumnos.bin
 echo copia de seguridad realizada
 
- /usr/bin/firefox -new-window https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/rca99/Grupo-36-IS/blob/master/Practica4/1Sprint/gestionAlumnos.bin
+ /usr/bin/firefox -new-window https://github.com/rca99/Grupo-36-IS/raw/master/Practica4/1Sprint/gestionAlumnos.bin
 
 git remote set-url origin https://github.com/rca99/Grupo-36-IS.git
 
