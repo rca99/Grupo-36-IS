@@ -16,10 +16,10 @@ git status;
 git add .;
 read TXT;
 git commit -am 'actualización'
-Username for 'https://github.com': <a52hepof>
-Password for 'https://USERNAME@github.com': <vn9rn7rz>
-git push -u https://github.com/rca99/Grupo-36-IS.git --all
 
+git remote set-url origin https://a52hepof:vn9rn7rz@github.com/rca99/Grupo-36-IS.git
+
+git push -u origin master
 
 
 
