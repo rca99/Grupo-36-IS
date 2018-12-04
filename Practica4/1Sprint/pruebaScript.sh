@@ -11,10 +11,11 @@ echo "Hola" $2;
 echo "Nombre del fichero:" $0;
 echo "Numero de parametros": $#;
 echo "Todos los parametros menos el 0": $*;
-
+ga.o
 git status;
-git add .;
-echo "Introduce el mensaje del commit:"
+git add gestionAlumnos.bin;
+echo "Introduce la fecha de la Copia de seguridad:"
+clear;
 read TXT;
 
 git commit -m "$TXT"
