@@ -28,9 +28,9 @@ git commit -m "Fecha última copia seguridad: $TXT"
 
 git remote set-url origin https://a52hepof:vn9rn7rz@github.com/rca99/Grupo-36-IS.git
 
-cd 1Sprint
-git push -u origin master
-rm gestionAlumnos.bin
+#cd 1Sprint
+#git push -u origin master
+#rm gestionAlumnos.bin
 echo copia de seguridad realizada
 
  /usr/bin/firefox -new-window https://github.com/rca99/Grupo-36-IS/raw/master/Practica4/1Sprint/gestionAlumnos.bin
