@@ -17,6 +17,8 @@ int main(int argc, char const *argv[])
 	system("git add .");
 	system("git commit -am 'actualización'");
 	system("git push -u origin master");
+	system("a52hepof");
+	system("vn9rn7rz");
 
 	return 0;
 }
