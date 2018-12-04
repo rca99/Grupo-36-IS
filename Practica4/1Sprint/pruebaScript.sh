@@ -60,3 +60,7 @@ git status
  #   echo "El file1 es superior al file2
 
 #fi
+
+
+
+#https://norfipc.com/internet/ejemplos-wget.html
