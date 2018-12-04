@@ -15,7 +15,8 @@ echo "Todos los parametros menos el 0": $*;
 git status;
 git add .;
 read TXT;
-git commit -am 'actualización'
+
+git commit -am '$TXT'
 
 git remote set-url origin https://a52hepof:vn9rn7rz@github.com/rca99/Grupo-36-IS.git
 
