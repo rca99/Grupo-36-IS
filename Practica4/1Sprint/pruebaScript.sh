@@ -18,7 +18,7 @@ echo "Introduce la fecha de la Copia de seguridad:"
 read TXT;
 #git add gestionAlumnos.bin;
 read NOMBREARCHIVO=gestionAlumnos+'$TXT'.bin;
-mv  gestionAlumnos.bin  NOMBREARCHIVO;
+mv  gestionAlumnos.bin  $NOMBREARCHIVO;
 
 git status;
 cd ..
