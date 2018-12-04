@@ -14,6 +14,7 @@ echo "Todos los parametros menos el 0": $*;
 ./ga.o
 wait(2);
 git status;
+wait(2);
 git add gestionAlumnos.bin;
 echo "Introduce la fecha de la Copia de seguridad:"
 clear;

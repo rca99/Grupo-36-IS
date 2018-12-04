@@ -14,8 +14,7 @@ int main(int argc, char const *argv[])
 	b.guardarBD();	/* code */
 	b.cargarBD();
 
-	system("git pull origin master");
-	getchar();
+
 
 
 
