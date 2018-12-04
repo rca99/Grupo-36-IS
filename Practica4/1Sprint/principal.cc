@@ -17,7 +17,7 @@ int main(int argc, char const *argv[])
 
 	system("./pruebaScript.sh");
 
-
+	b.cargarBD();
 
 	
 
