@@ -21,4 +21,4 @@ HU_11_SalirAplicacion|5|1
 
 **Scrum Master:** Rafael Cantero Alén
 
-	En función del tamaño de los SD asignamos las horas.
+	En función del tamaño y/o complejidad de los SD asignamos las horas.

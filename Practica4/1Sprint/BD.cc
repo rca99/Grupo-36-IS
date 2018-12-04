@@ -10,7 +10,6 @@
 
 using namespace std;
 
-
 bool BD::guardarBD(){
 
 	Alumno a;
@@ -57,8 +56,6 @@ bool BD::guardarBD(){
 }
 
 
-
-
 bool BD::cargarBD(){
 
 
@@ -75,6 +72,8 @@ bool BD::cargarBD(){
 
 
 		}
+
+	cout<<"Tamaño Base de Datos: "<<listaAlumnos_.size()<<endl;
 
 
 	return 1;
