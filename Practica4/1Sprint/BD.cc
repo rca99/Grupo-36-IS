@@ -14,7 +14,7 @@ bool BD::guardarBD(){
 
 	Alumno a;
 	a.setNombre("Agustín");
-	a.setEdad(5);
+	a.setEdad(56);
 	Alumno b;
 	b.setNombre("Fernando");
 	b.setEdad(34);
