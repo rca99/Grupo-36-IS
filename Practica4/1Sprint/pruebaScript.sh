@@ -27,9 +27,12 @@ git remote set-url origin https://a52hepof:vn9rn7rz@github.com/rca99/Grupo-36-IS
 
 
 git push -u origin master
-git remote set-url origin https://github.com/rca99/Grupo-36-IS.git
 rm gestionAlumnos.bin
 echo copia de seguridad realizada
+git add .;
+git commit -m "Borrado copia seguridad local"
+git push -u origin master
 
+git remote set-url origin https://github.com/rca99/Grupo-36-IS.git
 
 
