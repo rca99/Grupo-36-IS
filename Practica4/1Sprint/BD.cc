@@ -15,8 +15,11 @@ bool BD::guardarBD(){
 
 	Alumno a;
 	a.setNombre("Agustín");
+	a.setEdad(5);
 	Alumno b;
 	b.setNombre("Fernando");
+	b.setEdad(34);
+
 
 	listaAlumnos_.push_back(a);
 	listaAlumnos_.push_back(b);
@@ -25,8 +28,8 @@ bool BD::guardarBD(){
 
 	list <Alumno>::iterator i; 
 
-	//Alumno *ficheroBD=&listaAlumnos_;
-
+	int *ficheroBD;
+	ficheroBD==(int*)&listaAlumnos_;
 	//p.ficheroBD_=&listaAlumnos_;
 
 
@@ -41,17 +44,13 @@ bool BD::guardarBD(){
 
 		for (i=listaAlumnos_.begin(); i!=listaAlumnos_.end();i++){
 			//ofile.write((char*)p.ficheroBD_,sizeof(Alumno) );
-			ofile.write((char*)&listaAlumnos_,sizeof(Alumno));
+			//ofile.write((char*)&listaAlumnos_,sizeof(Alumno));
+			ofile.write((char*)ficheroBD,sizeof(Alumno));
 
 		}
 
 		ofile.close();
 		return 1;
-
-
-
-
-
 	}
 
 
@@ -72,6 +71,8 @@ bool BD::cargarBD(){
 	for (i=listaAlumnos_.begin(); i!=listaAlumnos_.end();i++){
 			//ofile.write((char*)p.ficheroBD_,sizeof(Alumno) );
 			cout<<"nombre:"<<i->getNombre()<<endl;
+			cout<<"edad:"<<i->getEdad()<<endl;
+
 
 		}
 
