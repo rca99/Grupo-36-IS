@@ -11,13 +11,14 @@ echo "-" $2;
 echo "Nombre del fichero:" $0;
 echo "Numero de parametros": $#;
 echo "Todos los parametros menos el 0": $*;
-./ga.o
-wait(2);
+
+
 git status;
-wait(2);
-git add gestionAlumnos.bin;
-echo "Introduce la fecha de la Copia de seguridad:"
+
+#git add gestionAlumnos.bin;
+git add .;
 clear;
+echo "Introduce la fecha de la Copia de seguridad:"
 read TXT;
 
 git commit -m "$TXT"
