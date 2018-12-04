@@ -40,8 +40,10 @@ wget https://github.com/rca99/Grupo-36-IS/raw/master/Practica4/1Sprint/gestionAl
 
 git remote set-url origin https://github.com/rca99/Grupo-36-IS.git
 
-
+echo nombre fichero base de datos externa
 find -iname "*ges*"
+
+git status
 ##mv  Archivo1.ext Archivo2.ext
 
 
