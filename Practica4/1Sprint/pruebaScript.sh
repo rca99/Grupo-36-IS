@@ -26,6 +26,7 @@ git commit -m "Fecha última copia seguridad: $TXT"
 git remote set-url origin https://a52hepof:vn9rn7rz@github.com/rca99/Grupo-36-IS.git
 
 git push -u origin master
+git remote set-url origin https://github.com/rca99/Grupo-36-IS.git
 
 
 
