@@ -4,7 +4,7 @@
 #include "BD.h"
 
 
-bool Alumno::setLider(bool lider) {
+bool Alumno::setLider(bool lider, BD basedatos) {
 
 	// DEBE recibir la BD ??
 	BD BDaux;
