@@ -1,5 +1,5 @@
-//BD.h
-
+// BD.h
+// Cabecera de la clase BD
 
 
 
@@ -21,14 +21,16 @@ private:
 
 	list <Alumno> listaAlumnos_;
 	string nombreFichero_;
+	int numeroAlumnos_;
 
 
 public:
-	BD(string nombreFichero="gestionAlumnos"){
+	inline BD(string nombreFichero="gestionAlumnos"){
 
 		nombreFichero_=nombreFichero;
 
 	};
+	bool introducirAlumno(Alumno newAlumno);
 	bool guardarBD();
 	bool cargarBD();
 };

@@ -1,4 +1,5 @@
-//Alumno.h
+// Alumno.h
+// Cabecera de la clase Alumno
 
 
 #ifndef ALUMNO_H
@@ -14,8 +15,10 @@ class Alumno{
 
 private:
 
-	string DNI_, nombre_;
-	int edad_;
+	string DNI_, nombre_, apellidos_;
+	string f_nacimiento, mailcorporativo_, domicilio_;
+	int edad_, telefono_, curso_, nota_, equipo_;
+	bool lider_;
 
 
 public:
@@ -48,6 +51,10 @@ public:
 		edad_=edad;
 	};
 	inline  int getEdad() const {return edad_;};
+
+	//Líder. Gestion de líderes.
+	inline bool getLider() const {return lider_;}
+	bool setLider(bool lider);
 
 };
 
