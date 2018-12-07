@@ -24,11 +24,11 @@ private:
 public:
 
 	inline BD(string nombreFichero="gestionAlumnos"){nombreFichero_=nombreFichero;}
-	inline list <Alumno> getAlumnos() const {return listaAlumno;}
+	inline list <Alumno> getAlumnos() const {return listaAlumnos_;}
 	void setAlumnos(list <Alumno> nuevalista);
-	inline getNombreFichero() const {return nombrefichero;}
+	inline string getNombreFichero() const {return nombreFichero_;}
 	void setNombreFichero(string nuevonombre);
-	inline int getNumeroAlumnos() const {return numeroalumnos};
+	inline int getNumeroAlumnos() const {return numeroAlumnos_;}
 	void setNumeroAlumnos();
 	bool introducirAlumno(Alumno nuevoAlumno);
 	bool modificarAlumno(Alumno alumnox);
