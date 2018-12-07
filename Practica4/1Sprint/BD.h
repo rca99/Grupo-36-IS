@@ -1,9 +1,6 @@
 // BD.h
 // Cabecera de la clase BD
 
-
-
-
 #ifndef BD_H
 #define BD_H
 
