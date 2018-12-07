@@ -13,8 +13,8 @@ using namespace std;
 
 	public:
 
-		Profesor(string usuario, string rol)
-		void login(string usuario, string contrasenya);
+		Profesor(string usuario, string rol);
+		int login(string usuario, string contrasenya);
 		void registro(string usuario, string contrasenya);
 		inline string getUsuario() const {return usuario_;}
 		void setUsuario();
