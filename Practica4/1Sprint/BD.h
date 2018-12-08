@@ -28,6 +28,7 @@ private:
 public:
 
 	inline BD(string nombreFichero="gestionAlumnos"){nombreFichero_=nombreFichero;}
+	
 	inline list <Alumno> getAlumnos() const {return listaAlumnos_;}
 	void setAlumnos(list <Alumno> nuevalista);
 	inline string getNombreFichero() const {return nombreFichero_;}
