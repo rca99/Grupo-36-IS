@@ -9,6 +9,7 @@
 
 #include <list>
 #include <string>
+#include "Alumno.cc"
 #include "Alumno.h"
 
 using namespace std;
