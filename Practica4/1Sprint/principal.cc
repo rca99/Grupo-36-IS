@@ -3,7 +3,7 @@
 #include "BD.h"
 #include <stdio.h>//para system
 #include <iostream>
-#include <cstring>
+#include <string>
 
 using namespace std;
 

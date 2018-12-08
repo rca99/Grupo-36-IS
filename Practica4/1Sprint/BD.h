@@ -4,12 +4,20 @@
 
 
 
+//BD.h
+
+
+
+
+
 #ifndef BD_H
 #define BD_H
 
+#include "Alumno.h"
 #include <list>
 #include <string>
-#include "Alumno.h"
+
+
 
 using namespace std;
 
@@ -25,12 +33,12 @@ private:
 
 
 public:
-	inline BD(string nombreFichero="gestionAlumnos"){
+	BD(string nombreFichero="gestionAlumnos"){
 
 		nombreFichero_=nombreFichero;
+		numeroAlumnos_=0;
 
 	};
-	bool introducirAlumno(Alumno newAlumno);
 	bool guardarBD();
 	bool cargarBD();
 };
