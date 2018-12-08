@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Alumno.h"
+<<<<<<< HEAD
 #include "BD.h"
 #include <string>
 
@@ -39,3 +40,9 @@ using namespace std;
 	lider_=true;
 	return true; // Lider cambiado correctamente
 }
+=======
+
+
+
+
+>>>>>>> 2139134f0f03f5ef81a03edde1493763111931d6

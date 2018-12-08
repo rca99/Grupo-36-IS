@@ -4,12 +4,20 @@
 
 
 
+//BD.h
+
+
+
+
+
 #ifndef BD_H
 #define BD_H
 
+#include "Alumno.h"
 #include <list>
 #include <string>
-#include "Alumno.h"
+
+
 
 using namespace std;
 
@@ -25,6 +33,7 @@ private:
 
 
 public:
+<<<<<<< HEAD
 
 	inline BD(string nombreFichero="gestionAlumnos"){nombreFichero_=nombreFichero;}
 	inline list <Alumno> getAlumnos() const {return listaAlumnos_;}
@@ -38,6 +47,14 @@ public:
 	bool eliminarAlumno(Alumno alumnox);
 	bool buscarAlumno(Alumno alumnox);
 	//list <Alumno> buscarAlumno(int grupo);
+=======
+	BD(string nombreFichero="gestionAlumnos"){
+
+		nombreFichero_=nombreFichero;
+		numeroAlumnos_=0;
+
+	};
+>>>>>>> 2139134f0f03f5ef81a03edde1493763111931d6
 	bool guardarBD();
 	bool cargarBD();
 	bool guardarBackup();

@@ -1,5 +1,9 @@
 #ifndef PROFESOR_H
 #define PROFESOR_H
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2139134f0f03f5ef81a03edde1493763111931d6
 #include <string>
 
 using namespace std;
