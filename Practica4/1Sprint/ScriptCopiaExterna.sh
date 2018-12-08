@@ -6,6 +6,8 @@
 #fi
 
 
+#chmod -x archivo.sh
+
 echo "-" $1;
 echo "-" $2;
 echo "Nombre del fichero:" $0;

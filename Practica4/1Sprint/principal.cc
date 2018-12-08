@@ -18,7 +18,7 @@ int main(int argc, char const *argv[])
 
 	b.cargarBD();
 
-	system("sudo ScriptCopiaExterna.sh");
+	system("./ScriptCopiaExterna.sh");
 
 	
 	
