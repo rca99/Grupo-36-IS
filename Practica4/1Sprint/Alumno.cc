@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Alumno.h"
-<<<<<<< HEAD
 #include "BD.h"
 #include <string>
 
@@ -20,29 +19,9 @@ using namespace std;
 		lider_=lid;
 	}
 
-
-	bool Alumno::setLider(bool lider) {
-
-	// DEBE recibir la BD ??
-	BD BDaux;
-	// buscarAlumno -- Funcion aun sin definir
-	BD.buscarAlumno(getEquipo());
-
-	// Comprueba que los alumnos del grupo no sean lideres
-	// Grupo de alumnos. ARRAY ??
-	for(int i=0; i<3; i++) {
-		if(alumnosdelgrupo[i].getLider()==1)
-			return false; 
-			// Si alguno es lider, no se puede asignar un nuevo lider
-	}
-
-	// Si sale del for, significa que no hay lideres
-	lider_=true;
-	return true; // Lider cambiado correctamente
-}
-=======
+	Alumno::Alumno(){
 
 
+	};
 
 
->>>>>>> 2139134f0f03f5ef81a03edde1493763111931d6

@@ -14,15 +14,18 @@ using namespace std;
 bool BD::guardarBD(){
 
 	Alumno a;
-	a.setNombre("Agustín");
+	a.setNombre("Ramón");
 	//a.setEdad(65);
 	Alumno b;
 	b.setNombre("Fernando");
 	//b.setEdad(34);
+	Alumno c;
+	c.setNombre("Akela");
 
 
 	listaAlumnos_.push_back(a);
 	listaAlumnos_.push_back(b);
+	listaAlumnos_.push_back(c);
 	
 	string nameBD=nombreFichero_+".bin";
 

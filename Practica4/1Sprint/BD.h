@@ -33,9 +33,7 @@ private:
 
 
 public:
-<<<<<<< HEAD
 
-	inline BD(string nombreFichero="gestionAlumnos"){nombreFichero_=nombreFichero;}
 	inline list <Alumno> getAlumnos() const {return listaAlumnos_;}
 	void setAlumnos(list <Alumno> nuevalista);
 	inline string getNombreFichero() const {return nombreFichero_;}
@@ -47,14 +45,13 @@ public:
 	bool eliminarAlumno(Alumno alumnox);
 	bool buscarAlumno(Alumno alumnox);
 	//list <Alumno> buscarAlumno(int grupo);
-=======
+
 	BD(string nombreFichero="gestionAlumnos"){
 
-		nombreFichero_=nombreFichero;
+		//nombreFichero_=nombreFichero;
 		numeroAlumnos_=0;
 
 	};
->>>>>>> 2139134f0f03f5ef81a03edde1493763111931d6
 	bool guardarBD();
 	bool cargarBD();
 	bool guardarBackup();

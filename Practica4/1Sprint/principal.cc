@@ -14,11 +14,13 @@ int main(int argc, char const *argv[])
 	b.guardarBD();	/* code */
 	b.cargarBD();
 	getchar();
-
-	system("./pruebaScript.sh");
+	system ("git status");
 
 	b.cargarBD();
 
+	system("sudo ScriptCopiaExterna.sh");
+
+	
 	
 
 	return 0;

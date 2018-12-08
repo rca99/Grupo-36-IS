@@ -14,7 +14,8 @@
 
 # Points to the root of Google Test, relative to where this file is.
 # Remember to tweak this if you move this file.
-GTEST_DIR = /media/fernando/DATOS/101/segundo/IS/googletest/
+#GTEST_DIR = /media/fernando/DATOS/101/segundo/IS/googletest/
+GTEST_DIR = /home/candelamencia/Documentos/101/IS/googletest/
 
 # Where to find user code.
 # USER_DIR = ../samples
@@ -71,7 +72,13 @@ gtest_main.a : gtest-all.o gtest_main.o
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
-Alumno.o : Alumno.cc Alumno.h
+Alumno.o : Alumno.cc Alumno.h BD.h
+
+cargarBD.o: cargarBD.cc BD.h Alumno.h
+
+guardarBD.o: guardarBD.cc BD.h Alumno.h
+
+principal.o: principal.cc BD.h
 
 
 pruebas_unittest.o : pruebas_unittest.cc Alumno.h Alumno.cc
