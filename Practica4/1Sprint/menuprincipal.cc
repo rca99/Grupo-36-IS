@@ -22,29 +22,6 @@ void mostrarOpciones();
 bool datosBusqueda(datosAlumno &datos);
 
 int main(int argc, char const *argv[]) {
-	//INICIO LOGIN-----
-
-	int intentosAcceso=0, rol=-1;
-	string usuario="", contrasenya="";
-	Profesor usuarioapp(usuario, rol);
-
-	cout << "Bienvenid@ al software de gestion de alumnos. Introduzca sus credenciales" << endl;
-
-	do {
-		cout << "USUARIO: ";
-		cin >> usuario;
-		cout << "CONSTRASENYA: ";
-		cin >> contrasenya;
-		rol = usuarioapp.login(usuario, contrasenya); // rol == -1 indica que el profesor no está en las credenciales.
-		intentosAcceso++; 
-	} while ((intentosAcceso < 3) && ((rol == -1))) ;
-
-	if (rol == -1) {
-		cout << "Numero de intento de acceso agotados. Saliendo del sistema ..." << endl;
-		exit(-1);
-	}
-
-	// FIN LOGIN-----
 
 	BD miBD;
 	int opc=0;
@@ -87,33 +64,10 @@ int main(int argc, char const *argv[]) {
 					miBD.introducirAlumno(aux);
 				} break;
 			case 2: {	// MODIFICAR ALUMNO
-					datosAlumno datos; 
-
-					if(!datosBusqueda(datos)) break;
-
-					Alumno aux(datos);	// Constructor con esctructura
 					
-					if(miBD.buscarAlumno(aux) == true)
-						miBD.modificarAlumno(aux);
-					else {
-						cout << "Error al buscar";
-						break;
-					}
-
 				} break;
 			case 3: {	// ELIMINAR ALUMNO
-					datosAlumno datos; 
-
-					if(!datosBusqueda(datos)) break;
-
-					Alumno aux(datos); // Constructor con esctructura
 					
-					if(miBD.buscarAlumno(aux) == true)
-						miBD.eliminarAlumno(aux);
-					else {
-						cout << "Error al buscar";
-						break;
-					}
 				} break;
 			case 4: {	// MOSTRAR ALUMNOS
 
@@ -155,25 +109,4 @@ void mostrarOpciones() {
 	cout << "8. Cargar Backup (solo coordinador)" << endl;
 	cout << "9. Gestion del Perfil" << endl;
 	cout << "10. Salir de la aplicacion" << endl;
-}
-
-bool datosBusqueda(datosAlumno &datos) {
-	int opcbusqueda=0;
-
-	cout << "Introduzca como buscar el alumno:" << endl;
-	cout << "1. DNI\n2. Apellidos";
-	cin >> opcbusqueda;
-
-	if(opcbusqueda == 1) {
-		cout << "DNI : ";
-		cin >> datos.dni;
-	} else if (opcbusqueda == 2) {
-		cout << "Apellidos : ";
-		cin >> datos.apellidos;
-	} else {
-		cout << "Opcion no valida";
-		return false;
-	}
-
-	return true;
 }
