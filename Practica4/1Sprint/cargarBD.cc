@@ -23,7 +23,7 @@ bool BD::cargarBD(){
 	for (i=listaAlumnos_.begin(); i!=listaAlumnos_.end();i++){
 			//ofile.write((char*)p.ficheroBD_,sizeof(Alumno) );
 			cout<<"nombre:"<<i->getNombre()<<endl;
-			cout<<"edad:"<<i->getEdad()<<endl;
+			//cout<<"edad:"<<i->getEdad()<<endl;
 
 
 		}

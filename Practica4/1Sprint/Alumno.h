@@ -1,14 +1,12 @@
+#ifndef alumno_h
+#define alumno_h
 
-
-
-#ifndef ALUMNO_H
-#define ALUMNO_H
 
 #include <string>
 
 using namespace std;
 
-	class Alumno {
+class Alumno{
 
 	private:
 
@@ -58,6 +56,6 @@ using namespace std;
 		inline bool getLider() const {return lider_;}
 		bool setLider(bool lid);
 		*/
-	};
+};
 
 #endif

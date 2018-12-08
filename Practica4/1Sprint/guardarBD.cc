@@ -15,10 +15,10 @@ bool BD::guardarBD(){
 
 	Alumno a;
 	a.setNombre("Agustín");
-	a.setEdad(65);
+	//a.setEdad(65);
 	Alumno b;
 	b.setNombre("Fernando");
-	b.setEdad(34);
+	//b.setEdad(34);
 
 
 	listaAlumnos_.push_back(a);
