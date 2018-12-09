@@ -13,8 +13,11 @@
 using namespace std;
 
 bool BD::guardarBD(){
-
-	/*Alumno a;
+	
+	int registros=0;
+	int tamano;
+	list <Alumno> listaBD;
+	Alumno a;
 	a.setNombre("Ramón");
 	//a.setEdad(65);
 	Alumno b;
@@ -22,14 +25,12 @@ bool BD::guardarBD(){
 	//b.setEdad(34);
 	Alumno c;
 	c.setNombre("Akela");
-	listaAlumnos_.push_back(a);
-	listaAlumnos_.push_back(b);
-	listaAlumnos_.push_back(c);
-	*/
-
+	listaBD.push_back(a);
+	listaBD.push_back(b);
+	listaBD.push_back(c);
+	
 	Profesor p;
 	string nameBD=nombreFichero_+".bin";
-
 	list <Alumno>::iterator i; 
 
 	//int *ficheroBD;
@@ -38,22 +39,59 @@ bool BD::guardarBD(){
 	
 	ofstream ofile(nameBD, ios::binary);
 
-	if (listaAlumnos_.empty()){
+	if(ofile.is_open()){
+		for (i=listaBD.begin(); i!=listaBD.end();i++){
+			//ofile.write((char*)&listaAlumnos_,sizeof(Alumno));
+			//ofile.write((char*)p.getFicheroBD(),sizeof(Alumno));
+			ofile.write((char*)&listaBD,sizeof(Alumno));
+
+		}
+		cout<<listaBD.size();
+
+		ofile.close();
+	
+		ifstream ifile(nombreFichero_, ios::binary);
+
+		ifile.seekg(0L, ios::end);
+		tamano=ifile.tellg();
+
+		registros=tamano/sizeof(Alumno);
+		cout<<"tamaño base datos: "<<tamano<<endl;
+		cout<<"nº registros archivo binario: "<<registros<<endl;
+		//listaBD.clear();
+
+		if( ifile.is_open() ){
+			ifile.read( (char *)&listaBD, sizeof(Alumno));
+			while(!ifile.eof() ){
+				cout<<" ";
+				ifile.read( (char *)&listaBD, sizeof(Alumno));
+			}
+		}
+
+		for (i=listaBD.begin(); i!=listaBD.end();i++){
+			//ofile.write((char*)&listaAlumnos_,sizeof(Alumno));
+			//ofile.write((char*)p.getFicheroBD(),sizeof(Alumno));
+			cout<<"nombre: "<<i->getNombre()<<endl;
+
+		}
+
+
+		ifile.close();
+
+		return 1;
+
+	}
+	else{
 
 		return 0;
 	}
 
-	else{
 
-		for (i=listaAlumnos_.begin(); i!=listaAlumnos_.end();i++){
-			//ofile.write((char*)&listaAlumnos_,sizeof(Alumno));
-			ofile.write((char*)p.getFicheroBD(),sizeof(Alumno));
 
-		}
+	
 
-		ofile.close();
-		return 1;
-	}
+
+	
 
 
 }

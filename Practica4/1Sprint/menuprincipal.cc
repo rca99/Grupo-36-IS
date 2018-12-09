@@ -32,10 +32,13 @@ int main(int argc, char const *argv[]) {
 		switch(opc) {
 			case 1: {	// INSERTAR ALUMNO
 					
-					Alumno a;
+					Alumno a, b;
 					a.setNombre("rodolfo");
+					b.setNombre("Fernando");
 					listaAuxiliar.push_back(a);
+					listaAuxiliar.push_back(b);
 
+					/*
 					datosAlumno datos;
 					cout << "Introduzca los datos del nuevo alumno" << endl;
 					cout << "DNI : " << endl;
@@ -65,7 +68,9 @@ int main(int argc, char const *argv[]) {
 					
 					listaAuxiliar.push_back(aux);
 					//miBD.introducirAlumno(aux);
+					*/
 					miBD.setAlumnos(listaAuxiliar);
+
 
 				} break;
 			case 2: {	// MODIFICAR ALUMNO
@@ -126,7 +131,7 @@ int main(int argc, char const *argv[]) {
 					if(miBD.guardarBD()){
 
 						cout<<"base de datos guardada correctamente"<<endl;
-						miBD.cargarBD();
+						//miBD.cargarBD();
 					}
 
 					else{cout<<"Error al guardar la Base de Datos"<<endl;}
