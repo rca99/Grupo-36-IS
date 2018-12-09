@@ -1,4 +1,4 @@
-//bin.cc
+  //bin.cc
 #include <list>
 #include <fstream>
 #include <iostream>
@@ -29,10 +29,15 @@ int main(int argc, char const *argv[]){
 	b.setNombre("Fernando");
 	b.setCurso(12);
 
+	Alumno c;
+	c.setNombre("aurelio");
+	c.setCurso(12);
+
 	BD BDatos;
 
 	BDatos.introducirAlumno(a);
 	BDatos.introducirAlumno(b);
+	BDatos.introducirAlumno(c);
 
 	cout<<"tamaño lista: "<<BDatos.getAlumnos().size()<<endl;
 
@@ -66,7 +71,7 @@ int main(int argc, char const *argv[]){
 
 	for (i = aux.begin(); i!=aux.end(); ++i)
 	{
-		cout<<"*"<<endl;
+	
 		cout<<i->getNombre()<<i->getCurso()<<endl;
 		strcpy(dato.nombre, i->getNombre().c_str());
 		dato.curso=i->getCurso();
@@ -89,12 +94,12 @@ int main(int argc, char const *argv[]){
 	cout<<"**************Datos Fichero******************************"<<endl;
 	cout<<"__________________________________________________________"<<endl;
 
-	fread(&datoLectura, sizeof(datos), 1, fichero);
+	fread(&datoLectura, sizeof(datos), 1, ficheroLectura);
 	while(!feof(ficheroLectura)){
 		cout<<datoLectura.nombre<<endl;
 		cout<<datoLectura.curso<<endl;
 
-		fread(&datoLectura, sizeof(datos), 1, fichero);
+		fread(&datoLectura, sizeof(datos), 1, ficheroLectura);
 
 
 	}

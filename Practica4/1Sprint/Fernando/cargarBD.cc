@@ -2,7 +2,6 @@
 #include "BD.h" //para incluir la lista de alumnos y funciones BD 
 //#include "Profesor.h"//para incluir puntero a base de datos
 #include "Alumno.h"
-#include "Profesor.h"
 #include <list>
 #include <fstream>
 #include <iostream>
@@ -18,55 +17,41 @@ void contarRegistros(char *nombreFicheroBin, int *registros);
 
 
 bool BD::cargarBD(){
+	Alumno aux;
 
 	char NombreFicheroBin[50];
 	string nameBD=getNombreFichero()+".bin";
 	strcpy(NombreFicheroBin, nameBD.c_str());
 	
-	datosAlumno *datosFicheroBinario;
+	
 	listaAlumnos_.clear();
-	string nombref;
-	Profesor p;
+	cout<<listaAlumnos_.size()<<endl;
 
-	FILE *fichero;
+	//******leer fichero*********//
+	FILE *ficheroLectura;
+	datosAlumno datoLectura;
 
-	fichero=fopen(NombreFicheroBin, "rb");
+	ficheroLectura=fopen("registro.bin", "rb");
+	
+	cout<<"**************Datos Fichero******************************"<<endl;
+	cout<<"__________________________________________________________"<<endl;
 
-	if (fichero==NULL){
-		fprintf(stderr, "\nError al abrir el fichero" );
+	fseek(ficheroLectura,0L, SEEK_SET);
+	fread(&datoLectura, sizeof(datosAlumno), 1, ficheroLectura);
+	while(!feof(ficheroLectura)){
+		cout<<datoLectura.nombre<<endl;
+				
+		aux.setNombre(datoLectura.nombre);
+		introducirAlumno(aux);
+		fread(&datoLectura, sizeof(datosAlumno), 1, ficheroLectura);
+
+
+
 	}
 
 
-
-	int registros=0;
-	contarRegistros(NombreFicheroBin, &registros);
-
-	cout<<"registros fichero: "<<registros<<endl;
-	reservaMemoriaEstructura(&datosFicheroBinario, registros);
-
-	
-	
-	
-
-
-	fread(datosFicheroBinario, sizeof(datosAlumno), 1, fichero);
-	while(!feof(fichero)){
-		
-		fread(datosFicheroBinario, sizeof(datosAlumno), 1, fichero);
-		
-	}
-	
-	for (int i = 0; i < registros; ++i)
-	{
-		cout<<datosFicheroBinario[i].nombre;
-	}
-
-	fclose(fichero);
-	
-	list <Alumno> listaBD;
-	//list <Alumno>::iterator i; 
-	
-
+	cout<<listaAlumnos_.size()<<endl;
+	//fclose(ficheroLectura);
 	
  
       
@@ -75,81 +60,9 @@ bool BD::cargarBD(){
 
 
 
-void reservaMemoriaEstructura(datosAlumno **libreria, int registros){
-
-	*libreria=(datosAlumno*)malloc(registros*sizeof(datosAlumno));
-
-	if (libreria==NULL){
-		printf("error reserva memoria\n");
-	}
-}
-
-
-void contarRegistros(char *nombreFicheroBin, int *registros){
-
-	FILE *fichero;
-
-	fichero=fopen(nombreFicheroBin, "rb");
-
-
-	fseek(fichero, 0L, SEEK_END);
-
-	*registros=ftell(fichero)/sizeof(datosAlumno);
-
-	fclose(fichero);
-
-}
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-  /*
-
-
-	ifstream ifile(nombreFichero_, ios::binary);
-
-
-	
-	if( ifile.is_open() ){
-		ifile.read((char*)&datosFicheroBinario,sizeof(datosAlumno) );
-
-		while(!ifile.eof() ){
-			
-			ifile.read((char*)&datosFicheroBinario,sizeof(datosAlumno) );
-			
-		}
-	}
-
-	
-	for (i=listaBD.begin(); i!=listaBD.end();i++){
-		
-		cout<<"nombre: "<<i->getNombre()<<endl;
-	}
-
-	cout<<"Tamaño Base de Datos: "<<listaBD.size()<<endl;
-	
-	
-
-
-
-	return 1;
-	
-	
-	
-
-}
-
-
-*/

@@ -9,7 +9,8 @@
 using namespace std;
 
 typedef struct  {
-	string dni, nombre, apellidos, fecha_nacimiento, email_corporativo, domicilio;
+	string dni, apellidos, fecha_nacimiento, email_corporativo, domicilio;
+	char nombre[40];
 	int telefono, curso, nota, equipo;
 	bool lider;
 }datosAlumno;
