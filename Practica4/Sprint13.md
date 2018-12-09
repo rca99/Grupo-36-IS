@@ -55,5 +55,6 @@ Propuestas para el siguiente Sprint:
 * Finalizar las funcionalidades que faltan. En cargarBD() se consultará con el profesor de la asignatura.
 * Mejorar la funcionalidad de insertar alumno con métodos set.
 * Hacer una primera implementación sencilla tan pronto sea posible para evaluar la dificultad de cada funcionalidad y así poder tomar las medidas necesarias para desarrollar las funcionalidades en el tiempo establecido.
+* Actualizar las horas previstas de desarrollo para aproximarlas a la realidad.
 
 
