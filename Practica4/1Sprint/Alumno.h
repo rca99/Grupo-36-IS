@@ -37,6 +37,7 @@ struct datosAlumno {
 			equipo_=datos.equipo;
 			lider_=datos.lider;
 		};
+		Alumno(){};
 
 		inline  string getDNI() const {return dni_;}
 		inline void setDNI(string dni) {dni_=dni;}
