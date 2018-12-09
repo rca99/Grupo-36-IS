@@ -38,7 +38,8 @@ typedef struct  {
 		inline string getApellidos() const {return apellidos_;}
 		inline void setApellidos(string ape) {apellidos_=ape;}
 
-
+		inline  string getCurso() const {return curso_;}
+		inline void setCurso(string curso) {curso_=curso;}
 
 };
 

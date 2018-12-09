@@ -25,7 +25,7 @@ bool BD::cargarBD(){
 	
 	datosAlumno *datosFicheroBinario;
 	listaAlumnos_.clear();
-
+	string nombref;
 	Profesor p;
 
 	FILE *fichero;
@@ -44,15 +44,27 @@ bool BD::cargarBD(){
 	cout<<"registros fichero: "<<registros<<endl;
 	reservaMemoriaEstructura(&datosFicheroBinario, registros);
 
+	
+	
+	
 
-	fread(datosFicheroBinario, sizeof(datosAlumno), registros, fichero);
 
-
+	fread(datosFicheroBinario, sizeof(datosAlumno), 1, fichero);
+	while(!feof(fichero)){
+		
+		fread(datosFicheroBinario, sizeof(datosAlumno), 1, fichero);
+		
+	}
+	
+	for (int i = 0; i < registros; ++i)
+	{
+		cout<<datosFicheroBinario[i].nombre;
+	}
 
 	fclose(fichero);
 	
 	list <Alumno> listaBD;
-	list <Alumno>::iterator i; 
+	//list <Alumno>::iterator i; 
 	
 
 	

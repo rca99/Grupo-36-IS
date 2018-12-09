@@ -17,7 +17,7 @@ using namespace std;
 bool BD::guardarBD(){
 
 	int tamano, registros;
-
+	datosAlumno datosBD;
 
 	list <Alumno>::iterator i; 
 	
@@ -38,9 +38,10 @@ bool BD::guardarBD(){
 			datosBD.apellidos=i->getApellidos();
 			//ofile.write((char*)&listaAlumnos_,sizeof(Alumno));
 			//ofile.write((char*)p.getFicheroBD(),sizeof(Alumno));
+			ofile.write((const char*)&datosBD, sizeof(datosAlumno));
 		
-			ofile.write((char*)&datosBD, sizeof(datosAlumno));
 	}
+
 	
 	ofile.close();
 
