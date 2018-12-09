@@ -10,13 +10,12 @@
 
 using namespace std;
 
-void reservaMemoriaEstructura(datosAlumno **libreria, int registros);
-void contarRegistros(char *nombreFicheroBin, int *registros);
 
 
 
 
 bool BD::cargarBD(){
+	
 	Alumno aux;
 
 	char NombreFicheroBin[50];
@@ -36,24 +35,33 @@ bool BD::cargarBD(){
 	cout<<"**************Datos Fichero******************************"<<endl;
 	cout<<"__________________________________________________________"<<endl;
 
-	fseek(ficheroLectura,0L, SEEK_SET);
+	//fseek(ficheroLectura,0L, SEEK_SET);
+	
 	fread(&datoLectura, sizeof(datosAlumno), 1, ficheroLectura);
 	while(!feof(ficheroLectura)){
 		cout<<datoLectura.nombre<<endl;
+		cout<<datoLectura.curso<<endl;
 				
 		aux.setNombre(datoLectura.nombre);
+		aux.setCurso(datoLectura.curso);
+
 		introducirAlumno(aux);
 		fread(&datoLectura, sizeof(datosAlumno), 1, ficheroLectura);
-
-
-
 	}
-
+	
 
 	cout<<listaAlumnos_.size()<<endl;
-	//fclose(ficheroLectura);
+
+	list <Alumno>::iterator i;
+
+	for (i = listaAlumnos_.begin(); i !=listaAlumnos_.end(); ++i)
+	{
+		cout<<i->getNombre()<<endl;
+	}
+	fclose(ficheroLectura);
+
 	
- 
+
       
   }
 

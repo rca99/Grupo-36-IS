@@ -13,6 +13,8 @@
 
 using namespace std;
 
+
+
 bool BD::guardarBD(){
 
 	
@@ -33,23 +35,25 @@ bool BD::guardarBD(){
 	list <Alumno>::iterator i;
 
 	list <Alumno> aux;
-	aux=listaAlumnos_;
+	list <Alumno> auxiliarEscribir;
 
+	aux=listaAlumnos_;
+	
 	for (i = aux.begin(); i!=aux.end(); ++i)
 	{
-		cout<<"*"<<endl;
+	
 		cout<<i->getNombre()<<"-"<<i->getCurso()<<"-"<<i->getApellidos()<<endl;
-		dato.nombre=i->getNombre();
+		//dato.nombre=i->getNombre();
 
-		//strcpy(dato.nombre, i->getNombre().c_str());
+		strcpy(dato.nombre, i->getNombre().c_str());
 		//strcpy(dato.apellidos, i->getApellidos().c_str());
 
-		//dato.curso=i->getCurso();
+		dato.curso=i->getCurso();
 		fwrite(&dato, sizeof(datosAlumno), 1, fichero);
 
 	}
 
-
+	
 
 	fclose(fichero);
 	return 1;

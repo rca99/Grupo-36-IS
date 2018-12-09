@@ -7,13 +7,15 @@
 
 
 using namespace std;
+	
+	typedef struct{
+			//Al leer ficheros, los métodos no aceptan bien tipos de archivo string
+			char nombre[30], dni[10],apellidos[30], fecha_nacimiento[10], email_corporativo[30], domicilio[30];
+			int curso, telefono, nota, equipo;
+			bool lider;
 
-struct  datosAlumno{
-	string dni, apellidos;
-	char nombre[40];
-	int curso;
-	bool lider;
-};
+	}datosAlumno;
+
 
 	class Alumno {
 
@@ -25,6 +27,8 @@ struct  datosAlumno{
 		bool lider_;
 
 	public:
+
+	
 
 		Alumno(string nif, string nom, string ape, string fecha, string email, string dom, int tlf, int cur, int calf, int eqp, bool lid);
 		Alumno(datosAlumno datos);

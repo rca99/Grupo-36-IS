@@ -5,6 +5,8 @@
 
 using namespace std;
 
+
+
 	Alumno::Alumno(string nif, string nom, string ape, string fecha, string email, string dom, int tlf, int cur, int calf, int eqp, bool lid){
 		dni_=nif;
 		nombre_=nom;

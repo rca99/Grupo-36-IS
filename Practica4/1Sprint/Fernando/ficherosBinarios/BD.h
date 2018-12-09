@@ -42,7 +42,7 @@ public:
 	void setNombreFichero(string nuevonombre);
 	inline int getNumeroAlumnos() const {return numeroAlumnos_;}
 	void setNumeroAlumnos();
-	bool introducirAlumno(Alumno nuevoAlumno){listaAlumnos_.push_back(nuevoAlumno);};
+	bool introducirAlumno(Alumno nuevoAlumno){listaAlumnos_.push_back(nuevoAlumno);return 1;};
 
 	
 	bool modificarAlumno(Alumno alumnox);
