@@ -14,15 +14,22 @@ HU_08_CargarBaseDatos|2|1
 Interfaz CargarBaseDatos|2|0,5
 HU_04_GestionDeLideres|2|1
 Interfaz GestionDeLideres|1|0,5
-HU_03_ModificarAlumno|3|2
-HU_05_MostrarAlumnos|3|3
-HU_06_EliminarAlumno|3|1
-HU_00_AccesoAplicacion|5|2
+HU_03_ModificarAlumno|3|3
+Interfaz ModificarAlumno|3|1
+HU_05_MostrarAlumnos|3|4
+Interfaz MostrarAlumnos|3|1
+HU_06_EliminarAlumno|3|2
+Interfaz EliminarAlumno|3|1
+HU_00_AccesoAplicación|5|3
+Interfaz AccesoAplicación|5|1
 HU_09_GuardarCopiaSeguridadExterna|5|1
+Interfaz GuardarCopiaSeguridadExterna|5|1
 HU_10_CargarCopiaSeguridadExterna|5|1
-HU_11_SalirAplicacion|5|1
+Interfaz CargarCopiaSeguridadExterna|5|1
+HU_11_SalirAplicación|5|1
+Interfaz SalirAplicación|5|1
 
-**_Horas totales de programación estimadas_:** 24
+**_Horas totales de programación estimadas_:** 33,5
 
 **Scrum Master:** Rafael Cantero Alén
 
