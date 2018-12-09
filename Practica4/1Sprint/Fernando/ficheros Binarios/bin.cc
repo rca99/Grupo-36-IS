@@ -30,12 +30,12 @@ int main(int argc, char const *argv[]){
 
 	BD BDatos;
 
-	BDatos.listaAlumnos_.push_back(a);
-	BDatos.listaAlumnos_.push_back(b);
+	BDatos.getAlumnos().push_back(a);
+	BDatos.getAlumnos().push_back(b);
 
 	
 
-	cout<<"tamaño lista: "<<aux.size()<<endl;
+	cout<<"tamaño lista: "<<BDatos.getAlumnos().size()<<endl;
 
 
 
