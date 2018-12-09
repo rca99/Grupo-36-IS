@@ -23,7 +23,7 @@ bool datosBusqueda(datosAlumno &datos);
 
 int main(int argc, char const *argv[]) {
 
-	BD miBD;
+	BD miBD; //crea un objeto de base de datos con el nombre de fichero gestionAlumnos
 	int opc=0;
 
 	do {
@@ -74,8 +74,20 @@ int main(int argc, char const *argv[]) {
 				} break;
 			case 5: {	// GUARDAR BD
 
+
+
+
+
+
+
+
+
 				} break;
 			case 6: {	// CARGAR BD
+
+				if (miBD.get)
+
+
 
 				} break;
 			case 7: {	// GUARDAR BACKUP
