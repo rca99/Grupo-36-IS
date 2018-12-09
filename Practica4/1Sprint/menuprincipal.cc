@@ -74,6 +74,55 @@ int main(int argc, char const *argv[]) {
 				} break;
 			case 5: {	// GUARDAR BD
 
+				if (miBD.getAlumnos().size()==0){
+					cout<<"No hay datos que guardar"<<endl;
+					
+					char cargar;	
+
+					do{
+
+						cout<<"Indique si Desea cargar la base de datos"<<endl;
+						cout<<"pulse C si desea cargar la base de datos o M si desea salir al menú"<<endl;
+						cin>>cargar;
+						cout<<endl;
+						if (cargar=='C' or cargar=='c'){
+							
+							if (miBD.cargarBD()){
+
+								cout<<"Base de datos cargada correctamente"<<endl;
+								cout<<"vuelva al menú para introducir alumnos"<<endl;
+								break;
+							}
+
+							else{
+								cout<<"No se encuentra el fichero o se ha producido un error cargar la base de datos"<<endl;
+								cout<<"compruebe que exista el fichero de copia de seguridad, en caso contrario,"<<endl;
+								cout<<"vuelva al menú para introducir alumnos y cree una copia de seguridad antes de cargarla"<<endl;
+								break;
+							}
+						}
+
+						if (cargar=='M' or cargar=='m'){
+								cout<<"Vuelva al menú para introducir alumnos antes de guardar la base de datos"<<endl;
+								break;
+						}
+					}
+					while(cargar!= 'C'||cargar!='c'||cargar!= 'M'||cargar!='m');
+				}
+
+				else{
+
+					cout<<"pulse una tecla para guardar la BD"<<endl;
+					getchar();
+					//sleep(4);
+					if(miBD.guardarBD()){
+
+						cout<<"base de datos guardada correctamente"<<endl;
+						//miBD.cargarBD();
+					}
+
+					else{cout<<"Error al guardar la Base de Datos"<<endl;}
+				}
 
 
 
@@ -85,7 +134,7 @@ int main(int argc, char const *argv[]) {
 				} break;
 			case 6: {	// CARGAR BD
 
-				if (miBD.get)
+			
 
 
 

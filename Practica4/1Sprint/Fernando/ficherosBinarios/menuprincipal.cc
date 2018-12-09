@@ -9,7 +9,7 @@
 
 
 #include "Alumno.h"
-#include "Profesor.h"
+//#include "Profesor.h"
 #include "BD.h"
 
 using namespace std;
@@ -42,9 +42,7 @@ int main(int argc, char const *argv[]) {
 					b.setNombre("Artura");
 					b.setApellidos("ddd");
 
-					listaAuxiliar.push_back(a);
-					listaAuxiliar.push_back(b);
-
+				
 					/*
 					datosAlumno datos;
 					cout << "Introduzca los datos del nuevo alumno" << endl;
@@ -75,9 +73,10 @@ int main(int argc, char const *argv[]) {
 					
 					listaAuxiliar.push_back(aux);
 					*/
-					//miBD.introducirAlumno(aux);
+					miBD.introducirAlumno(a);
+					miBD.introducirAlumno(b);
 					
-					miBD.setAlumnos(listaAuxiliar);
+			
 
 
 				} break;

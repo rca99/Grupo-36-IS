@@ -8,12 +8,12 @@
 
 using namespace std;
 
-typedef struct  {
-	string dni, apellidos, fecha_nacimiento, email_corporativo, domicilio;
+struct  datosAlumno{
+	string dni, apellidos;
 	char nombre[40];
-	int telefono, curso, nota, equipo;
+	int curso;
 	bool lider;
-}datosAlumno;
+};
 
 	class Alumno {
 
