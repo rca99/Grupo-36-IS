@@ -61,7 +61,6 @@ int main(int argc, char const *argv[]) {
 
 					Alumno aux(datos);	// Constructor con estructura
 
-
 					miBD.introducirAlumno(aux);
 				} break;
 			case 2: {	// MODIFICAR ALUMNO
