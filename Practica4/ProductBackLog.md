@@ -22,14 +22,14 @@ HU_06_EliminarAlumno|3|2
 Interfaz EliminarAlumno|3|1
 HU_00_AccesoAplicación|5|3
 Interfaz AccesoAplicación|5|1
-HU_09_GuardarCopiaSeguridadExterna|5|1
-Interfaz GuardarCopiaSeguridadExterna|5|1
+HU_09_GuardarCopiaSeguridadExterna|5|0,25
+Interfaz GuardarCopiaSeguridadExterna|5|0,25
 HU_10_CargarCopiaSeguridadExterna|5|1
 Interfaz CargarCopiaSeguridadExterna|5|1
 HU_11_SalirAplicación|5|1
 Interfaz SalirAplicación|5|1
 
-**_Horas totales de programación estimadas_:** 33,5
+**_Horas totales de programación estimadas_:** 35
 
 **Scrum Master:** Rafael Cantero Alén
 
