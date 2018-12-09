@@ -7,60 +7,130 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <cstring>
 
 using namespace std;
+
+void reservaMemoriaEstructura(datosAlumno **libreria, int registros);
+void contarRegistros(char *nombreFicheroBin, int *registros);
+
+
 
 
 bool BD::cargarBD(){
 
+	char NombreFicheroBin[50];
+	string nameBD=getNombreFichero()+".bin";
+	strcpy(NombreFicheroBin, nameBD.c_str());
+	
+	datosAlumno *datosFicheroBinario;
 	listaAlumnos_.clear();
 
 	Profesor p;
+
+	FILE *fichero;
+
+	fichero=fopen(NombreFicheroBin, "rb");
+
+	if (fichero==NULL){
+		fprintf(stderr, "\nError al abrir el fichero" );
+	}
+
+
+
 	int registros=0;
-	int tamano;
+	contarRegistros(NombreFicheroBin, &registros);
+
+	cout<<"registros fichero: "<<registros<<endl;
+	reservaMemoriaEstructura(&datosFicheroBinario, registros);
+
+
+	fread(datosFicheroBinario, sizeof(datosAlumno), registros, fichero);
+
+
+
+	fclose(fichero);
 	
 	list <Alumno> listaBD;
 	list <Alumno>::iterator i; 
 	
 
-	ifstream ifile(nombreFichero_, ios::binary);
 	
-	/*ifile.seekg(0L, ios::end);
-	tamano=ifile.tellg();
+ 
+      
+  }
 
-	registros=tamano/sizeof(Alumno);
-	cout<<"tamaño base datos: "<<tamano<<endl;
-	cout<<"nº registros archivo binario: "<<registros<<endl;
-	*/
+
+
+
+void reservaMemoriaEstructura(datosAlumno **libreria, int registros){
+
+	*libreria=(datosAlumno*)malloc(registros*sizeof(datosAlumno));
+
+	if (libreria==NULL){
+		printf("error reserva memoria\n");
+	}
+}
+
+
+void contarRegistros(char *nombreFicheroBin, int *registros){
+
+	FILE *fichero;
+
+	fichero=fopen(nombreFicheroBin, "rb");
+
+
+	fseek(fichero, 0L, SEEK_END);
+
+	*registros=ftell(fichero)/sizeof(datosAlumno);
+
+	fclose(fichero);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /*
+
+
+	ifstream ifile(nombreFichero_, ios::binary);
+
 
 	
 	if( ifile.is_open() ){
-		ifile.read((char*)&listaBD,sizeof(Alumno) );
+		ifile.read((char*)&datosFicheroBinario,sizeof(datosAlumno) );
 
 		while(!ifile.eof() ){
 			
-			ifile.read((char*)&listaBD,sizeof(Alumno) );
+			ifile.read((char*)&datosFicheroBinario,sizeof(datosAlumno) );
 			
 		}
 	}
 
-
-
-
-
-	for (i=listaAlumnos_.begin(); i!=listaAlumnos_.end();i++){
-		//ifile.read((char*)p.getFicheroBD(),sizeof(Alumno));
+	
+	for (i=listaBD.begin(); i!=listaBD.end();i++){
 		
 		cout<<"nombre: "<<i->getNombre()<<endl;
-			//cout<<"edad:"<<i->getEdad()<<endl;
-
-
 	}
 
-	//cout<<"Tamaño Base de Datos: "<<listaAlumnos_.size()<<endl;
 	cout<<"Tamaño Base de Datos: "<<listaBD.size()<<endl;
 	
-	ifile.close();
+	
+
+
 
 	return 1;
 	
@@ -70,3 +140,4 @@ bool BD::cargarBD(){
 }
 
 
+*/

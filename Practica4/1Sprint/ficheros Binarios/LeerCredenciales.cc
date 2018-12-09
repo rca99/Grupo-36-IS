@@ -18,19 +18,11 @@ struct credenciales{
 int main(){
 
 credenciales aux;
-int tamano;
-int registros=0;	
+
 
 		
 
-ifstream f("credenciales.bin", ios::binary);
-
-f.seekg(0L, ios::end);
-	tamano=f.tellg();
-
-	registros=tamano/sizeof(credenciales);
-	cout<<"tamaño base datos: "<<tamano<<endl;
-	cout<<"nº registros archivo binario: "<<registros<<endl;
+	ifstream f("credenciales.bin", ios::binary);
 
 	if( f.is_open() ){
 		f.read( (char *)&aux, sizeof(credenciales));

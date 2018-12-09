@@ -9,89 +9,118 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <cstring>
+
 
 using namespace std;
 
 bool BD::guardarBD(){
-	
-	int registros=0;
-	int tamano;
-	list <Alumno> listaBD;
-	Alumno a;
-	a.setNombre("Ramón");
-	//a.setEdad(65);
-	Alumno b;
-	b.setNombre("Fernando");
-	//b.setEdad(34);
-	Alumno c;
-	c.setNombre("Akela");
-	listaBD.push_back(a);
-	listaBD.push_back(b);
-	listaBD.push_back(c);
-	
-	Profesor p;
-	string nameBD=nombreFichero_+".bin";
+
+	int tamano, registros;
+
+
 	list <Alumno>::iterator i; 
-
-	//int *ficheroBD;
-	//ficheroBD=(int*)&listaAlumnos_;
-	p.setFicheroBD(listaAlumnos_);
 	
-	ofstream ofile(nameBD, ios::binary);
+	//char NombreFicheroBin[50];
+	//string nameBD=getNombreFichero()+".bin";
+	//strcpy(NombreFicheroBin, nameBD.c_str());
+	
+	//controlar la creación del fichero
 
-	if(ofile.is_open()){
-		for (i=listaBD.begin(); i!=listaBD.end();i++){
+
+	cout<<nombreFichero_<<endl;
+	cout<<endl;
+	
+	ofstream ofile(nombreFichero_, ios::binary);
+
+	for (i=listaAlumnos_.begin(); i!=listaAlumnos_.end();i++){
+			datosBD.nombre=i->getNombre();
+			datosBD.apellidos=i->getApellidos();
 			//ofile.write((char*)&listaAlumnos_,sizeof(Alumno));
 			//ofile.write((char*)p.getFicheroBD(),sizeof(Alumno));
-			ofile.write((char*)&listaBD,sizeof(Alumno));
-
-		}
-		cout<<listaBD.size();
-
-		ofile.close();
+		
+			ofile.write((char*)&datosBD, sizeof(datosAlumno));
+	}
 	
-		ifstream ifile(nombreFichero_, ios::binary);
+	ofile.close();
 
-		ifile.seekg(0L, ios::end);
-		tamano=ifile.tellg();
+	ifstream ifile(nombreFichero_, ios::binary);
 
-		registros=tamano/sizeof(Alumno);
-		cout<<"tamaño base datos: "<<tamano<<endl;
-		cout<<"nº registros archivo binario: "<<registros<<endl;
-		//listaBD.clear();
+	ifile.seekg(0L, ios::end);
+	tamano=ifile.tellg();
 
-		if( ifile.is_open() ){
-			ifile.read( (char *)&listaBD, sizeof(Alumno));
-			while(!ifile.eof() ){
-				cout<<" ";
-				ifile.read( (char *)&listaBD, sizeof(Alumno));
+	registros=tamano/sizeof(datosAlumno);
+	cout<<"tamaño base datos: "<<tamano<<endl;
+	cout<<"nº registros archivo binario: "<<registros<<endl;
+	
+	ifile.close();
+
+	for (i=listaAlumnos_.begin(); i!=listaAlumnos_.end();i++){
+
+		cout<<"nombre: "<<i->getNombre()<<endl;
+		cout<<"apellidos: "<<i->getApellidos()<<endl;
+	}
+
+		
+	/*
+	ifstream ifile(nombreFichero_, ios::binary);
+
+	listaAlumnos_.clear();
+		
+	if( ifile.is_open() ){
+		ifile.read( (char *)&datosBD, sizeof(datosAlumno));
+			
+		while(!ifile.eof()){
+				
+			ifile.read( (char *)&datosBD, sizeof(datosAlumno));
+			Alumno aux(datosBD);
+			listaAlumnos_.push_back(aux);
+				
 			}
-		}
+		
 
-		for (i=listaBD.begin(); i!=listaBD.end();i++){
-			//ofile.write((char*)&listaAlumnos_,sizeof(Alumno));
-			//ofile.write((char*)p.getFicheroBD(),sizeof(Alumno));
+		}
+		
+
+
+		cout<<listaAlumnos_.size()<<endl;
+
+		for (i=listaAlumnos_.begin(); i!=listaAlumnos_.end();i++){
+
 			cout<<"nombre: "<<i->getNombre()<<endl;
-
+			cout<<"nombre: "<<i->getApellidos()<<endl;
 		}
 
+		
 
-		ifile.close();
-
-		return 1;
-
-	}
-	else{
-
-		return 0;
-	}
+	*/
 
 
 
 	
-
-
-	
+	return 1;
 
 
 }
+
+/*FILE *ficheroBin;
+
+	ficheroBin=fopen(NombreFicheroBin, "a+b");
+
+	if (ficheroBin==NULL){
+		fprintf(stderr, "\nError al abrir el fichero" );
+	}
+
+
+
+	for (i=listaAlumnos_.begin(); i!=listaAlumnos_.end();i++){
+		fwrite(&listaAlumnos_, sizeof(list<Alumno>), 1,ficheroBin);//ofile.write((char*)&listaAlumnos_,sizeof(Alumno));
+		//ofile.write((char*)p.getFicheroBD(),sizeof(Alumno));
+		cout<<"nombre   ss: "<<i->getNombre()<<endl;
+
+		}
+
+	
+
+	fclose(ficheroBin);
+	*/

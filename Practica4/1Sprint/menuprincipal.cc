@@ -34,7 +34,10 @@ int main(int argc, char const *argv[]) {
 					
 					Alumno a, b;
 					a.setNombre("rodolfo");
-					b.setNombre("Fernando");
+					a.setApellidos("martínez");
+					b.setNombre("Artura");
+					b.setApellidos("ddd");
+
 					listaAuxiliar.push_back(a);
 					listaAuxiliar.push_back(b);
 
@@ -67,8 +70,9 @@ int main(int argc, char const *argv[]) {
 					Alumno aux(datos);	// Constructor con estructura
 					
 					listaAuxiliar.push_back(aux);
-					//miBD.introducirAlumno(aux);
 					*/
+					//miBD.introducirAlumno(aux);
+					
 					miBD.setAlumnos(listaAuxiliar);
 
 
@@ -87,12 +91,9 @@ int main(int argc, char const *argv[]) {
 				if (miBD.getAlumnos().size()==0){
 					cout<<"No hay datos que guardar"<<endl;
 					
-					char cargar;
-
-					
+					char cargar;	
 
 					do{
-
 
 						cout<<"Indique si Desea cargar la base de datos"<<endl;
 						cout<<"pulse C si desea cargar la base de datos o M si desea salir al menú"<<endl;
@@ -137,16 +138,10 @@ int main(int argc, char const *argv[]) {
 					else{cout<<"Error al guardar la Base de Datos"<<endl;}
 				}
 
-
-
 				} break;
 			case 6: {	// CARGAR BD
-				cout<<sizeof(Alumno)<<endl;
+				cout<<sizeof(datosAlumno)<<endl;
 				miBD.cargarBD();
-
-
-
-
 
 				} break;
 			case 7: {	// GUARDAR BACKUP

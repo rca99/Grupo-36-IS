@@ -22,6 +22,7 @@ using namespace std;
 	Alumno::Alumno(datosAlumno datos){
 
 		nombre_=datos.nombre;
+	
 	};
 
 	Alumno::Alumno(){
