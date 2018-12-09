@@ -54,7 +54,7 @@ bool BD::buscarAlumno(list <Alumno> &alumnox, datosAlumno datos) {
 	}		*/
 
 
-	/* bool datosBusqueda(datosAlumno &datos) {
+	bool datosBusqueda(datosAlumno &datos) {
 	int opcbusqueda=0;
 
 	cout << "Introduzca como buscar el alumno:" << endl;
@@ -78,4 +78,4 @@ bool BD::buscarAlumno(list <Alumno> &alumnox, datosAlumno datos) {
 
 	return true;
 	}
-	*/
+	
