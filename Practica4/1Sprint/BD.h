@@ -9,6 +9,7 @@
 
 #include <list>
 #include <string>
+#include "Alumno.cc"
 #include "Alumno.h"
 
 using namespace std;
@@ -30,6 +31,7 @@ public:
 		nombreFichero_=nombreFichero;
 		numeroAlumnos_=0;
 	}
+	
 	inline list <Alumno> getAlumnos() const {return listaAlumnos_;}
 	void setAlumnos(list <Alumno> nuevalista);
 	inline string getNombreFichero() const {return nombreFichero_;}
