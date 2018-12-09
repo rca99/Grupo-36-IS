@@ -6,6 +6,7 @@
 
 #include <list>
 #include <string>
+#include "Alumno.cc"
 #include "Alumno.h"
 
 using namespace std;
@@ -23,7 +24,11 @@ private:
 
 public:
 
-	inline BD(string nombreFichero="gestionAlumnos"){nombreFichero_=nombreFichero;}
+	inline BD(string nombreFichero="gestionAlumnos"){
+		nombreFichero_=nombreFichero;
+		numeroAlumnos_=0;
+	}
+	
 	inline list <Alumno> getAlumnos() const {return listaAlumnos_;}
 	void setAlumnos(list <Alumno> nuevalista);
 	inline string getNombreFichero() const {return nombreFichero_;}
@@ -33,7 +38,7 @@ public:
 	bool introducirAlumno(Alumno nuevoAlumno);
 	bool modificarAlumno(Alumno alumnox);
 	bool eliminarAlumno(Alumno alumnox);
-	bool buscarAlumno(Alumno alumnox);
+	bool buscarAlumno(list <Alumno> &alumnox);
 	//list <Alumno> buscarAlumno(int grupo);
 	bool guardarBD();
 	bool cargarBD();
