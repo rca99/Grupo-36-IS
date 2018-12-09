@@ -2,11 +2,17 @@
 #ifndef ALUMNO_H
 #define ALUMNO_H
 
-
-
 #include <string>
 
+
+
 using namespace std;
+
+struct datosAlumno {
+	string dni, nombre, apellidos, fecha_nacimiento, email_corporativo, domicilio;
+	int telefono, curso, nota, equipo;
+	bool lider;
+};
 
 	class Alumno {
 
@@ -20,6 +26,7 @@ using namespace std;
 	public:
 
 		Alumno(string nif, string nom, string ape, string fecha, string email, string dom, int tlf, int cur, int calf, int eqp, bool lid);
+		Alumno(datosAlumno datos);
 		Alumno();
 		
 		inline  string getDNI() const {return dni_;}

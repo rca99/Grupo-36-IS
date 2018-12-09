@@ -1,11 +1,10 @@
 #ifndef PROFESOR_H
 #define PROFESOR_H
-<<<<<<< HEAD
-=======
 
->>>>>>> 2139134f0f03f5ef81a03edde1493763111931d6
+
 #include <string>
-
+#include <list>
+#include "Alumno.h"
 using namespace std;
 
 	class Profesor {
@@ -17,15 +16,18 @@ using namespace std;
 
 	public:
 
-		Profesor(string usuario, string rol);
+		Profesor();
 		int login(string usuario, string contrasenya);
 		void registro(string usuario, string contrasenya);
 		inline string getUsuario() const {return usuario_;}
 		void setUsuario();
 		inline string getRol() const {return rol_;}
 		void setRol();
+		
+
 		inline int *getFicheroBD() const {return ficheroBD_;}	// hay que modificarlo en el diagrama de clases
-		void setFicheroBD(int *nuevofichero);		// hay que modificarlo en el diagrama de clases
+		void setFicheroBD(list <Alumno> listaAlumno){ficheroBD_=(int*)&listaAlumno;}
+
 	};
 
 #endif

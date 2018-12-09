@@ -35,7 +35,7 @@ private:
 public:
 
 	inline list <Alumno> getAlumnos() const {return listaAlumnos_;}
-	void setAlumnos(list <Alumno> nuevalista);
+	inline void setAlumnos(list <Alumno> nuevalista){listaAlumnos_=nuevalista;};
 	inline string getNombreFichero() const {return nombreFichero_;}
 	void setNombreFichero(string nuevonombre);
 	inline int getNumeroAlumnos() const {return numeroAlumnos_;}
@@ -48,7 +48,7 @@ public:
 
 	BD(string nombreFichero="gestionAlumnos"){
 
-		//nombreFichero_=nombreFichero;
+		nombreFichero_=nombreFichero;
 		numeroAlumnos_=0;
 
 	};

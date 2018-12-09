@@ -17,11 +17,16 @@ using namespace std;
 		nota_=calf;
 		equipo_=eqp;
 		lider_=lid;
-	}
+	};
+
+	Alumno::Alumno(datosAlumno datos){
+
+		nombre_=datos.nombre;
+	};
 
 	Alumno::Alumno(){
 
-
 	};
+
 
 

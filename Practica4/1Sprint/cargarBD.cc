@@ -12,26 +12,36 @@ using namespace std;
 
 bool BD::cargarBD(){
 
-	Alumno a;
+	listaAlumnos_.clear();
 
 	list <Alumno>::iterator i; 
 
-	ifstream ifile(nombreFichero_, ios::binary);
-	ifile.read((char*)&listaAlumnos_,sizeof(Alumno));
+	ifstream ifile(nombreFichero_, ios::in | ios::binary);
+	
 
+		ifile.read((char*)&(listaAlumnos_),sizeof(Alumno));
+
+
+	
+	//while(!ifile.eof()){
+
+		//ifile.read((char*)&listaAlumnos_,sizeof(Alumno));
+	//}
 
 	for (i=listaAlumnos_.begin(); i!=listaAlumnos_.end();i++){
 			//ofile.write((char*)p.ficheroBD_,sizeof(Alumno) );
-			cout<<"nombre:"<<i->getNombre()<<endl;
+		cout<<"nombre:"<<i->getNombre()<<endl;
 			//cout<<"edad:"<<i->getEdad()<<endl;
 
 
-		}
+	}
 
 	cout<<"Tamaño Base de Datos: "<<listaAlumnos_.size()<<endl;
+	ifile.close();
 
-
-	return 1;
+		return 1;
+	
+	
 
 }
 

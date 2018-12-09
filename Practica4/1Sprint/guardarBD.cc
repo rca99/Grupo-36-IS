@@ -4,6 +4,7 @@
 #include "BD.h" //para incluir la lista de alumnos y funciones BD 
 //#include "Profesor.h"//para incluir puntero a base de datos
 #include "Alumno.h"
+#include "Profesor.h"
 #include <list>
 #include <fstream>
 #include <iostream>
@@ -13,7 +14,7 @@ using namespace std;
 
 bool BD::guardarBD(){
 
-	Alumno a;
+	/*Alumno a;
 	a.setNombre("Ramón");
 	//a.setEdad(65);
 	Alumno b;
@@ -21,21 +22,20 @@ bool BD::guardarBD(){
 	//b.setEdad(34);
 	Alumno c;
 	c.setNombre("Akela");
-
-
 	listaAlumnos_.push_back(a);
 	listaAlumnos_.push_back(b);
 	listaAlumnos_.push_back(c);
-	
+	*/
+
+	Profesor p;
 	string nameBD=nombreFichero_+".bin";
 
 	list <Alumno>::iterator i; 
 
-	int *ficheroBD;
-	ficheroBD=(int*)&listaAlumnos_;
-	//p.ficheroBD_=&listaAlumnos_;
-
-
+	//int *ficheroBD;
+	//ficheroBD=(int*)&listaAlumnos_;
+	p.setFicheroBD(listaAlumnos_);
+	
 	ofstream ofile(nameBD, ios::binary);
 
 	if (listaAlumnos_.empty()){
@@ -46,9 +46,8 @@ bool BD::guardarBD(){
 	else{
 
 		for (i=listaAlumnos_.begin(); i!=listaAlumnos_.end();i++){
-			//ofile.write((char*)p.ficheroBD_,sizeof(Alumno) );
 			//ofile.write((char*)&listaAlumnos_,sizeof(Alumno));
-			ofile.write((char*)ficheroBD,sizeof(Alumno));
+			ofile.write((char*)p.getFicheroBD(),sizeof(Alumno));
 
 		}
 

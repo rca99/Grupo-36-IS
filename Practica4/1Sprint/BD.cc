@@ -18,7 +18,7 @@ bool BD::guardarBD(){
 	Alumno b;
 	b.setNombre("Fernando");
 
-
+	Profesor p;
 
 	listaAlumnos_.push_back(a);
 	listaAlumnos_.push_back(b);
