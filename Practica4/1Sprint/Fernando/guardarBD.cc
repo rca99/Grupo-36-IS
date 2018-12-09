@@ -17,11 +17,6 @@ bool BD::guardarBD(){
 
 	
 
-
-
-	
-
-
 	cout<<"tamaño lista: "<<listaAlumnos_.size()<<endl;
 
 
