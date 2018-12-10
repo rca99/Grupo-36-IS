@@ -50,7 +50,7 @@ public:
 	bool buscarAlumno(Alumno alumnox);
 	//list <Alumno> buscarAlumno(int grupo);
 
-	BD(string nombreFichero="gestionAlumnos"){
+	inline BD(string nombreFichero="gestionAlumnos"){
 
 		nombreFichero_=nombreFichero;
 		numeroAlumnos_=0;
