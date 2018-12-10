@@ -7,7 +7,7 @@ using namespace std;
 
 
 struct datosAlumno {
-	string dni, nombre, apellidos, fecha_nacimiento, email_corporativo, domicilio;
+	char nombre[30], dni[10],apellidos[30], fecha_nacimiento[10], email_corporativo[30], domicilio[30];
 	int telefono, curso, nota, equipo;
 	bool lider;
 };
@@ -37,6 +37,7 @@ struct datosAlumno {
 			equipo_=datos.equipo;
 			lider_=datos.lider;
 		};
+		Almuno(){};
 
 		inline  string getDNI() const {return dni_;}
 		inline void setDNI(string dni) {dni_=dni;}

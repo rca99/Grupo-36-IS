@@ -1,2 +1,0 @@
-el problema está que las estructuras no deben contener tipos de datos string.
-Hay que sustituirlas por char para que la lectura sea correcta

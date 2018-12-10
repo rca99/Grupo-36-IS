@@ -13,44 +13,62 @@
 
 using namespace std;
 
+/*
+guardar BD()
+
+Descripción: Guarda el contenido de la lista de alumnos en un fichero binario
+
+Si no existe el fichero binario de la copia de seguridad, lo crea y si existe lo sobreescribe 
+con los datos de la lista de alumnos.
+
+Valores devueltos: 1 si ha guardado correctamente la base de datos.
+
+Parámetros: no recibe ningún parámetro. Accede a listaAlumnos_ para guardarla
+
+*/
+
 bool BD::guardarBD(){
 
 	
+	//cout<<"tamaño lista: "<<listaAlumnos_.size()<<endl;
 
-	cout<<"tamaño lista: "<<listaAlumnos_.size()<<endl;
+	//el método de leer fichero recibe el nombre del fichero como tipo char
+	char NombreFicheroBin[50];
+	string nameBD=getNombreFichero()+".bin";
+	strcpy(NombreFicheroBin, nameBD.c_str());
+
 
 
 	//*******Escribir Fichero **********//
 	FILE *fichero;
 	datosAlumno dato;
 
-	fichero=fopen("registro.bin", "wa+b");
+	fichero=fopen(NombreFicheroBin, "wa+b");
 	if (fichero==NULL){
 		cout<<"no existe"<<endl;
-		return 0;
-	}
+	} //si existe el fichero lo sobreescribe
 
 
 	list <Alumno>::iterator i;
 
 	list <Alumno> aux;
-	aux=listaAlumnos_;
+	list <Alumno> auxiliarEscribir;
 
+	aux=listaAlumnos_;
+	
 	for (i = aux.begin(); i!=aux.end(); ++i)
 	{
-		cout<<"*"<<endl;
+	
 		cout<<i->getNombre()<<"-"<<i->getCurso()<<"-"<<i->getApellidos()<<endl;
-		dato.nombre=i->getNombre();
+		//dato.nombre=i->getNombre();
 
-		//strcpy(dato.nombre, i->getNombre().c_str());
+		strcpy(dato.nombre, i->getNombre().c_str());
 		//strcpy(dato.apellidos, i->getApellidos().c_str());
 
-		//dato.curso=i->getCurso();
+		dato.curso=i->getCurso();
 		fwrite(&dato, sizeof(datosAlumno), 1, fichero);
 
 	}
-
-
 
 	fclose(fichero);
 	return 1;

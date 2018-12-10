@@ -122,19 +122,25 @@ int main(int argc, char const *argv[]) {
 					}
 
 					else{cout<<"Error al guardar la Base de Datos"<<endl;}
-				}
-
-
-
-
-
-
-
+					}
 
 				} break;
+				
 			case 6: {	// CARGAR BD
 
-			
+				if (miBD.cargarBD()){
+
+					cout<<"Base de datos cargada correctamente"<<endl;
+					cout<<"vuelva al menú para introducir alumnos"<<endl;
+					break;
+					}
+
+					else{
+						cout<<"No se encuentra el fichero o se ha producido un error cargar la base de datos"<<endl;
+						cout<<"compruebe que exista el fichero de copia de seguridad, en caso contrario,"<<endl;
+						cout<<"vuelva al menú para introducir alumnos y cree una copia de seguridad antes de cargarla"<<endl;
+						break;
+					}
 
 
 
