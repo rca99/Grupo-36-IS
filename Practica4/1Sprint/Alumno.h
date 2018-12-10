@@ -28,7 +28,7 @@ struct datosAlumno {
 			dni_=datos.dni;
 			nombre_=datos.nombre;
 			apellidos_=datos.apellidos;
-			fecha_nacimiento=datos.fecha_nacimiento;
+			fecha_nacimiento_=datos.fecha_nacimiento;
 			email_corporativo_=datos.email_corporativo;
 			domicilio_=datos.domicilio;
 			telefono_=datos.telefono;
@@ -37,7 +37,7 @@ struct datosAlumno {
 			equipo_=datos.equipo;
 			lider_=datos.lider;
 		};
-		Almuno(){};
+		Alumno(){};
 
 		inline  string getDNI() const {return dni_;}
 		inline void setDNI(string dni) {dni_=dni;}

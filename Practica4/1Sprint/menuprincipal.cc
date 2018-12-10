@@ -2,6 +2,9 @@
 // MENU PRINCIPAL
 // --------------
 
+//g++ -g -Wall  menuprincipal.cc guardarBD.cc cargarBD.cc Profesor.h Alumno.h consoleLinux.h BD.h Alumno.cc
+
+
 #include <iostream>
 #include <string>
 #include <cstdlib>

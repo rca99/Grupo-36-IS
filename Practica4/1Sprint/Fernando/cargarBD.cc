@@ -7,9 +7,14 @@
 #include <iostream>
 #include <string>
 #include <cstring>
+#include "consoleLinux.h"//colores menu
+#include <iomanip>//formato cout
+
 
 using namespace std;
 
+
+//g++ -g -Wall  menuprincipal.cc guardarBD.cc cargarBD.cc Profesor.h Alumno.h consoleLinux.h BD.h Alumno.cc
 
 
 /*
@@ -25,8 +30,34 @@ Parámetros: no recibe ningún parámetro. Accede a listaAlumnos_ para guardarla
 
 */
 
+std::ostream& bold_on(std::ostream& os)
+{
+    return os << "\e[1m";
+}
+
+std::ostream& bold_off(std::ostream& os)
+{
+    return os << "\e[0m";
+}
+
+
+void centerstring(char* s){
+	   
+	int l=strlen(s);
+	int pos=(int)((80-l)/2);
+	for(int i=0;i<pos;i++){
+	   	cout<<" ";
+	   	cout<<s;
+
+	}
+}
+
+
+
 bool BD::cargarBD(){
 	
+	consoleLinux consola;
+
 	Alumno aux; //para guardar los datos que se van leyendo. Su contenido es añadido a listaAlumnos_ a partir de la función introducirAlumno(alumno)
 
 	Profesor p;// para usar el puntero a la base de datos
@@ -52,8 +83,6 @@ bool BD::cargarBD(){
 
 	p.setFicheroBD(datoLectura);
 
-
-	
 	
 	cout<<"**************Datos Fichero******************************"<<endl;
 	cout<<"__________________________________________________________"<<endl;
@@ -79,12 +108,43 @@ bool BD::cargarBD(){
 	cout<<listaAlumnos_.size()<<endl;
 
 	list <Alumno>::iterator i;
+	consola.clearScreen();
+	system("clear");
+	
+	cout<<bold_on<<"\tLISTA DE ALUMNOS CARGADA EN EL SISTEMA________________"<<bold_off<<endl;
+	cout<<""<<endl;
+	cout<<endl;
+	
+	cout<<fixed;
+	cout<<setprecision(2);
+	cout.fill('*');
 
+	cout<<left<<setw(40)<<"|Nombre|"<<
+		left<<setw(20)<<"|Curso|"<<endl;
 	for (i = listaAlumnos_.begin(); i !=listaAlumnos_.end(); ++i)
 	{
-		cout<<i->getNombre()<<endl;
+
+		if (i->getNombre()=="rodolfo"){
+			cout.fill('-');
+				
+			cout<<bold_on<<ANSI_COLOR_YELLOW<<left<<setw(40)<<setiosflags (ios::uppercase)<<i->getNombre()<<//setiosflags (std::ios::showbase | std::ios::uppercase)
+											left<<setw(20)<<i->getCurso()<<bold_off<<endl;
+		}
+		else{
+			cout.fill(' ');
+			
+			cout<<ANSI_COLOR_BRIGHTRED <<left<<setw(40)<<i->getNombre()<<
+											left<<setw(20)<<i->getCurso()<<ANSI_COLOR_NORMAL<<endl;
+		
+		}
+
 	}
+	getchar();
+	getchar();
+	system("clear");
 	fclose(ficheroLectura);
+
+
 
 	return 1;
 

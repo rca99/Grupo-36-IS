@@ -62,7 +62,7 @@ bool BD::guardarBD(){
 		cout<<i->getNombre()<<"-"<<i->getCurso()<<"-"<<i->getApellidos()<<endl;
 		//dato.nombre=i->getNombre();
 
-		strcpy(dato.nombre, i->getNombre().c_str());// si no se copia con el strcpy tiene un comportamiento errático
+		strcpy(dato.nombre, i->getNombre().c_str());
 		//strcpy(dato.apellidos, i->getApellidos().c_str());
 
 		dato.curso=i->getCurso();
