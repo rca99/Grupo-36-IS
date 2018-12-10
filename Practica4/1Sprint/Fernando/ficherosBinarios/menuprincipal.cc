@@ -2,17 +2,25 @@
 // MENU PRINCIPAL
 // --------------
 
+
+#include "BD.h" //para incluir la lista de alumnos y funciones BD 
+#include "Profesor.h"//para incluir puntero a base de datos
+#include "Alumno.h"
+#include <list>
+#include <fstream>
 #include <iostream>
 #include <string>
-#include <cstdlib>
-#include <list>
+#include <cstring>
+#include "consoleLinux.h"//colores menu
+#include <iomanip>//formato cout
+
 
 
 #include "Alumno.h"
 //#include "Profesor.h"
 #include "BD.h"
 
-using namespace std;
+
 
 
 
@@ -150,14 +158,6 @@ int main(int argc, char const *argv[]) {
 					else{cout<<"Error al guardar la Base de Datos"<<endl;}
 				}
 
-
-
-
-
-
-
-
-
 				} break;
 			case 6: {	// CARGAR BD
 				cout<<sizeof(datosAlumno)<<endl;
@@ -189,15 +189,17 @@ int main(int argc, char const *argv[]) {
 }
 
 void mostrarOpciones() {
-	cout << "\t::MENU APLICACION::\t" << endl;
-	cout << "1. Insertar Alumno" << endl;
-	cout << "2. Modificar Alumno" << endl;
-	cout << "3. Eliminar Alumno" << endl;
+	cout <<COLOR_MAGENTA<<BOLD_ON<<UNDERLINE_ON<<BLINK<<ON_GREEN<<"\t::MENU APLICACION::" <<RESET<<endl; 
+	cout<<endl;
+
+	cout << COLOR_BRIGHTRED <<"1. Insertar Alumno" <<COLOR_NORMAL<<endl;
+	cout << INVERTIDO<<"2. Modificar Alumno" << endl;
+	cout <<  COLOR_BRIGHTRED <<"3. Eliminar Alumno" << COLOR_NORMAL<<endl;
 	cout << "4. Mostrar Alumnos" << endl;
-	cout << "5. Guardar BD" << endl;
-	cout << "6. Cargar BD" << endl;
-	cout << "7. Guardar Backup (solo coordinador)"<< endl;
-	cout << "8. Cargar Backup (solo coordinador)" << endl;
-	cout << "9. Gestion del Perfil" << endl;
-	cout << "10. Salir de la aplicacion" << endl;
+	cout <<COLOR_BRIGHTRED <<"5. Guardar BD" << COLOR_NORMAL<<endl;
+	cout <<CONGELADO<<"6. Cargar BD" << endl;
+	cout <<COLOR_BRIGHTRED <<"7. Guardar Backup (solo coordinador)"<< COLOR_NORMAL<<endl;
+	cout <<ON_GREEN<<"8. Cargar Backup (solo coordinador)" << RESET<< endl;
+	cout <<GRIS_OSCURO<<COLOR_BRIGHTRED <<"9. Gestion del Perfil" << COLOR_NORMAL<<endl;
+	cout <<BLINK<< "10. Salir de la aplicacion" <<RESET<< endl;
 }
