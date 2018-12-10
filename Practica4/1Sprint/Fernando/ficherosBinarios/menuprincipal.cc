@@ -36,13 +36,17 @@ int main(int argc, char const *argv[]) {
 		switch(opc) {
 			case 1: {	// INSERTAR ALUMNO
 					
-					Alumno a, b,c;
+					Alumno a, b,c,d,e;
 					a.setNombre("rodolfo");
 					a.setCurso(2);
 					b.setNombre("Artura");
 					b.setCurso(3);
-					c.setNombre("Jeremías");
-					c.setCurso(23);
+					c.setNombre("Jeremias");
+					c.setCurso(2);
+					d.setNombre("Pablo de las Casas");
+					d.setCurso(1);
+					e.setNombre("M del Rosario");
+					e.setCurso(3);
 
 				
 					/*
@@ -78,6 +82,8 @@ int main(int argc, char const *argv[]) {
 					miBD.introducirAlumno(a);
 					miBD.introducirAlumno(b);
 					miBD.introducirAlumno(c);
+					miBD.introducirAlumno(d);
+					miBD.introducirAlumno(e);
 					
 			
 
