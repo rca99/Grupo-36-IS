@@ -21,9 +21,26 @@ using namespace std;
 		lider_=lid;
 	}
 
+	Alumno::Alumno(){};
+
+
+	Alumno::Alumno(datosAlumno datos) {
+		dni_=datos.dni;
+		nombre_=datos.nombre;
+		apellidos_=datos.apellidos;
+		fecha_nacimiento_=datos.fecha_nacimiento;
+		email_corporativo_=datos.email_corporativo;
+		domicilio_=datos.domicilio;
+		telefono_=datos.telefono;
+		curso_=datos.curso;
+		nota_=datos.nota;
+		equipo_=datos.equipo;
+		lider_=datos.lider;
+	};
+
 
 	bool Alumno::setLider(bool lider) {
-
+		/*
 		// DEBE recibir la BD ??
 		BD BDaux;
 		// buscarAlumno -- Funcion aun sin definir
@@ -40,4 +57,5 @@ using namespace std;
 		// Si sale del for, significa que no hay lideres
 		lider_=true;
 		return true; // Lider cambiado correctamente
+		*/
 	}

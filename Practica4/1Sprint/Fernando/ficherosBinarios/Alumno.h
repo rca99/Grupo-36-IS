@@ -47,6 +47,8 @@ using namespace std;
 		inline  int getCurso() const {return curso_;}
 		inline void setCurso(int curso) {curso_=curso;}
 
+		bool AlumnoLider();
+
 
 };
 
