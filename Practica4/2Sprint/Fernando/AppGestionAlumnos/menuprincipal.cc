@@ -129,8 +129,6 @@ int main(int argc, char const *argv[]) {
 								cout<<"Encontrado"<<endl;	
 							}
 							*/
-							
-
 							//introducir DNI que buscar
 							cout<<COLOR_DARKGREY<<"Indique el DNI del alumno que desea mostrar: "<<COLOR_BLUE;cin>>DNI;getchar();
 							z.setDNI(DNI);	
@@ -149,6 +147,7 @@ int main(int argc, char const *argv[]) {
 								saltoLinea();
 								cout<<COLOR_RED<<"No Encontrado por DNI"<<RESET<<endl;	
 								saltoLinea();
+								//Introducir el apellido que buscar
 								cout<<COLOR_DARKGREY<<"Indique ahora el apellido: "<<COLOR_BLUE;cin>>Apellidos;getchar();
 								cout<<RESET<<endl;
 								z.setApellidos(Apellidos);
@@ -180,8 +179,6 @@ int main(int argc, char const *argv[]) {
 
 						case 2: {
 							list <Alumno> listaBusqueda;
-							
-
 							saltoLinea();
 							cout<<COLOR_DARKGREY<<"Indique el Equipo de alumnos que desea mostrar: "<<COLOR_BLUE;cin>>equipo;getchar();
 							cout<<RESET<<endl;
