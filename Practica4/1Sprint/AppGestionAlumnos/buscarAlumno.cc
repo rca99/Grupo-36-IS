@@ -48,8 +48,13 @@ bool BD::buscarAlumno(list <Alumno> &lista, Alumno a) {
 
 	
 	
+<<<<<<< HEAD
 
 
+=======
+
+
+>>>>>>> 69f3d9ae77056986d1a6a6d26b40c7ff484cc193
 	/*  
 
 	cout << "Introduzca una opcion de busqueda: /n 1. Buscar por dni /n 2. Buscar por apellidos /n 3. Buscar por grupo" << endl;
@@ -136,6 +141,7 @@ bool BD::buscarAlumnoDNI(list <Alumno> &lista, Alumno a){
 	}
 
 	if (contador>0){
+<<<<<<< HEAD
 
 		return true;
 	}
@@ -175,6 +181,52 @@ bool BD::buscarAlumnoApellido(list <Alumno> &lista, Alumno a){
 
 	
 	}
+=======
+
+		return true;
+	}
+	else{
+
+		if(buscarAlumnoApellido(lista,a)){
+
+			return true;
+		}
+
+		else{return false;}
+
+
+
+	}
+
+	
+
+}	
+bool BD::buscarAlumnoApellido(list <Alumno> &lista, Alumno a){
+
+		// Comprueba que haya alumnos dados de alta
+	int contador=0;
+	if(getNumeroAlumnos()==0) {
+		cout << "No hay alumnos dados de alta en la base de datos" << endl;
+		return false;
+	}
+
+	list <Alumno> listaAuxiliar;
+
+
+
+	listaAuxiliar=getAlumnos();
+	list <Alumno> :: iterator i;
+
+	for(i=listaAuxiliar.begin(); i!=listaAuxiliar.end(); i++) {
+		if((*i).getApellidos()==a.getApellidos()) {
+			(lista).push_back(*i);
+			contador++;
+
+		}
+
+	
+	}
+>>>>>>> 69f3d9ae77056986d1a6a6d26b40c7ff484cc193
 
 	if (contador>0){
 

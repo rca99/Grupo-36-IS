@@ -50,14 +50,20 @@ int main(int argc, char const *argv[]) {
 					d.setDNI("60");
 
 					e.setNombre("M del Rosario");
+<<<<<<< HEAD
 					e.setApellidos("ruiz");
 
+=======
+>>>>>>> 69f3d9ae77056986d1a6a6d26b40c7ff484cc193
 					e.setCurso(3);
 					e.setDNI("70");
 
 					f.setDNI("80");
+<<<<<<< HEAD
 					f.setApellidos("ruiz");
 
+=======
+>>>>>>> 69f3d9ae77056986d1a6a6d26b40c7ff484cc193
 
 
 					miBD.introducirAlumno(a);
@@ -86,6 +92,7 @@ int main(int argc, char const *argv[]) {
 						cout<<"No Encontrado"<<endl;	
 					}
 
+<<<<<<< HEAD
 					list <Alumno> :: iterator i;
 
 					for(i=listaBusqueda.begin(); i!=listaBusqueda.end(); i++) {
@@ -119,6 +126,18 @@ int main(int argc, char const *argv[]) {
 
 
 					
+=======
+
+
+
+					list <Alumno> :: iterator i;
+
+					for(i=listaBusqueda.begin(); i!=listaBusqueda.end(); i++) {
+		
+						cout<<"Nombre:: "<<i->getNombre()<<endl;
+			
+					}
+>>>>>>> 69f3d9ae77056986d1a6a6d26b40c7ff484cc193
 					/*
 					datosAlumno datos;
 
