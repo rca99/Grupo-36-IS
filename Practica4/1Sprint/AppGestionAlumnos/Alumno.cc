@@ -5,8 +5,6 @@
 
 using namespace std;
 
-
-
 	Alumno::Alumno(string nif, string nom, string ape, string fecha, string email, string dom, int tlf, int cur, int calf, int eqp, bool lid){
 		dni_=nif;
 		nombre_=nom;
@@ -19,12 +17,10 @@ using namespace std;
 		nota_=calf;
 		equipo_=eqp;
 		lider_=lid;
-	}
+	};
 
-	Alumno::Alumno(){};
+	Alumno::Alumno(datosAlumno datos){
 
-
-	Alumno::Alumno(datosAlumno datos) {
 		dni_=datos.dni;
 		nombre_=datos.nombre;
 		apellidos_=datos.apellidos;
@@ -36,11 +32,19 @@ using namespace std;
 		nota_=datos.nota;
 		equipo_=datos.equipo;
 		lider_=datos.lider;
+	
+	};
+
+	Alumno::Alumno(){
+
 	};
 
 
-	bool Alumno::setLider(bool lider) {
-		/*
+	bool Alumno::alumnoLider(){
+
+		BD miDataBase;
+
+			/*
 		// DEBE recibir la BD ??
 		BD BDaux;
 		// buscarAlumno -- Funcion aun sin definir
@@ -58,4 +62,10 @@ using namespace std;
 		lider_=true;
 		return true; // Lider cambiado correctamente
 		*/
+
+		return 1;
 	}
+	
+
+
+

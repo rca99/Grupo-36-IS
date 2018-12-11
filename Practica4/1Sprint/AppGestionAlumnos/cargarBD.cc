@@ -30,33 +30,12 @@ Parámetros: no recibe ningún parámetro. Accede a listaAlumnos_ para guardarla
 
 */
 
-std::ostream& bold_on(std::ostream& os)
-{
-    return os << "\e[1m";
-}
 
-std::ostream& bold_off(std::ostream& os)
-{
-    return os << "\e[0m";
-}
-
-
-void centerstring(char* s){
-	   
-	int l=strlen(s);
-	int pos=(int)((80-l)/2);
-	for(int i=0;i<pos;i++){
-	   	cout<<" ";
-	   	cout<<s;
-
-	}
-}
 
 
 
 bool BD::cargarBD(){
 	
-	consoleLinux consola;
 
 	Alumno aux; //para guardar los datos que se van leyendo. Su contenido es añadido a listaAlumnos_ a partir de la función introducirAlumno(alumno)
 
@@ -108,10 +87,10 @@ bool BD::cargarBD(){
 	cout<<listaAlumnos_.size()<<endl;
 
 	list <Alumno>::iterator i;
-	consola.clearScreen();
+
 	system("clear");
 	
-	cout<<bold_on<<"\tLISTA DE ALUMNOS CARGADA EN EL SISTEMA________________"<<bold_off<<endl;
+	cout<<BOLD_ON<<"\tLISTA DE ALUMNOS CARGADA EN EL SISTEMA________________"<<RESET<<endl;
 	cout<<""<<endl;
 	cout<<endl;
 	
@@ -127,14 +106,14 @@ bool BD::cargarBD(){
 		if (i->getNombre()=="rodolfo"){
 			cout.fill('-');
 				
-			cout<<bold_on<<ANSI_COLOR_YELLOW<<left<<setw(40)<<setiosflags (ios::uppercase)<<i->getNombre()<<//setiosflags (std::ios::showbase | std::ios::uppercase)
-											left<<setw(20)<<i->getCurso()<<bold_off<<endl;
+			cout<<BOLD_ON<<COLOR_YELLOW<<left<<setw(40)<<setiosflags (ios::uppercase)<<i->getNombre()<<//setiosflags (std::ios::showbase | std::ios::uppercase)
+											left<<setw(20)<<i->getCurso()<<RESET<<endl;
 		}
 		else{
 			cout.fill(' ');
 			
-			cout<<ANSI_COLOR_BRIGHTRED <<left<<setw(40)<<i->getNombre()<<
-											left<<setw(20)<<i->getCurso()<<ANSI_COLOR_NORMAL<<endl;
+			cout<<COLOR_BRIGHTRED <<left<<setw(40)<<i->getNombre()<<
+											left<<setw(20)<<i->getCurso()<<COLOR_NORMAL<<endl;
 		
 		}
 

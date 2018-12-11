@@ -64,8 +64,11 @@ bool BD::guardarBD(){
 
 		strcpy(dato.nombre, i->getNombre().c_str());
 		//strcpy(dato.apellidos, i->getApellidos().c_str());
-
 		dato.curso=i->getCurso();
+
+
+
+
 		fwrite(&dato, sizeof(datosAlumno), 1, fichero);
 
 	}
