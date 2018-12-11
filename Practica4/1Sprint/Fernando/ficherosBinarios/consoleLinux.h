@@ -19,17 +19,14 @@
 #define COLOR_CYAN    "\x1b[36m"
 #define COLOR_BRIGHTRED    "\x1b[91m"
 
-
-
 #define UNDERLINE_ON "\033[4m"
 #define UNDERLINE_OFF "\033[24m"
 #define BLINK "\033[5m"
 #define FAST_BLINK "\033[6m"; // may or may not be supported
-#define FAINT "\e[2m";
+#define FAINT "\e[2m";// may or may not be supported
 
 #define BOLD_ON "\e[1m"
 
-#define GRIS_CLARO "\033[0m"
 #define GRIS_OSCURO "\033[1m"
 #define INVERTIDO "\033[7m"
 #define OCULTO "\033[8m"
@@ -37,7 +34,6 @@
 #define CONGELADO "\033[8m"
 #define CROSSED_ON "\0x1B[9m"; // may or may not be supported
 #define CROSSED_OFF "\e[29m"; // may or may not be supported
-
 
 #define ITALIC "\e[3m";// may or may not be supported
 #define NO_ITALIC "\e[23m";// may or may not be supported

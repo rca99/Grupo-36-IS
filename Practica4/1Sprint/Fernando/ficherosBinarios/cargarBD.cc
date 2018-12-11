@@ -98,8 +98,8 @@ bool BD::cargarBD(){
 	cout<<setprecision(2);
 	cout.fill('*');
 
-	cout<<left<<setw(40)<<"|Nombre|"<<
-		left<<setw(20)<<"|Curso|"<<endl;
+	cout<<UNDERLINE_ON<<left<<setw(40)<<"|Nombre|"<<
+		UNDERLINE_ON<<left<<setw(20)<<"|Curso|"<<RESET<<endl;
 	for (i = listaAlumnos_.begin(); i !=listaAlumnos_.end(); ++i)
 	{
 

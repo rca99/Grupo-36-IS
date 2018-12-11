@@ -2,7 +2,7 @@
 // MENU PRINCIPAL
 // --------------
 
-//g++ -g -Wall  menuprincipal.cc guardarBD.cc cargarBD.cc Profesor.h Alumno.h consoleLinux.h BD.h Alumno.cc BuscarAlumno.cc introducirAlumno.cc gestionLideres.cc
+//g++ -g -Wall  menuprincipal.cc guardarBD.cc cargarBD.cc buscarAlumno.cc Profesor.h Alumno.h consoleLinux.h BD.h Alumno.cc
 
 
 #include <iostream>
@@ -12,6 +12,7 @@
 #include "Alumno.h"
 #include "Profesor.h"
 #include "BD.h"
+#include "consoleLinux.h"
 
 using namespace std;
 
@@ -30,6 +31,95 @@ int main(int argc, char const *argv[]) {
 		cin >> opc;
 		switch(opc) {
 			case 1: {	// INSERTAR ALUMNO
+					
+
+					Alumno a, b,c,d,e,f;
+					a.setNombre("rodolfo");
+					a.setCurso(2);
+					a.setDNI("30");
+					b.setNombre("Artura");
+					b.setCurso(3);
+					b.setDNI("30");
+
+					c.setNombre("Jeremias");
+					c.setCurso(2);
+					c.setDNI("50");
+
+					d.setNombre("Pablo de las Casas");
+					d.setCurso(1);
+					d.setDNI("60");
+
+					e.setNombre("M del Rosario");
+					e.setApellidos("ruiz");
+
+					e.setCurso(3);
+					e.setDNI("70");
+
+					f.setDNI("80");
+					f.setApellidos("ruiz");
+
+
+
+					miBD.introducirAlumno(a);
+					miBD.addNumeroAlumnos();
+					miBD.introducirAlumno(b);
+					miBD.addNumeroAlumnos();
+
+					miBD.introducirAlumno(c);
+					miBD.addNumeroAlumnos();
+
+					miBD.introducirAlumno(d);
+					miBD.addNumeroAlumnos();
+
+					miBD.introducirAlumno(e);
+					miBD.addNumeroAlumnos();
+					
+					cout<<BOLD_ON<<COLOR_YELLOW<<BLINK<<miBD.getNumeroAlumnos()<<RESET<<endl;
+
+					list <Alumno> listaBusqueda;
+
+
+					if (miBD.buscarAlumnoDNI(listaBusqueda, b)){
+						cout<<"Encontrado"<<endl;	
+					}
+					else{
+						cout<<"No Encontrado"<<endl;	
+					}
+
+					list <Alumno> :: iterator i;
+
+					for(i=listaBusqueda.begin(); i!=listaBusqueda.end(); i++) {
+		
+						cout<<"Nombre:: "<<i->getNombre()<<endl;
+			
+					}
+
+					//////////////////**************************************
+					listaBusqueda.clear();
+					
+					if (miBD.buscarAlumnoDNI(listaBusqueda, f)){
+						cout<<"Encontrado"<<endl;	
+					}
+					else{
+						cout<<"No Encontrado"<<endl;	
+						if(miBD.buscarAlumnoApellido(listaBusqueda, f)){
+							cout<<"Encontrado"<<endl;	
+
+						}
+
+					}
+
+					for(i=listaBusqueda.begin(); i!=listaBusqueda.end(); i++) {
+		
+						cout<<"Nombre-----:: "<<i->getNombre()<<endl;
+			
+					}
+
+					////////////////***************************************
+
+
+					
+					/*
 					datosAlumno datos;
 
 					cout << "Introduzca los datos del nuevo alumno" << endl;
@@ -60,6 +150,8 @@ int main(int argc, char const *argv[]) {
 					Alumno aux(datos);	// Constructor con estructura
 
 					miBD.introducirAlumno(aux);
+
+					*/
 				} break;
 			case 2: {	// MODIFICAR ALUMNO
 					

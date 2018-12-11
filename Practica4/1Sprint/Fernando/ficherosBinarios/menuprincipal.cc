@@ -44,57 +44,65 @@ int main(int argc, char const *argv[]) {
 		switch(opc) {
 			case 1: {	// INSERTAR ALUMNO
 					
-					Alumno a, b,c,d,e;
+				Alumno a, b,c,d,e,f;
 					a.setNombre("rodolfo");
 					a.setCurso(2);
+					a.setDNI("30");
 					b.setNombre("Artura");
 					b.setCurso(3);
+					b.setDNI("40");
+
 					c.setNombre("Jeremias");
 					c.setCurso(2);
+					c.setDNI("50");
+
 					d.setNombre("Pablo de las Casas");
 					d.setCurso(1);
+					d.setDNI("60");
+
 					e.setNombre("M del Rosario");
 					e.setCurso(3);
+					e.setDNI("70");
 
-				
-					/*
-					datosAlumno datos;
-					cout << "Introduzca los datos del nuevo alumno" << endl;
-					cout << "DNI : " << endl;
-					cin >> datos.dni;
-					cout << "Nombre : " << endl;
-					cin >> datos.nombre;
-					cout << "Apellidos : " << endl;
-					cin >> datos.apellidos;
-					cout << "Fecha de nacimiento : " << endl;
-					cin >> datos.fecha_nacimiento;
-					cout << "Telefono : " << endl;
-					cin >> datos.telefono;
-					cout << "Email corporativo : " << endl;
-					cin >> datos.email_corporativo;
-					cout << "Domicilio : " << endl;
-					cin >> datos.domicilio;
-					cout << "Curso : " << endl;
-					cin >> datos.curso;
-					cout << "Nota : " << endl;
-					cin >> datos.nota;
-					cout << "Equipo : " << endl;
-					cin >> datos.equipo;
-					cout << "Lider (1: Si; 0: No): " << endl;
-					cin >> datos.lider;
+					f.setDNI("80");
 
-					Alumno aux(datos);	// Constructor con estructura
-					
-					listaAuxiliar.push_back(aux);
-					*/
+
 					miBD.introducirAlumno(a);
+					miBD.addNumeroAlumnos();
 					miBD.introducirAlumno(b);
-					miBD.introducirAlumno(c);
-					miBD.introducirAlumno(d);
-					miBD.introducirAlumno(e);
-					
-			
+					miBD.addNumeroAlumnos();
 
+					miBD.introducirAlumno(c);
+					miBD.addNumeroAlumnos();
+
+					miBD.introducirAlumno(d);
+					miBD.addNumeroAlumnos();
+
+					miBD.introducirAlumno(e);
+					miBD.addNumeroAlumnos();
+					
+					cout<<BOLD_ON<<COLOR_YELLOW<<BLINK<<miBD.getNumeroAlumnos()<<RESET<<endl;
+
+
+					if (miBD.buscarAlumno(f)){
+						cout<<"Encontrado";	
+					}
+					else{
+						cout<<"No Encontrado"<<endl;	
+
+
+					}
+
+					if (miBD.buscarAlumno(a)){
+						cout<<"Encontrado";	
+					}
+					else{
+						cout<<"No Encontrado"<<endl;	
+
+
+					}
+		
+		
 
 				} break;
 			case 2: {	// MODIFICAR ALUMNO

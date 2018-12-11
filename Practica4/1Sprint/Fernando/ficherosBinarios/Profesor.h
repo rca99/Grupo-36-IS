@@ -22,7 +22,7 @@ using namespace std;
 		inline string getRol() const {return rol_;}
 		void setRol();
 		inline int *getFicheroBD() const {return ficheroBD_;}	// hay que modificarlo en el diagrama de clases
-		void setFicheroBD(datosAlumno BD){ficheroBD_=(int*)&BD;}
+		void setFicheroBD(datosAlumno BD){ficheroBD_=(int*)&BD;} // hay que modificarlo en el diagrama de clases
 
 		
 	};

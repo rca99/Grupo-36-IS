@@ -41,15 +41,17 @@ public:
 	inline list <Alumno> getAlumnos() const {return listaAlumnos_;}
 	inline void setAlumnos(list <Alumno> nuevalista){listaAlumnos_=nuevalista;};
 	inline string getNombreFichero() const {return nombreFichero_;}
-	void setNombreFichero(string nuevonombre);
+	inline void setNombreFichero(string nuevonombre){nombreFichero_=nuevonombre;}
 	inline int getNumeroAlumnos() const {return numeroAlumnos_;}
-	void setNumeroAlumnos();
+	inline void addNumeroAlumnos(){numeroAlumnos_++;}
 	bool introducirAlumno(Alumno nuevoAlumno){listaAlumnos_.push_back(nuevoAlumno);return 1;};
 
 	
 	bool modificarAlumno(Alumno alumnox);
 	bool eliminarAlumno(Alumno alumnox);
 	bool buscarAlumno(Alumno alumnox);
+	bool buscarAlumno(int equipo);
+	
 	//list <Alumno> buscarAlumno(int grupo);
 
 	inline BD(string nombreFichero="gestionAlumnos"){

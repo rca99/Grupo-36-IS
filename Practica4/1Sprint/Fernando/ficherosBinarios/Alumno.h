@@ -8,13 +8,13 @@
 
 using namespace std;
 	
-	typedef struct{
+	struct datosAlumno{
 			//Al leer ficheros, los métodos no aceptan bien tipos de archivo string y salía un segmentation fault al cargar el fichero
 			char nombre[30], dni[10],apellidos[30], fecha_nacimiento[10], email_corporativo[30], domicilio[30];
 			int curso, telefono, nota, equipo;
 			bool lider;
 
-	}datosAlumno;
+	};
 
 
 	class Alumno {
@@ -44,12 +44,31 @@ using namespace std;
 		inline void setApellidos(string ape) {apellidos_=ape;}
 
 
-		inline  int getCurso() const {return curso_;}
-		inline void setCurso(int curso) {curso_=curso;}
+		inline string getFecha_nacimiento() const {return fecha_nacimiento_;}
+		inline void setFecha_nacimiento(string fecha) {fecha_nacimiento_=fecha;}
 
-		bool AlumnoLider();
+		inline int getTelefono() const {return telefono_;}
+		inline void setTelefono(int tlf) {telefono_=tlf;}
 
+		inline string getEmail_corporativo() const {return email_corporativo_;}
+		inline void setEmail_corporativo(string email) {email_corporativo_=email;}
 
+		inline string getDomicilio() const {return domicilio_;}
+		inline void setDomicilio(string dom) {domicilio_=dom;}
+
+		inline int getCurso() const {return curso_;}
+		inline void setCurso(int cur) {curso_=cur;}
+
+		inline int getNota() const {return nota_;}
+		inline void setNota(int calf) {nota_=calf;}
+
+		inline int getEquipo() const {return equipo_;}
+		inline void setEquipo(int eqp) {equipo_=eqp;}
+
+		inline bool getLider() const {return lider_;}
+		inline void setLider(bool lid){lider_=lid;}			// hay que modificarlo en el diagrama de clases
+
+		bool alumnoLider();
 };
 
 #endif

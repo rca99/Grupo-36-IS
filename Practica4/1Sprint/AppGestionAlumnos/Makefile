@@ -15,7 +15,7 @@
 # Points to the root of Google Test, relative to where this file is.
 # Remember to tweak this if you move this file.
 #GTEST_DIR = /media/fernando/DATOS/101/segundo/IS/googletest/
-GTEST_DIR = /home/fernando/Documentos/101/IS/googletest/
+GTEST_DIR = /home/fernando/Documentos/101/segundo/IS/googletest/
 
 # Where to find user code.
 # USER_DIR = ../samples
@@ -30,7 +30,10 @@ CXXFLAGS += -g -Wall -Wextra -pthread
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
+
+
 TESTS = pruebas_unittest
+
 
 # All Google Test headers.  Usually you shouldn't change this
 # definition.
@@ -74,17 +77,34 @@ gtest_main.a : gtest-all.o gtest_main.o
 
 Profesor.o: Profesor.cc Profesor.h
 
-Alumno.o : Alumno.cc Alumno.h BD.cc BD.h
+	$(CXX) -g -Wall Profesor.cc $@
+
+Alumno.o : Alumno.cc Alumno.h BD.h
+
+	$(CXX) -g -Wall Alumno.cc $@
+
 
 cargarBD.o: cargarBD.cc BD.h Alumno.h
 
+	$(CXX) -g -Wall cargarBD.cc $@
+
+
 guardarBD.o: guardarBD.cc BD.h Alumno.h
+
+	$(CXX) -g -Wall guardarBD.cc $@
+
 
 menuprincipal.o: menuprincipal.cc BD.h Profesor.h Alumno.h
 
-pruebas_unittest.o : pruebas_unittest.cc Alumno.h Alumno.cc
+	$(CXX) -g -Wall $^ $@
 
-gestion_alumnos : menuprincipal.o guardarBD.o cargaBD.o Alumno.o Profesor.o
+
+gestion_alumnos.o : menuprincipal.o guardarBD.o cargaBD.o Alumno.o Profesor.o gtest_main.a
+	
+	$(CXX) -g -Wall guardarBD.cc $@
+
+
+pruebas_unittest.o : pruebas_unittest.cc Alumno.h Alumno.cc
 
 pruebas_unittest : Alumno.o pruebas_unittest.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@

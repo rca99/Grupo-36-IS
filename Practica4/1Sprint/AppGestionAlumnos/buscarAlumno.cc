@@ -8,23 +8,51 @@
 
 using namespace std;
 
-bool BD::buscarAlumno(list <Alumno> &alumnox, datosAlumno datos) {
+bool BD::buscarAlumno(list <Alumno> &lista, Alumno a) {
 	// Comprueba que haya alumnos dados de alta
+	
+	int contador=0;
 	if(getNumeroAlumnos()==0) {
 		cout << "No hay alumnos dados de alta en la base de datos" << endl;
 		return false;
 	}
 
-	list <Alumno> :: iterator i;
-	for(i=listaAlumno_.begin(); i!=listaAlumno_.end(); i++) {
-		if((*i).getDni()==datos.dni) {alumnox.pushback();}
-		if((*i).getApellidos()==datos.apellidos) {alumnox.pushback();}
-		if((*i).getEquipo()==datos.equipo) {alumnox.pushback();}
-	} 
-	return false;
-}
+	list <Alumno> listaAuxiliar;
 
-	/*  cout << "Introduzca una opcion de busqueda: /n 1. Buscar por dni /n 2. Buscar por apellidos /n 3. Buscar por grupo" << endl;
+
+
+	listaAuxiliar=getAlumnos();
+	list <Alumno> :: iterator i;
+
+	for(i=listaAuxiliar.begin(); i!=listaAuxiliar.end(); i++) {
+		if((*i).getDNI()==a.getDNI()) {
+			(lista).push_back(*i);
+			contador++;
+
+		}
+
+	
+	}
+
+	if (contador>0){
+
+		return true;
+	}
+	else{return false;}
+
+		
+
+		/*if((*i).getApellidos()==datos.apellidos) {alumnox.pushback();}
+		if((*i).getEquipo()==datos.equipo) {alumnox.pushback();}
+		*/
+
+	
+	
+
+
+	/*  
+
+	cout << "Introduzca una opcion de busqueda: /n 1. Buscar por dni /n 2. Buscar por apellidos /n 3. Buscar por grupo" << endl;
 	cin >> opc;
 	switch(opc) {
 			case 1: { // Buscar por dni
@@ -51,7 +79,7 @@ bool BD::buscarAlumno(list <Alumno> &alumnox, datosAlumno datos) {
 
 			} break;
 			default: cout << "Opcion no valida" << endl;
-	}		*/
+	}		
 
 
 	bool datosBusqueda(datosAlumno &datos) {
@@ -75,7 +103,105 @@ bool BD::buscarAlumno(list <Alumno> &alumnox, datosAlumno datos) {
 		cout << "Opcion no valida";
 		return false;
 	}
+	*/
 
-	return true;
+
+
+}
+
+
+bool BD::buscarAlumnoDNI(list <Alumno> &lista, Alumno a){
+	// Comprueba que haya alumnos dados de alta
+	int contador=0;
+	if(getNumeroAlumnos()==0) {
+		cout << "No hay alumnos dados de alta en la base de datos" << endl;
+		return false;
 	}
+
+	list <Alumno> listaAuxiliar;
+
+
+
+	listaAuxiliar=getAlumnos();
+	list <Alumno> :: iterator i;
+
+	for(i=listaAuxiliar.begin(); i!=listaAuxiliar.end(); i++) {
+		if((*i).getDNI()==a.getDNI()) {
+			(lista).push_back(*i);
+			contador++;
+
+		}
+
+	
+	}
+
+	if (contador>0){
+
+		return true;
+	}
+	else{
+
+	
+		
+		return false;
+
+	}
+
+	
+
+}	
+bool BD::buscarAlumnoApellido(list <Alumno> &lista, Alumno a){
+
+		// Comprueba que haya alumnos dados de alta
+	int contador=0;
+	if(getNumeroAlumnos()==0) {
+		cout << "No hay alumnos dados de alta en la base de datos" << endl;
+		return false;
+	}
+
+	list <Alumno> listaAuxiliar;
+
+
+
+	listaAuxiliar=getAlumnos();
+	list <Alumno> :: iterator i;
+
+	for(i=listaAuxiliar.begin(); i!=listaAuxiliar.end(); i++) {
+		if((*i).getApellidos()==a.getApellidos()) {
+			(lista).push_back(*i);
+			contador++;
+
+		}
+
+	
+	}
+
+	if (contador>0){
+
+		return true;
+	}
+	else{
+
+		if(buscarAlumnoDNI(lista,a)){
+
+			return true;
+		}
+
+		else{return false;}
+
+
+
+	}
+
+	
+
+}
+
+
+
+
+
+
+
+
 	
