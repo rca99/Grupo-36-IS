@@ -29,11 +29,12 @@ using namespace std;
 	public:
 
 	
+	     int operator<(const Alumno &rhs) const;
 
 		Alumno(string nif, string nom, string ape, string fecha, string email, string dom, int tlf, int cur, int calf, int eqp, bool lid);
 		Alumno(datosAlumno datos);
 		Alumno();
-		
+
 		inline  string getDNI() const {return dni_;}
 		inline void setDNI(string dni) {dni_=dni;}
 
@@ -67,8 +68,13 @@ using namespace std;
 
 		inline bool getLider() const {return lider_;}
 		inline void setLider(bool lid){lider_=lid;}			// hay que modificarlo en el diagrama de clases
+		//bool operator<(const Alumno& A , const Alumno& B);
 
 		bool alumnoLider();
-};
+
+
+
+
+	};
 
 #endif

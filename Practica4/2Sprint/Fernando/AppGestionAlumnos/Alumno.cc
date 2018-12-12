@@ -68,4 +68,28 @@ using namespace std;
 	
 
 
+/*
 
+int Alumno::operator<(const Alumno &rhs) const{
+
+	   if( this->nombre_ <rhs.nombre_) return 1;
+
+
+	   return 0;
+
+}
+*/
+
+int Alumno::operator<(const Alumno &rhs) const
+
+	{
+
+	   if( this->nombre_ == rhs.nombre_ && this->apellidos_ == rhs.apellidos_) return 1;
+
+	   if( this->nombre_ == rhs.nombre_ && this->apellidos_ < rhs.apellidos_) return 1;
+
+	   if( this->nombre_ < rhs.nombre_ ) return 1;
+
+	   return 0;
+
+	}

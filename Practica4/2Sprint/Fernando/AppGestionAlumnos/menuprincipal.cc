@@ -61,12 +61,13 @@ int main(int argc, char const *argv[]) {
 					c.setCurso(2);
 					c.setDNI("50");
 
-					d.setNombre("Pablo de las Casas");
+					d.setNombre("M del Rosario");
+					d.setApellidos("Alba Olivares");
 					d.setCurso(1);
 					d.setDNI("60");
 
 					e.setNombre("M del Rosario");
-					e.setApellidos("ruiz");
+					e.setApellidos("ruiz Olivares");
 					e.setCurso(3);
 					e.setDNI("70");
 
@@ -148,9 +149,10 @@ int main(int argc, char const *argv[]) {
 								cout<<COLOR_RED<<"No Encontrado por DNI"<<RESET<<endl;	
 								saltoLinea();
 								//Introducir el apellido que buscar
-								cout<<COLOR_DARKGREY<<"Indique ahora el apellido: "<<COLOR_BLUE;cin>>Apellidos;getchar();
+								cout<<COLOR_DARKGREY<<"Indique ahora el apellido: "<<COLOR_BLUE;getline(cin,Apellidos);
 								cout<<RESET<<endl;
 								z.setApellidos(Apellidos);
+
 
 								//fgets (Apellidos , 80 , stdin);
 								//quitarEspacios(Apellidos);

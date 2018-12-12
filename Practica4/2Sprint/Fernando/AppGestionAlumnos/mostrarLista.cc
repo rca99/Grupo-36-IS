@@ -9,12 +9,12 @@
 
 
 void saltolinea();
-//bool operator<( const Alumno& A )
+
 
 
 void BD::mostrarAlumno(list <Alumno> lista){
 
-	//lista.sort();
+	lista.sort();
 	list <Alumno>::iterator i;
 		cout.fill(' ');
 
@@ -58,7 +58,7 @@ void BD::mostrarAlumno(){
 	cout.fill(' ');
 	list<Alumno> aux;
 	aux=getAlumnos();
-	//aux.sort();
+	aux.sort();
 
 	cout<<BOLD_ON<<left<<setw(100)<<"|::LISTA ALUMNOS::|"<<RESET<<endl;
 	//saltolinea();
@@ -74,6 +74,7 @@ void BD::mostrarAlumno(){
 	cout.fill('-');
 
 	cout<<BOLD_ON<<COLOR_DARKGREY<<left<<setw(30)<<"|Nombre|"<<
+		left<<setw(30)<<"|Apellidos|"<<RESET<<
 		left<<setw(6)<<"|Curso|"<<RESET<<endl;
 	
 
@@ -83,12 +84,14 @@ void BD::mostrarAlumno(){
 			cout.fill('-');
 				
 			cout<<BOLD_ON<<COLOR_BRIGHTGREEN<<BLINK<<left<<setw(30)<<setiosflags (ios::uppercase)<<i->getNombre()<<//setiosflags (std::ios::showbase | std::ios::uppercase)
+											left<<setw(30)<<i->getApellidos()<<
 											left<<setw(6)<<i->getCurso()<<RESET<<endl;
 		}
 		else{
 			cout.fill(' ');
 			
 			cout<<COLOR_LIGTHCYAN <<left<<setw(30)<<i->getNombre()<<
+											left<<setw(30)<<i->getApellidos()<<RESET<<
 											left<<setw(6)<<i->getCurso()<<COLOR_NORMAL<<endl;
 		}	
 
@@ -122,9 +125,6 @@ void saltolinea(){
 
 
 }
-
-
-
 
 
 
