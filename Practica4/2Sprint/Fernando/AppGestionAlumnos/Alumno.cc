@@ -5,7 +5,7 @@
 
 using namespace std;
 
-	Alumno::Alumno(string nif, string nom, string ape, string fecha, string email, string dom, int tlf, int cur, int calf, int eqp, bool lid){
+	Alumno::Alumno(string nif, string nom, string ape, string fecha, string email, string dom, int tlf, int cur, int calf, int eqp, bool lid=0){
 		dni_=nif;
 		nombre_=nom;
 		apellidos_=ape;
@@ -31,12 +31,12 @@ using namespace std;
 		curso_=datos.curso;
 		nota_=datos.nota;
 		equipo_=datos.equipo;
-		lider_=datos.lider;
+		lider_=0;
 	
 	};
 
 	Alumno::Alumno(){
-
+		lider_=0;
 	};
 
 

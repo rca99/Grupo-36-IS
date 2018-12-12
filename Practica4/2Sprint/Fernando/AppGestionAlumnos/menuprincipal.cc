@@ -186,14 +186,14 @@ int main(int argc, char const *argv[]) {
 							if(miBD.buscarAlumno(listaBusqueda, equipo)){
 								limpiarPantalla();
 								saltoLinea();
-								cout<<COLOR_GREEN<<"Se ha encontrado los siguientes alumnos que forman parte del equipo: "<<equipo<<RESET<<endl;	
+								cout<<COLOR_GREEN<<"Se han encontrado "<<listaBusqueda.size()<<" alumno/s que forman parte del equipo: "<<equipo<<RESET<<endl;	
 								saltoLinea();	
 								miBD.mostrarAlumno(listaBusqueda);
 
 							}
 							else{
 								saltoLinea();
-								cout<<COLOR_RED<<"Tampoco Encontrado por apellido"<<endl;	
+								cout<<COLOR_RED<<"El equipo "<<equipo<<" no tiene alumnos"<<endl;	
 							}
 
 							saltoLinea();
