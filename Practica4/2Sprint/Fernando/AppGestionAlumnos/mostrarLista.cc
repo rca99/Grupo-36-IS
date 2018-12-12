@@ -7,14 +7,20 @@
 #include "consoleLinux.h"//colores menu
 #include <iomanip>//formato cout
 
+/*
 
+		string dni_, nombre_, apellidos_, fecha_nacimiento_, email_corporativo_, domicilio_;
+		int telefono_, curso_, nota_, equipo_;
+		bool lider_;
+*/
 void saltolinea();
+int ordenarDNI(const Alumno &A, const Alumno &B);
 
 
 
 void BD::mostrarAlumno(list <Alumno> lista){
 
-	lista.sort();
+	lista.sort(ordenarDNI);
 	list <Alumno>::iterator i;
 		cout.fill(' ');
 
@@ -58,7 +64,7 @@ void BD::mostrarAlumno(){
 	cout.fill(' ');
 	list<Alumno> aux;
 	aux=getAlumnos();
-	aux.sort();
+	aux.sort(ordenarDNI);
 
 	cout<<BOLD_ON<<left<<setw(100)<<"|::LISTA ALUMNOS::|"<<RESET<<endl;
 	//saltolinea();
@@ -73,9 +79,15 @@ void BD::mostrarAlumno(){
 	cout<<setprecision(2);
 	cout.fill('-');
 
-	cout<<BOLD_ON<<COLOR_DARKGREY<<left<<setw(30)<<"|Nombre|"<<
-		left<<setw(30)<<"|Apellidos|"<<RESET<<
-		left<<setw(6)<<"|Curso|"<<RESET<<endl;
+	cout<<BOLD_ON<<COLOR_DARKGREY<<left<<setw(10)<<"|DNI|"<<
+		left<<setw(30)<<"|Nombre|"<<
+		left<<setw(30)<<"|Apellidos|"<<
+		left<<setw(5)<<"|Curso|"<<
+		left<<setw(8)<<"|Fecha Nac|"<<
+		left<<setw(8)<<"|fecha_n|"<<
+		left<<setw(8)<<"|fecha_nacimiento|"<<
+		left<<setw(8)<<"|fecha_nacimiento|"<<
+		left<<setw(8)<<"|fecha_nacimiento|"<<RESET<<endl;
 	
 
 	for (i = aux.begin(); i!=aux.end(); ++i){
@@ -126,5 +138,18 @@ void saltolinea(){
 
 }
 
+int ordenarDNI(const Alumno &A, const Alumno &B){
+
+ 	if( A.getNombre() == B.getNombre() && A.getApellidos() == B.getApellidos()) return 1;
+
+	   if( A.getNombre() == B.getNombre() && A.getApellidos() < B.getApellidos()) return 1;
+
+	   if( A.getNombre() < B.getNombre() ) return 1;
+
+	   return 0;
+
+
+
+}
 
 

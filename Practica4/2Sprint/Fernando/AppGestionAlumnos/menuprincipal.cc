@@ -45,7 +45,7 @@ int main(int argc, char const *argv[]) {
 			case 1: {	// INSERTAR ALUMNO
 					
 
-					Alumno a, b,c,d,e,f;
+					Alumno a, b,c,d,e,f,g;
 					a.setNombre("rodolfo");
 					a.setCurso(2);
 					a.setDNI("30");
@@ -73,6 +73,13 @@ int main(int argc, char const *argv[]) {
 
 					f.setDNI("80");
 					f.setApellidos("ruiz");
+					f.setEquipo(18);
+					f.setLider(true);
+
+					g.setDNI("803");
+					g.setApellidos("ruriz");
+					g.setEquipo(18);
+					g.setLider(true);
 
 					miBD.introducirAlumno(a);
 					miBD.addNumeroAlumnos();
