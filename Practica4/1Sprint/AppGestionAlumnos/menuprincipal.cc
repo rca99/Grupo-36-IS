@@ -113,7 +113,6 @@ int main(int argc, char const *argv[]) {
 
 
 
-					list <Alumno> :: iterator i;
 
 					for(i=listaBusqueda.begin(); i!=listaBusqueda.end(); i++) {
 		
