@@ -186,14 +186,14 @@ int main(int argc, char const *argv[]) {
 							if(miBD.buscarAlumno(listaBusqueda, equipo)){
 								limpiarPantalla();
 								saltoLinea();
-								cout<<COLOR_GREEN<<"Se ha encontrado los siguientes alumnos que forman parte del equipo: "<<equipo<<RESET<<endl;	
+								cout<<COLOR_GREEN<<"Se han encontrado "<<listaBusqueda.size()<<" alumno/s que forman parte del equipo: "<<equipo<<RESET<<endl;	
 								saltoLinea();	
 								miBD.mostrarAlumno(listaBusqueda);
 
 							}
 							else{
 								saltoLinea();
-								cout<<COLOR_RED<<"Tampoco Encontrado por apellido"<<endl;	
+								cout<<COLOR_RED<<"El equipo "<<equipo<<" no tiene alumnos"<<endl;	
 							}
 
 							saltoLinea();
@@ -205,6 +205,7 @@ int main(int argc, char const *argv[]) {
 
 
 						case 3: {
+							saltoLinea();
 							miBD.mostrarAlumno();
 							saltoLinea();
 							cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
@@ -348,8 +349,15 @@ int main(int argc, char const *argv[]) {
 }
 
 void mostrarOpciones() {
-	
-	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<UNDERLINE_ON<<left<<setw(40)<<"|::MENÚ APLICACIÓN::|"<<RESET<<endl;
+	cout.fill('*');
+	saltoLinea();
+	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<""<<endl;
+	cout.fill(' ');
+	saltoLinea();
+	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<left<<setw(40)<<"|::MENÚ APLICACIÓN::|"<<RESET<<endl;
+	saltoLinea();
+	cout.fill('*');
+	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<""<<endl;
 	saltoLinea();
 	saltoLinea();
 	cout <<"\t"<<COLOR_DARKGREY<< "1. Insertar Alumno" << endl;
@@ -368,8 +376,14 @@ void mostrarOpciones() {
 void OpcionesMostrar(){
 	
 	cout.fill('*');
-	
-	cout<<"\t"<<BOLD_ON<<COLOR_GREEN<<UNDERLINE_ON<<left<<setw(40)<<"|::MOSTRAR ALUMNOS::|"<<RESET<<endl;
+	saltoLinea();
+	cout<<"\t"<<BOLD_ON<<COLOR_GREEN<<setw(40)<<""<<endl;
+	cout.fill(' ');
+	saltoLinea();
+	cout<<"\t"<<BOLD_ON<<COLOR_GREEN<<left<<setw(40)<<"|::MOSTRAR ALUMNOS::|"<<RESET<<endl;
+	saltoLinea();
+	cout.fill('*');
+	cout<<"\t"<<BOLD_ON<<COLOR_GREEN<<setw(40)<<""<<endl;
 	saltoLinea();
 	saltoLinea();
 	cout <<"\t"<<COLOR_GREEN<< "1. Mostrar Alumno" << RESET<<endl;

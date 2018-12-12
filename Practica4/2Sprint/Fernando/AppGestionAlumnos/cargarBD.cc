@@ -105,10 +105,10 @@ bool BD::cargarBD(){
 	for (i = listaAlumnos_.begin(); i !=listaAlumnos_.end(); ++i)
 	{
 
-		if (i->getNombre()=="rodolfo"){
+		if (i->getLider()==1){
 			cout.fill('-');
 				
-			cout<<BOLD_ON<<COLOR_YELLOW<<left<<setw(40)<<setiosflags (ios::uppercase)<<i->getNombre()<<//setiosflags (std::ios::showbase | std::ios::uppercase)
+			cout<<BOLD_ON<<COLOR_YELLOW<<BLINK<<left<<setw(40)<<setiosflags (ios::uppercase)<<i->getNombre()<<//setiosflags (std::ios::showbase | std::ios::uppercase)
 											left<<setw(20)<<i->getCurso()<<RESET<<endl;
 		}
 		else{

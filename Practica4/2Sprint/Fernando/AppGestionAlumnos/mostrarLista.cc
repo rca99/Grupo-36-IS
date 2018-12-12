@@ -1,17 +1,29 @@
 //mostrarLista.cc
 
 #include "BD.h"
+#include "Alumno.h"
 #include <iostream>
 #include <list>
 #include "consoleLinux.h"//colores menu
 #include <iomanip>//formato cout
 
+
+void saltolinea();
+//bool operator<( const Alumno& A )
+
+
 void BD::mostrarAlumno(list <Alumno> lista){
 
+	//lista.sort();
 	list <Alumno>::iterator i;
-	cout.fill('*');
+		cout.fill(' ');
 
-	cout<<BOLD_ON<<left<<setw(40)<<"|::LISTA ALUMNOS::|"<<RESET<<endl;
+	cout<<BOLD_ON<<left<<setw(100)<<"|::LISTA ALUMNOS::|"<<RESET<<endl;
+	//saltolinea();
+	cout.fill(' ');
+	cout<<BOLD_ON<<UNDERLINE_ON<<setw(100)<<""<<RESET<<endl;
+	saltolinea();
+	saltolinea();
 	
 	cout<<""<<endl;
 	cout<<endl;
@@ -28,13 +40,13 @@ void BD::mostrarAlumno(list <Alumno> lista){
 		if (i->getLider()==1){
 			cout.fill('-');
 				
-			cout<<BOLD_ON<<COLOR_YELLOW<<BLINK<<left<<setw(40)<<setiosflags (ios::uppercase)<<i->getNombre()<<//setiosflags (std::ios::showbase | std::ios::uppercase)
+			cout<<BOLD_ON<<COLOR_BRIGHTGREEN<<BLINK<<left<<setw(40)<<setiosflags (ios::uppercase)<<i->getNombre()<<//setiosflags (std::ios::showbase | std::ios::uppercase)
 											left<<setw(20)<<i->getCurso()<<RESET<<endl;
 		}
 		else{
 			cout.fill(' ');
 			
-			cout<<COLOR_BRIGHTRED <<left<<setw(40)<<i->getNombre()<<
+			cout<<COLOR_LIGTHCYAN <<left<<setw(40)<<i->getNombre()<<
 											left<<setw(20)<<i->getCurso()<<COLOR_NORMAL<<endl;
 		}
 	}
@@ -43,11 +55,17 @@ void BD::mostrarAlumno(list <Alumno> lista){
 void BD::mostrarAlumno(){
 
 	list <Alumno>::iterator i;
-	cout.fill('*');
+	cout.fill(' ');
 	list<Alumno> aux;
 	aux=getAlumnos();
-	cout<<BOLD_ON<<left<<setw(80)<<"|::LISTA ALUMNOS::|"<<RESET<<endl;
-	
+	//aux.sort();
+
+	cout<<BOLD_ON<<left<<setw(100)<<"|::LISTA ALUMNOS::|"<<RESET<<endl;
+	//saltolinea();
+	cout.fill(' ');
+	cout<<BOLD_ON<<UNDERLINE_ON<<setw(100)<<""<<RESET<<endl;
+	saltolinea();
+	saltolinea();
 	cout<<""<<endl;
 	cout<<endl;
 	
@@ -61,21 +79,49 @@ void BD::mostrarAlumno(){
 
 	for (i = aux.begin(); i!=aux.end(); ++i){
 
-		cout.fill(' ');
+		if (i->getLider()==1){
+			cout.fill('-');
+				
+			cout<<BOLD_ON<<COLOR_BRIGHTGREEN<<BLINK<<left<<setw(30)<<setiosflags (ios::uppercase)<<i->getNombre()<<//setiosflags (std::ios::showbase | std::ios::uppercase)
+											left<<setw(6)<<i->getCurso()<<RESET<<endl;
+		}
+		else{
+			cout.fill(' ');
 			
-		cout<<COLOR_BRIGHTBLUE<<left<<setw(30)<<i->getNombre()<<
-			left<<setw(6)<<i->getCurso()<<COLOR_NORMAL<<endl;
-			
+			cout<<COLOR_LIGTHCYAN <<left<<setw(30)<<i->getNombre()<<
+											left<<setw(6)<<i->getCurso()<<COLOR_NORMAL<<endl;
+		}	
 
 	}
 
+}
 
 
+
+void OpcionesOrden(){
+	
+	cout.fill('*');
+	saltolinea();
+	cout<<"\t"<<BOLD_ON<<COLOR_CYAN<<UNDERLINE_ON<<left<<setw(40)<<"Opciones Orden"<<RESET<<endl;
+	saltolinea();
+	saltolinea();
+	cout <<"\t"<<COLOR_CYAN<< "1. Ordenar por DNI" << RESET<<endl;
+	cout <<"\t"<<COLOR_LIGTHCYAN<<  "2. Ordenar por apellido" << endl;
+	cout <<"\t"<<COLOR_CYAN<< "3. Ordenar por Grupo" << endl;
+	cout <<"\t"<<COLOR_LIGTHCYAN<<  "4. Ordenar por Curso más alto matriculado" << endl;
+	cout <<"\t"<<COLOR_CYAN<<  "5. Volver al menú" << endl;
 
 
 }
 
 
+
+
+void saltolinea(){
+	cout<<endl;
+
+
+}
 
 
 
