@@ -472,11 +472,15 @@ void BD::ordenLista(list <Alumno> &lista){
 		do{
 			OpcionesOrden();
 			saltoLinea();
-			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique el orden en que quiere mostrar el alumno o alumnos: "<<COLOR_BRIGHTBLUE;cin>>opcOrden;
-			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique si desea mostrar la lista en orden Ascendente, telcle <ASC>, o en orden Descendente, telcle <DESC>: "<<COLOR_BRIGHTBLUE;getchar();getline(cin, orden);
+			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique la opción elegida: "<<COLOR_BRIGHTBLUE;cin>>opcOrden;
 			cout<<RESET<<endl;
 			limpiarPantalla();
 
+			if(opcOrden==5){
+
+				break;
+			}
+			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique si desea mostrar la lista en orden Ascendente, telcle <ASC>, o en orden Descendente, telcle <DESC>: "<<COLOR_BRIGHTBLUE;getchar();getline(cin, orden);
 
 
 			if ((opcOrden==1||opcOrden==2||opcOrden==3||opcOrden==4)&&(orden=="ASC"||orden=="DESC")){
@@ -487,10 +491,7 @@ void BD::ordenLista(list <Alumno> &lista){
 				limpiarPantalla();
 			}
 			
-			if(opcOrden==5){
-
-				break;
-			}
+			
 
 		}while((opcOrden!=1 ||opcOrden!=2||opcOrden!=3||opcOrden!=4||opcOrden!=5)&&(orden!="ASC"||orden!="DESC"));
 

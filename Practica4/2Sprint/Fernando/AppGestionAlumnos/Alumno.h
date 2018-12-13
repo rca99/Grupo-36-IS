@@ -12,7 +12,7 @@ using namespace std;
 			//Al leer ficheros, los métodos no aceptan bien tipos de archivo string y salía un segmentation fault al cargar el fichero
 			char nombre[30], dni[10],apellidos[30], fecha_nacimiento[10], email_corporativo[30], domicilio[30];
 			int curso, telefono, nota, equipo;
-			bool lider;
+			bool lider=false;
 
 	};
 

@@ -29,28 +29,51 @@ int ordenarCurso(const Alumno &A, const Alumno &B);
 
 void BD::mostrarAlumno(list <Alumno> lista, int opcOrden, string orden){
 
-	cout<<"opción orden"<<opcOrden<<"orden"<<orden<<endl;
+
+	string OPCION_ORDEN;
+	string ORDEN;
 
 	if (opcOrden==1){
 
 		lista.sort(ordenarDNI);
+		OPCION_ORDEN="DNI";
 
 	}
 
 	if (opcOrden==2){
 
 		lista.sort(ordenarApellidos);
+		OPCION_ORDEN="Apellido";
+
 	}
 
 	if (opcOrden==3){
 
 		lista.sort(ordenarGrupo);
+		OPCION_ORDEN="Equipo";
+
 	}
 
 	if (opcOrden==4){
 
 		lista.sort(ordenarCurso);
+		OPCION_ORDEN="Curso más alto";
+
 	}
+
+
+	if(orden=="ASC"){
+
+		ORDEN="ASCENDENTE";
+	}
+	if(orden=="DESC"){
+
+		ORDEN="DESCENDENTE";
+	}
+
+
+
+
 
 
 
@@ -60,7 +83,8 @@ void BD::mostrarAlumno(list <Alumno> lista, int opcOrden, string orden){
 		list <Alumno>::iterator i;
 		
 		cout.fill(' ');
-
+		cout<<COLOR_BRIGHTGREEN<<"El o los alumnos se mostrarán según su  "<<RESET<<BOLD_ON<<OPCION_ORDEN<<COLOR_BRIGHTGREEN<< " y de forma "<<RESET<<BOLD_ON<<ORDEN<<RESET<<endl;
+		saltolinea();
 		cout<<BOLD_ON<<left<<setw(100)<<"|::LISTA ALUMNOS::|"<<RESET<<endl;
 		//saltolinea();
 		cout.fill(' ');
@@ -114,13 +138,21 @@ void BD::mostrarAlumno(list <Alumno> lista, int opcOrden, string orden){
 		}
 	}
 
+
+
+
+
+
+
+
 	if (orden=="DESC"){
 	
 		//orden descendente
 		list <Alumno>::reverse_iterator ri;
 		
 		cout.fill(' ');
-
+		cout<<COLOR_BRIGHTGREEN<<"El o los alumnos se mostrarán según su  "<<RESET<<BOLD_ON<<OPCION_ORDEN<<COLOR_BRIGHTGREEN<< " y de forma "<<RESET<<BOLD_ON<<ORDEN<<RESET<<endl;
+		saltolinea();
 		cout<<BOLD_ON<<left<<setw(100)<<"|::LISTA ALUMNOS::|"<<RESET<<endl;
 		//saltolinea();
 		cout.fill(' ');
@@ -180,29 +212,47 @@ void BD::mostrarAlumno(int opcOrden, string orden){
 	cout.fill(' ');
 	list<Alumno> aux;
 	aux=getAlumnos();
-	cout<<"opción orden"<<opcOrden<<"orden"<<orden<<endl;
+
+	string OPCION_ORDEN;
+	string ORDEN;
 
 	if (opcOrden==1){
 
 		aux.sort(ordenarDNI);
+		OPCION_ORDEN="DNI";
 
 	}
 
 	if (opcOrden==2){
 
 		aux.sort(ordenarApellidos);
+		OPCION_ORDEN="Apellido";
+
 	}
 
 	if (opcOrden==3){
 
 		aux.sort(ordenarGrupo);
+		OPCION_ORDEN="Equipo";
+
 	}
 
 	if (opcOrden==4){
 
 		aux.sort(ordenarCurso);
+		OPCION_ORDEN="Curso más alto";
+
 	}
 
+
+	if(orden=="ASC"){
+
+		ORDEN="ASCENDENTE";
+	}
+	if(orden=="DESC"){
+
+		ORDEN="DESCENDENTE";
+	}
 
 
 	if (orden=="ASC"){
@@ -211,7 +261,9 @@ void BD::mostrarAlumno(int opcOrden, string orden){
 		list <Alumno>::iterator i;
 		
 		cout.fill(' ');
-
+		cout<<COLOR_BRIGHTGREEN<<"El o los alumnos se mostrarán según su  "<<RESET<<BOLD_ON<<OPCION_ORDEN<<COLOR_BRIGHTGREEN<< " y de forma "<<RESET<<BOLD_ON<<ORDEN<<RESET<<endl;
+		
+		saltolinea();
 		cout<<BOLD_ON<<left<<setw(100)<<"|::LISTA ALUMNOS::|"<<RESET<<endl;
 		//saltolinea();
 		cout.fill(' ');
@@ -271,7 +323,9 @@ void BD::mostrarAlumno(int opcOrden, string orden){
 		list <Alumno>::reverse_iterator ri;
 		
 		cout.fill(' ');
-
+		cout<<COLOR_BRIGHTGREEN<<"El o los alumnos se mostrarán según su  "<<RESET<<BOLD_ON<<OPCION_ORDEN<<COLOR_BRIGHTGREEN<< " y de forma "<<RESET<<BOLD_ON<<ORDEN<<RESET<<endl;
+		
+		saltolinea();
 		cout<<BOLD_ON<<left<<setw(100)<<"|::LISTA ALUMNOS::|"<<RESET<<endl;
 		//saltolinea();
 		cout.fill(' ');
