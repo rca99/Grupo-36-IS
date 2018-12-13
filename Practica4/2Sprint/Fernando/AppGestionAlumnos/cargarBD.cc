@@ -5,6 +5,7 @@
 #include <list>
 #include <fstream>
 #include <iostream>
+#include <cstdlib>
 #include <string>
 #include <cstring>
 #include "consoleLinux.h"//colores menu
