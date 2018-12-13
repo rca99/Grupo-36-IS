@@ -2,7 +2,7 @@
 // MENU PRINCIPAL
 // --------------
 
-//g++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BD.cc BD.h Alumno.h Profesor.h guardarExterna.cc
+//g++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BBD.h Alumno.h Profesor.h guardarExterna.cc
 
 
 
@@ -428,7 +428,7 @@ int main(int argc, char const *argv[]) {
 
 				} break;
 			case 7: {	// GUARDAR BACKUP
-				sleep(2);
+				sleep(4);
 				if (miBD.getAlumnos().size()==0){
 
 					cout<<COLOR_RED<<"ANTES DE GUARDAR LA COPIA DE SEGURIDAD EXTERNA INTRODUZCA ALUMNOS EN LA BASE DE DATOS"<<RESET<<endl;
@@ -450,6 +450,9 @@ int main(int argc, char const *argv[]) {
 
 				} break;
 			case 8: {	// CARGAR BACKUP
+
+
+
 
 				} break;	
 			case 9: {	// GESTION PERFIL
