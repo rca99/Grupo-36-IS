@@ -86,7 +86,7 @@ int main(int argc, char const *argv[]) {
 					cin.ignore();
 					cin.getline(datos.email_corporativo, 10, '\n');
 					cout << "Domicilio : ";
-					cin.getline(datos.domicilio3, 10, '\n');
+					cin.getline(datos.domicilio, 10, '\n');
 					cout << "Curso : ";
 					cin >> datos.curso;
 
