@@ -3,16 +3,17 @@
 #include "BD.h"
 #include "Alumno.h"
 #include <iostream>
+#include <cstdlib>
 #include <list>
 #include "consoleLinux.h"//colores menu
 #include <iomanip>//formato cout
 
 /*
-
 		string dni_, nombre_, apellidos_, fecha_nacimiento_, email_corporativo_, domicilio_;
 		int telefono_, curso_, nota_, equipo_;
 		bool lider_;
 */
+
 void saltolinea();
 void LimpiarPantalla();
 

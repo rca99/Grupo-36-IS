@@ -17,6 +17,7 @@
 #define COLOR_YELLOW  "\x1b[33m"
 #define COLOR_MAGENTA "\x1b[35m"
 #define COLOR_BRIGHTRED    "\x1b[91m"
+#define COLOR_BRIGHTYELLOW "\033[0;93m"
 
 #define COLOR_BRIGHTBLUE    "\x1b[94m"
 #define COLOR_DARKGREY    "\x1b[90m"
@@ -48,7 +49,9 @@
 #define ITALIC "\e[3m";// may or may not be supported
 #define NO_ITALIC "\e[23m";// may or may not be supported
 
-
+#define BOLD_RED "\033[1;31m"
+#define BOLD_GREEN "\033[1;32m"
+#define BOLD_BRIGHTGREEN "\033[1;92m"
 
 
 #define ON_BLACK "\033[40m"

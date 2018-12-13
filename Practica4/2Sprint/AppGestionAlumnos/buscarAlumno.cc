@@ -12,67 +12,23 @@ using namespace std;
 
 string convertirMayuscula(string cadena);
 
-bool BD::buscarAlumno(list <Alumno> &lista, Alumno a) {
-	// Comprueba que haya alumnos dados de alta
-	
-	int contador=0;
-	if(getNumeroAlumnos()==0) {
-		cout << "No hay alumnos dados de alta en la base de datos" << endl;
+bool BD::buscarAlumnos() { // Comprueba que haya alumnos dados de alta
+	if(numeroAlumnos_ == 0) 
 		return false;
-	}
-
-	list <Alumno> listaAuxiliar;
-
-
-
-	listaAuxiliar=getAlumnos();
-	list <Alumno> :: iterator i;
-
-	for(i=listaAuxiliar.begin(); i!=listaAuxiliar.end(); i++) {
-		if((*i).getDNI()==a.getDNI()) {
-			(lista).push_back(*i);
-			contador++;
-
-		}
-
-	
-	}
-
-	if (contador>0){
-
-		return true;
-	}
-	else{return false;}
-
-		
-
-
+	else return true;
 }
 
 
 bool BD::buscarAlumnoDNI(list <Alumno> &lista, Alumno a){
-	// Comprueba que haya alumnos dados de alta
 	int contador=0;
-	if(getNumeroAlumnos()==0) {
-		cout << "No hay alumnos dados de alta en la base de datos" << endl;
-		return false;
-	}
 
-	list <Alumno> listaAuxiliar;
-
-
-
-	listaAuxiliar=getAlumnos();
 	list <Alumno> :: iterator i;
 
-	for(i=listaAuxiliar.begin(); i!=listaAuxiliar.end(); i++) {
+	for(i=listaAlumnos_.begin(); i!=listaAlumnos_.end(); i++) {
 		if((*i).getDNI()==a.getDNI()) {
 			(lista).push_back(*i);
 			contador++;
-
 		}
-
-	
 	}
 
 	if (contador>0){
@@ -81,12 +37,10 @@ bool BD::buscarAlumnoDNI(list <Alumno> &lista, Alumno a){
 	else{
 		return false;
 	}
-
-	
-
 }	
 
 bool BD::buscarAlumnoApellido(list <Alumno> &lista, Alumno a){
+	int contador=0;
 
 	/*//Convertir string a mayúsculas
 	string cadena;
@@ -96,100 +50,50 @@ bool BD::buscarAlumnoApellido(list <Alumno> &lista, Alumno a){
 	cout<<cadena<<endl;
 	*/
 
-
-	// Comprueba que haya alumnos dados de alta
-	int contador=0;
-	if(getNumeroAlumnos()==0) {
-		cout << "No hay alumnos dados de alta en la base de datos" << endl;
-		return false;
-	}
-
-	list <Alumno> listaAuxiliar;
-
-	listaAuxiliar=getAlumnos();
 	list <Alumno> :: iterator i;
 	
 	string apellidoAlumno=convertirMayuscula(a.getApellidos());
 	cout<<"apellido que se busca: "<<apellidoAlumno<<endl;
 
-	for(i=listaAuxiliar.begin(); i!=listaAuxiliar.end(); i++) {
-		
+
+
+	for(i=listaAlumnos_.begin(); i!=listaAlumnos_.end(); i++) {
 		string apellidoLista=convertirMayuscula((*i).getApellidos());
 
 		cout<<"apellido en lista: "<<apellidoLista<<endl;
 
-		if(apellidoAlumno==apellidoLista) {
+		if((*i).getApellidos()==a.getApellidos()) {
 			(lista).push_back(*i);
 			contador++;
-
 		}
 
-	
 	}
-
-	if (contador>0){
+	if (contador>0) {
 		return true;
 	}
-	else{
-
+	else {
 		return false;
-
-
-
 	}
-
-	
-
 }
 
-bool BD::buscarAlumno(list <Alumno> &lista,int equipo){
+bool BD::buscarAlumnoEquipo(list <Alumno> &lista,int equipo){
 
 	int contador=0;
-	if(getNumeroAlumnos()==0) {
-		cout << "No hay alumnos dados de alta en la base de datos" << endl;
-		return false;
-	}
-
-	list <Alumno> listaAuxiliar;
-
-
-
-	listaAuxiliar=getAlumnos();
 	list <Alumno> :: iterator i;
 
-	for(i=listaAuxiliar.begin(); i!=listaAuxiliar.end(); i++) {
-		
+
+	for(i=listaAlumnos_.begin(); i!=listaAlumnos_.end(); i++) {
 
 		if((*i).getEquipo()==equipo) {
-			(lista).push_back(*i);
+			lista.push_back(*i);
 			contador++;
-
 		}
-
-	
 	}
 
-	if (contador>0){
+	if (contador>0) {
 		return true;
-	}
-	else{
-
-		return false;
-
-
-
-	}
-
-
-
-
-
-
-
+	} else return false;
 }
-
-
-
 
 
 string convertirMayuscula(string cadena){
