@@ -19,10 +19,14 @@ echo "Todos los parametros menos el 0": $*;
 
 ##descarga copia de seguridad externa
 ## /usr/bin/firefox -new-window https://github.com/rca99/Grupo-36-IS/raw/master/Practica4/1Sprint/gestionAlumnos.bin
+git remote set-url origin https://a52hepof:vn9rn7rz@github.com/rca99/Grupo-36-IS.git
 
-wget -N -P ../2Sprint/Fernando/AppGestionAlumnos/CopiaSeguridad https://github.com/rca99/Grupo-36-IS/raw/master/Practica4/2Sprint/Fernando/AppGestionAlumnos/gestionAlumnos.bin
+wget -N -P ../AppGestionAlumnos/CopiaSeguridad https://github.com/rca99/Grupo-36-IS/raw/master/Practica4/2Sprint/Fernando/AppGestionAlumnos/gestionAlumnos.bin
 
 git remote set-url origin https://github.com/rca99/Grupo-36-IS.git
+
+echo -e "\e[34mCOPIA DE SEGURIDAD EXTERNA GUARDADA EN AppGestionAlumnos/CopiaSeguridad\e[0m"
+echo sleep2
 
 echo nombre fichero base de datos externa
 find -iname "*ges*"

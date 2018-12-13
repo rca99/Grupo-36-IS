@@ -3,6 +3,7 @@
 #chmod +x guardarExterna.sh
 
 git status;
+sleep 2
 
 git add gestionAlumnos.bin;
 
