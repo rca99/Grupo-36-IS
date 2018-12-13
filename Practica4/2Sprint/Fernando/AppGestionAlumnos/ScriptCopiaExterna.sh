@@ -38,7 +38,7 @@ echo copia de seguridad realizada
 ##descarga copia de seguridad externa
 ## /usr/bin/firefox -new-window https://github.com/rca99/Grupo-36-IS/raw/master/Practica4/1Sprint/gestionAlumnos.bin
 
-wget -N -P ../CopiaSeguridad https://github.com/rca99/Grupo-36-IS/raw/master/Practica4/2Sprint/Fernando/AppGestionAlumnos/gestionAlumnos.bin
+wget -N -P ../2Sprint/Fernando/AppGestionAlumnos/CopiaSeguridad https://github.com/rca99/Grupo-36-IS/raw/master/Practica4/2Sprint/Fernando/AppGestionAlumnos/gestionAlumnos.bin
 
 git remote set-url origin https://github.com/rca99/Grupo-36-IS.git
 
