@@ -2,14 +2,14 @@
 // MENU PRINCIPAL
 // --------------
 
-//gg++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BD.h Alumno.h Profesor.h
+//g++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BD.cc BD.h Alumno.h Profesor.h guardarExterna.cc
 
 
 
 //Revisar todos los char que tengan el mismo tamaño
 //por defecto lider_=0;
 //valores que no se cumplimentan deben aparecer en blanco
-//errores al itnroducir en un int un char
+//errores al ittroducir en un int un char
 
 #include <iostream>
 #include <string>
@@ -38,11 +38,24 @@ void limpiarPantalla();
 bool datosBusqueda(datosAlumno &datos);
 void OpcionesOrden();
 void printAlumno(Alumno aux);
+//void binarioAcceso();
 
 
 
 
 int main(int argc, char const *argv[]) {
+	
+	Profesor p;//para acceso a la aplicación.
+	//string clave;
+	//string usuario;
+
+
+
+
+
+
+
+
 	limpiarPantalla();
 	int opc=0;
 	int opcBusqueda=0;
@@ -530,6 +543,10 @@ int main(int argc, char const *argv[]) {
 
 				} break;
 			case 7: {	// GUARDAR BACKUP
+				cout<<BOLD_ON<<BLINK<<"\tPreparando el sistema para realizar la copia externa"<<RESET<<endl;
+				sleep(2);
+				miBD.guardarBackup();
+
 
 				} break;
 			case 8: {	// CARGAR BACKUP
