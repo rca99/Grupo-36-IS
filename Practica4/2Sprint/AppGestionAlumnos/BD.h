@@ -37,11 +37,10 @@ public:
 	bool introducirAlumno(Alumno nuevoAlumno);
 	bool modificarAlumno(Alumno alumnox);
 	bool eliminarAlumno(Alumno alumnox);
-	bool buscarAlumno(list <Alumno> &lista, Alumno a);
+
+	bool buscarAlumnos();
 	bool buscarAlumnoDNI(list <Alumno> &lista, Alumno a);
 	bool buscarAlumnoApellido(list <Alumno> &lista, Alumno a);
-
-
 	bool buscarAlumnoEquipo(list <Alumno> &lista, int equipo);
 
 	void mostrarAlumno(list <Alumno> lista);

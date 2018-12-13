@@ -9,7 +9,7 @@
 
 bool BD::introducirAlumno(Alumno nuevoAlumno) {
 	if(nuevoAlumno.getLider()==true) {
-		if(gestionLideres(nuevoAlumno)) {
+		if(gestionLideres(nuevoAlumno)==false) {
 			cout << "Este grupo ya tiene lider" << endl;
 			return false;
 		}

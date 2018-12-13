@@ -13,6 +13,7 @@
 #include <iomanip> //formato cout
 #include <stdio.h>
 #include <cstdlib>
+#include <limits>
 
 #include "Alumno.h"
 #include "Profesor.h"
@@ -35,37 +36,39 @@ int main(int argc, char const *argv[]) {
 	int opc=0;
 	int opcBusqueda=0;
 	int opcMostrar=0;
-	string basura;
 
-	//miBD.setNumeroAlumnos(150);
+	miBD.setNumeroAlumnos(150);
 
 	do {
 		mostrarOpciones();
 		saltoLinea();
-		cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<"Introduzca una opción: "<<COLOR_BRIGHTBLUE;
-		cin>>opc;
-		cout<<RESET<<endl;
+		cout << "\t" << BOLD_ON << COLOR_LIGHTGREY <<"Introduzca una opción: " << COLOR_BRIGHTBLUE;
+		cin >> opc;
+		cout << RESET << endl;
 		limpiarPantalla();
 		
 		switch(opc) {
 			case 1: {	// INSERTAR ALUMNO
 
-					// Comprueba que el numero de alumnos no supere 150
+					// COMPRUEBA NºALUMNOS < 150 ···
+
 					if(miBD.getNumeroAlumnos()==150) {
-						cout << "Error, maximo de alumnos alcanzado" << endl;
-						saltoLinea();
-						cout << "PULSE UNA TECLA PARA VOLVER AL MENÚ" << endl;
+						cout << BOLD_RED << "\n\tERROR\n" << RESET;
+						cout << COLOR_BRIGHTGREEN << "\n\tNUMERO MAXIMO DE ALUMNOS (" << miBD.getNumeroAlumnos() << ") ALCANZADO\n";
+						cout << RESET << endl;
+						cout << BOLD_ON  << "\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
 						cin.ignore();
 						cin.get();
 						limpiarPantalla();
 						break;
 					} else { // Muestra el numero de alumnos
 						OpcionesInsertar();
-						cout<< "\tNUMERO DE ALUMNOS: " << miBD.getNumeroAlumnos();
+						cout<< "\n\tNUMERO DE ALUMNOS: " << miBD.getNumeroAlumnos();
 						saltoLinea();
 						saltoLinea();
 					}
 					
+					// PIDE DATOS OBLIGATORIOS ···
 					datosAlumno datos;
 					inicializardatos(datos);
 
@@ -75,24 +78,25 @@ int main(int argc, char const *argv[]) {
 					cin.ignore();
 					cin.getline(datos.dni, 10, '\n');
 					cout << "Nombre : ";
-					cin.getline(datos.nombre, 10, '\n');
+					cin.getline(datos.nombre, 30, '\n');
 					cout << "Apellidos : ";
-					cin.getline(datos.apellidos, 10, '\n');
+					cin.getline(datos.apellidos, 30, '\n');
 					cout << "Fecha de nacimiento : ";
 					cin.getline(datos.fecha_nacimiento, 10, '\n');
 					cout << "Telefono : ";
 					cin >> datos.telefono;
 					cout << "Email corporativo : ";
 					cin.ignore();
-					cin.getline(datos.email_corporativo, 10, '\n');
+					cin.getline(datos.email_corporativo, 30, '\n');
 					cout << "Domicilio : ";
-					cin.getline(datos.domicilio3, 10, '\n');
+					cin.getline(datos.domicilio, 30, '\n');
 					cout << "Curso : ";
 					cin >> datos.curso;
 
 					Alumno aux(datos); // Constructor con estructura
+					
+					// COMPRUEBA QUE EL ALUMNO NO HA SIDO INTRODUCIDO ANTERIORMENTE ···
 					list <Alumno> alumnosencontrados;
-
 					bool encontrado;
 
 					saltoLinea();
@@ -107,7 +111,7 @@ int main(int argc, char const *argv[]) {
 					} else if (opcBusqueda == 2) {
 						encontrado=miBD.buscarAlumnoApellido(alumnosencontrados, aux);
 					} else {
-						cout << "\nIntroduccion de opcion de busqueda incorrecta" << endl;
+						cout << "\nOpcion de busqueda no valida" << endl;
 						cout << BOLD_ON << "\nPULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;
 						cin.ignore();
 						cin.get();
@@ -115,7 +119,7 @@ int main(int argc, char const *argv[]) {
 						break;
 					}
 
-					if(encontrado==true) {
+					if(encontrado==true) {	// ALUMNO YA INTRODUCIDO
 						cout << "\nEl alumno ya se encuentra en la BD" << endl;
 						cout << BOLD_ON << "\nPULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;
 						cin.ignore();
@@ -124,12 +128,15 @@ int main(int argc, char const *argv[]) {
 						break;
 					} 
 
-					cout << "El alumno no se encuentra en la BD" << endl;
+					// ALUMNO NUEVO
+					cout << "\nEl alumno no se encuentra en la BD" << endl;
 
+
+					// DATOS ADICIONALES ···
 					cout << "\n¿Desea introducir datos adicionales?" << endl;
 					cout << "DATOS ADICIONALES:" << endl;
 					cout << "\tNOTA\n\tEQUIPO\n\tLIDER\n";
-					cout << "Pulse 1 si desea introducir datos adicionales" << endl;	
+					cout << "Pulse 1 si desea introducir datos adicionales: ";	
 
 					int datosAd;
 					cin >> datosAd;
@@ -141,37 +148,39 @@ int main(int argc, char const *argv[]) {
 						cin >> datos.equipo;
 						cout << "Lider (1: Si; 0: No): ";
 						cin >> datos.lider;
-						if((datos.lider != 1) && (datos.lider != 0)) {
+
+						if(cin.fail()) {
 							cout << "Introduccion de lider incorrecta" << endl;
-							cout << BOLD_ON << "PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;
-							cin.ignore();
-							cin.get();
-							limpiarPantalla();
-							break;
+							cout << BOLD_ON << "PULSE UNA TECLA PARA VOLVER AL MENÚ";
+  							//cin.ignore(numeric_limits<int>::max());
+  							cin.clear();
+  							cin.ignore();
+  							cin.get();
+  							limpiarPantalla();
+  							break;
 						}
+						
 						aux.setNota(datos.nota);
 						aux.setEquipo(datos.equipo);
 						aux.setLider(datos.lider);
 					}
 
+					// MUESTRA LOS DATOS DEL ALUMNO A INTRODUCIR ···
 					printAlumno(aux);
 
+					// INTENTA INTRODUCIR EL ALUMNO ···
 					if(!miBD.introducirAlumno(aux)) {
 						cout << "Error al introducir el alumno" << endl;
 					} else cout << "Alumno introducido correctamente" << endl;
 
-					cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+					cout<<BOLD_ON<<"\nPULSE UNA TECLA PARA VOLVER AL MENÚ";
+					cin.ignore();
+					cin.get();
 					limpiarPantalla();
-
-
-
-
-
-
 
 				} break;
 			case 2: {	// MODIFICAR ALUMNO
-					list <Alumno> listaux;
+					list <Alumno> alumnosencontrados;
 					datosAlumno a;
 					bool encontrado; 
 
@@ -184,18 +193,18 @@ int main(int argc, char const *argv[]) {
 						cin >> a.dni ;
 
 						Alumno aux(a);
-						encontrado=miBD.buscarAlumnoDNI(listaux, aux);
+						encontrado=miBD.buscarAlumnoDNI(alumnosencontrados, aux);
 					} else if (opcBusqueda==2) {
 						cout << "Apellido: ";
 						cin >> a.apellidos ;
 
 						Alumno aux(a);
-						encontrado=miBD.buscarAlumnoApellido(listaux, aux);
+						encontrado=miBD.buscarAlumnoApellido(alumnosencontrados, aux);
 					} else if (opcBusqueda==3) {
 						cout << "EQUIPO: ";
 						cin >> a.equipo ;
 
-						encontrado=miBD.buscarAlumnoEquipo(listaux, a.equipo);
+						encontrado=miBD.buscarAlumnoEquipo(alumnosencontrados, a.equipo);
 					} else {
 						cout << "Opcion no valida" << endl;
 						break;
@@ -484,8 +493,7 @@ void mostrarOpciones() {
 }
 
 
-void OpcionesMostrar(){
-	
+void OpcionesMostrar() {
 	cout.fill('*');
 	saltoLinea();
 	cout<<"\t"<<BOLD_ON<<COLOR_GREEN<<setw(40)<<""<<endl;
@@ -519,36 +527,25 @@ void OpcionesInsertar() {
 	cout <<"\t"<< "2. Volver al menu" << RESET<<endl;
 }
 
-void limpiarPantalla(){
+void limpiarPantalla() {
 	system("clear");
 }
 
-void saltoLinea(){
+void saltoLinea() {
 	cout<<endl;
 }
 
 void printAlumno(Alumno aux) {
-	string dni = aux.getDNI();
-	string nombre = aux.getNombre();
-	string apellidos = aux.getApellidos();
-	string fecha_nacimiento = aux.getFecha_nacimiento();
-	string email_corporativo = aux.getEmail_corporativo();
-	string domicilio = aux.getDomicilio();
-	int telefono = aux.getTelefono();
-	int curso = aux.getCurso();
-	int nota = aux.getNota();
-	int equipo = aux.getEquipo();
-	bool lider = aux.getLider();
-
-	cout << "DNI: " << dni << endl;
-	cout << "Nombre: " << nombre << endl;
-	cout << "Apellidos: " << apellidos << endl;
-	cout << "Fecha Nacimiento: " << fecha_nacimiento << endl;
-	cout << "Email: " << email_corporativo << endl;
-	cout << "Domicilio: " << domicilio << endl;
-	cout << "Telefono: " << telefono<< endl;
-	cout << "Curso: " << curso << endl;
-	cout << "Nota: " << nota << endl;
-	cout << "Equipo: " << equipo<< endl;
-	cout << "Lider: " << lider << endl;
+	cout << "DNI: " << aux.getDNI() << endl;
+	cout << "Nombre: " << aux.getNombre() << endl;
+	cout << "Apellidos: " << aux.getApellidos() << endl;
+	cout << "Fecha Nacimiento: " << aux.getFecha_nacimiento() << endl;
+	cout << "Email: " << aux.getEmail_corporativo() << endl;
+	cout << "Domicilio: " << aux.getDomicilio() << endl;
+	cout << "Telefono: " << aux.getTelefono() << endl;
+	cout << "Curso: " << aux.getCurso() << endl;
+	cout << "Nota: " << aux.getNota() << endl;
+	cout << "Equipo: " << aux.getNota() << endl;
+	cout << "Lider: " << aux.getLider() << endl;
 }
+
