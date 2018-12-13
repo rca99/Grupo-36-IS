@@ -71,37 +71,43 @@ int main(int argc, char const *argv[]) {
 						cin.get();
 						limpiarPantalla();
 						break;
-					} else { // Muestra el numero de alumnos
-						OpcionesInsertar();
-						cout<< "\n\tNUMERO DE ALUMNOS: " << miBD.getNumeroAlumnos();
-						saltoLinea();
-						saltoLinea();
-					}
+					} 
+
+					// MENU INSERTAR ···
+					OpcionesInsertar();
+					saltoLinea();
+					saltoLinea();
+				
 					
 					// PIDE DATOS OBLIGATORIOS ···
 					datosAlumno datos;
 					inicializardatos(datos);
 
-					cout << "Introduzca los datos obligatorios del nuevo alumno" << endl;
+					cout << COLOR_CYAN << BOLD_ON<< "\tINTRODUZCA LOS DATOS OBLIGATORIOS DEL NUEVO ALUMNO" << endl << endl;
+					cout.fill('*');
+					saltoLinea();
+					cout<<"\t"<<BOLD_ON<<COLOR_GREEN<<setw(40)<<""<<endl;
+					cout.fill(' ');
 
-					cout << "DNI : ";
+					cout << "\tDNI : " << COLOR_BRIGHTBLUE;
 					cin.ignore();
 					cin.getline(datos.dni, 10, '\n');
-					cout << "Nombre : ";
+					cout << COLOR_CYAN << BOLD_ON << "\tNombre : " << COLOR_BRIGHTBLUE;
 					cin.getline(datos.nombre, 30, '\n');
-					cout << "Apellidos : ";
+					cout << COLOR_CYAN << BOLD_ON << "\tApellidos : " << COLOR_BRIGHTBLUE;
 					cin.getline(datos.apellidos, 30, '\n');
-					cout << "Fecha de nacimiento : ";
+					cout << COLOR_CYAN << BOLD_ON << "\tFecha de nacimiento : " << COLOR_BRIGHTBLUE;
 					cin.getline(datos.fecha_nacimiento, 15, '\n');
-					cout << "Telefono : ";
+					cout << COLOR_CYAN << BOLD_ON << "\tTelefono : " << COLOR_BRIGHTBLUE;
 					cin >> datos.telefono;
-					cout << "Email corporativo : ";
+					cout << COLOR_CYAN << BOLD_ON << "\tEmail corporativo : " << COLOR_BRIGHTBLUE;
 					cin.ignore();
 					cin.getline(datos.email_corporativo, 30, '\n');
-					cout << "Domicilio : ";
+					cout << COLOR_CYAN << BOLD_ON << "\tDomicilio : " << COLOR_BRIGHTBLUE;
 					cin.getline(datos.domicilio, 30, '\n');
-					cout << "Curso : ";
+					cout << COLOR_CYAN << BOLD_ON << "\tCurso : " << COLOR_BRIGHTBLUE;
 					cin >> datos.curso;
+					cout << RESET ;
 
 					Alumno aux(datos); // Constructor con estructura
 					
@@ -138,7 +144,7 @@ int main(int argc, char const *argv[]) {
 						break;
 					} 
 
-					// ALUMNO NUEVO
+					// ALUMNO NUEVO ···
 					cout << "\nEl alumno no se encuentra en la BD" << endl;
 
 
@@ -655,14 +661,14 @@ void OpcionesInsertar() {
 	cout<<"\t"<<BOLD_ON<<COLOR_CYAN<<setw(40)<<""<<endl;
 	cout.fill(' ');
 	saltoLinea();
-	cout<<"\t"<<BOLD_ON<<COLOR_CYAN<<left<<setw(40)<<"|::INTRODUCIR ALUMNOS::|"<<RESET<<endl;
+	cout<<"\t"<<BOLD_ON<<COLOR_CYAN<<left<<setw(40)<<"|::INTRODUCIR ALUMNOS::|"<< RESET<<endl;
 	saltoLinea();
 	cout.fill('*');
 	cout<<"\t"<<BOLD_ON<<COLOR_CYAN<<setw(40)<<""<<endl;
 	saltoLinea();
 	saltoLinea();
-	cout <<"\t"<<COLOR_CYAN<< "1. Introducir Alumno" <<endl;
-	cout <<"\t"<< "2. Volver al menu" << RESET<<endl;
+	cout <<"\tNUMERO DE ALUMNOS: " << miBD.getNumeroAlumnos() << RESET;
+	cout.fill('-');
 }
 
 void printAlumno(Alumno aux) {
