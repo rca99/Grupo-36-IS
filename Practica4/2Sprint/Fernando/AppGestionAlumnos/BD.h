@@ -33,7 +33,9 @@ public:
 	inline void setNombreFichero(string nuevonombre){nombreFichero_=nuevonombre;}
 	inline int getNumeroAlumnos() const {return numeroAlumnos_;}
 	inline void addNumeroAlumnos(){numeroAlumnos_++;};
-	bool introducirAlumno(Alumno nuevoAlumno){listaAlumnos_.push_back(nuevoAlumno);return 1;};
+	//bool introducirAlumno(Alumno nuevoAlumno){listaAlumnos_.push_back(nuevoAlumno);return 1;};
+	bool introducirAlumno(Alumno nuevoAlumno);
+	bool gestionLideres(Alumno alumnox);
 
 	
 	bool modificarAlumno(Alumno alumnox);

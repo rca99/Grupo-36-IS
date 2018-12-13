@@ -16,6 +16,9 @@ using namespace std;
 
 	};
 
+	void inicializardatos(datosAlumno &datos);
+
+
 
 	class Alumno {
 
@@ -67,7 +70,6 @@ using namespace std;
 
 		inline bool getLider() const {return lider_;}
 		inline void setLider(bool lid){lider_=lid;}			// hay que modificarlo en el diagrama de clases
-		//bool operator<(const Alumno& A , const Alumno& B);
 
 		bool alumnoLider();
 	    int operator<(const Alumno &rhs) const;

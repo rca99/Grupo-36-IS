@@ -29,9 +29,12 @@ BD miBD; //crea un objeto de base de datos con el nombre de fichero gestionAlumn
 void saltoLinea();
 void mostrarOpciones();
 void OpcionesMostrar();
+void OpcionesInsertar();
 void limpiarPantalla();
 bool datosBusqueda(datosAlumno &datos);
 void OpcionesOrden();
+void printAlumno(Alumno aux);
+
 
 
 int main(int argc, char const *argv[]) {
@@ -39,6 +42,7 @@ int main(int argc, char const *argv[]) {
 	int opc=0;
 	int opcBusqueda=0;
 	int opcMostrar=0;
+	string basura;
 
 
 
@@ -52,7 +56,7 @@ int main(int argc, char const *argv[]) {
 		switch(opc) {
 			case 1: {	// INSERTAR ALUMNO
 					
-
+				/*
 					Alumno a, b,c,d,e,f,g;
 					a.setNombre("rodolfo");
 					a.setApellidos("alba lopez");
@@ -116,6 +120,128 @@ int main(int argc, char const *argv[]) {
 					saltoLinea();
 					cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
 					limpiarPantalla();
+
+					*/
+		// Comprueba que el numero de alumnos no supere 150
+					if(miBD.getNumeroAlumnos()==150) {
+						cout << "Error, maximo de alumnos alcanzado" << endl;
+						saltoLinea();
+						cout << "PULSE UNA TECLA PARA VOLVER AL MENÚ" << endl;
+						cin.ignore();
+						cin.get();
+						limpiarPantalla();
+						break;
+					} else { // Muestra el numero de alumnos
+						OpcionesInsertar();
+						cout<< "\tNUMERO DE ALUMNOS: " << miBD.getNumeroAlumnos();
+						saltoLinea();
+						saltoLinea();
+					}
+					
+					datosAlumno datos;
+					inicializardatos(datos);
+
+					cout << "Introduzca los datos obligatorios del nuevo alumno" << endl;
+
+					cout << "DNI : ";
+					cin.ignore();
+					cin.getline(datos.dni, 10, '\n');
+					cout << "Nombre : ";
+					cin.getline(datos.nombre, 30, '\n');
+					cout << "Apellidos : ";
+					cin.getline(datos.apellidos, 30, '\n');
+					cout << "Fecha de nacimiento : ";
+					cin.getline(datos.fecha_nacimiento, 15, '\n');
+					cout << "Telefono : ";
+					cin >> datos.telefono;
+					cout << "Email corporativo : ";
+					cin.ignore();
+					cin.getline(datos.email_corporativo, 30, '\n');
+					cout << "Domicilio : ";
+					cin.getline(datos.domicilio, 30, '\n');
+					cout << "Curso : ";
+					cin >> datos.curso;
+
+					Alumno aux(datos); // Constructor con estructura
+					list <Alumno> alumnosencontrados;
+
+					bool encontrado;
+
+					saltoLinea();
+					cout << "Comprobando que el alumno no esta dado de alta..." << endl;
+					cout << "Opcion de busqueda" << endl;
+					cout << "1. DNI\n2. Apellidos\n\n";
+					cout << "¿Como desea buscar? : ";
+					cin >> opcBusqueda;
+
+					if(opcBusqueda==1) {
+						encontrado=miBD.buscarAlumnoDNI(alumnosencontrados, aux);
+					} else if (opcBusqueda == 2) {
+						encontrado=miBD.buscarAlumnoApellido(alumnosencontrados, aux);
+					} else {
+						cout << "\nIntroduccion de opcion de busqueda incorrecta" << endl;
+						cout << BOLD_ON << "\nPULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;
+						cin.ignore();
+						cin.get();
+						limpiarPantalla();
+						break;
+					}
+
+					if(encontrado==true) {
+						cout << "\nEl alumno ya se encuentra en la BD" << endl;
+						cout << BOLD_ON << "\nPULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;
+						cin.ignore();
+						cin.get();
+						limpiarPantalla();
+						break;
+					} 
+
+					cout << "El alumno no se encuentra en la BD" << endl;
+
+					cout << "\n¿Desea introducir datos adicionales?" << endl;
+					cout << "DATOS ADICIONALES:" << endl;
+					cout << "\tNOTA\n\tEQUIPO\n\tLIDER\n";
+					cout << "Pulse 1 si desea introducir datos adicionales" << endl;	
+
+					int datosAd;
+					cin >> datosAd;
+					
+					if(datosAd == 1) {
+						cout << "Nota : ";
+						cin >> datos.nota;
+						cout << "Equipo : ";
+						cin >> datos.equipo;
+						cout << "Lider (1: Si; 0: No): ";
+						cin >> datos.lider;
+						if((datos.lider != 1) && (datos.lider != 0)) {
+							cout << "Introduccion de lider incorrecta" << endl;
+							cout << BOLD_ON << "PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;
+							cin.ignore();
+							cin.get();
+							limpiarPantalla();
+							break;
+						}
+						aux.setNota(datos.nota);
+						aux.setEquipo(datos.equipo);
+						aux.setLider(datos.lider);
+					}
+
+					printAlumno(aux);
+
+					if(!miBD.introducirAlumno(aux)) {
+						cout << "Error al introducir el alumno" << endl;
+					} else cout << "Alumno introducido correctamente" << endl;
+
+					cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+					limpiarPantalla();
+
+
+
+
+
+
+
+
 
 				} break;
 			case 2: {	// MODIFICAR ALUMNO
@@ -505,17 +631,23 @@ void BD::ordenLista(list <Alumno> &lista){
 	
 
 		do{
-			OpcionesOrden();
+			/*OpcionesOrden();
 			saltoLinea();
 			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique la opción elegida: "<<COLOR_BRIGHTBLUE;cin>>opcOrden;
 			cout<<RESET<<endl;
 			limpiarPantalla();
-
+	
 			if(opcOrden==5){
 
 				break;
 			}
-			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique si desea mostrar la lista en orden Ascendente, telcle <ASC>, o en orden Descendente, telcle <DESC>: "<<COLOR_BRIGHTBLUE;getchar();getline(cin, orden);
+			*/
+			OpcionesOrden();
+			saltoLinea();
+			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique el orden en que quiere mostrar el alumno o alumnos: "<<COLOR_BRIGHTBLUE;cin>>opcOrden;
+			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique si desea mostrar la lista en orden Ascendente, introduzca <ASC>, o en orden Descendente, introduzca <DESC>: "<<COLOR_BRIGHTBLUE;getchar();getline(cin, orden);
+			cout<<RESET<<endl;
+			limpiarPantalla();
 
 
 			if ((opcOrden==1||opcOrden==2||opcOrden==3||opcOrden==4)&&(orden=="ASC"||orden=="DESC")){
@@ -524,6 +656,11 @@ void BD::ordenLista(list <Alumno> &lista){
 				saltoLinea();
 				cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
 				limpiarPantalla();
+			}
+
+			if(opcOrden==5){
+
+				break;
 			}
 			
 			
@@ -541,7 +678,7 @@ void BD::ordenLista(){
 			OpcionesOrden();
 			saltoLinea();
 			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique el orden en que quiere mostrar el alumno o alumnos: "<<COLOR_BRIGHTBLUE;cin>>opcOrden;
-			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique si desea mostrar la lista en orden Ascendente, telcle <ASC>, o en orden Descendente, telcle <DESC>: "<<COLOR_BRIGHTBLUE;getchar();getline(cin, orden);
+			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique si desea mostrar la lista en orden Ascendente, introduzca <ASC>, o en orden Descendente, introduzca <DESC>: "<<COLOR_BRIGHTBLUE;getchar();getline(cin, orden);
 			cout<<RESET<<endl;
 			limpiarPantalla();
 
@@ -565,4 +702,50 @@ void BD::ordenLista(){
 
 
 }
+
+
+
+void OpcionesInsertar() {
+	cout.fill('*');
+	saltoLinea();
+	cout<<"\t"<<BOLD_ON<<COLOR_CYAN<<setw(40)<<""<<endl;
+	cout.fill(' ');
+	saltoLinea();
+	cout<<"\t"<<BOLD_ON<<COLOR_CYAN<<left<<setw(40)<<"|::INTRODUCIR ALUMNOS::|"<<RESET<<endl;
+	saltoLinea();
+	cout.fill('*');
+	cout<<"\t"<<BOLD_ON<<COLOR_CYAN<<setw(40)<<""<<endl;
+	saltoLinea();
+	saltoLinea();
+	cout <<"\t"<<COLOR_CYAN<< "1. Introducir Alumno" <<endl;
+	cout <<"\t"<< "2. Volver al menu" << RESET<<endl;
+}
+
+
+void printAlumno(Alumno aux) {
+	string dni = aux.getDNI();
+	string nombre = aux.getNombre();
+	string apellidos = aux.getApellidos();
+	string fecha_nacimiento = aux.getFecha_nacimiento();
+	string email_corporativo = aux.getEmail_corporativo();
+	string domicilio = aux.getDomicilio();
+	int telefono = aux.getTelefono();
+	int curso = aux.getCurso();
+	int nota = aux.getNota();
+	int equipo = aux.getEquipo();
+	bool lider = aux.getLider();
+
+	cout << "DNI: " << dni << endl;
+	cout << "Nombre: " << nombre << endl;
+	cout << "Apellidos: " << apellidos << endl;
+	cout << "Fecha Nacimiento: " << fecha_nacimiento << endl;
+	cout << "Email: " << email_corporativo << endl;
+	cout << "Domicilio: " << domicilio << endl;
+	cout << "Telefono: " << telefono<< endl;
+	cout << "Curso: " << curso << endl;
+	cout << "Nota: " << nota << endl;
+	cout << "Equipo: " << equipo<< endl;
+	cout << "Lider: " << lider << endl;
+}
+
 

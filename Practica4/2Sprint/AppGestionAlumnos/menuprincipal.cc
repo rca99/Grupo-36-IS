@@ -2,7 +2,7 @@
 // MENU PRINCIPAL
 // --------------
 
-// g++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BD.h Alumno.h Profesor.h
+// g++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BD.h Alumno.h Profesor.h introducirAlumno.cc
 
 //Revisar todos los char que tengan el mismo tamaño
 //por defecto lider_=0;
@@ -75,18 +75,18 @@ int main(int argc, char const *argv[]) {
 					cin.ignore();
 					cin.getline(datos.dni, 10, '\n');
 					cout << "Nombre : ";
-					cin.getline(datos.nombre, 10, '\n');
+					cin.getline(datos.nombre, 30, '\n');
 					cout << "Apellidos : ";
-					cin.getline(datos.apellidos, 10, '\n');
+					cin.getline(datos.apellidos, 30, '\n');
 					cout << "Fecha de nacimiento : ";
-					cin.getline(datos.fecha_nacimiento, 10, '\n');
+					cin.getline(datos.fecha_nacimiento, 15, '\n');
 					cout << "Telefono : ";
 					cin >> datos.telefono;
 					cout << "Email corporativo : ";
 					cin.ignore();
-					cin.getline(datos.email_corporativo, 10, '\n');
+					cin.getline(datos.email_corporativo, 30, '\n');
 					cout << "Domicilio : ";
-					cin.getline(datos.domicilio, 10, '\n');
+					cin.getline(datos.domicilio, 30, '\n');
 					cout << "Curso : ";
 					cin >> datos.curso;
 
