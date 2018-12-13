@@ -21,6 +21,7 @@ bool BD::buscarAlumnos() { // Comprueba que haya alumnos dados de alta
 
 bool BD::buscarAlumnoDNI(list <Alumno> &lista, Alumno a){
 	int contador=0;
+
 	list <Alumno> :: iterator i;
 
 	for(i=listaAlumnos_.begin(); i!=listaAlumnos_.end(); i++) {
@@ -40,6 +41,7 @@ bool BD::buscarAlumnoDNI(list <Alumno> &lista, Alumno a){
 
 bool BD::buscarAlumnoApellido(list <Alumno> &lista, Alumno a){
 	int contador=0;
+
 	/*//Convertir string a mayúsculas
 	string cadena;
 	getline(cin, cadena);
@@ -53,8 +55,9 @@ bool BD::buscarAlumnoApellido(list <Alumno> &lista, Alumno a){
 	string apellidoAlumno=convertirMayuscula(a.getApellidos());
 	cout<<"apellido que se busca: "<<apellidoAlumno<<endl;
 
-	for(i=listaAlumnos_.begin(); i!=listaAlumnos_.end(); i++) {
 
+
+	for(i=listaAlumnos_.begin(); i!=listaAlumnos_.end(); i++) {
 		string apellidoLista=convertirMayuscula((*i).getApellidos());
 
 		cout<<"apellido en lista: "<<apellidoLista<<endl;
@@ -67,8 +70,10 @@ bool BD::buscarAlumnoApellido(list <Alumno> &lista, Alumno a){
 	}
 	if (contador>0) {
 		return true;
-	} else return false;
-
+	}
+	else {
+		return false;
+	}
 }
 
 bool BD::buscarAlumnoEquipo(list <Alumno> &lista,int equipo){
@@ -78,16 +83,16 @@ bool BD::buscarAlumnoEquipo(list <Alumno> &lista,int equipo){
 
 
 	for(i=listaAlumnos_.begin(); i!=listaAlumnos_.end(); i++) {
+
 		if((*i).getEquipo()==equipo) {
 			lista.push_back(*i);
 			contador++;
 		}
 	}
 
-	if (contador>0)
+	if (contador>0) {
 		return true;
-	else return false;
-
+	} else return false;
 }
 
 

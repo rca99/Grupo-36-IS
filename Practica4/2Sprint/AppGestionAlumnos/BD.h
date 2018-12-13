@@ -37,7 +37,7 @@ public:
 	//bool introducirAlumno(Alumno nuevoAlumno){listaAlumnos_.push_back(nuevoAlumno);return 1;};
 
 	bool introducirAlumno(Alumno nuevoAlumno);
-	bool gestionLideres(Alumno alumnox);
+
 
 	
 	bool modificarAlumno(Alumno alumnox);
@@ -50,6 +50,8 @@ public:
 
 	void mostrarAlumno(list <Alumno> lista);
 	void mostrarAlumno();
+
+	bool gestionLideres(Alumno alumnox);
 
 	void mostrarAlumno(list <Alumno> lista,int opcOrden, string orden);
 	void mostrarAlumno(int opcOrden, string orden);

@@ -8,6 +8,8 @@
 
 //Revisar todos los char que tengan el mismo tamaño
 //por defecto lider_=0;
+//valores que no se cumplimentan deben aparecer en blanco
+//errores al itnroducir en un int un char
 
 #include <iostream>
 #include <string>
@@ -20,6 +22,7 @@
 #include "Profesor.h"
 #include "BD.h"
 #include "consoleLinux.h"
+#include <unistd.h>//sleep
 
 using namespace std;
 
