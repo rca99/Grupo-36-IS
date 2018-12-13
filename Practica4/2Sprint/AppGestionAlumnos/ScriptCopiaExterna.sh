@@ -15,25 +15,7 @@ echo "Numero de parametros": $#;
 echo "Todos los parametros menos el 0": $*;
 
 
-git status;
 
-#git add gestionAlumnos.bin;
-
-
-cd ..
-git add .;
-clear;
-echo "Introduce la fecha de la Copia de seguridad:"
-read TXT;
-
-git commit -m "Fecha última copia seguridad: $TXT"
-
-git remote set-url origin https://a52hepof:vn9rn7rz@github.com/rca99/Grupo-36-IS.git
-
-cd ..
-git push -u origin Fernando
-#rm gestionAlumnos.bin
-echo copia de seguridad realizada
 
 ##descarga copia de seguridad externa
 ## /usr/bin/firefox -new-window https://github.com/rca99/Grupo-36-IS/raw/master/Practica4/1Sprint/gestionAlumnos.bin
