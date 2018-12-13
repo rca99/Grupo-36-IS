@@ -59,20 +59,15 @@ bool BD::guardarBD(){
 	for (i = aux.begin(); i!=aux.end(); ++i)
 	{
 	
-		cout<<i->getNombre()<<"-"<<i->getCurso()<<"-"<<i->getApellidos()<<i->getLider()<<endl;
+		cout<<i->getNombre()<<"-"<<i->getCurso()<<"-"<<i->getApellidos()<<endl;
 		//dato.nombre=i->getNombre();
-		strcpy(dato.dni, i->getDNI().c_str());
+
 		strcpy(dato.nombre, i->getNombre().c_str());
-		strcpy(dato.apellidos, i->getApellidos().c_str());
-		strcpy(dato.fecha_nacimiento, i->getFecha_nacimiento().c_str());
-		strcpy(dato.email_corporativo, i->getEmail_corporativo().c_str());
-		strcpy(dato.domicilio, i->getDomicilio().c_str());
-		
+		//strcpy(dato.apellidos, i->getApellidos().c_str());
 		dato.curso=i->getCurso();
-		dato.telefono=i->getTelefono();
-		dato.nota=i->getNota();
-		dato.equipo=i->getEquipo();
-		dato.lider=i->getLider();
+
+
+
 
 		fwrite(&dato, sizeof(datosAlumno), 1, fichero);
 
