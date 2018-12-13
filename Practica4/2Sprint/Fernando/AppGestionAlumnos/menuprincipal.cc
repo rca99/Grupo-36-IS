@@ -11,9 +11,9 @@
 #include <iostream>
 #include <string>
 #include <cstring>
-#include <cstdlib>
 #include <iomanip>//formato cout
 #include <stdio.h>
+#include <cstdlib>
 #include "Alumno.h"
 #include "Profesor.h"
 #include "BD.h"
@@ -30,6 +30,7 @@ int main(int argc, char const *argv[]) {
 	limpiarPantalla();
 	BD miBD; //crea un objeto de base de datos con el nombre de fichero gestionAlumnos
 	int opc=0;
+	int opcBusqueda=0;
 	int opcMostrar=0;
 
 
@@ -92,7 +93,41 @@ int main(int argc, char const *argv[]) {
 
 				} break;
 			case 2: {	// MODIFICAR ALUMNO
-					
+					list <Alumno> listaux;
+					datosAlumno a;
+					bool encontrado; 
+
+					cout << "Introduzca la opcion para buscar: " << endl;
+					cout << "1. DNI\n2. Apellidos\n3. Grupo" << endl;
+					cin >> opcBusqueda;
+
+					if(opcBusqueda==1) {
+						cout << "DNI: ";
+						cin >> a.dni ;
+
+						Alumno aux(a);
+						encontrado=miBD.buscarAlumnoDNI(listaux, aux);
+					} else if (opcBusqueda==2) {
+						cout << "Apellido: ";
+						cin >> a.apellidos ;
+
+						Alumno aux(a);
+						encontrado=miBD.buscarAlumnoApellido(listaux, aux);
+					} else if (opcBusqueda==3) {
+						cout << "EQUIPO: ";
+						cin >> a.equipo ;
+
+						encontrado=miBD.buscarAlumno(listaux, a.equipo);
+					} else {
+						cout << "Opcion no valida" << endl;
+						break;
+					}
+
+					if(encontrado==true) {
+
+					}
+
+
 				} break;
 			case 3: {	// ELIMINAR ALUMNO
 					
