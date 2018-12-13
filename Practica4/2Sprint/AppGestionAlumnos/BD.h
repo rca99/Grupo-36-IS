@@ -35,7 +35,7 @@ public:
 	inline void addNumeroAlumnos(){numeroAlumnos_++;};
 	//bool introducirAlumno(Alumno nuevoAlumno){listaAlumnos_.push_back(nuevoAlumno);return 1;};
 	bool introducirAlumno(Alumno nuevoAlumno);
-	bool gestionLideres(Alumno alumnox);
+
 
 	
 	bool modificarAlumno(Alumno alumnox);
@@ -44,20 +44,20 @@ public:
 	bool buscarAlumnos();
 	bool buscarAlumnoDNI(list <Alumno> &lista, Alumno a);
 	bool buscarAlumnoApellido(list <Alumno> &lista, Alumno a);
-<<<<<<< HEAD
+
 	bool buscarAlumnoEquipo(list <Alumno> &lista, int equipo);
 
 	void mostrarAlumno(list <Alumno> lista);
 	void mostrarAlumno();
 
 	bool gestionLideres(Alumno alumnox);
-=======
+
 	void mostrarAlumno(list <Alumno> lista,int opcOrden, string orden);
 	void mostrarAlumno(int opcOrden, string orden);
 	void ordenLista(list <Alumno> &lista);
 	void ordenLista();
 	bool buscarAlumno(list <Alumno> &lista, int equipo);
->>>>>>> 19544f3ea35e1dbf900de3518ace8437620fa429
+
 	
 
 	inline BD(string nombreFichero="gestionAlumnos"){

@@ -3,6 +3,7 @@
 #include "BD.h"
 #include "Alumno.h"
 #include <iostream>
+#include <cstdlib>
 #include <list>
 #include "consoleLinux.h"//colores menu
 #include <iomanip>//formato cout

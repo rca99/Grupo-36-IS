@@ -8,6 +8,8 @@
 
 //Revisar todos los char que tengan el mismo tamaño
 //por defecto lider_=0;
+//valores que no se cumplimentan deben aparecer en blanco
+//errores al itnroducir en un int un char
 
 #include <iostream>
 #include <string>
@@ -20,6 +22,7 @@
 #include "Profesor.h"
 #include "BD.h"
 #include "consoleLinux.h"
+#include <unistd.h>//sleep
 
 using namespace std;
 
@@ -326,7 +329,7 @@ int main(int argc, char const *argv[]) {
 							cout<<COLOR_DARKGREY<<"Indique el Equipo de alumnos que desea mostrar: "<<COLOR_BLUE;cin>>equipo;getchar();
 							cout<<RESET<<endl;
 							
-							if(miBD.buscarAlumno(listaBusqueda, equipo)){
+							if(miBD.buscarAlumnoEquipo(listaBusqueda, equipo)){
 								limpiarPantalla();
 								saltoLinea();
 								cout<<COLOR_GREEN<<"Se han encontrado "<<listaBusqueda.size()<<" alumno/s que forman parte del equipo: "<<equipo<<RESET<<endl;	
@@ -660,14 +663,6 @@ void OpcionesInsertar() {
 	saltoLinea();
 	cout <<"\t"<<COLOR_CYAN<< "1. Introducir Alumno" <<endl;
 	cout <<"\t"<< "2. Volver al menu" << RESET<<endl;
-}
-
-void limpiarPantalla() {
-	system("clear");
-}
-
-void saltoLinea() {
-	cout<<endl;
 }
 
 void printAlumno(Alumno aux) {
