@@ -2,7 +2,9 @@
 // MENU PRINCIPAL
 // --------------
 
-// g++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BD.h Alumno.h Profesor.h
+//gg++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BD.h Alumno.h Profesor.h
+
+
 
 //Revisar todos los char que tengan el mismo tamaño
 //por defecto lider_=0;
@@ -10,11 +12,10 @@
 #include <iostream>
 #include <string>
 #include <cstring>
-#include <iomanip> //formato cout
+#include <iomanip>//formato cout
 #include <stdio.h>
 #include <cstdlib>
 #include <limits>
-
 #include "Alumno.h"
 #include "Profesor.h"
 #include "BD.h"
@@ -22,36 +23,42 @@
 
 using namespace std;
 
+int opcOrden=0;
+string orden="AAA";//para orden ascendente o descendente ASC, DESC
+BD miBD; //crea un objeto de base de datos con el nombre de fichero gestionAlumnos
+
+
 void saltoLinea();
 void mostrarOpciones();
 void OpcionesMostrar();
 void OpcionesInsertar();
 void limpiarPantalla();
 bool datosBusqueda(datosAlumno &datos);
+void OpcionesOrden();
 void printAlumno(Alumno aux);
 
 int main(int argc, char const *argv[]) {
 	limpiarPantalla();
-	BD miBD; //crea un objeto de base de datos con el nombre de fichero gestionAlumnos
 	int opc=0;
 	int opcBusqueda=0;
 	int opcMostrar=0;
 
-	miBD.setNumeroAlumnos(150);
+	//miBD.setNumeroAlumnos(150);
 
 	do {
 		mostrarOpciones();
 		saltoLinea();
+
 		cout << "\t" << BOLD_ON << COLOR_LIGHTGREY <<"Introduzca una opción: " << COLOR_BRIGHTBLUE;
 		cin >> opc;
 		cout << RESET << endl;
+
 		limpiarPantalla();
 		
 		switch(opc) {
 			case 1: {	// INSERTAR ALUMNO
 
 					// COMPRUEBA NºALUMNOS < 150 ···
-
 					if(miBD.getNumeroAlumnos()==150) {
 						cout << BOLD_RED << "\n\tERROR\n" << RESET;
 						cout << COLOR_BRIGHTGREEN << "\n\tNUMERO MAXIMO DE ALUMNOS (" << miBD.getNumeroAlumnos() << ") ALCANZADO\n";
@@ -82,7 +89,7 @@ int main(int argc, char const *argv[]) {
 					cout << "Apellidos : ";
 					cin.getline(datos.apellidos, 30, '\n');
 					cout << "Fecha de nacimiento : ";
-					cin.getline(datos.fecha_nacimiento, 10, '\n');
+					cin.getline(datos.fecha_nacimiento, 15, '\n');
 					cout << "Telefono : ";
 					cin >> datos.telefono;
 					cout << "Email corporativo : ";
@@ -203,8 +210,8 @@ int main(int argc, char const *argv[]) {
 					} else if (opcBusqueda==3) {
 						cout << "EQUIPO: ";
 						cin >> a.equipo ;
-
 						encontrado=miBD.buscarAlumnoEquipo(alumnosencontrados, a.equipo);
+
 					} else {
 						cout << "Opcion no valida" << endl;
 						break;
@@ -260,10 +267,22 @@ int main(int argc, char const *argv[]) {
 							
 							if (miBD.buscarAlumnoDNI(listaBusqueda, z)){
 								saltoLinea();
-								cout<<COLOR_GREEN<<"El alumno con DNI: "<<z.getDNI()<<" ha sido encontrado."<<RESET<<endl;
-								saltoLinea();
-								miBD.mostrarAlumno(listaBusqueda);
 
+								if(listaBusqueda.size()>1){
+
+									cout<<COLOR_RED<<"**ATENCIÓN: PUEDE HABER ALUMNOS DUPLICADOS- hay más de un alumno con DNI: "<<z.getDNI()<<RESET<<endl;
+
+								}
+								else{
+									saltoLinea();
+									cout<<COLOR_GREEN<<"El alumno con DNI: "<<z.getDNI()<<" ha sido encontrado."<<RESET<<endl;
+									
+
+								}
+
+								saltoLinea();
+								miBD.ordenLista(listaBusqueda);
+								
 							}
 							
 							else{
@@ -271,16 +290,20 @@ int main(int argc, char const *argv[]) {
 								cout<<COLOR_RED<<"No Encontrado por DNI"<<RESET<<endl;	
 								saltoLinea();
 								//Introducir el apellido que buscar
-								cout<<COLOR_DARKGREY<<"Indique ahora el apellido: "<<COLOR_BLUE;cin>>Apellidos;getchar();
+								cout<<COLOR_DARKGREY<<"Indique ahora el apellido: "<<COLOR_BLUE;getline(cin,Apellidos);
 								cout<<RESET<<endl;
 								z.setApellidos(Apellidos);
 
+
+								//fgets (Apellidos , 80 , stdin);
+								//quitarEspacios(Apellidos);
+								//fflush(stdin);
 								if(miBD.buscarAlumnoApellido(listaBusqueda, z)){
 									limpiarPantalla();
 									saltoLinea();
 									cout<<COLOR_GREEN<<"Se ha encontrado los siguientes alumnos con el apellido: "<<z.getApellidos()<<RESET<<endl;	
 									saltoLinea();	
-									miBD.mostrarAlumno(listaBusqueda);
+									miBD.ordenLista(listaBusqueda);
 
 								}
 								else{
@@ -303,12 +326,12 @@ int main(int argc, char const *argv[]) {
 							cout<<COLOR_DARKGREY<<"Indique el Equipo de alumnos que desea mostrar: "<<COLOR_BLUE;cin>>equipo;getchar();
 							cout<<RESET<<endl;
 							
-							if(miBD.buscarAlumnoEquipo(listaBusqueda, equipo)){
+							if(miBD.buscarAlumno(listaBusqueda, equipo)){
 								limpiarPantalla();
 								saltoLinea();
 								cout<<COLOR_GREEN<<"Se han encontrado "<<listaBusqueda.size()<<" alumno/s que forman parte del equipo: "<<equipo<<RESET<<endl;	
 								saltoLinea();	
-								miBD.mostrarAlumno(listaBusqueda);
+								miBD.ordenLista(listaBusqueda);
 
 							}
 							else{
@@ -326,7 +349,7 @@ int main(int argc, char const *argv[]) {
 
 						case 3: {
 							saltoLinea();
-							miBD.mostrarAlumno();
+							miBD.ordenLista();
 							saltoLinea();
 							cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
 							limpiarPantalla();
@@ -477,7 +500,7 @@ void mostrarOpciones() {
 	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<left<<setw(40)<<"|::MENÚ APLICACIÓN::|"<<RESET<<endl;
 	saltoLinea();
 	cout.fill('*');
-	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<""<<endl;
+	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<RESET<<""<<endl;
 	saltoLinea();
 	saltoLinea();
 	cout <<"\t"<<COLOR_DARKGREY<< "1. Insertar Alumno" << endl;
@@ -502,14 +525,126 @@ void OpcionesMostrar() {
 	cout<<"\t"<<BOLD_ON<<COLOR_GREEN<<left<<setw(40)<<"|::MOSTRAR ALUMNOS::|"<<RESET<<endl;
 	saltoLinea();
 	cout.fill('*');
-	cout<<"\t"<<BOLD_ON<<COLOR_GREEN<<setw(40)<<""<<endl;
+	cout<<"\t"<<BOLD_ON<<COLOR_GREEN<<setw(40)<<""<<RESET<<endl;
 	saltoLinea();
 	saltoLinea();
-	cout <<"\t"<<COLOR_GREEN<< "1. Mostrar Alumno" << RESET<<endl;
+	cout <<"\t"<<COLOR_GREEN<< "1. Mostrar Alumno" <<endl;
 	cout <<"\t"<<COLOR_BRIGHTGREEN<<  "2. Mostrar Alumnos de un grupo" << endl;
 	cout <<"\t"<<COLOR_GREEN<< "3. Mostrar todos los alumnos" << endl;
-	cout <<"\t"<<COLOR_BRIGHTGREEN<<  "4. Volver al menú" << endl;
+	cout <<"\t"<<COLOR_BRIGHTGREEN<<  "4. Volver al menú principal" << endl;
+
+
 }
+
+void limpiarPantalla(){
+	system("clear");
+
+
+}
+
+void saltoLinea(){
+	cout<<endl;
+
+
+}
+
+
+void OpcionesOrden(){
+	
+	cout.fill('*');
+	saltoLinea();
+	cout<<"\t"<<BOLD_ON<<COLOR_CYAN<<UNDERLINE_ON<<left<<setw(40)<<"Opciones Orden"<<RESET<<endl;
+	saltoLinea();
+	saltoLinea();
+	cout <<"\t"<<COLOR_CYAN<< "1. Ordenar por DNI" << RESET<<endl;
+	cout <<"\t"<<COLOR_LIGTHCYAN<<  "2. Ordenar por apellido" << endl;
+	cout <<"\t"<<COLOR_CYAN<< "3. Ordenar por Grupo" << endl;
+	cout <<"\t"<<COLOR_LIGTHCYAN<<  "4. Ordenar por Curso más alto matriculado" << endl;
+	cout <<"\t"<<COLOR_CYAN<<  "5. Volver al menú de Mostrar Alumnos" << endl;
+
+
+}
+
+
+
+
+void BD::ordenLista(list <Alumno> &lista){
+	
+
+		do{
+			/*OpcionesOrden();
+			saltoLinea();
+			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique la opción elegida: "<<COLOR_BRIGHTBLUE;cin>>opcOrden;
+			cout<<RESET<<endl;
+			limpiarPantalla();
+	
+			if(opcOrden==5){
+
+				break;
+			}
+			*/
+			OpcionesOrden();
+			saltoLinea();
+			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique el orden en que quiere mostrar el alumno o alumnos: "<<COLOR_BRIGHTBLUE;cin>>opcOrden;
+			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique si desea mostrar la lista en orden Ascendente, introduzca <ASC>, o en orden Descendente, introduzca <DESC>: "<<COLOR_BRIGHTBLUE;getchar();getline(cin, orden);
+			cout<<RESET<<endl;
+			limpiarPantalla();
+
+
+			if ((opcOrden==1||opcOrden==2||opcOrden==3||opcOrden==4)&&(orden=="ASC"||orden=="DESC")){
+				
+				miBD.mostrarAlumno(lista,opcOrden, orden);
+				saltoLinea();
+				cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+				limpiarPantalla();
+			}
+
+			if(opcOrden==5){
+
+				break;
+			}
+			
+			
+
+		}while((opcOrden!=1 ||opcOrden!=2||opcOrden!=3||opcOrden!=4||opcOrden!=5)&&(orden!="ASC"||orden!="DESC"));
+
+
+
+}
+
+void BD::ordenLista(){
+	
+
+		do{
+			OpcionesOrden();
+			saltoLinea();
+			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique el orden en que quiere mostrar el alumno o alumnos: "<<COLOR_BRIGHTBLUE;cin>>opcOrden;
+			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique si desea mostrar la lista en orden Ascendente, introduzca <ASC>, o en orden Descendente, introduzca <DESC>: "<<COLOR_BRIGHTBLUE;getchar();getline(cin, orden);
+			cout<<RESET<<endl;
+			limpiarPantalla();
+
+
+
+			if ((opcOrden==1||opcOrden==2||opcOrden==3||opcOrden==4)&&(orden=="ASC"||orden=="DESC")){
+				
+				miBD.mostrarAlumno(opcOrden, orden);
+				saltoLinea();
+				cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+				limpiarPantalla();
+			}
+			
+			if(opcOrden==5){
+
+				break;
+			}
+
+		}while((opcOrden!=1 ||opcOrden!=2||opcOrden!=3||opcOrden!=4||opcOrden!=5)&&(orden!="ASC"||orden!="DESC"));
+
+
+
+}
+
+
 
 void OpcionesInsertar() {
 	cout.fill('*');
@@ -548,4 +683,3 @@ void printAlumno(Alumno aux) {
 	cout << "Equipo: " << aux.getNota() << endl;
 	cout << "Lider: " << aux.getLider() << endl;
 }
-

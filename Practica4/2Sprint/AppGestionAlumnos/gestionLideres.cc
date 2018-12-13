@@ -13,7 +13,14 @@ bool BD::gestionLideres(Alumno alumnox) {
 	list <Alumno> grupo;
 
 	// buscarAlumnoporGrupos
+<<<<<<< HEAD
 	buscarAlumnoEquipo(grupo, myteam);
+=======
+	
+	int myteam=alumnox.getEquipo();
+
+	buscarAlumno(grupo, myteam);
+>>>>>>> 19544f3ea35e1dbf900de3518ace8437620fa429
 
 	// Comprueba que los alumnos del grupo no sean lideres 
 	list <Alumno> :: iterator i ; 

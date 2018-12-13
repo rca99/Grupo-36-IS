@@ -2,10 +2,25 @@
 #include "Alumno.h"
 #include "BD.h"
 #include <string>
+#include <cstring>
 
 using namespace std;
 
-	Alumno::Alumno(string nif, string nom, string ape, string fecha, string email, string dom, int tlf, int cur, int calf, int eqp, bool lid=0){
+	void inicializardatos(datosAlumno &datos) {
+		strcpy(datos.nombre, "");
+		strcpy(datos.dni, "");
+		strcpy(datos.apellidos, "");
+		strcpy(datos.fecha_nacimiento, "");
+		strcpy(datos.email_corporativo, "");
+		strcpy(datos.domicilio, "");
+		datos.curso=-1;
+		datos.telefono=-1;
+		datos.nota=-1;
+		datos.equipo=-1;
+	}
+
+
+	Alumno::Alumno(string nif="", string nom="", string ape="", string fecha="", string email="", string dom="", int tlf=0, int cur=0, int calf=0, int eqp=0, bool lid=0){
 		dni_=nif;
 		nombre_=nom;
 		apellidos_=ape;
@@ -31,12 +46,22 @@ using namespace std;
 		curso_=datos.curso;
 		nota_=datos.nota;
 		equipo_=datos.equipo;
-		lider_=0;
+		lider_=false;
 	
 	};
 
 	Alumno::Alumno(){
-		lider_=0;
+		dni_="";
+		nombre_="";
+		apellidos_="";
+		fecha_nacimiento_="";
+		email_corporativo_="";
+		domicilio_="";
+		telefono_=0;
+		curso_=0;
+		nota_=0;
+		equipo_=0;
+		lider_=false;
 	};
 
 
@@ -80,9 +105,7 @@ int Alumno::operator<(const Alumno &rhs) const{
 }
 */
 
-int Alumno::operator<(const Alumno &rhs) const
-
-	{
+int Alumno::operator<(const Alumno &rhs) const	{
 
 	   if( this->nombre_ == rhs.nombre_ && this->apellidos_ == rhs.apellidos_) return 1;
 
@@ -92,4 +115,6 @@ int Alumno::operator<(const Alumno &rhs) const
 
 	   return 0;
 
-	}
+}
+
+

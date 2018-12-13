@@ -12,9 +12,12 @@ using namespace std;
 			//Al leer ficheros, los métodos no aceptan bien tipos de archivo string y salía un segmentation fault al cargar el fichero
 			char nombre[30], dni[10],apellidos[30], fecha_nacimiento[10], email_corporativo[30], domicilio[30];
 			int curso, telefono, nota, equipo;
-			bool lider;
+			bool lider=false;
 
 	};
+
+	void inicializardatos(datosAlumno &datos);
+
 
 
 	class Alumno {
@@ -29,7 +32,6 @@ using namespace std;
 	public:
 
 	
-	     int operator<(const Alumno &rhs) const;
 
 		Alumno(string nif, string nom, string ape, string fecha, string email, string dom, int tlf, int cur, int calf, int eqp, bool lid);
 		Alumno(datosAlumno datos);
@@ -68,10 +70,9 @@ using namespace std;
 
 		inline bool getLider() const {return lider_;}
 		inline void setLider(bool lid){lider_=lid;}			// hay que modificarlo en el diagrama de clases
-		//bool operator<(const Alumno& A , const Alumno& B);
 
 		bool alumnoLider();
-
+	    int operator<(const Alumno &rhs) const;
 
 
 
