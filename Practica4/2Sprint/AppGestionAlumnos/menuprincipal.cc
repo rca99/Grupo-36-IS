@@ -428,7 +428,6 @@ int main(int argc, char const *argv[]) {
 
 				} break;
 			case 7: {	// GUARDAR BACKUP
-				sleep(4);
 				if (miBD.getAlumnos().size()==0){
 
 					cout<<COLOR_RED<<"ANTES DE GUARDAR LA COPIA DE SEGURIDAD EXTERNA INTRODUZCA ALUMNOS EN LA BASE DE DATOS"<<RESET<<endl;
@@ -438,6 +437,7 @@ int main(int argc, char const *argv[]) {
 					break;
 				}
 				cout<<BOLD_ON<<BLINK<<"\tPreparando el sistema para realizar la copia externa"<<RESET<<endl;
+				sleep(4);
 
 				miBD.guardarBD();
 				miBD.guardarBackup();
