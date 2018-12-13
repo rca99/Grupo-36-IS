@@ -8,6 +8,8 @@
 
 //Revisar todos los char que tengan el mismo tamaño
 //por defecto lider_=0;
+//valores que no se cumplimentan deben aparecer en blanco
+//errores al itnroducir en un int un char
 
 #include <iostream>
 #include <string>
@@ -19,6 +21,7 @@
 #include "Profesor.h"
 #include "BD.h"
 #include "consoleLinux.h"
+#include <unistd.h>//sleep
 
 using namespace std;
 
@@ -35,6 +38,7 @@ void limpiarPantalla();
 bool datosBusqueda(datosAlumno &datos);
 void OpcionesOrden();
 void printAlumno(Alumno aux);
+
 
 
 
@@ -144,24 +148,24 @@ int main(int argc, char const *argv[]) {
 
 					cout << "Introduzca los datos obligatorios del nuevo alumno" << endl;
 
-					cout<<COLOR_BLUE;cout << "DNI : ";
+					cout << "DNI : ";
 					cin.ignore();
-					cout<<COLOR_BLUE;cin.getline(datos.dni, 10, '\n');cout<<RESET;
+					cin.getline(datos.dni, 10, '\n');
 					cout << "Nombre : ";
-					cout<<COLOR_BLUE;cin.getline(datos.nombre, 30, '\n');cout<<RESET;
+					cin.getline(datos.nombre, 30, '\n');
 					cout << "Apellidos : ";
-					cout<<COLOR_BLUE;cin.getline(datos.apellidos, 30, '\n');cout<<RESET;
+					cin.getline(datos.apellidos, 30, '\n');
 					cout << "Fecha de nacimiento : ";
-					cout<<COLOR_BLUE;cin.getline(datos.fecha_nacimiento, 15, '\n');cout<<RESET;
+					cin.getline(datos.fecha_nacimiento, 15, '\n');
 					cout << "Telefono : ";
-					cout<<COLOR_BLUE;cin >> datos.telefono;cout<<RESET;
+					cin >> datos.telefono;
 					cout << "Email corporativo : ";
 					cin.ignore();
-					cout<<COLOR_BLUE;cin.getline(datos.email_corporativo, 30, '\n');cout<<RESET;
+					cin.getline(datos.email_corporativo, 30, '\n');
 					cout << "Domicilio : ";
-					cout<<COLOR_BLUE;cin.getline(datos.domicilio, 30, '\n');cout<<RESET;
+					cin.getline(datos.domicilio, 30, '\n');
 					cout << "Curso : ";
-					cout<<COLOR_BLUE;cin >> datos.curso;cout<<RESET;
+					cin >> datos.curso;
 
 					Alumno aux(datos); // Constructor con estructura
 					list <Alumno> alumnosencontrados;
