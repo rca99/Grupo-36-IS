@@ -5,4 +5,4 @@
 /soporte
 /GestionAlumnosIS
 *.o
-*%.gch
+*.gch
