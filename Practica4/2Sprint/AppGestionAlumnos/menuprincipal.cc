@@ -144,24 +144,24 @@ int main(int argc, char const *argv[]) {
 
 					cout << "Introduzca los datos obligatorios del nuevo alumno" << endl;
 
-					cout << "DNI : ";
+					cout<<COLOR_BLUE;cout << "DNI : ";
 					cin.ignore();
-					cin.getline(datos.dni, 10, '\n');
+					cout<<COLOR_BLUE;cin.getline(datos.dni, 10, '\n');cout<<RESET;
 					cout << "Nombre : ";
-					cin.getline(datos.nombre, 30, '\n');
+					cout<<COLOR_BLUE;cin.getline(datos.nombre, 30, '\n');cout<<RESET;
 					cout << "Apellidos : ";
-					cin.getline(datos.apellidos, 30, '\n');
+					cout<<COLOR_BLUE;cin.getline(datos.apellidos, 30, '\n');cout<<RESET;
 					cout << "Fecha de nacimiento : ";
-					cin.getline(datos.fecha_nacimiento, 15, '\n');
+					cout<<COLOR_BLUE;cin.getline(datos.fecha_nacimiento, 15, '\n');cout<<RESET;
 					cout << "Telefono : ";
-					cin >> datos.telefono;
+					cout<<COLOR_BLUE;cin >> datos.telefono;cout<<RESET;
 					cout << "Email corporativo : ";
 					cin.ignore();
-					cin.getline(datos.email_corporativo, 30, '\n');
+					cout<<COLOR_BLUE;cin.getline(datos.email_corporativo, 30, '\n');cout<<RESET;
 					cout << "Domicilio : ";
-					cin.getline(datos.domicilio, 30, '\n');
+					cout<<COLOR_BLUE;cin.getline(datos.domicilio, 30, '\n');cout<<RESET;
 					cout << "Curso : ";
-					cin >> datos.curso;
+					cout<<COLOR_BLUE;cin >> datos.curso;cout<<RESET;
 
 					Alumno aux(datos); // Constructor con estructura
 					list <Alumno> alumnosencontrados;
