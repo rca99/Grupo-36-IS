@@ -1,5 +1,5 @@
 
-BD::bool cargarBackup(){
+bool BD::cargarBackup(){
 
 
 

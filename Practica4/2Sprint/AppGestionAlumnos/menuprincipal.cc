@@ -38,6 +38,8 @@ void limpiarPantalla();
 bool datosBusqueda(datosAlumno &datos);
 void OpcionesOrden();
 void printAlumno(Alumno aux);
+void guardarBD();
+
 //void binarioAcceso();
 
 
@@ -454,68 +456,11 @@ int main(int argc, char const *argv[]) {
 
 			case 5: {	// GUARDAR BD
 
-				if (miBD.getAlumnos().size()==0){
-					cout<<"No hay datos que guardar"<<endl;
-					
-					char cargar;	
+				
+				guardarBD();
+			
 
-					do{
-
-						cout<<COLOR_DARKGREY<<"Indique si Desea cargar la base de datos"<<endl;
-						cout<<"pulse C si desea cargar la base de datos o M si desea salir al menú"<<COLOR_BLUE<<endl;
-						cin>>cargar;
-						cout<<RESET<<endl;
-
-						saltoLinea();
-						if (cargar=='C' or cargar=='c'){
-							
-							if (miBD.cargarBD()){
-
-								cout<<COLOR_GREEN<<"Base de datos cargada correctamente"<<RESET<<endl;
-								cout<<"vuelva al menú para introducir alumnos"<<endl;
-								saltoLinea();
-								cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-								limpiarPantalla();
-								break;
-							}
-
-							else{
-								cout<<COLOR_RED"No se encuentra el fichero o se ha producido un error cargar la base de datos"<<RESET<<endl;
-								cout<<"compruebe que exista el fichero de copia de seguridad, en caso contrario,"<<endl;
-								cout<<"vuelva al menú para introducir alumnos y cree una copia de seguridad antes de cargarla"<<endl;
-								saltoLinea();
-								cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-								limpiarPantalla();
-
-								break;
-							}
-						}
-
-						if (cargar=='M' or cargar=='m'){
-								cout<<"Vuelva al menú para introducir alumnos antes de guardar la base de datos"<<endl;
-								break;
-						}
-					}while(cargar!= 'C'||cargar!='c'||cargar!= 'M'||cargar!='m');
-				}
-
-				else{
-
-					cout<<"pulse una tecla para guardar la BD"<<endl;
-					getchar();
-					//sleep(4);
-					if(miBD.guardarBD()){
-
-						cout<<COLOR_GREEN<<"base de datos guardada correctamente"<<RESET<<endl;
-						saltoLinea();
-						cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-						limpiarPantalla();
-						//miBD.cargarBD();
-					}
-
-					else{cout<<COLOR_RED<<"Error al guardar la Base de Datos"<<RESET<<endl;}
-					}
-
-				} break;
+			} break;
 				
 			case 6: {	// CARGAR BD
 
@@ -543,10 +488,24 @@ int main(int argc, char const *argv[]) {
 
 				} break;
 			case 7: {	// GUARDAR BACKUP
-				cout<<BOLD_ON<<BLINK<<"\tPreparando el sistema para realizar la copia externa"<<RESET<<endl;
 				sleep(2);
+				if (miBD.getAlumnos().size()==0){
+
+					cout<<COLOR_RED<<"ANTES DE GUARDAR LA COPIA DE SEGURIDAD EXTERNA INTRODUZCA ALUMNOS EN LA BASE DE DATOS"<<RESET<<endl;
+					saltoLinea();
+					cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+					limpiarPantalla();
+					break;
+				}
+				cout<<BOLD_ON<<BLINK<<"\tPreparando el sistema para realizar la copia externa"<<RESET<<endl;
+
 				miBD.guardarBD();
 				miBD.guardarBackup();
+				saltoLinea();
+				saltoLinea();
+				cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+				limpiarPantalla();
+
 
 
 				} break;
@@ -771,4 +730,70 @@ void printAlumno(Alumno aux) {
 	cout << "Lider: " << lider << endl;
 }
 
+void guardarBD(){
+
+	if (miBD.getAlumnos().size()==0){
+					cout<<"No hay datos que guardar"<<endl;
+					
+					char cargar;	
+
+					do{
+
+						cout<<COLOR_DARKGREY<<"Indique si Desea cargar la base de datos"<<endl;
+						cout<<"pulse C si desea cargar la base de datos o M si desea salir al menú"<<COLOR_BLUE<<endl;
+						cin>>cargar;
+						cout<<RESET<<endl;
+
+						saltoLinea();
+						if (cargar=='C' or cargar=='c'){
+							
+							if (miBD.cargarBD()){
+
+								cout<<COLOR_GREEN<<"Base de datos cargada correctamente"<<RESET<<endl;
+								cout<<"vuelva al menú para introducir alumnos"<<endl;
+								saltoLinea();
+								cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+								limpiarPantalla();
+								break;
+							}
+
+							else{
+								cout<<COLOR_RED"No se encuentra el fichero o se ha producido un error cargar la base de datos"<<RESET<<endl;
+								cout<<"compruebe que exista el fichero de copia de seguridad, en caso contrario,"<<endl;
+								cout<<"vuelva al menú para introducir alumnos y cree una copia de seguridad antes de cargarla"<<endl;
+								saltoLinea();
+								cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+								limpiarPantalla();
+
+								break;
+							}
+						}
+
+						if (cargar=='M' or cargar=='m'){
+								cout<<"Vuelva al menú para introducir alumnos antes de guardar la base de datos"<<endl;
+								break;
+						}
+					}while(cargar!= 'C'||cargar!='c'||cargar!= 'M'||cargar!='m');
+	}
+
+	else{
+
+		cout<<"pulse una tecla para guardar la BD"<<endl;
+		getchar();
+		//sleep(4);
+		if(miBD.guardarBD()){
+
+			cout<<COLOR_GREEN<<"base de datos guardada correctamente"<<RESET<<endl;
+			saltoLinea();
+			cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+			limpiarPantalla();
+			//miBD.cargarBD();
+		}
+
+		else{cout<<COLOR_RED<<"Error al guardar la Base de Datos"<<RESET<<endl;}
+		}
+
+
+
+}
 

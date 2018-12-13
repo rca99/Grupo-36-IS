@@ -3,7 +3,7 @@
 #chmod +x guardarExterna.sh
 
 git status;
-cd ..
+
 git add gestionAlumnos.bin;
 
 clear;
@@ -17,4 +17,4 @@ git remote set-url origin https://a52hepof:vn9rn7rz@github.com/rca99/Grupo-36-IS
 cd ..
 git push -u origin Fernando
 #rm gestionAlumnos.bin
-echo copia de seguridad realizada
+echo -e "\e[34mCOPIA DE SEGURIDAD REALIZADA\e[0m"
