@@ -655,7 +655,7 @@ void printAlumno(Alumno aux) {
 	cout << "Equipo: " << aux.getNota() << endl;
 	cout << "Lider: " << aux.getLider() << endl;
 }
-<<<<<<< HEAD
+
 
 void guardarBD(){
 
@@ -724,5 +724,4 @@ void guardarBD(){
 
 }
 
-=======
->>>>>>> cc06cddd5e1343708e3ef5eb98a4d6c4b745c7fc
+
