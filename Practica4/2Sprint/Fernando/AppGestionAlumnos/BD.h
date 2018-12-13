@@ -41,11 +41,12 @@ public:
 	bool buscarAlumno(list <Alumno> &lista, Alumno a);
 	bool buscarAlumnoDNI(list <Alumno> &lista, Alumno a);
 	bool buscarAlumnoApellido(list <Alumno> &lista, Alumno a);
-	void mostrarAlumno(list <Alumno> lista);
-	void mostrarAlumno();
+	void mostrarAlumno(list <Alumno> lista,int opcOrden, string orden);
+	void mostrarAlumno(int opcOrden, string orden);
+	void ordenLista(list <Alumno> &lista);
+	void ordenLista();
 	bool buscarAlumno(list <Alumno> &lista, int equipo);
 	
-	//list <Alumno> buscarAlumno(int grupo);
 
 	inline BD(string nombreFichero="gestionAlumnos"){
 
