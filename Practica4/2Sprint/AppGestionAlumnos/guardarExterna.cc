@@ -5,6 +5,7 @@
 #include <iomanip>//formato cout
 #include <stdio.h>
 #include <iostream>
+#include <cstdlib>
 
 
 bool BD::guardarBackup(){
