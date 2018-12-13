@@ -4,9 +4,8 @@
 
 git status;
 cd ..
-git add .;
+git add gestionAlumnos.bin;
 
-##git add .;
 clear;
 echo "Introduce la fecha de la Copia de seguridad:"
 read TXT;

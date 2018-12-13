@@ -545,6 +545,7 @@ int main(int argc, char const *argv[]) {
 			case 7: {	// GUARDAR BACKUP
 				cout<<BOLD_ON<<BLINK<<"\tPreparando el sistema para realizar la copia externa"<<RESET<<endl;
 				sleep(2);
+				miBD.guardarBD();
 				miBD.guardarBackup();
 
 
