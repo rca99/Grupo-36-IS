@@ -2,7 +2,8 @@
 // MENU PRINCIPAL
 // --------------
 
-//g++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BBD.h Alumno.h Profesor.h guardarExterna.cc
+//g++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BD.h Alumno.h Profesor.h guardarExterna.cc cargarExterna.cc
+
 
 
 
@@ -29,6 +30,8 @@ using namespace std;
 int opcOrden=0;
 string orden="AAA";//para orden ascendente o descendente ASC, DESC
 BD miBD; //crea un objeto de base de datos con el nombre de fichero gestionAlumnos
+int contadorBackUp=0;//para controlar si se han introducido nuevos alumnos. sE DECLARA GLOBAL PARA QUE ESTÉ SIEMPRE DISPONIBLE
+
 
 
 void saltoLinea();
@@ -428,9 +431,10 @@ int main(int argc, char const *argv[]) {
 
 				} break;
 			case 7: {	// GUARDAR BACKUP
-				if (miBD.getAlumnos().size()==0){
 
-					cout<<COLOR_RED<<"ANTES DE GUARDAR LA COPIA DE SEGURIDAD EXTERNA INTRODUZCA ALUMNOS EN LA BASE DE DATOS"<<RESET<<endl;
+				if (miBD.getAlumnos().size()==contadorBackUp){
+
+					cout<<COLOR_RED<<"ANTES DE GUARDAR LA COPIA DE SEGURIDAD EXTERNA INTRODUZCA NUEVOS ALUMNOS EN LA BASE DE DATOS"<<RESET<<endl;
 					saltoLinea();
 					cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
 					limpiarPantalla();
@@ -440,18 +444,26 @@ int main(int argc, char const *argv[]) {
 				sleep(4);
 
 				miBD.guardarBD();
+				getchar();
+				cout<<BOLD_ON<<"Pulse una tecla para continuar"<<endl;getchar();getchar();
 				miBD.guardarBackup();
 				saltoLinea();
 				saltoLinea();
 				cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+				contadorBackUp++;
 				limpiarPantalla();
+
 
 
 
 				} break;
 			case 8: {	// CARGAR BACKUP
 
-
+				miBD.cargarBackup();
+				saltoLinea();
+				saltoLinea();
+				cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+				limpiarPantalla();
 
 
 				} break;	

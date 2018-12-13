@@ -1,15 +1,11 @@
 #include "BD.h"
-
-#include <stdio.h>
-#include <iostream>
+#include <cstdlib>
 
 
 bool BD::guardarBackup(){
-	//system("chmod +x guardarExterna.sh");
-	//system("./guardarExterna.sh");
-
-	return true;
-
+	system("chmod +x guardarExterna.sh");
+	system("./guardarExterna.sh");
+	return 1;
 
 }
 
