@@ -14,6 +14,16 @@
 using namespace std;
 
 /*
+guardar BD()
+
+Descripción: Guarda el contenido de la lista de alumnos en un fichero binario
+
+Si no existe el fichero binario de la copia de seguridad, lo crea y si existe lo sobreescribe 
+con los datos de la lista de alumnos.
+
+Valores devueltos: 1 si ha guardado correctamente la base de datos.
+
+Parámetros: no recibe ningún parámetro. Accede a listaAlumnos_ para guardarla
 
 */
 
