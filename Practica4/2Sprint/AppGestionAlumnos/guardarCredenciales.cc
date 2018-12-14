@@ -47,17 +47,20 @@ bool Profesor::credencialesBin(){
 	strcpy(p1.rol, "ayudante");
 	strcpy(p1.contrasenya, "1111");
 
-	strcpy(p1.nombreCompleto, "Antonio Durán");
-	strcpy(p1.usuario, "aduran");
-	strcpy(p1.rol, "ayudante");
-	strcpy(p1.contrasenya, "2222");
+	strcpy(p2.nombreCompleto, "Antonio Durán");
+	strcpy(p2.usuario, "aduran");
+	strcpy(p2.rol, "ayudante");
+	strcpy(p2.contrasenya, "2222");
 
 	strcpy(c.nombreCompleto, "Isabel");
 	strcpy(c.usuario, "isa");
 	strcpy(c.rol, "coordinador");
 	strcpy(c.contrasenya, "0000");
 
-
+	fichero=fopen(NombreFicheroBin, "wa+b");
+	if (fichero==NULL){
+		cout<<"no existe"<<endl;
+	} 
 
 
 	fwrite(&p1, sizeof(Credencialesprofesor), 1, fichero);

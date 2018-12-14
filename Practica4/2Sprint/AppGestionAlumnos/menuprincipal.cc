@@ -2,7 +2,7 @@
 // MENU PRINCIPAL
 // --------------
 
-//g++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BD.h Alumno.h Profesor.h guardarExterna.cc cargarExterna.cc guardarCredenciales.cc
+//g++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BD.h Alumno.h Profesor.h guardarExterna.cc cargarExterna.cc guardarCredenciales.cc cargarCredenciales.cc
 
 
 
@@ -53,8 +53,15 @@ int main(int argc, char const *argv[]) {
 	//string clave;
 	//string usuario;
 
-	//p.credencialesBin();
+	p.credencialesBin();
+	if(p.cargarCredenciales("dguijo", "1111")){
 
+		cout<<"ACCESO AUTORIZADO"<<endl;
+	}
+	else{
+		cout<<COLOR_RED<<"ACCESO DENEGADO"<<endl;
+
+	}
 
 
 

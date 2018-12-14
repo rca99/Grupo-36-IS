@@ -33,6 +33,7 @@ struct Credencialesprofesor{
 		inline int *getFicheroBD() const {return ficheroBD_;}	// hay que modificarlo en el diagrama de clases
 		void setFicheroBD(datosAlumno BD){ficheroBD_=(int*)&BD;} // hay que modificarlo en el diagrama de clases
 		bool credencialesBin();
+		bool cargarCredenciales(string usuarioAcceso, string contrasenyaAcceso);
 		
 	};
 
