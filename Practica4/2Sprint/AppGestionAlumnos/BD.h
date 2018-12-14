@@ -36,7 +36,7 @@ public:
 	inline void addNumeroAlumnos(){numeroAlumnos_++;};
 	//bool introducirAlumno(Alumno nuevoAlumno){listaAlumnos_.push_back(nuevoAlumno);return 1;};
 
-	bool introducirAlumno(Alumno nuevoAlumno);
+	bool introducirAlumno(Alumno &nuevoAlumno);
 
 
 	
