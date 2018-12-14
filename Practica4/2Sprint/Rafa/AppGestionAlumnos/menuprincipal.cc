@@ -154,7 +154,7 @@ int main(int argc, char const *argv[]) {
 
 
 
-					if (miBD.buscarAlumnoGrupo(listaBusqueda, 1)){
+					if (miBD.buscarAlumnoEquipo(listaBusqueda, 1)){
 						cout<<"Encontrado"<<endl;	
 					}
 					else{
@@ -169,7 +169,7 @@ int main(int argc, char const *argv[]) {
 
 					listaBusqueda.clear();
 
-					if (miBD.buscarAlumnoGrupo(listaBusqueda, 2)){
+					if (miBD.buscarAlumnoEquipo(listaBusqueda, 2)){
 						cout<<"Encontrado"<<endl;	
 					}
 					else{
@@ -184,7 +184,7 @@ int main(int argc, char const *argv[]) {
 
 					listaBusqueda.clear();
 
-					if (miBD.buscarAlumnoGrupo(listaBusqueda, 6)){
+					if (miBD.buscarAlumnoEquipo(listaBusqueda, 6)){
 						cout<<"Encontrado"<<endl;	
 					}
 					else{
@@ -200,40 +200,6 @@ int main(int argc, char const *argv[]) {
 					listaBusqueda.clear();
 
 
-
-					/*
-					datosAlumno datos;
-
-					cout << "Introduzca los datos del nuevo alumno" << endl;
-
-					cout << "DNI : " << endl;
-					cin >> datos.dni;
-					cout << "Nombre : " << endl;
-					cin >> datos.nombre;
-					cout << "Apellidos : " << endl;
-					cin >> datos.apellidos;
-					cout << "Fecha de nacimiento : " << endl;
-					cin >> datos.fecha_nacimiento;
-					cout << "Telefono : " << endl;
-					cin >> datos.telefono;
-					cout << "Email corporativo : " << endl;
-					cin >> datos.email_corporativo;
-					cout << "Domicilio : " << endl;
-					cin >> datos.domicilio;
-					cout << "Curso : " << endl;
-					cin >> datos.curso;
-					cout << "Nota : " << endl;
-					cin >> datos.nota;
-					cout << "Equipo : " << endl;
-					cin >> datos.equipo;
-					cout << "Lider (1: Si; 0: No): " << endl;
-					cin >> datos.lider;
-
-					Alumno aux(datos);	// Constructor con estructura
-
-					miBD.introducirAlumno(aux);
-
-					*/
 				} break;
 			case 2: {	// MODIFICAR ALUMNO
 					
