@@ -26,14 +26,14 @@
 #include "consoleLinux.h"
 #include <unistd.h>//sleep
 
-
-
 using namespace std;
 
+int opcOrden=0;
+string orden="AAA";//para orden ascendente o descendente ASC, DESC
+BD miBD; //crea un objeto de base de datos con el nombre de fichero gestionAlumnos
+int contadorBackUp=0;//para controlar si se han introducido nuevos alumnos. sE DECLARA GLOBAL PARA QUE ESTÉ SIEMPRE DISPONIBLE
 
-BD miBD; //crea un objeto de base de datos con el nombre de fichero gestionAlumnos. SE DECLARA GLOBAL PARA QUE ESTÉ DISPONIBLE PARA TODAS LAS FUNCIONALIDADES
-int contadorBackUp=0;//para controlar si se han introducido nuevos alumnos. SE DECLARA GLOBAL PARA QUE ESTÉ SIEMPRE DISPONIBLE
-#define INTENTOS_ACCESO_APLICACION 3
+
 
 void saltoLinea();
 void mostrarOpciones();
@@ -55,50 +55,6 @@ int main(int argc, char const *argv[]) {
 	p.credencialesBin();// para guardar el fichero binario de las credenciales
 
 	int intentosAcceso=0;//para controlar el número de intentos de acceso
-	string user="aaa";
-	string password;
-	int intentosRestantes;
-
-	do{
-		intentosRestantes=INTENTOS_ACCESO_APLICACION-intentosAcceso;
-		cout<<"Tiene "<<intentosRestantes<<" intentos de acceso"<<endl;
-		cout<<"introduce usuario: ";getline(cin, user);
-		saltoLinea();
-		cout<<"introduce contrasenya: ";getline(cin, password);
-		cout<<user<<"-"<<password;
-
-		Credencialesprofesor cprof;
-		cprof=p.registro(user, password);
-
-		if(strcmp(cprof.usuario, user.c_str())==0 && strcmp(cprof.contrasenya, password.c_str())==0){
-
-			cout<<COLOR_BRIGHTGREEN<<BLINK<<"ACCESO AUTORIZADO"<<RESET<<endl;
-			getchar();
-			limpiarPantalla();
-
-			if (strcmp(cprof.rol, "coordinador")==0){
-
-				mostrarOpciones();	
-
-			}
-			else{
-
-				mostrarOpcionesAyudantes();
-			}
-
-		}
-		else{
-			cout<<COLOR_RED<<"ACCESO DENEGADO"<<endl;
-			cout<<RESET<<BOLD_ON<<"le quedan "<<intentosRestantes<<" intentos de acceso"<<RESET<<endl;
-			intentosAcceso++;
-			limpiarPantalla();
-
-		}
-
-
-	}while(intentosAcceso<3);
-
-	cout<<"HASTA LUEGO LUCAS"<<endl;
 
 	//introducir datos acceso
 
@@ -110,18 +66,26 @@ int main(int argc, char const *argv[]) {
 
 	//comprobar credenciales
 
-	
-/*
+	Credencialesprofesor cprof=p.registro("dguijo", "1111");
+
+
+	if(strcmp(cprof.usuario, "dguijo")==0 && strcmp(cprof.contrasenya, "1111")==0){
+
+		cout<<COLOR_BRIGHTGREEN<<BLINK<<"ACCESO AUTORIZADO"<<RESET<<endl;
+	}
+	else{
+		cout<<COLOR_RED<<"ACCESO DENEGADO"<<endl;
+
+	}
 
 	
-	*/
-	
-	//cout<<cprof.contrasenya<<"-"<<cprof.usuario<<"-"<<cprof.rol<<endl;// la clase registro ha de devolver una estructura profesor
+	cout<<cprof.contrasenya<<"-"<<cprof.usuario<<"-"<<cprof.rol<<endl;// la clase registro ha de devolver una estructura profesor
 
 	limpiarPantalla();
 
 	//Acceso al menú principal si credenciales son válidas
 
+	menuPrincipal();	
 
 
 
@@ -150,7 +114,6 @@ void mostrarOpciones() {
 	cout <<"\t"<<COLOR_LIGHTGREY<< "8. Cargar Backup (solo coordinador)" << endl;
 	cout <<"\t"<<COLOR_DARKGREY<< "9. Gestion del Perfil" << endl;
 	cout <<"\t"<<COLOR_LIGHTGREY<< "10. Salir de la aplicacion" << endl;
-	menuPrincipal();
 }
 
 void mostrarOpcionesAyudantes() {
@@ -171,10 +134,8 @@ void mostrarOpcionesAyudantes() {
 	cout <<"\t"<<COLOR_LIGHTGREY<< "4. Mostrar Alumnos" << endl;
 	cout <<"\t"<<COLOR_DARKGREY<< "5. Guardar BD" << endl;
 	cout <<"\t"<<COLOR_LIGHTGREY<< "6. Cargar BD" << endl;
-	cout <<"\t"<<COLOR_DARKGREY<< "9. Gestion del Perfil" << endl;
-	cout <<"\t"<<COLOR_LIGHTGREY<< "10. Salir de la aplicacion" << endl;
-
-	menuPrincipal();
+	cout <<"\t"<<COLOR_DARKGREY<< "7. Gestion del Perfil" << endl;
+	cout <<"\t"<<COLOR_LIGHTGREY<< "8. Salir de la aplicacion" << endl;
 }
 
 
@@ -232,8 +193,6 @@ void OpcionesOrden(){
 
 void BD::ordenLista(list <Alumno> &lista){
 	
-	int opcOrden=0;
-	string orden="AAA";//para orden ascendente o descendente ASC, DESC
 
 		do{
 			/*OpcionesOrden();
@@ -250,10 +209,6 @@ void BD::ordenLista(list <Alumno> &lista){
 			OpcionesOrden();
 			saltoLinea();
 			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique el orden en que quiere mostrar el alumno o alumnos: "<<COLOR_BRIGHTBLUE;cin>>opcOrden;
-			if(opcOrden==5){
-
-				break;
-			}
 			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique si desea mostrar la lista en orden Ascendente, introduzca <ASC>, o en orden Descendente, introduzca <DESC>: "<<COLOR_BRIGHTBLUE;getchar();getline(cin, orden);
 			cout<<RESET<<endl;
 			limpiarPantalla();
@@ -267,6 +222,10 @@ void BD::ordenLista(list <Alumno> &lista){
 				limpiarPantalla();
 			}
 
+			if(opcOrden==5){
+
+				break;
+			}
 			
 			
 
@@ -278,19 +237,11 @@ void BD::ordenLista(list <Alumno> &lista){
 
 void BD::ordenLista(){
 	
-	int opcOrden=0;
-	string orden="AAA";//para orden ascendente o descendente ASC, DESC
 
 		do{
 			OpcionesOrden();
 			saltoLinea();
 			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique el orden en que quiere mostrar el alumno o alumnos: "<<COLOR_BRIGHTBLUE;cin>>opcOrden;
-			if(opcOrden==5){
-
-				break;
-			}
-
-
 			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique si desea mostrar la lista en orden Ascendente, introduzca <ASC>, o en orden Descendente, introduzca <DESC>: "<<COLOR_BRIGHTBLUE;getchar();getline(cin, orden);
 			cout<<RESET<<endl;
 			limpiarPantalla();
@@ -425,7 +376,7 @@ void menuPrincipal(){
 	int opcMostrar=0;
 
 	do {
-		
+		mostrarOpciones();
 		saltoLinea();
 
 		cout << "\t" << BOLD_ON << COLOR_LIGHTGREY <<"Introduzca una opción: " << COLOR_BRIGHTBLUE;
@@ -868,7 +819,7 @@ void menuPrincipal(){
 
 				} break;
 			case 10: {	// SALIR DE LA APLICACION
-				exit(-1);
+
 				} break;
 			default: {
 				saltoLinea();
