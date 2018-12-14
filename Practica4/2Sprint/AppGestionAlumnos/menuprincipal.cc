@@ -11,6 +11,7 @@
 //por defecto lider_=0;
 //valores que no se cumplimentan deben aparecer en blanco
 //errores al ittroducir en un int un char
+//instrucciones en html para compilar y ejecutar programa
 
 #include <iostream>
 #include <string>
