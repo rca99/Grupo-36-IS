@@ -76,7 +76,15 @@ int main(int argc, char const *argv[]) {
 			getchar();
 			limpiarPantalla();
 
-			menuPrincipal();	
+			if (strcmp(cprof.rol, "coordinador")==0){
+
+				mostrarOpciones();	
+
+			}
+			else{
+
+				mostrarOpcionesAyudantes();
+			}
 
 		}
 		else{
@@ -142,6 +150,7 @@ void mostrarOpciones() {
 	cout <<"\t"<<COLOR_LIGHTGREY<< "8. Cargar Backup (solo coordinador)" << endl;
 	cout <<"\t"<<COLOR_DARKGREY<< "9. Gestion del Perfil" << endl;
 	cout <<"\t"<<COLOR_LIGHTGREY<< "10. Salir de la aplicacion" << endl;
+	menuPrincipal();
 }
 
 void mostrarOpcionesAyudantes() {
@@ -162,8 +171,10 @@ void mostrarOpcionesAyudantes() {
 	cout <<"\t"<<COLOR_LIGHTGREY<< "4. Mostrar Alumnos" << endl;
 	cout <<"\t"<<COLOR_DARKGREY<< "5. Guardar BD" << endl;
 	cout <<"\t"<<COLOR_LIGHTGREY<< "6. Cargar BD" << endl;
-	cout <<"\t"<<COLOR_DARKGREY<< "7. Gestion del Perfil" << endl;
-	cout <<"\t"<<COLOR_LIGHTGREY<< "8. Salir de la aplicacion" << endl;
+	cout <<"\t"<<COLOR_DARKGREY<< "9. Gestion del Perfil" << endl;
+	cout <<"\t"<<COLOR_LIGHTGREY<< "10. Salir de la aplicacion" << endl;
+
+	menuPrincipal();
 }
 
 
@@ -414,7 +425,7 @@ void menuPrincipal(){
 	int opcMostrar=0;
 
 	do {
-		mostrarOpciones();
+		
 		saltoLinea();
 
 		cout << "\t" << BOLD_ON << COLOR_LIGHTGREY <<"Introduzca una opción: " << COLOR_BRIGHTBLUE;
@@ -857,7 +868,7 @@ void menuPrincipal(){
 
 				} break;
 			case 10: {	// SALIR DE LA APLICACION
-
+				exit(-1);
 				} break;
 			default: {
 				saltoLinea();
