@@ -2,7 +2,7 @@
 // MENU PRINCIPAL
 // --------------
 
-//g++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BD.h Alumno.h Profesor.h guardarExterna.cc cargarExterna.cc
+//g++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BD.h Alumno.h Profesor.h guardarExterna.cc cargarExterna.cc guardarCredenciales.cc
 
 
 
@@ -53,7 +53,7 @@ int main(int argc, char const *argv[]) {
 	//string clave;
 	//string usuario;
 
-
+	//p.credencialesBin();
 
 
 
@@ -459,7 +459,9 @@ int main(int argc, char const *argv[]) {
 
 				} break;
 			case 8: {	// CARGAR BACKUP
-
+				cout<<BOLD_ON<<BLINK<<"\tPreparando el sistema para cargar la copia externa"<<RESET<<endl;
+				sleep(2);
+				limpiarPantalla;
 				miBD.cargarBackup();
 				saltoLinea();
 				saltoLinea();

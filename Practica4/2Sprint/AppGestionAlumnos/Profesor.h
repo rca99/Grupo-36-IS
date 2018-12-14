@@ -5,6 +5,15 @@
 
 using namespace std;
 
+struct Credencialesprofesor{
+
+	char usuario[30];
+	char nombreCompleto[50];
+	char contrasenya[5];
+	char rol[20];
+};
+
+
 	class Profesor {
 
 	private:
@@ -23,7 +32,7 @@ using namespace std;
 		void setRol();
 		inline int *getFicheroBD() const {return ficheroBD_;}	// hay que modificarlo en el diagrama de clases
 		void setFicheroBD(datosAlumno BD){ficheroBD_=(int*)&BD;} // hay que modificarlo en el diagrama de clases
-
+		bool credencialesBin();
 		
 	};
 

@@ -13,7 +13,8 @@
 
 
 bool BD::cargarBackup(){
-	system("chmod +x guardarExterna.sh");
+	getchar();
+	system("chmod +x cargarExterna.sh");
 	system("./cargarExterna.sh");
 	
 
