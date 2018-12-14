@@ -48,14 +48,6 @@ int main(int argc, char const *argv[]) {
 	Profesor p;//para acceso a la aplicación.
 	//string clave;
 	//string usuario;
-
-
-
-
-
-
-
-
 	limpiarPantalla();
 	int opc=0;
 	int opcBusqueda=0;
@@ -78,10 +70,9 @@ int main(int argc, char const *argv[]) {
 
 					// COMPRUEBA NºALUMNOS < 150 ···
 					if(miBD.getNumeroAlumnos()==150) {
-						cout << BOLD_RED << "\n\tERROR\n" << RESET;
+						cout << BOLD_RED << "\n\tERROR\n";
 						cout << COLOR_BRIGHTGREEN << "\n\tNUMERO MAXIMO DE ALUMNOS (" << miBD.getNumeroAlumnos() << ") ALCANZADO\n";
-						cout << RESET << endl;
-						cout << BOLD_ON  << "\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+						cout << COLOR_NORMAL << BOLD_ON  << "\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
 						cin.ignore();
 						cin.get();
 						limpiarPantalla();
@@ -90,60 +81,75 @@ int main(int argc, char const *argv[]) {
 
 					// MENU INSERTAR ···
 					OpcionesInsertar();
+					cout << "\tNUMERO DE ALUMNOS: " << COLOR_GREEN << miBD.getNumeroAlumnos() << RESET;
+					cout.fill('-');
 					saltoLinea();
 					saltoLinea();
-				
-					
+								
 					// PIDE DATOS OBLIGATORIOS ···
 					datosAlumno datos;
 					inicializardatos(datos);
 
-					cout << COLOR_CYAN << BOLD_ON<< "\tINTRODUZCA LOS DATOS OBLIGATORIOS DEL NUEVO ALUMNO" << endl << endl;
-					cout.fill('*');
-					saltoLinea();
-					cout<<"\t"<<BOLD_ON<<COLOR_GREEN<<setw(40)<<""<<endl;
 					cout.fill(' ');
+					cout << COLOR_CYAN << BOLD_ON << UNDERLINE_ON << setw(75) 
+						 << "\tINTRODUZCA LOS DATOS OBLIGATORIOS DEL NUEVO ALUMNO"
+						 << endl << endl << endl << RESET;
 
-					cout << "\tDNI : " << COLOR_BRIGHTBLUE;
+					cout << COLOR_GREEN << BOLD_ON << "\tDNI : " << COLOR_BRIGHTBLUE;
 					cin.ignore();
 					cin.getline(datos.dni, 10, '\n');
-					cout << COLOR_CYAN << BOLD_ON << "\tNombre : " << COLOR_BRIGHTBLUE;
+					cout << COLOR_GREEN << "\tNombre : " << COLOR_BRIGHTBLUE;
 					cin.getline(datos.nombre, 30, '\n');
-					cout << COLOR_CYAN << BOLD_ON << "\tApellidos : " << COLOR_BRIGHTBLUE;
+					cout << COLOR_GREEN << "\tApellidos : " << COLOR_BRIGHTBLUE;
 					cin.getline(datos.apellidos, 30, '\n');
-					cout << COLOR_CYAN << BOLD_ON << "\tFecha de nacimiento : " << COLOR_BRIGHTBLUE;
-					cin.getline(datos.fecha_nacimiento, 15, '\n');
-					cout << COLOR_CYAN << BOLD_ON << "\tTelefono : " << COLOR_BRIGHTBLUE;
+					cout << COLOR_GREEN << "\tFecha de nacimiento : " << COLOR_BRIGHTBLUE;
+					cin.getline(datos.fecha_nacimiento, 10, '\n');
+					cout << COLOR_GREEN << "\tTelefono : " << COLOR_BRIGHTBLUE;
 					cin >> datos.telefono;
-					cout << COLOR_CYAN << BOLD_ON << "\tEmail corporativo : " << COLOR_BRIGHTBLUE;
+					cout << COLOR_GREEN << "\tEmail corporativo : " << COLOR_BRIGHTBLUE;
 					cin.ignore();
 					cin.getline(datos.email_corporativo, 30, '\n');
-					cout << COLOR_CYAN << BOLD_ON << "\tDomicilio : " << COLOR_BRIGHTBLUE;
+					cout << COLOR_GREEN << "\tDomicilio : " << COLOR_BRIGHTBLUE;
 					cin.getline(datos.domicilio, 30, '\n');
-					cout << COLOR_CYAN << BOLD_ON << "\tCurso : " << COLOR_BRIGHTBLUE;
+					cout << COLOR_GREEN << "\tCurso : " << COLOR_BRIGHTBLUE;
 					cin >> datos.curso;
+
 					cout << RESET ;
+
+					if( strlen(datos.dni)==0 || strlen(datos.nombre)==0 || strlen(datos.apellidos)==0 || strlen(datos.fecha_nacimiento)==0 || strlen(datos.email_corporativo)==0 || strlen(datos.domicilio)==0) {
+						cout << BOLD_RED << "\n\tERROR" << endl;
+						cout << COLOR_BRIGHTGREEN << "\n\tALGUN PARAMETRO NO SE HA INTRODUCIDO" << endl;
+						cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+						cin.ignore();
+						cin.get();
+						limpiarPantalla();
+						break;
+					}
 
 					Alumno aux(datos); // Constructor con estructura
 					
+					cout << endl << "\t***" << endl << endl;
 					// COMPRUEBA QUE EL ALUMNO NO HA SIDO INTRODUCIDO ANTERIORMENTE ···
 					list <Alumno> alumnosencontrados;
 					bool encontrado;
 
-					saltoLinea();
-					cout << "Comprobando que el alumno no esta dado de alta..." << endl;
-					cout << "Opcion de busqueda" << endl;
-					cout << "1. DNI\n2. Apellidos\n\n";
-					cout << "¿Como desea buscar? : ";
+
+					cout << COLOR_CYAN << BOLD_ON << "\tComprobando que el alumno no esta dado de alta..." << endl;
+					cout << "\tOPCIONES DE BUSQUEDA:" << endl;
+					cout << "\t\t1. DNI\n\t\t2. Apellidos\n\n";
+					cout << "\t¿Como desea buscar? : " << COLOR_BRIGHTBLUE;
 					cin >> opcBusqueda;
+
+					cout << RESET ;
 
 					if(opcBusqueda==1) {
 						encontrado=miBD.buscarAlumnoDNI(alumnosencontrados, aux);
 					} else if (opcBusqueda == 2) {
 						encontrado=miBD.buscarAlumnoApellido(alumnosencontrados, aux);
 					} else {
-						cout << "\nOpcion de busqueda no valida" << endl;
-						cout << BOLD_ON << "\nPULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;
+						cout << BOLD_RED << "\n\tERROR" << endl;
+						cout << COLOR_BRIGHTGREEN << "\n\tOPCION DE BUSQUEDA NO VALIDA" << endl;
+						cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
 						cin.ignore();
 						cin.get();
 						limpiarPantalla();
@@ -151,8 +157,9 @@ int main(int argc, char const *argv[]) {
 					}
 
 					if(encontrado==true) {	// ALUMNO YA INTRODUCIDO
-						cout << "\nEl alumno ya se encuentra en la BD" << endl;
-						cout << BOLD_ON << "\nPULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;
+						cout << BOLD_RED << "\n\tERROR" << endl;
+						cout << COLOR_BRIGHTGREEN << "\n\tEL ALUMNO YA SE ENCUENTRA EN LA BD" << endl;
+						cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
 						cin.ignore();
 						cin.get();
 						limpiarPantalla();
@@ -160,29 +167,39 @@ int main(int argc, char const *argv[]) {
 					} 
 
 					// ALUMNO NUEVO ···
-					cout << "\nEl alumno no se encuentra en la BD" << endl;
+					cout << COLOR_GREEN << "\n\tEl alumno no esta dado de alta" << endl;
+					cout << RESET ;
 
 
+					cout << endl << "\t***" << endl << endl;
 					// DATOS ADICIONALES ···
-					cout << "\n¿Desea introducir datos adicionales?" << endl;
-					cout << "DATOS ADICIONALES:" << endl;
-					cout << "\tNOTA\n\tEQUIPO\n\tLIDER\n";
-					cout << "Pulse 1 si desea introducir datos adicionales: ";	
+					cout << COLOR_CYAN << BOLD_ON << "\t¿Desea introducir datos adicionales?" << endl;
+					cout << "\tDATOS ADICIONALES:" << endl;
+					cout << "\t\tNOTA\n\t\tEQUIPO\n\t\tLIDER\n";
+					cout << "\tPulse 1 si desea introducir datos adicionales: " << COLOR_BRIGHTBLUE;	
 
 					int datosAd;
 					cin >> datosAd;
-					
+					cout << RESET ;
+
 					if(datosAd == 1) {
-						cout << "Nota : ";
+						limpiarPantalla();
+						OpcionesInsertar();
+						cout.fill(' ');
+						cout << COLOR_CYAN << BOLD_ON << UNDERLINE_ON << setw(75) 
+						 	 << "\tINTRODUZCA LOS DATOS ADICIONALES DEL NUEVO ALUMNO"
+						 	 << endl << endl << endl << RESET;
+						cout << COLOR_DARKGREY << BOLD_ON << "\tNota : " << COLOR_BRIGHTBLUE;
 						cin >> datos.nota;
-						cout << "Equipo : ";
+						cout << COLOR_DARKGREY << "\tEquipo : " << COLOR_BRIGHTBLUE;
 						cin >> datos.equipo;
-						cout << "Lider (1: Si; 0: No): ";
+						cout << COLOR_DARKGREY << "\tLider (1: Si; 0: No): " << COLOR_BRIGHTBLUE;
 						cin >> datos.lider;
 
 						if(cin.fail()) {
-							cout << "Introduccion de lider incorrecta" << endl;
-							cout << BOLD_ON << "PULSE UNA TECLA PARA VOLVER AL MENÚ";
+							cout << BOLD_RED << "\n\tERROR" << endl;
+							cout << COLOR_BRIGHTGREEN << "\n\tINTRODUCCION DE LIDER INCORRECTA" << endl;
+							cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
   							//cin.ignore(numeric_limits<int>::max());
   							cin.clear();
   							cin.ignore();
@@ -197,14 +214,20 @@ int main(int argc, char const *argv[]) {
 					}
 
 					// MUESTRA LOS DATOS DEL ALUMNO A INTRODUCIR ···
+					limpiarPantalla();
+					OpcionesInsertar();
+					saltoLinea();
 					printAlumno(aux);
-
+					
+					cout << endl << "\t***" << endl << endl;
+					cout << COLOR_LIGHTGREY << "\tINTRODUCIENDO :·:·:·:·:·:·:·:\n";
+					cout << endl << "\t***" << endl << endl;
 					// INTENTA INTRODUCIR EL ALUMNO ···
 					if(!miBD.introducirAlumno(aux)) {
-						cout << "Error al introducir el alumno" << endl;
-					} else cout << "Alumno introducido correctamente" << endl;
+						cout << BOLD_RED  << "\n\tNO SE HA INTRODUCIDO EL ALUMNO" << endl;
+					} else cout << COLOR_GREEN << "\tAlumno introducido correctamente" << endl;
 
-					cout<<BOLD_ON<<"\nPULSE UNA TECLA PARA VOLVER AL MENÚ";
+					cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
 					cin.ignore();
 					cin.get();
 					limpiarPantalla();
@@ -643,23 +666,24 @@ void OpcionesInsertar() {
 	cout.fill('*');
 	cout<<"\t"<<BOLD_ON<<COLOR_CYAN<<setw(40)<<""<<endl;
 	saltoLinea();
-	saltoLinea();
-	cout <<"\tNUMERO DE ALUMNOS: " << miBD.getNumeroAlumnos() << RESET;
-	cout.fill('-');
 }
 
 void printAlumno(Alumno aux) {
-	cout << "DNI: " << aux.getDNI() << endl;
-	cout << "Nombre: " << aux.getNombre() << endl;
-	cout << "Apellidos: " << aux.getApellidos() << endl;
-	cout << "Fecha Nacimiento: " << aux.getFecha_nacimiento() << endl;
-	cout << "Email: " << aux.getEmail_corporativo() << endl;
-	cout << "Domicilio: " << aux.getDomicilio() << endl;
-	cout << "Telefono: " << aux.getTelefono() << endl;
-	cout << "Curso: " << aux.getCurso() << endl;
-	cout << "Nota: " << aux.getNota() << endl;
-	cout << "Equipo: " << aux.getNota() << endl;
-	cout << "Lider: " << aux.getLider() << endl;
+	cout.fill(' ');
+	cout << COLOR_CYAN << BOLD_ON << UNDERLINE_ON << setw(75) 
+	 	 << "\tDATOS DEL ALUMNO A INTRODUCIR"
+	 	 << endl << endl << endl << RESET;
+	cout << COLOR_BRIGHTGREEN << BOLD_ON << "\tDNI: " << COLOR_BRIGHTBLUE << aux.getDNI() << endl;
+	cout << COLOR_BRIGHTGREEN << "\tNombre: " << COLOR_BRIGHTBLUE << aux.getNombre() << endl;
+	cout << COLOR_BRIGHTGREEN << "\tApellidos: " << COLOR_BRIGHTBLUE << aux.getApellidos() << endl;
+	cout << COLOR_BRIGHTGREEN << "\tFecha Nacimiento: " << COLOR_BRIGHTBLUE << aux.getFecha_nacimiento() << endl;
+	cout << COLOR_BRIGHTGREEN << "\tEmail: " << COLOR_BRIGHTBLUE << aux.getEmail_corporativo() << endl;
+	cout << COLOR_BRIGHTGREEN << "\tDomicilio: " << COLOR_BRIGHTBLUE << aux.getDomicilio() << endl;
+	cout << COLOR_BRIGHTGREEN << "\tTelefono: " << COLOR_BRIGHTBLUE << aux.getTelefono() << endl;
+	cout << COLOR_BRIGHTGREEN << "\tCurso: " << COLOR_BRIGHTBLUE << aux.getCurso() << endl;
+	cout << COLOR_DARKGREY << "\tNota: " << COLOR_BRIGHTBLUE << aux.getNota() << endl;
+	cout << COLOR_DARKGREY << "\tEquipo: " << COLOR_BRIGHTBLUE << aux.getNota() << endl;
+	cout << COLOR_DARKGREY << "\tLider: " << COLOR_BRIGHTBLUE << aux.getLider() << endl << RESET;
 }
 
 
