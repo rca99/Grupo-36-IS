@@ -1111,8 +1111,8 @@ void generarhtml(){
 	/* Cerrar el archivo antes de terminar el programa */
 	fclose(fp);
 	printf("Se ha creado el archivo: acceso.html \n");
-	sleep(3);
-	//system("chmod +x abrirWeb.sh");
+	
+	system("chmod +x abrirWeb.sh");
 	system("./abrirWeb.sh");
 
 
