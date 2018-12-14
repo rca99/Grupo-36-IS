@@ -27,11 +27,8 @@ Parámetros: no recibe ningún parámetro. Accede a listaAlumnos_ para guardarla
 
 */
 
-bool Profesor::cargarCredenciales(string usuarioAcceso, string contrasenyaAcceso){
+Credencialesprofesor Profesor::registro(string usuarioAcceso, string contrasenyaAcceso){
 	
-	
-
-
 	cout<<"asdfadsfas"<<endl;
 	
 	list <Credencialesprofesor> listaProfesores; //para guardar los datos que se van leyendo. Su contenido es añadido a listaAlumnos_ a partir de la función introducirAlumno(alumno)
@@ -50,10 +47,11 @@ bool Profesor::cargarCredenciales(string usuarioAcceso, string contrasenyaAcceso
 	ficheroLectura=fopen(NombreFicheroBin, "rb");
 	
 	if (ficheroLectura==NULL){
-		return 0;
+		cout<<"no se encuentra fichero credenciales"<<endl;
 	} //si existe el fichero lo sobreescribe
 
 	Credencialesprofesor cp;
+	Credencialesprofesor A;
 
 	
 
@@ -85,17 +83,23 @@ bool Profesor::cargarCredenciales(string usuarioAcceso, string contrasenyaAcceso
 		cout<<i->usuario<<"-"<<usuarioAcceso<<endl;
 		cout<<i->contrasenya<<"-"<<contrasenyaAcceso<<endl;
 		if(strcmp(i->usuario, usuarioAcceso.c_str())==0 && strcmp(i->contrasenya, contrasenyaAcceso.c_str())==0){
-
+			strcpy(cp.rol,i->rol);
+			strcpy(cp.usuario,i->usuario);
+			strcpy(cp.contrasenya,i->contrasenya);
+			strcpy(cp.nombreCompleto,i->nombreCompleto);
 			
-			return 1;
+			return cp;
+			
+			
 		}
-		else{return 0;}
+		else{}
 
 	}
-	fclose(ficheroLectura);
+	
+	return cp;
 
 
-	return 1;
+	
 
 
 

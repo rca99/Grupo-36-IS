@@ -52,17 +52,19 @@ int main(int argc, char const *argv[]) {
 	Profesor p;//para acceso a la aplicación.
 	//string clave;
 	//string usuario;
-
 	p.credencialesBin();
-	if(p.cargarCredenciales("dguijo", "1111")){
+	Credencialesprofesor cprof=p.registro("dguijo", "1111");
+	
+	if(strcmp(cprof.usuario, "dguijo")==0 && strcmp(cprof.contrasenya, "1111")==0){
 
-		cout<<"ACCESO AUTORIZADO"<<endl;
+		cout<<COLOR_BRIGHTGREEN<<BLINK<<"ACCESO AUTORIZADO"<<RESET<<endl;
 	}
 	else{
 		cout<<COLOR_RED<<"ACCESO DENEGADO"<<endl;
 
 	}
-
+	
+	cout<<cprof.contrasenya<<"-"<<cprof.usuario<<"-"<<cprof.rol<<endl;// la clase registro ha de devolver una estructura profesor
 
 
 
