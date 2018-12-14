@@ -52,11 +52,7 @@ int main(int argc, char const *argv[]) {
 	Profesor p;//para acceso a la aplicación.
 	//string clave;
 	//string usuario;
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 5afa39ecf30f3b6a6f092856d97c738b26297597
 	p.credencialesBin();
 	Credencialesprofesor cprof=p.registro("dguijo", "1111");
 	
@@ -68,14 +64,13 @@ int main(int argc, char const *argv[]) {
 		cout<<COLOR_RED<<"ACCESO DENEGADO"<<endl;
 
 	}
-<<<<<<< HEAD
+
 	
 	cout<<cprof.contrasenya<<"-"<<cprof.usuario<<"-"<<cprof.rol<<endl;// la clase registro ha de devolver una estructura profesor
 
 
 
-=======
->>>>>>> 5afa39ecf30f3b6a6f092856d97c738b26297597
+
 
 	limpiarPantalla();
 	int opc=0;
