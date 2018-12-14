@@ -24,16 +24,15 @@ struct Credencialesprofesor{
 	public:
 
 		Profesor(){};
-		//int login(string usuario, string contrasenya);
+		int login(string usuario, string contrasenya);
 		Credencialesprofesor registro(string usuario, string contrasenya);
 		inline string getUsuario() const {return usuario_;}
-		void setUsuario(string usuario){usuario_=usuario;}
+		void setUsuario();
 		inline string getRol() const {return rol_;}
-		void setRol(string rol){rol_=rol;}
+		void setRol();
 		inline int *getFicheroBD() const {return ficheroBD_;}	// hay que modificarlo en el diagrama de clases
 		void setFicheroBD(datosAlumno BD){ficheroBD_=(int*)&BD;} // hay que modificarlo en el diagrama de clases
 		bool credencialesBin();
-		//bool cargarCredenciales(string usuarioAcceso, string contrasenyaAcceso);
 		
 	};
 

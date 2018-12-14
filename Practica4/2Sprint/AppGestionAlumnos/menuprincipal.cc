@@ -26,14 +26,14 @@
 #include "consoleLinux.h"
 #include <unistd.h>//sleep
 
-
-
 using namespace std;
 
+int opcOrden=0;
+string orden="AAA";//para orden ascendente o descendente ASC, DESC
+BD miBD; //crea un objeto de base de datos con el nombre de fichero gestionAlumnos
+int contadorBackUp=0;//para controlar si se han introducido nuevos alumnos. sE DECLARA GLOBAL PARA QUE ESTÉ SIEMPRE DISPONIBLE
 
-BD miBD; //crea un objeto de base de datos con el nombre de fichero gestionAlumnos. SE DECLARA GLOBAL PARA QUE ESTÉ DISPONIBLE PARA TODAS LAS FUNCIONALIDADES
-int contadorBackUp=0;//para controlar si se han introducido nuevos alumnos. SE DECLARA GLOBAL PARA QUE ESTÉ SIEMPRE DISPONIBLE
-#define INTENTOS_ACCESO_APLICACION 3
+
 
 void saltoLinea();
 void mostrarOpciones();
@@ -44,388 +44,37 @@ bool datosBusqueda(datosAlumno &datos);
 void OpcionesOrden();
 void printAlumno(Alumno aux);
 void guardarBD();
-void mostrarOpcionesAyudantes();
-void menuPrincipal();
 
 //void binarioAcceso();
 
 int main(int argc, char const *argv[]) {
 	
 	Profesor p;//para acceso a la aplicación.
-	p.credencialesBin();// para guardar el fichero binario de las credenciales
-
-	int intentosAcceso=0;//para controlar el número de intentos de acceso
-	string user="aaa";
-	string password;
-	int intentosRestantes;
-
-	do{
-		intentosRestantes=INTENTOS_ACCESO_APLICACION-intentosAcceso;
-		cout<<"Tiene "<<intentosRestantes<<" intentos de acceso"<<endl;
-		cout<<"introduce usuario: ";getline(cin, user);
-		saltoLinea();
-		cout<<"introduce contrasenya: ";getline(cin, password);
-		cout<<user<<"-"<<password;
-
-		Credencialesprofesor cprof;
-		cprof=p.registro(user, password);
-
-		if(strcmp(cprof.usuario, user.c_str())==0 && strcmp(cprof.contrasenya, password.c_str())==0){
-
-			cout<<COLOR_BRIGHTGREEN<<BLINK<<"ACCESO AUTORIZADO"<<RESET<<endl;
-			getchar();
-			limpiarPantalla();
-
-			if (strcmp(cprof.rol, "coordinador")==0){
-
-				mostrarOpciones();	
-
-			}
-			else{
-
-				mostrarOpcionesAyudantes();
-			}
-
-		}
-		else{
-			cout<<COLOR_RED<<"ACCESO DENEGADO"<<endl;
-			cout<<RESET<<BOLD_ON<<"le quedan "<<intentosRestantes<<" intentos de acceso"<<RESET<<endl;
-			intentosAcceso++;
-			limpiarPantalla();
-
-		}
-
-
-	}while(intentosAcceso<3);
-
-	cout<<"HASTA LUEGO LUCAS"<<endl;
-
-	//introducir datos acceso
-
+	//string clave;
+	//string usuario;
+	
+	
+	p.credencialesBin();
 	/*
+	if(p.registro("dguijo", "1111")){
 
+		cout<<"ACCESO AUTORIZADO"<<endl;
+	}
+	else{
+		cout<<COLOR_RED<<"ACCESO DENEGADO"<<endl;
 
-
+	}
 	*/
-
-	//comprobar credenciales
-
-	
-/*
-
-	
-	*/
-	
-	//cout<<cprof.contrasenya<<"-"<<cprof.usuario<<"-"<<cprof.rol<<endl;// la clase registro ha de devolver una estructura profesor
 
 	limpiarPantalla();
-
-	//Acceso al menú principal si credenciales son válidas
-
-
-
-
-	return 0;
-}
-
-void mostrarOpciones() {
-	cout.fill('*');
-	saltoLinea();
-	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<""<<endl;
-	cout.fill(' ');
-	saltoLinea();
-	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<left<<setw(40)<<"|::MENÚ APLICACIÓN::|"<<RESET<<endl;
-	saltoLinea();
-	cout.fill('*');
-	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<RESET<<""<<endl;
-	saltoLinea();
-	saltoLinea();
-	cout <<"\t"<<COLOR_DARKGREY<< "1. Insertar Alumno" << endl;
-	cout <<"\t"<<COLOR_LIGHTGREY<< "2. Modificar Alumno" << endl;
-	cout <<"\t"<<COLOR_DARKGREY<< "3. Eliminar Alumno" << endl;
-	cout <<"\t"<<COLOR_LIGHTGREY<< "4. Mostrar Alumnos" << endl;
-	cout <<"\t"<<COLOR_DARKGREY<< "5. Guardar BD" << endl;
-	cout <<"\t"<<COLOR_LIGHTGREY<< "6. Cargar BD" << endl;
-	cout <<"\t"<<COLOR_DARKGREY<< "7. Guardar Backup (solo coordinador)"<< endl;
-	cout <<"\t"<<COLOR_LIGHTGREY<< "8. Cargar Backup (solo coordinador)" << endl;
-	cout <<"\t"<<COLOR_DARKGREY<< "9. Gestion del Perfil" << endl;
-	cout <<"\t"<<COLOR_LIGHTGREY<< "10. Salir de la aplicacion" << endl;
-	menuPrincipal();
-}
-
-void mostrarOpcionesAyudantes() {
-	cout.fill('*');
-	saltoLinea();
-	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<""<<endl;
-	cout.fill(' ');
-	saltoLinea();
-	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<left<<setw(40)<<"|::MENÚ APLICACIÓN::|"<<RESET<<endl;
-	saltoLinea();
-	cout.fill('*');
-	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<RESET<<""<<endl;
-	saltoLinea();
-	saltoLinea();
-	cout <<"\t"<<COLOR_DARKGREY<< "1. Insertar Alumno" << endl;
-	cout <<"\t"<<COLOR_LIGHTGREY<< "2. Modificar Alumno" << endl;
-	cout <<"\t"<<COLOR_DARKGREY<< "3. Eliminar Alumno" << endl;
-	cout <<"\t"<<COLOR_LIGHTGREY<< "4. Mostrar Alumnos" << endl;
-	cout <<"\t"<<COLOR_DARKGREY<< "5. Guardar BD" << endl;
-	cout <<"\t"<<COLOR_LIGHTGREY<< "6. Cargar BD" << endl;
-	cout <<"\t"<<COLOR_DARKGREY<< "9. Gestion del Perfil" << endl;
-	cout <<"\t"<<COLOR_LIGHTGREY<< "10. Salir de la aplicacion" << endl;
-
-	menuPrincipal();
-}
-
-
-void OpcionesMostrar() {
-	cout.fill('*');
-	saltoLinea();
-	cout<<"\t"<<BOLD_ON<<COLOR_GREEN<<setw(40)<<""<<endl;
-	cout.fill(' ');
-	saltoLinea();
-	cout<<"\t"<<BOLD_ON<<COLOR_GREEN<<left<<setw(40)<<"|::MOSTRAR ALUMNOS::|"<<RESET<<endl;
-	saltoLinea();
-	cout.fill('*');
-	cout<<"\t"<<BOLD_ON<<COLOR_GREEN<<setw(40)<<""<<RESET<<endl;
-	saltoLinea();
-	saltoLinea();
-	cout <<"\t"<<COLOR_GREEN<< "1. Mostrar Alumno" <<endl;
-	cout <<"\t"<<COLOR_BRIGHTGREEN<<  "2. Mostrar Alumnos de un grupo" << endl;
-	cout <<"\t"<<COLOR_GREEN<< "3. Mostrar todos los alumnos" << endl;
-	cout <<"\t"<<COLOR_BRIGHTGREEN<<  "4. Volver al menú principal" << endl;
-
-
-}
-
-void limpiarPantalla(){
-	system("clear");
-
-
-}
-
-void saltoLinea(){
-	cout<<endl;
-
-
-}
-
-
-void OpcionesOrden(){
-	
-	cout.fill('*');
-	saltoLinea();
-	cout<<"\t"<<BOLD_ON<<COLOR_CYAN<<UNDERLINE_ON<<left<<setw(40)<<"Opciones Orden"<<RESET<<endl;
-	saltoLinea();
-	saltoLinea();
-	cout <<"\t"<<COLOR_CYAN<< "1. Ordenar por DNI" << RESET<<endl;
-	cout <<"\t"<<COLOR_LIGTHCYAN<<  "2. Ordenar por apellido" << endl;
-	cout <<"\t"<<COLOR_CYAN<< "3. Ordenar por Grupo" << endl;
-	cout <<"\t"<<COLOR_LIGTHCYAN<<  "4. Ordenar por Curso más alto matriculado" << endl;
-	cout <<"\t"<<COLOR_CYAN<<  "5. Volver al menú de Mostrar Alumnos" << endl;
-
-
-}
-
-
-
-
-void BD::ordenLista(list <Alumno> &lista){
-	
-	int opcOrden=0;
-	string orden="AAA";//para orden ascendente o descendente ASC, DESC
-
-		do{
-			/*OpcionesOrden();
-			saltoLinea();
-			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique la opción elegida: "<<COLOR_BRIGHTBLUE;cin>>opcOrden;
-			cout<<RESET<<endl;
-			limpiarPantalla();
-	
-			if(opcOrden==5){
-
-				break;
-			}
-			*/
-			OpcionesOrden();
-			saltoLinea();
-			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique el orden en que quiere mostrar el alumno o alumnos: "<<COLOR_BRIGHTBLUE;cin>>opcOrden;
-			if(opcOrden==5){
-
-				break;
-			}
-			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique si desea mostrar la lista en orden Ascendente, introduzca <ASC>, o en orden Descendente, introduzca <DESC>: "<<COLOR_BRIGHTBLUE;getchar();getline(cin, orden);
-			cout<<RESET<<endl;
-			limpiarPantalla();
-
-
-			if ((opcOrden==1||opcOrden==2||opcOrden==3||opcOrden==4)&&(orden=="ASC"||orden=="DESC")){
-				
-				miBD.mostrarAlumno(lista,opcOrden, orden);
-				saltoLinea();
-				cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-				limpiarPantalla();
-			}
-
-			
-			
-
-		}while((opcOrden!=1 ||opcOrden!=2||opcOrden!=3||opcOrden!=4||opcOrden!=5)&&(orden!="ASC"||orden!="DESC"));
-
-
-
-}
-
-void BD::ordenLista(){
-	
-	int opcOrden=0;
-	string orden="AAA";//para orden ascendente o descendente ASC, DESC
-
-		do{
-			OpcionesOrden();
-			saltoLinea();
-			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique el orden en que quiere mostrar el alumno o alumnos: "<<COLOR_BRIGHTBLUE;cin>>opcOrden;
-			if(opcOrden==5){
-
-				break;
-			}
-
-
-			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique si desea mostrar la lista en orden Ascendente, introduzca <ASC>, o en orden Descendente, introduzca <DESC>: "<<COLOR_BRIGHTBLUE;getchar();getline(cin, orden);
-			cout<<RESET<<endl;
-			limpiarPantalla();
-
-
-
-			if ((opcOrden==1||opcOrden==2||opcOrden==3||opcOrden==4)&&(orden=="ASC"||orden=="DESC")){
-				
-				miBD.mostrarAlumno(opcOrden, orden);
-				saltoLinea();
-				cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-				limpiarPantalla();
-			}
-			
-			if(opcOrden==5){
-
-				break;
-			}
-
-		}while((opcOrden!=1 ||opcOrden!=2||opcOrden!=3||opcOrden!=4||opcOrden!=5)&&(orden!="ASC"||orden!="DESC"));
-
-
-
-}
-
-
-
-void OpcionesInsertar() {
-	cout.fill('*');
-	saltoLinea();
-	cout<<"\t"<<BOLD_ON<<COLOR_CYAN<<setw(40)<<""<<endl;
-	cout.fill(' ');
-	saltoLinea();
-	cout<<"\t"<<BOLD_ON<<COLOR_CYAN<<left<<setw(40)<<"|::INTRODUCIR ALUMNOS::|"<< RESET<<endl;
-	saltoLinea();
-	cout.fill('*');
-	cout<<"\t"<<BOLD_ON<<COLOR_CYAN<<setw(40)<<""<<endl;
-	saltoLinea();
-}
-
-void printAlumno(Alumno aux) {
-	cout.fill(' ');
-	cout << COLOR_CYAN << BOLD_ON << UNDERLINE_ON << setw(75) 
-	 	 << "\tDATOS DEL ALUMNO A INTRODUCIR"
-	 	 << endl << endl << endl << RESET;
-	cout << COLOR_BRIGHTGREEN << BOLD_ON << "\tDNI: " << COLOR_BRIGHTBLUE << aux.getDNI() << endl;
-	cout << COLOR_BRIGHTGREEN << "\tNombre: " << COLOR_BRIGHTBLUE << aux.getNombre() << endl;
-	cout << COLOR_BRIGHTGREEN << "\tApellidos: " << COLOR_BRIGHTBLUE << aux.getApellidos() << endl;
-	cout << COLOR_BRIGHTGREEN << "\tFecha Nacimiento: " << COLOR_BRIGHTBLUE << aux.getFecha_nacimiento() << endl;
-	cout << COLOR_BRIGHTGREEN << "\tEmail: " << COLOR_BRIGHTBLUE << aux.getEmail_corporativo() << endl;
-	cout << COLOR_BRIGHTGREEN << "\tDomicilio: " << COLOR_BRIGHTBLUE << aux.getDomicilio() << endl;
-	cout << COLOR_BRIGHTGREEN << "\tTelefono: " << COLOR_BRIGHTBLUE << aux.getTelefono() << endl;
-	cout << COLOR_BRIGHTGREEN << "\tCurso: " << COLOR_BRIGHTBLUE << aux.getCurso() << endl;
-	cout << COLOR_DARKGREY << "\tNota: " << COLOR_BRIGHTBLUE << aux.getNota() << endl;
-	cout << COLOR_DARKGREY << "\tEquipo: " << COLOR_BRIGHTBLUE << aux.getNota() << endl;
-	cout << COLOR_DARKGREY << "\tLider: " << COLOR_BRIGHTBLUE << aux.getLider() << endl << RESET;
-}
-
-
-void guardarBD(){
-
-	if (miBD.getAlumnos().size()==0){
-					cout<<"No hay datos que guardar"<<endl;
-					
-					char cargar;	
-
-					do{
-
-						cout<<COLOR_DARKGREY<<"Indique si Desea cargar la base de datos"<<endl;
-						cout<<"pulse C si desea cargar la base de datos o M si desea salir al menú"<<COLOR_BLUE<<endl;
-						cin>>cargar;
-						cout<<RESET<<endl;
-
-						saltoLinea();
-						if (cargar=='C' or cargar=='c'){
-							
-							if (miBD.cargarBD()){
-
-								cout<<COLOR_GREEN<<"Base de datos cargada correctamente"<<RESET<<endl;
-								cout<<"vuelva al menú para introducir alumnos"<<endl;
-								saltoLinea();
-								cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-								limpiarPantalla();
-								break;
-							}
-
-							else{
-								cout<<COLOR_RED"No se encuentra el fichero o se ha producido un error cargar la base de datos"<<RESET<<endl;
-								cout<<"compruebe que exista el fichero de copia de seguridad, en caso contrario,"<<endl;
-								cout<<"vuelva al menú para introducir alumnos y cree una copia de seguridad antes de cargarla"<<endl;
-								saltoLinea();
-								cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-								limpiarPantalla();
-
-								break;
-							}
-						}
-
-						if (cargar=='M' or cargar=='m'){
-								cout<<"Vuelva al menú para introducir alumnos antes de guardar la base de datos"<<endl;
-								break;
-						}
-					}while(cargar!= 'C'||cargar!='c'||cargar!= 'M'||cargar!='m');
-	}
-
-	else{
-
-		cout<<"pulse una tecla para guardar la BD"<<endl;
-		getchar();
-		//sleep(4);
-		if(miBD.guardarBD()){
-
-			cout<<COLOR_GREEN<<"base de datos guardada correctamente"<<RESET<<endl;
-			saltoLinea();
-			cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-			limpiarPantalla();
-			//miBD.cargarBD();
-		}
-
-		else{cout<<COLOR_RED<<"Error al guardar la Base de Datos"<<RESET<<endl;}
-		}
-
-
-
-}
-
-
-void menuPrincipal(){
-
 	int opc=0;
 	int opcBusqueda=0;
 	int opcMostrar=0;
 
+	//miBD.setNumeroAlumnos(150);
+
 	do {
-		
+		mostrarOpciones();
 		saltoLinea();
 
 		cout << "\t" << BOLD_ON << COLOR_LIGHTGREY <<"Introduzca una opción: " << COLOR_BRIGHTBLUE;
@@ -868,7 +517,7 @@ void menuPrincipal(){
 
 				} break;
 			case 10: {	// SALIR DE LA APLICACION
-				exit(-1);
+
 				} break;
 			default: {
 				saltoLinea();
@@ -879,6 +528,259 @@ void menuPrincipal(){
 			// OPC NO VALIDA
 		}
 	} while(opc !=10);
+
+	return 0;
+}
+
+void mostrarOpciones() {
+	cout.fill('*');
+	saltoLinea();
+	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<""<<endl;
+	cout.fill(' ');
+	saltoLinea();
+	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<left<<setw(40)<<"|::MENÚ APLICACIÓN::|"<<RESET<<endl;
+	saltoLinea();
+	cout.fill('*');
+	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<RESET<<""<<endl;
+	saltoLinea();
+	saltoLinea();
+	cout <<"\t"<<COLOR_DARKGREY<< "1. Insertar Alumno" << endl;
+	cout <<"\t"<<COLOR_LIGHTGREY<< "2. Modificar Alumno" << endl;
+	cout <<"\t"<<COLOR_DARKGREY<< "3. Eliminar Alumno" << endl;
+	cout <<"\t"<<COLOR_LIGHTGREY<< "4. Mostrar Alumnos" << endl;
+	cout <<"\t"<<COLOR_DARKGREY<< "5. Guardar BD" << endl;
+	cout <<"\t"<<COLOR_LIGHTGREY<< "6. Cargar BD" << endl;
+	cout <<"\t"<<COLOR_DARKGREY<< "7. Guardar Backup (solo coordinador)"<< endl;
+	cout <<"\t"<<COLOR_LIGHTGREY<< "8. Cargar Backup (solo coordinador)" << endl;
+	cout <<"\t"<<COLOR_DARKGREY<< "9. Gestion del Perfil" << endl;
+	cout <<"\t"<<COLOR_LIGHTGREY<< "10. Salir de la aplicacion" << endl;
+}
+
+
+void OpcionesMostrar() {
+	cout.fill('*');
+	saltoLinea();
+	cout<<"\t"<<BOLD_ON<<COLOR_GREEN<<setw(40)<<""<<endl;
+	cout.fill(' ');
+	saltoLinea();
+	cout<<"\t"<<BOLD_ON<<COLOR_GREEN<<left<<setw(40)<<"|::MOSTRAR ALUMNOS::|"<<RESET<<endl;
+	saltoLinea();
+	cout.fill('*');
+	cout<<"\t"<<BOLD_ON<<COLOR_GREEN<<setw(40)<<""<<RESET<<endl;
+	saltoLinea();
+	saltoLinea();
+	cout <<"\t"<<COLOR_GREEN<< "1. Mostrar Alumno" <<endl;
+	cout <<"\t"<<COLOR_BRIGHTGREEN<<  "2. Mostrar Alumnos de un grupo" << endl;
+	cout <<"\t"<<COLOR_GREEN<< "3. Mostrar todos los alumnos" << endl;
+	cout <<"\t"<<COLOR_BRIGHTGREEN<<  "4. Volver al menú principal" << endl;
+
+
+}
+
+void limpiarPantalla(){
+	system("clear");
+
+
+}
+
+void saltoLinea(){
+	cout<<endl;
+
+
+}
+
+
+void OpcionesOrden(){
+	
+	cout.fill('*');
+	saltoLinea();
+	cout<<"\t"<<BOLD_ON<<COLOR_CYAN<<UNDERLINE_ON<<left<<setw(40)<<"Opciones Orden"<<RESET<<endl;
+	saltoLinea();
+	saltoLinea();
+	cout <<"\t"<<COLOR_CYAN<< "1. Ordenar por DNI" << RESET<<endl;
+	cout <<"\t"<<COLOR_LIGTHCYAN<<  "2. Ordenar por apellido" << endl;
+	cout <<"\t"<<COLOR_CYAN<< "3. Ordenar por Grupo" << endl;
+	cout <<"\t"<<COLOR_LIGTHCYAN<<  "4. Ordenar por Curso más alto matriculado" << endl;
+	cout <<"\t"<<COLOR_CYAN<<  "5. Volver al menú de Mostrar Alumnos" << endl;
+
+
+}
+
+
+
+
+void BD::ordenLista(list <Alumno> &lista){
+	
+
+		do{
+			/*OpcionesOrden();
+			saltoLinea();
+			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique la opción elegida: "<<COLOR_BRIGHTBLUE;cin>>opcOrden;
+			cout<<RESET<<endl;
+			limpiarPantalla();
+	
+			if(opcOrden==5){
+				break;
+			}
+			*/
+			OpcionesOrden();
+			saltoLinea();
+			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique el orden en que quiere mostrar el alumno o alumnos: "<<COLOR_BRIGHTBLUE;cin>>opcOrden;
+			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique si desea mostrar la lista en orden Ascendente, introduzca <ASC>, o en orden Descendente, introduzca <DESC>: "<<COLOR_BRIGHTBLUE;getchar();getline(cin, orden);
+			cout<<RESET<<endl;
+			limpiarPantalla();
+
+
+			if ((opcOrden==1||opcOrden==2||opcOrden==3||opcOrden==4)&&(orden=="ASC"||orden=="DESC")){
+				
+				miBD.mostrarAlumno(lista,opcOrden, orden);
+				saltoLinea();
+				cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+				limpiarPantalla();
+			}
+
+			if(opcOrden==5){
+
+				break;
+			}
+			
+			
+
+		}while((opcOrden!=1 ||opcOrden!=2||opcOrden!=3||opcOrden!=4||opcOrden!=5)&&(orden!="ASC"||orden!="DESC"));
+
+
+
+}
+
+void BD::ordenLista(){
+	
+
+		do{
+			OpcionesOrden();
+			saltoLinea();
+			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique el orden en que quiere mostrar el alumno o alumnos: "<<COLOR_BRIGHTBLUE;cin>>opcOrden;
+			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique si desea mostrar la lista en orden Ascendente, introduzca <ASC>, o en orden Descendente, introduzca <DESC>: "<<COLOR_BRIGHTBLUE;getchar();getline(cin, orden);
+			cout<<RESET<<endl;
+			limpiarPantalla();
+
+
+
+			if ((opcOrden==1||opcOrden==2||opcOrden==3||opcOrden==4)&&(orden=="ASC"||orden=="DESC")){
+				
+				miBD.mostrarAlumno(opcOrden, orden);
+				saltoLinea();
+				cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+				limpiarPantalla();
+			}
+			
+			if(opcOrden==5){
+
+				break;
+			}
+
+		}while((opcOrden!=1 ||opcOrden!=2||opcOrden!=3||opcOrden!=4||opcOrden!=5)&&(orden!="ASC"||orden!="DESC"));
+
+
+
+}
+
+
+
+void OpcionesInsertar() {
+	cout.fill('*');
+	saltoLinea();
+	cout<<"\t"<<BOLD_ON<<COLOR_CYAN<<setw(40)<<""<<endl;
+	cout.fill(' ');
+	saltoLinea();
+	cout<<"\t"<<BOLD_ON<<COLOR_CYAN<<left<<setw(40)<<"|::INTRODUCIR ALUMNOS::|"<< RESET<<endl;
+	saltoLinea();
+	cout.fill('*');
+	cout<<"\t"<<BOLD_ON<<COLOR_CYAN<<setw(40)<<""<<endl;
+	saltoLinea();
+}
+
+void printAlumno(Alumno aux) {
+	cout.fill(' ');
+	cout << COLOR_CYAN << BOLD_ON << UNDERLINE_ON << setw(75) 
+	 	 << "\tDATOS DEL ALUMNO A INTRODUCIR"
+	 	 << endl << endl << endl << RESET;
+	cout << COLOR_BRIGHTGREEN << BOLD_ON << "\tDNI: " << COLOR_BRIGHTBLUE << aux.getDNI() << endl;
+	cout << COLOR_BRIGHTGREEN << "\tNombre: " << COLOR_BRIGHTBLUE << aux.getNombre() << endl;
+	cout << COLOR_BRIGHTGREEN << "\tApellidos: " << COLOR_BRIGHTBLUE << aux.getApellidos() << endl;
+	cout << COLOR_BRIGHTGREEN << "\tFecha Nacimiento: " << COLOR_BRIGHTBLUE << aux.getFecha_nacimiento() << endl;
+	cout << COLOR_BRIGHTGREEN << "\tEmail: " << COLOR_BRIGHTBLUE << aux.getEmail_corporativo() << endl;
+	cout << COLOR_BRIGHTGREEN << "\tDomicilio: " << COLOR_BRIGHTBLUE << aux.getDomicilio() << endl;
+	cout << COLOR_BRIGHTGREEN << "\tTelefono: " << COLOR_BRIGHTBLUE << aux.getTelefono() << endl;
+	cout << COLOR_BRIGHTGREEN << "\tCurso: " << COLOR_BRIGHTBLUE << aux.getCurso() << endl;
+	cout << COLOR_DARKGREY << "\tNota: " << COLOR_BRIGHTBLUE << aux.getNota() << endl;
+	cout << COLOR_DARKGREY << "\tEquipo: " << COLOR_BRIGHTBLUE << aux.getNota() << endl;
+	cout << COLOR_DARKGREY << "\tLider: " << COLOR_BRIGHTBLUE << aux.getLider() << endl << RESET;
+}
+
+
+void guardarBD(){
+
+	if (miBD.getAlumnos().size()==0){
+					cout<<"No hay datos que guardar"<<endl;
+					
+					char cargar;	
+
+					do{
+
+						cout<<COLOR_DARKGREY<<"Indique si Desea cargar la base de datos"<<endl;
+						cout<<"pulse C si desea cargar la base de datos o M si desea salir al menú"<<COLOR_BLUE<<endl;
+						cin>>cargar;
+						cout<<RESET<<endl;
+
+						saltoLinea();
+						if (cargar=='C' or cargar=='c'){
+							
+							if (miBD.cargarBD()){
+
+								cout<<COLOR_GREEN<<"Base de datos cargada correctamente"<<RESET<<endl;
+								cout<<"vuelva al menú para introducir alumnos"<<endl;
+								saltoLinea();
+								cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+								limpiarPantalla();
+								break;
+							}
+
+							else{
+								cout<<COLOR_RED"No se encuentra el fichero o se ha producido un error cargar la base de datos"<<RESET<<endl;
+								cout<<"compruebe que exista el fichero de copia de seguridad, en caso contrario,"<<endl;
+								cout<<"vuelva al menú para introducir alumnos y cree una copia de seguridad antes de cargarla"<<endl;
+								saltoLinea();
+								cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+								limpiarPantalla();
+
+								break;
+							}
+						}
+
+						if (cargar=='M' or cargar=='m'){
+								cout<<"Vuelva al menú para introducir alumnos antes de guardar la base de datos"<<endl;
+								break;
+						}
+					}while(cargar!= 'C'||cargar!='c'||cargar!= 'M'||cargar!='m');
+	}
+
+	else{
+
+		cout<<"pulse una tecla para guardar la BD"<<endl;
+		getchar();
+		//sleep(4);
+		if(miBD.guardarBD()){
+
+			cout<<COLOR_GREEN<<"base de datos guardada correctamente"<<RESET<<endl;
+			saltoLinea();
+			cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+			limpiarPantalla();
+			//miBD.cargarBD();
+		}
+
+		else{cout<<COLOR_RED<<"Error al guardar la Base de Datos"<<RESET<<endl;}
+		}
+
 
 
 }
