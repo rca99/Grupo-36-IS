@@ -18,12 +18,14 @@ using namespace std;
 
 
 void mostrarOpciones();
+void mostrarOpcionesBusqueda();
 bool datosBusqueda(datosAlumno &datos);
 
 int main(int argc, char const *argv[]) {
 
 	BD miBD; //crea un objeto de base de datos con el nombre de fichero gestionAlumnos
 	int opc=0;
+	int opcbusq=0;
 
 	do {
 		mostrarOpciones();
@@ -51,6 +53,7 @@ int main(int argc, char const *argv[]) {
 					c.setEquipo(3);
 
 					d.setNombre("Pablo de las Casas");
+					d.setApellidos("lopez");
 					d.setCurso(1);
 					d.setDNI("60");
 					d.setEquipo(2);
@@ -65,6 +68,7 @@ int main(int argc, char const *argv[]) {
 
 					g.setDNI("60");
 					g.setApellidos("garcia");
+					g.setEquipo(6);
 
 					miBD.introducirAlumno(a);
 					miBD.addNumeroAlumnos();
@@ -131,7 +135,7 @@ int main(int argc, char const *argv[]) {
 
 					listaBusqueda.clear();
 
-					if (miBD.buscarAlumnoApellido(listaBusqueda, g)){
+					if (miBD.buscarAlumnoApellido(listaBusqueda, c)){
 						cout<<"Encontrado"<<endl;	
 					}
 					else{
@@ -147,6 +151,53 @@ int main(int argc, char const *argv[]) {
 					listaBusqueda.clear();
 
 
+
+
+
+					if (miBD.buscarAlumnoGrupo(listaBusqueda, 1)){
+						cout<<"Encontrado"<<endl;	
+					}
+					else{
+						cout<<"No Encontrado"<<endl;	
+					}
+
+					for(i=listaBusqueda.begin(); i!=listaBusqueda.end(); i++) {
+		
+						cout<<"Nombre:: "<<i->getNombre()<<endl;
+			
+					}
+
+					listaBusqueda.clear();
+
+					if (miBD.buscarAlumnoGrupo(listaBusqueda, 2)){
+						cout<<"Encontrado"<<endl;	
+					}
+					else{
+						cout<<"No Encontrado"<<endl;	
+					}
+
+					for(i=listaBusqueda.begin(); i!=listaBusqueda.end(); i++) {
+		
+						cout<<"Nombre:: "<<i->getNombre()<<endl;
+			
+					}
+
+					listaBusqueda.clear();
+
+					if (miBD.buscarAlumnoGrupo(listaBusqueda, 6)){
+						cout<<"Encontrado"<<endl;	
+					}
+					else{
+						cout<<"No Encontrado"<<endl;	
+					}
+
+					for(i=listaBusqueda.begin(); i!=listaBusqueda.end(); i++) {
+		
+						cout<<"Nombre:: "<<i->getNombre()<<endl;
+			
+					}
+
+					listaBusqueda.clear();
 
 
 
@@ -188,6 +239,24 @@ int main(int argc, char const *argv[]) {
 					
 				} break;
 			case 3: {	// ELIMINAR ALUMNO
+
+				mostrarOpcionesBusqueda();
+				cout << "Introduzca una opción de búsqueda: "<<endl;
+				cin >> opcbusq;
+				switch(opcbusq){
+					case 1: {  // buscar por dni
+
+					} break;
+
+					case 2: {  // buscar por apellidos
+
+					} break;
+					default: cout << "Opcion no valida" << endl;	// OPC NO VALIDA
+				}
+
+				miBD.eliminarAlumno();
+
+
 					
 				} break;
 			case 4: {	// MOSTRAR ALUMNOS
@@ -297,4 +366,10 @@ void mostrarOpciones() {
 	cout << "8. Cargar Backup (solo coordinador)" << endl;
 	cout << "9. Gestion del Perfil" << endl;
 	cout << "10. Salir de la aplicacion" << endl;
+}
+
+void mostrarOpcionesBusqueda(){
+	cout << "\t::MENU BUSQUEDA::\t" << endl;
+	cout << "1. Buscar por dni" << endl;
+	cout << "2. Buscar por apellidos" << endl;
 }

@@ -43,7 +43,7 @@ public:
 	bool buscarAlumnoApellido(list <Alumno> &lista, Alumno a);
 	
 	
-	bool buscarAlumnoGrupo(int equipo);
+	bool buscarAlumnoGrupo(list <Alumno> &lista, int equipo);
 	
 	//list <Alumno> buscarAlumno(int grupo);
 

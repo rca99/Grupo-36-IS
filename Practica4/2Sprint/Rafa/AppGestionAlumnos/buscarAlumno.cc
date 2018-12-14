@@ -138,8 +138,6 @@ bool BD::buscarAlumnoDNI(list <Alumno> &lista, Alumno a){
 		return true;
 	}
 	else{
-
-	
 		
 		return false;
 
@@ -175,10 +173,21 @@ bool BD::buscarAlumnoApellido(list <Alumno> &lista, Alumno a){
 	
 	}
 
+
 	if (contador>0){
 
-		return true;
+		if(contador>1){
+			cout<<"Hay varias coincidencias. Se procederá a buscar el alumno por dni"<<endl;
+			lista.clear();
+			if(buscarAlumnoDNI(lista,a)){
+
+			return true;
+			}
+		}
+
+		else{return true;}
 	}
+
 	else{
 
 		if(buscarAlumnoDNI(lista,a)){
@@ -192,14 +201,12 @@ bool BD::buscarAlumnoApellido(list <Alumno> &lista, Alumno a){
 
 	}
 
-	
-
 }
 
 
 
-bool BD::buscarAlumnoGrupo(int equipo) {
 
+bool BD::buscarAlumnoGrupo(list <Alumno> &lista, int equipo){
 	// Comprueba que haya alumnos dados de alta
 	int contador=0;
 	if(getNumeroAlumnos()==0) {
@@ -207,11 +214,36 @@ bool BD::buscarAlumnoGrupo(int equipo) {
 		return false;
 	}
 
+	list <Alumno> listaAuxiliar;
 
+
+
+	listaAuxiliar=getAlumnos();
+	list <Alumno> :: iterator i;
+
+	for(i=listaAuxiliar.begin(); i!=listaAuxiliar.end(); i++) {
+		if((*i).getEquipo()==equipo) {
+			(lista).push_back(*i);
+			contador++;
+
+		}
+
+	
+	}
+
+	if (contador>0){
+
+
+		return true;
+	}
+	else{
+
+	
+		
+		return false;
+
+	}
 
 }
-
-
-
 
 	
