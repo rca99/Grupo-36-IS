@@ -9,6 +9,7 @@
 
 #include <list>
 #include <string>
+#include <vector>
 
 #include "Alumno.h"
 
@@ -47,6 +48,11 @@ public:
 	bool buscarAlumnoDNI(list <Alumno> &lista, Alumno a);
 	bool buscarAlumnoApellido(list <Alumno> &lista, Alumno a);
 	bool buscarAlumnoEquipo(list <Alumno> &lista, int equipo);
+
+	//Busqueda con vectores
+	bool buscarAlumnoDNIv2(vector <Alumno> &vector, Alumno a);
+	bool buscarAlumnoApellidov2(vector <Alumno> &vector, Alumno a);
+	bool buscarAlumnoEquipov2(vector <Alumno> &vector, int equipo);
 
 	void mostrarAlumno(list <Alumno> lista);
 	void mostrarAlumno();

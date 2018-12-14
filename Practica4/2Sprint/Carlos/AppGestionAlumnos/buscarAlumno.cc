@@ -4,8 +4,8 @@
 #include "BD.h"
 #include "Alumno.h"
 #include <iostream>
-#include <string>
 #include <vector>
+#include <string>
 #include <cstring>
 #include <locale>//para función pasar a mayúscula
 
@@ -112,7 +112,6 @@ string convertirMayuscula(string cadena){
 	return s;
 
 }
-
 
 bool BD::buscarAlumnoDNIv2(vector <Alumno> &vector, Alumno a) {
 	list <Alumno> :: iterator i;

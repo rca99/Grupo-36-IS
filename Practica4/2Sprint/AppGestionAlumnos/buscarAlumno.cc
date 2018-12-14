@@ -4,6 +4,7 @@
 #include "BD.h"
 #include "Alumno.h"
 #include <iostream>
+#include <vector>
 #include <string>
 #include <cstring>
 #include <locale>//para función pasar a mayúscula
@@ -110,4 +111,40 @@ string convertirMayuscula(string cadena){
 
 	return s;
 
+}
+
+bool BD::buscarAlumnoDNIv2(vector <Alumno> &vector, Alumno a) {
+	list <Alumno> :: iterator i;
+
+	for(i=listaAlumnos_.begin(); i!=listaAlumnos_.end(); i++)
+		if((*i).getDNI()==a.getDNI())
+			vector.push_back(*i);
+
+	if (vector.size()>0)
+		return true;
+	else return false;
+}
+
+bool BD::buscarAlumnoApellidov2(vector <Alumno> &vector, Alumno a) {
+	list <Alumno> :: iterator i;
+
+	for(i=listaAlumnos_.begin(); i!=listaAlumnos_.end(); i++)
+		if((*i).getApellidos()==a.getApellidos())
+			vector.push_back(*i);
+
+	if (vector.size()>0)
+		return true;
+	else return false;
+}
+
+bool BD::buscarAlumnoEquipov2(vector <Alumno> &vector, int equipo) {
+	list <Alumno> :: iterator i;
+
+	for(i=listaAlumnos_.begin(); i!=listaAlumnos_.end(); i++)
+		if((*i).getEquipo()==equipo)
+			vector.push_back(*i);
+
+	if (vector.size()>0)
+		return true;
+	else return false;
 }

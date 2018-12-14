@@ -285,7 +285,7 @@ void OpcionesInsertar() {
 void printAlumno(Alumno aux) {
 	cout.fill(' ');
 	cout << COLOR_CYAN << BOLD_ON << UNDERLINE_ON << setw(75) 
-	 	 << "\tDATOS DEL ALUMNO A INTRODUCIR"
+	 	 << "\tDATOS DEL ALUMNO"
 	 	 << endl << endl << endl << RESET;
 	cout << COLOR_BRIGHTGREEN << BOLD_ON << "\tDNI: " << COLOR_BRIGHTBLUE << aux.getDNI() << endl;
 	cout << COLOR_BRIGHTGREEN << "\tNombre: " << COLOR_BRIGHTBLUE << aux.getNombre() << endl;
@@ -540,12 +540,12 @@ void menuPrincipal(){
 					printAlumno(aux);
 					
 					cout << endl << "\t***" << endl << endl;
-					cout << COLOR_LIGHTGREY << "\tINTRODUCIENDO :·:·:·:·:·:·:·:\n";
+					cout << COLOR_LIGHTGREY << "\tINTRODUCIENDO :·:·:·:·:·:·:·:\n" << RESET;
 					cout << endl << "\t***" << endl << endl;
 					// INTENTA INTRODUCIR EL ALUMNO ···
 					if(!miBD.introducirAlumno(aux)) {
 						cout << BOLD_RED  << "\n\tNO SE HA INTRODUCIDO EL ALUMNO" << endl;
-					} else cout << COLOR_GREEN << "\tAlumno introducido correctamente" << endl;
+					} else cout << COLOR_GREEN << "\n\tAlumno introducido correctamente" << endl;
 
 					cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
 					cin.ignore();
@@ -554,7 +554,7 @@ void menuPrincipal(){
 
 				} break;
 			case 2: {	// MODIFICAR ALUMNO
-					list <Alumno> alumnosencontrados;
+					vector <Alumno> alumnosencontrados;
 					datosAlumno a;
 					bool encontrado; 
 
@@ -567,28 +567,55 @@ void menuPrincipal(){
 						cin >> a.dni ;
 
 						Alumno aux(a);
-						encontrado=miBD.buscarAlumnoDNI(alumnosencontrados, aux);
+						encontrado=miBD.buscarAlumnoDNIv2(alumnosencontrados, aux);
 					} else if (opcBusqueda==2) {
 						cout << "Apellido: ";
 						cin >> a.apellidos ;
 
 						Alumno aux(a);
-						encontrado=miBD.buscarAlumnoApellido(alumnosencontrados, aux);
+						encontrado=miBD.buscarAlumnoApellidov2(alumnosencontrados, aux);
 					} else if (opcBusqueda==3) {
 						cout << "EQUIPO: ";
 						cin >> a.equipo ;
-						encontrado=miBD.buscarAlumnoEquipo(alumnosencontrados, a.equipo);
+						encontrado=miBD.buscarAlumnoEquipov2(alumnosencontrados, a.equipo);
 
 					} else {
 						cout << "Opcion no valida" << endl;
 						break;
 					}
 
-					if(encontrado==true) {
-
+					if(encontrado==false) {
+						cout << BOLD_RED << "\n\tERROR" << endl;
+						cout << COLOR_BRIGHTGREEN << "\n\tEL ALUMNO NO SE ENCUENTRA EN LA BD" << endl;
+						cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+						cin.ignore();
+						cin.get();
+						limpiarPantalla();
+						break;
 					}
 
+					if(alumnosencontrados.size()>1) {
+						int numAlumno=0, opcAlumno;
+						cout << "Se han encontrado los siguientes alumnos con los datos proporcionados: " << endl;
+						for(int i=0; i < alumnosencontrados.size(); i++) {
+							printAlumno(alumnosencontrados[i]);
+							cout << "NUM ALUMNO Encontrado: " << numAlumno << endl;
+							numAlumno++;
+							
+						}
+						cout << "INTRODUZCA EL NUMERO DEL ALUMNO A MODIFICAR: ";
+						cin >> opcAlumno;
 
+						if(opcAlumno < 0 or opcAlumno >= numAlumno) {
+							cout << BOLD_RED << "\n\tERROR" << endl;
+							cout << COLOR_BRIGHTGREEN << "\n\tALUMNO INTRODUCIDO INCORRECTO" << endl;
+							cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+							cin.ignore();
+							cin.get();
+							limpiarPantalla();
+							break;
+						}
+					}
 				} break;
 			case 3: {	// ELIMINAR ALUMNO
 					
@@ -821,13 +848,13 @@ void menuPrincipal(){
 			case 10: {	// SALIR DE LA APLICACION
 
 				} break;
-			default: {
+			default: { // OPC NO VALIDA
 				saltoLinea();
 				cout <<"\t"<<"OPCIÓN NO VÁLIDA" << endl;
 				cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
 				limpiarPantalla();
 			}
-			// OPC NO VALIDA
+			
 		}
 	} while(opc !=10);
 
