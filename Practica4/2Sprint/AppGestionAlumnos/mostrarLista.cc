@@ -3,6 +3,7 @@
 #include "BD.h"
 #include "Alumno.h"
 #include <iostream>
+#include <cstring>
 #include <cstdlib>
 #include <list>
 #include "consoleLinux.h"//colores menu
@@ -21,6 +22,7 @@ int ordenarApellidos(const Alumno &A, const Alumno &B);
 int ordenarDNI(const Alumno &A, const Alumno &B);
 int ordenarGrupo(const Alumno &A, const Alumno &B);
 int ordenarCurso(const Alumno &A, const Alumno &B);
+
 
 //mostrarAlumno(lista, orden, ascendente)
 
@@ -221,6 +223,7 @@ void BD::mostrarAlumno(int opcOrden, string orden){
 
 		aux.sort(ordenarDNI);
 		OPCION_ORDEN="DNI";
+		cout<<"1"<<endl;
 
 	}
 
@@ -316,6 +319,154 @@ void BD::mostrarAlumno(int opcOrden, string orden){
 												left<<setw(30)<<i->getEmail_corporativo()<<RESET<<endl;
 			}	
 		}
+
+
+		/////GENERAR LISTA HTML CON TODOS LOS ALUMNOS///////
+
+
+
+		FILE *fp;
+
+	
+		char NombreFichero[50];
+		string nameBD="listaAlumnos.html";
+		strcpy(NombreFichero, nameBD.c_str());
+
+	
+		cout<<BOLD_ON<<COLOR_YELLOW<<BLINK<<getNumeroAlumnos()<<RESET<<endl;
+		
+
+		/* Abrir archivo para escritura */
+		fp = fopen(NombreFichero, "w");
+		fprintf(fp, "<html> \n");
+		fprintf(fp, "<head> \n");
+		fprintf(fp, "<title>LISTA ALUMNOS</title>\n");
+		fprintf(fp, "<head> \n");
+		fprintf(fp, "<body> \n");
+		fprintf(fp, "<p><a href='https://www.uco.es/eps/nodeorder/term/29' target='_blank'><img alt='' src='https://www.uco.es/eps/sites/default/files/info_general/logos/escudo_informatica.jpg' style='width: 150px; height: 150px;'' /></a></p>");
+		fprintf(fp, "<p><span style='color:#003399;''><span style='font-family:comic sans ms,cursive;''><span style='font-size:24px;''><strong>GestionAlumnos&nbsp; - Grupo 36 IS</strong></span></span></span></p>");
+		
+
+		fprintf(fp, "<p><strong> Lista de Alumnos del sistema </strong></p>");
+
+		fprintf(fp, "<ul>");
+			fprintf(fp, "<li></li>");
+			fprintf(fp, "<li>  </li>");
+			fprintf(fp, "<li></li><br />");
+		fprintf(fp, "<ul>");
+		
+		fprintf(fp, "<p></p>");
+
+		//tabla
+		fprintf(fp, "<table border='2' cellpadding='1' cellspacing='1' style='width:400px;'>");
+			fprintf(fp, "<tbody>");
+				//columnas
+				fprintf(fp, "<tr>");
+					fprintf(fp, "<td><strong> <span style='font-size:15px;''>NOMBRE   </strong></span></td>");
+					fprintf(fp, "<td><strong> <span style='font-size:15px;''>APELLIDOS   </strong></span></td>");
+					fprintf(fp, "<td><strong> <span style='font-size:15px;''>NOMBRE   </strong></span></td>");
+					
+				fprintf(fp, "</tr>");
+				//filas
+				
+				char nombre[40];
+				char apellidos[40];
+				
+				for ( i=aux.begin(); i !=aux.end(); ++i){
+					//conversión para añadir alumnos al fichero
+					strcpy(nombre, i->getNombre().c_str());
+					strcpy(apellidos, i->getApellidos().c_str());
+
+					//if para controlar si es líder y darle otro formato
+
+					fprintf(fp, "<tr>");
+					fprintf(fp, "<td>  '%s'   </td>", nombre);
+					fprintf(fp, "<td>  '%s'    </td>", apellidos);
+					fprintf(fp, "<td>   </td>");
+					fprintf(fp, "<td>    <td>");
+					fprintf(fp, "</tr>");
+				}	
+				
+
+			fprintf(fp, "</tbody>");
+		fprintf(fp, "</table>\n");
+		//fin tabla
+		fprintf(fp, "<br />");
+		
+
+
+
+		
+	
+		
+
+	
+		
+
+
+
+		fprintf(fp, "<body> \n");
+		fprintf(fp, "<html> \n");
+
+		/* Cerrar el archivo antes de terminar el programa */
+		fclose(fp);
+		printf("Se ha creado el archivo: listaAlumnos.html \n");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		///*****************************************/////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	}
 
 	if (orden=="DESC"){
@@ -448,6 +599,11 @@ int ordenarCurso(const Alumno &A, const Alumno &B){
 
 	return 0;
 }
+
+
+
+
+
 
 
 
