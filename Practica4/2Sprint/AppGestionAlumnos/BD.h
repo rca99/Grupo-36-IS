@@ -9,6 +9,7 @@
 
 #include <list>
 #include <string>
+#include <vector>
 
 #include "Alumno.h"
 
@@ -40,7 +41,7 @@ public:
 
 
 	
-	bool modificarAlumno(Alumno alumnox);
+	bool modificarAlumno(Alumno alumnox, string dni);
 	bool eliminarAlumno(Alumno alumnox);
 
 	bool buscarAlumnos();
@@ -48,10 +49,15 @@ public:
 	bool buscarAlumnoApellido(list <Alumno> &lista, Alumno a);
 	bool buscarAlumnoEquipo(list <Alumno> &lista, int equipo);
 
+	//Busqueda con vectores
+	bool buscarAlumnoDNIv2(vector <Alumno> &vector, Alumno a);
+	bool buscarAlumnoApellidov2(vector <Alumno> &vector, Alumno a);
+	bool buscarAlumnoEquipov2(vector <Alumno> &vector, int equipo);
+
 	void mostrarAlumno(list <Alumno> lista);
 	void mostrarAlumno();
 
-	bool gestionLideres(Alumno alumnox);
+	bool gestionLideres(Alumno alumnox, string dni="");
 
 	void mostrarAlumno(list <Alumno> lista,int opcOrden, string orden);
 	void mostrarAlumno(int opcOrden, string orden);

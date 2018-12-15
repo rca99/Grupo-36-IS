@@ -439,19 +439,6 @@ void BD::mostrarAlumno(int opcOrden, string orden){
 		fprintf(fp, "</table>\n");
 		//fin tabla
 		fprintf(fp, "<br />");
-		
-
-
-
-		
-	
-		
-
-	
-		
-
-
-
 		fprintf(fp, "<body> \n");
 		fprintf(fp, "<html> \n");
 

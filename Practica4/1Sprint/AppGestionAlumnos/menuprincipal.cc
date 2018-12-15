@@ -33,7 +33,7 @@ int main(int argc, char const *argv[]) {
 			case 1: {	// INSERTAR ALUMNO
 					
 
-					Alumno a, b,c,d,e,f;
+					Alumno a,b,c,d,e,f;
 					a.setNombre("rodolfo");
 					a.setCurso(2);
 					a.setDNI("30");
@@ -110,10 +110,10 @@ int main(int argc, char const *argv[]) {
 					}
 
 					////////////////**************************************
+					
 
 
-
-
+					
 					for(i=listaBusqueda.begin(); i!=listaBusqueda.end(); i++) {
 		
 						cout<<"Nombre:: "<<i->getNombre()<<endl;

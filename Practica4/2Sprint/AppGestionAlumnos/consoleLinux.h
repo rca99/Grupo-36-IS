@@ -35,6 +35,7 @@
 #define FAINT "\e[2m";
 
 #define BOLD_ON "\e[1m"
+//#define BOLD_OFF "º\033[02m"
 
 #define GRIS_CLARO "\033[0m"
 #define GRIS_OSCURO "\033[1m"
