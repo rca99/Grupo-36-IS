@@ -395,20 +395,21 @@ int main(int argc, char const *argv[]) {
 
 							if(encontrado==true) {
 							cout<<COLOR_BRIGHTGREEN<<"Alumno encontrado. Procediendo a eliminarlo"<<RESET<<endl;
-							miBD.eliminarAlumno(aux);
+							// miBD.eliminarAlumno(aux);
 							cout << COLOR_CYAN << "Alumno eliminado correctamente" << endl;
 							}
 							else {
 								cout << BOLD_RED << "\n\tERROR" << RESET << endl;
-								cout << COLOR_BRIGHTBLUE << "Alumno no encontrado" << endl;
+								cout << COLOR_YELLOW << "Alumno no encontrado" << endl;
 							}
 
 							cout << COLOR_NORMAL << BOLD_ON << "\nPULSE UNA TECLA PARA VOLVER AL MENÚ";
 							cin.ignore();
 							cin.get();
-							limpiarPantalla();
+							limpiarPantalla(); 
 								
-							break;
+							}break;
+
 						case 4: {	// MOSTRAR ALUMNOS
 
 								
@@ -754,11 +755,11 @@ int main(int argc, char const *argv[]) {
 							cout << COLOR_DARKGREY << "\tPulse 1 si desea salir de la aplicación: " << RESET;
 							cin >> confsalida;
 
-							if(confsalida=1){
+							if(confsalida==1){
 								cout << "\tPulse 1 si desea guardar los cambios en la base de datos o en una copia de seguridad externa : " << COLOR_DARKGREY << RESET;
 								cin >> confguardar;
 
-								if(confguardar=1){
+								if(confguardar==1){
 									cout << "Introduzca la opción de guardado: " << endl;
 									cout << "1. Guardar BD\n2. Guardar Backup" << endl;
 									cin >> opcguard;
@@ -776,9 +777,12 @@ int main(int argc, char const *argv[]) {
 									}
 
 									else{
-										cout << "Opción no válida. Abortando" << endl;
+										cout << "Opción no válida. Abortando..." << endl;
+										cin.ignore();
+										cin.get();
 										break;
 									}
+								}
 
 								else{
 									cout << COLOR_RED << "Hasta luego Lucas" << RESET << endl;
@@ -793,10 +797,8 @@ int main(int argc, char const *argv[]) {
 								limpiarPantalla();
 							}
 
-							cout<<"Hasta luego Lucas"<<endl;
-							
-							exit(-1);
-							} break;
+						} break;
+
 						default: {
 							saltoLinea();
 							cout <<"\t"<<"OPCIÓN NO VÁLIDA" << endl;
@@ -805,7 +807,8 @@ int main(int argc, char const *argv[]) {
 						}
 						// OPC NO VALIDA
 					}
-				} while(opc !=10);
+				} 
+				while(opc !=10);
 
 			}
 			else{
@@ -824,7 +827,7 @@ int main(int argc, char const *argv[]) {
 	}
 	while(intentosAcceso<3);
 
-	//salinda de aplicación 
+	//salida de aplicación 
 	exit(-1);
 	return 0;
 }
