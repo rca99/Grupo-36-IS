@@ -365,8 +365,50 @@ int main(int argc, char const *argv[]) {
 
 							} break;
 						case 3: {	// ELIMINAR ALUMNO
+
+							list <Alumno> alumnoencontrado;
+							datosAlumno b;
+							bool encontrado; 
+
+							cout << "Introduzca la opcion para buscar: " << endl;
+							cout << "1. DNI\n2. Apellidos" << endl;
+							cin >> opcBusqueda;
+
+							if(opcBusqueda==1) {
+								cout << "DNI: ";
+								cin >> b.dni ;
+
+								Alumno aux(b);
+								encontrado=miBD.buscarAlumnoDNI(alumnoencontrado, aux);
+							} 
+							else if (opcBusqueda==2) {
+								cout << "Apellido: ";
+								cin >> b.apellidos ;
+
+								Alumno aux(b);
+								encontrado=miBD.buscarAlumnoApellido(alumnoencontrado, aux);
+							} 
+							else {
+								cout << "Opcion no valida" << endl;
+								break;
+							}
+
+							if(encontrado==true) {
+							cout<<COLOR_BRIGHTGREEN<<"Alumno encontrado. Procediendo a eliminarlo"<<RESET<<endl;
+							miBD.eliminarAlumno(aux);
+							cout << COLOR_CYAN << "Alumno eliminado correctamente" << endl;
+							}
+							else {
+								cout << BOLD_RED << "\n\tERROR" << RESET << endl;
+								cout << COLOR_BRIGHTBLUE << "Alumno no encontrado" << endl;
+							}
+
+							cout << COLOR_NORMAL << BOLD_ON << "\nPULSE UNA TECLA PARA VOLVER AL MENÚ";
+							cin.ignore();
+							cin.get();
+							limpiarPantalla();
 								
-							} break;
+							break;
 						case 4: {	// MOSTRAR ALUMNOS
 
 								
@@ -705,6 +747,52 @@ int main(int argc, char const *argv[]) {
 
 							} break;
 						case 10: {	// SALIR DE LA APLICACION
+
+							int confsalida;
+							int confguardar;
+							int opcguard;
+							cout << COLOR_DARKGREY << "\tPulse 1 si desea salir de la aplicación: " << RESET;
+							cin >> confsalida;
+
+							if(confsalida=1){
+								cout << "\tPulse 1 si desea guardar los cambios en la base de datos o en una copia de seguridad externa : " << COLOR_DARKGREY << RESET;
+								cin >> confguardar;
+
+								if(confguardar=1){
+									cout << "Introduzca la opción de guardado: " << endl;
+									cout << "1. Guardar BD\n2. Guardar Backup" << endl;
+									cin >> opcguard;
+
+									if(opcguard==1) {
+										miBD.guardarBD();
+										cout << COLOR_RED << "Hasta luego Lucas" << RESET << endl;
+										exit(-1);
+									}
+
+									else if(opcguard==2){
+										miBD.guardarBackup();
+										cout << COLOR_RED << "Hasta luego Lucas" << RESET << endl;
+										exit(-1);
+									}
+
+									else{
+										cout << "Opción no válida. Abortando" << endl;
+										break;
+									}
+
+								else{
+									cout << COLOR_RED << "Hasta luego Lucas" << RESET << endl;
+									exit(-1);
+								}
+							}
+
+							else{
+								cout << COLOR_NORMAL << BOLD_ON << "\nPULSE UNA TECLA PARA VOLVER AL MENÚ";
+								cin.ignore();
+								cin.get();
+								limpiarPantalla();
+							}
+
 							cout<<"Hasta luego Lucas"<<endl;
 							
 							exit(-1);

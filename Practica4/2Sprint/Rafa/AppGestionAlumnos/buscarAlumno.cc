@@ -80,11 +80,24 @@ bool BD::buscarAlumnoApellido(list <Alumno> &lista, Alumno a){
 		}
 	}
 	cout<<"Contador encontrados: "<<contador<<endl;
-	if (contador>0) {
-		return true;
+
+	// Si hay varios alumnos con el mismo apellido, busca por dni 
+	if (contador>0){
+		if(contador>1){
+			cout<<COLOR_DARKGREY<<"Hay varias coincidencias. Se procederá a buscar el alumno por dni"<<endl;
+			lista.clear();
+			if(buscarAlumnoDNI(lista,a)){
+			return true;
+			}
+		}
+		else{return true;}
 	}
-	else {
-		return false;
+
+	else{
+		if(buscarAlumnoDNI(lista,a)){
+			return true;
+		}
+		else{return false;}
 	}
 }
 
