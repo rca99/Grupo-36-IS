@@ -3,6 +3,7 @@
 
 #include "BD.h"
 #include "Alumno.h"
+#include "consoleLinux.h"
 #include <iostream>
 #include <string>
 
@@ -114,7 +115,7 @@ bool BD::buscarAlumnoApellido(list <Alumno> &lista, Alumno a){
 	if (contador>0){
 
 		if(contador>1){
-			cout<<"Hay varias coincidencias. Se procederá a buscar el alumno por dni"<<endl;
+			cout<<COLOR_DARKGREY<<"Hay varias coincidencias. Se procederá a buscar el alumno por dni"<<endl;
 			lista.clear();
 			if(buscarAlumnoDNI(lista,a)){
 

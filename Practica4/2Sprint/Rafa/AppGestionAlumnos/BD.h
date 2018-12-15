@@ -43,8 +43,7 @@ public:
 	bool modificarAlumno(Alumno alumnox);
 	bool eliminarAlumno(Alumno alumnox);
 
-	// bool buscarAlumnos();
-	bool buscarAlumno(list <Alumno> &lista, Alumno a);
+	bool buscarAlumnos();
 	bool buscarAlumnoDNI(list <Alumno> &lista, Alumno a);
 	bool buscarAlumnoApellido(list <Alumno> &lista, Alumno a);
 	bool buscarAlumnoEquipo(list <Alumno> &lista, int equipo);

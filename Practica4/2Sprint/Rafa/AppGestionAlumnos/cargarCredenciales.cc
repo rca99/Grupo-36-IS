@@ -29,7 +29,6 @@ Parámetros: no recibe ningún parámetro. Accede a listaAlumnos_ para guardarla
 
 Credencialesprofesor Profesor::registro(string usuarioAcceso, string contrasenyaAcceso){
 	
-	cout<<"asdfadsfas"<<endl;
 	
 	list <Credencialesprofesor> listaProfesores; //para guardar los datos que se van leyendo. Su contenido es añadido a listaAlumnos_ a partir de la función introducirAlumno(alumno)
 
@@ -63,8 +62,8 @@ Credencialesprofesor Profesor::registro(string usuarioAcceso, string contrasenya
 	//fread(p.getFicheroBD(), sizeof(datosAlumno), 1, ficheroLectura);//no funciona para el puntero hacia la base de datos definitdo en  Profesor.h
 	
 	while(!feof(ficheroLectura)){
-		cout<<cp.nombreCompleto<<endl;
-		cout<<cp.usuario<<endl;
+		//cout<<cp.nombreCompleto<<endl;
+		//cout<<cp.usuario<<endl;
 			
 		
 
@@ -80,8 +79,8 @@ Credencialesprofesor Profesor::registro(string usuarioAcceso, string contrasenya
 	list <Credencialesprofesor>::iterator i;
 
 	for (i = listaProfesores.begin(); i !=listaProfesores.end(); ++i){
-		cout<<i->usuario<<"-"<<usuarioAcceso<<endl;
-		cout<<i->contrasenya<<"-"<<contrasenyaAcceso<<endl;
+		//cout<<i->usuario<<"-"<<usuarioAcceso<<endl;
+		//cout<<i->contrasenya<<"-"<<contrasenyaAcceso<<endl;
 		if(strcmp(i->usuario, usuarioAcceso.c_str())==0 && strcmp(i->contrasenya, contrasenyaAcceso.c_str())==0){
 			strcpy(cp.rol,i->rol);
 			strcpy(cp.usuario,i->usuario);
