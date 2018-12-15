@@ -13,12 +13,19 @@
 #define RESET "\e[0m"
 #define COLOR_RED     "\x1b[31m"
 #define COLOR_GREEN   "\x1b[32m"
+#define COLOR_BRIGHTGREEN   "\x1b[92m"
 #define COLOR_YELLOW  "\x1b[33m"
-#define COLOR_BLUE    "\e[34m"
 #define COLOR_MAGENTA "\x1b[35m"
-#define COLOR_CYAN    "\x1b[36m"
 #define COLOR_BRIGHTRED    "\x1b[91m"
+#define COLOR_BRIGHTYELLOW "\033[0;93m"
 
+#define COLOR_BRIGHTBLUE    "\x1b[94m"
+#define COLOR_DARKGREY    "\x1b[90m"
+#define COLOR_LIGHTGREY    "\x1b[37m"
+#define COLOR_BLUE    "\e[34m"
+#define COLOR_CYAN    "\x1b[36m"
+#define COLOR_LIGTHCYAN    "\x1b[96m"
+#define COLOR_BLACK     "\x1b[30m"
 
 
 #define UNDERLINE_ON "\033[4m"
@@ -42,7 +49,9 @@
 #define ITALIC "\e[3m";// may or may not be supported
 #define NO_ITALIC "\e[23m";// may or may not be supported
 
-
+#define BOLD_RED "\033[1;31m"
+#define BOLD_GREEN "\033[1;32m"
+#define BOLD_BRIGHTGREEN "\033[1;92m"
 
 
 #define ON_BLACK "\033[40m"
@@ -50,6 +59,7 @@
 #define ON_WHITE "\033[47m"   
 #define ON_GREEN "\033[42m"
 #define ON_ORANGE "\033[43m"
+#define ON_LIGHTGREY "\e[47m"
 
  
 

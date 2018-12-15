@@ -16,6 +16,9 @@ using namespace std;
 
 	};
 
+	void inicializardatos(datosAlumno &datos);
+
+
 
 	class Alumno {
 
@@ -33,7 +36,7 @@ using namespace std;
 		Alumno(string nif, string nom, string ape, string fecha, string email, string dom, int tlf, int cur, int calf, int eqp, bool lid);
 		Alumno(datosAlumno datos);
 		Alumno();
-		
+
 		inline  string getDNI() const {return dni_;}
 		inline void setDNI(string dni) {dni_=dni;}
 
@@ -69,6 +72,10 @@ using namespace std;
 		inline void setLider(bool lid){lider_=lid;}			// hay que modificarlo en el diagrama de clases
 
 		bool alumnoLider();
-};
+	    int operator<(const Alumno &rhs) const;
+
+
+
+	};
 
 #endif

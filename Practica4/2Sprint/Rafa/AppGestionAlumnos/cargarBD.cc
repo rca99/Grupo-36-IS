@@ -5,6 +5,7 @@
 #include <list>
 #include <fstream>
 #include <iostream>
+#include <cstdlib>
 #include <string>
 #include <cstring>
 #include "consoleLinux.h"//colores menu
@@ -72,11 +73,19 @@ bool BD::cargarBD(){
 	//fread(p.getFicheroBD(), sizeof(datosAlumno), 1, ficheroLectura);//no funciona para el puntero hacia la base de datos definitdo en  Profesor.h
 	
 	while(!feof(ficheroLectura)){
-		cout<<datoLectura.nombre<<endl;
-		cout<<datoLectura.curso<<endl;
+		
 				
+		aux.setDNI(datoLectura.dni);
 		aux.setNombre(datoLectura.nombre);
+		aux.setApellidos(datoLectura.apellidos);
+		aux.setFecha_nacimiento(datoLectura.fecha_nacimiento);
+		aux.setDomicilio(datoLectura.nombre);
+		aux.setEmail_corporativo(datoLectura.nombre);
+		aux.setTelefono(datoLectura.telefono);
 		aux.setCurso(datoLectura.curso);
+		aux.setNota(datoLectura.nota);
+		aux.setEquipo(datoLectura.equipo);
+		aux.setLider(datoLectura.lider);
 
 		introducirAlumno(aux);
 		//fread(p.getFicheroBD(), sizeof(datosAlumno), 1, ficheroLectura);//no funciona para el puntero hacia la base de datos definitdo en  Profesor.h
@@ -98,17 +107,17 @@ bool BD::cargarBD(){
 	cout<<setprecision(2);
 	cout.fill('*');
 
-	cout<<left<<setw(40)<<"\t|Nombre|"<<
-		left<<setw(20)<<"\t|Curso|"<<endl;
+	cout<<left<<setw(40)<<"|Nombre|"<<
+		left<<setw(20)<<"|Curso|"<<endl;
 	
 
 	for (i = listaAlumnos_.begin(); i !=listaAlumnos_.end(); ++i)
 	{
 
-		if (i->getNombre()=="rodolfo"){
+		if (i->getLider()==true){
 			cout.fill('-');
 				
-			cout<<BOLD_ON<<COLOR_YELLOW<<left<<setw(40)<<setiosflags (ios::uppercase)<<i->getNombre()<<//setiosflags (std::ios::showbase | std::ios::uppercase)
+			cout<<BOLD_ON<<COLOR_YELLOW<<BLINK<<left<<setw(40)<<setiosflags (ios::uppercase)<<i->getNombre()<<//setiosflags (std::ios::showbase | std::ios::uppercase)
 											left<<setw(20)<<i->getCurso()<<RESET<<endl;
 		}
 		else{

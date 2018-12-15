@@ -4,22 +4,27 @@
 
 #include "BD.h"
 #include "Alumno.h"
-bool Alumno::setLider(bool lider) {
 
-	// DEBE recibir la BD ??
-	BD BDaux;
-	// buscarAlumno -- Funcion aun sin definir
-	BD.buscarAlumno(getEquipo());
+#include <list>
 
-	// Comprueba que los alumnos del grupo no sean lideres
-	// Grupo de alumnos. ARRAY ??
-	for(int i=0; i<3; i++) {
-		if(alumnosdelgrupo[i].getLider()==1)
-			return false; 
-			// Si alguno es lider, no se puede asignar un nuevo lider
+bool BD::gestionLideres(Alumno alumnox) {
+
+	int myteam=alumnox.getEquipo();
+	list <Alumno> grupo;
+
+	// buscarAlumnoporGrupos
+	buscarAlumnoEquipo(grupo, myteam);
+
+
+	// Comprueba que los alumnos del grupo no sean lideres 
+	list <Alumno> :: iterator i ; 
+
+	for(i=grupo.begin(); i!=grupo.end(); i++) {
+		if(((*i).getEquipo()==myteam) && ((*i).getLider()==1)) {
+			return false;
+		} // Si alguno es lider, no se puede asignar un nuevo lider
 	}
 
 	// Si sale del for, significa que no hay lideres
-	lider_=true;
-	return true; // Lider cambiado correctamente
+	return true;
 }

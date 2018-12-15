@@ -32,17 +32,35 @@ public:
 	inline string getNombreFichero() const {return nombreFichero_;}
 	inline void setNombreFichero(string nuevonombre){nombreFichero_=nuevonombre;}
 	inline int getNumeroAlumnos() const {return numeroAlumnos_;}
+	inline void setNumeroAlumnos(int num) {numeroAlumnos_=num;}
 	inline void addNumeroAlumnos(){numeroAlumnos_++;};
-	bool introducirAlumno(Alumno nuevoAlumno){listaAlumnos_.push_back(nuevoAlumno);return 1;};
+	//bool introducirAlumno(Alumno nuevoAlumno){listaAlumnos_.push_back(nuevoAlumno);return 1;};
+
+	bool introducirAlumno(Alumno &nuevoAlumno);
+
 
 	
 	bool modificarAlumno(Alumno alumnox);
 	bool eliminarAlumno(Alumno alumnox);
+
+	// bool buscarAlumnos();
 	bool buscarAlumno(list <Alumno> &lista, Alumno a);
 	bool buscarAlumnoDNI(list <Alumno> &lista, Alumno a);
 	bool buscarAlumnoApellido(list <Alumno> &lista, Alumno a);
 	bool buscarAlumnoEquipo(list <Alumno> &lista, int equipo);
 
+	void mostrarAlumno(list <Alumno> lista);
+	void mostrarAlumno();
+
+	bool gestionLideres(Alumno alumnox);
+
+	void mostrarAlumno(list <Alumno> lista,int opcOrden, string orden);
+	void mostrarAlumno(int opcOrden, string orden);
+	void ordenLista(list <Alumno> &lista);
+	void ordenLista();
+	bool buscarAlumno(list <Alumno> &lista, int equipo);
+
+	
 
 	inline BD(string nombreFichero="gestionAlumnos"){
 

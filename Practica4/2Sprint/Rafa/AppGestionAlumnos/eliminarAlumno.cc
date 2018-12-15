@@ -8,7 +8,9 @@
 
 using namespace std;
 
-/* Primero un switch para elegir si buscar por dni o apellidos
+/* Primero un if y else if para elegur opc busq
 Luego busco y recorro la lista en el propio buscarAlumno
 Si encontrado=1, habré encontrado al alumno y lo elimino haciendo popback
+
+
 
