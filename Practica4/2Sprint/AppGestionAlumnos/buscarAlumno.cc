@@ -14,7 +14,7 @@ using namespace std;
 string convertirMayuscula(string cadena);
 
 bool BD::buscarAlumnos() { // Comprueba que haya alumnos dados de alta
-	if(numeroAlumnos_ == 0) 
+	if(getNumeroAlumnos() == 0) 
 		return false;
 	else return true;
 }

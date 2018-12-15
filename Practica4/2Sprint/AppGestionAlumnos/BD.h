@@ -41,7 +41,7 @@ public:
 
 
 	
-	bool modificarAlumno(Alumno alumnox);
+	bool modificarAlumno(Alumno alumnox, string dni);
 	bool eliminarAlumno(Alumno alumnox);
 
 	bool buscarAlumnos();
@@ -57,7 +57,7 @@ public:
 	void mostrarAlumno(list <Alumno> lista);
 	void mostrarAlumno();
 
-	bool gestionLideres(Alumno alumnox);
+	bool gestionLideres(Alumno alumnox, string dni="");
 
 	void mostrarAlumno(list <Alumno> lista,int opcOrden, string orden);
 	void mostrarAlumno(int opcOrden, string orden);

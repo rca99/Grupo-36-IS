@@ -7,7 +7,7 @@
 
 #include <list>
 
-bool BD::gestionLideres(Alumno alumnox) {
+bool BD::gestionLideres(Alumno alumnox, string dni) {
 
 	int myteam=alumnox.getEquipo();
 	list <Alumno> grupo;
@@ -20,7 +20,7 @@ bool BD::gestionLideres(Alumno alumnox) {
 	list <Alumno> :: iterator i ; 
 
 	for(i=grupo.begin(); i!=grupo.end(); i++) {
-		if(((*i).getEquipo()==myteam) && ((*i).getLider()==1)) {
+		if(((*i).getLider()==1) && ((*i).getDNI() != dni)) {
 			return false;
 		} // Si alguno es lider, no se puede asignar un nuevo lider
 	}
