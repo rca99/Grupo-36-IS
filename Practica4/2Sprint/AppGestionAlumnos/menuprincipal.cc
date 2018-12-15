@@ -55,13 +55,14 @@ int main(int argc, char const *argv[]) {
 	limpiarPantalla();
 	cout<<BLINK<<BOLD_ON<<"ACCEDIENDO A LA APLICACIÓN"<<RESET<<endl;
 	
-	sleep(2);
+	sleep(1);
 	saltoLinea();
 	cout<<"Se abrirá la carpeta donde se encuentran las instrucciones para acceder a la aplicación. "<<endl;
 	cout<<" Abra el archivo acceso.html "<<endl;
 	cout<<"y vuelva a la terminal para abrir la entrar en la aplicación";
+	sleep(3);
 	
-	generarhtml();
+	//generarhtml();
 	
 	Profesor p;//para acceso a la aplicación.
 	p.credencialesBin();// para guardar el fichero binario de las credenciales
@@ -1059,10 +1060,10 @@ void generarhtml(){
 	fprintf(fp, "<table border='1' cellpadding='1' cellspacing='1' style='width:500px;'>");
 		fprintf(fp, "<tbody>");
 			fprintf(fp, "<tr>");
-				fprintf(fp, "<td><strong>AProfesor</strong></td>");
-				fprintf(fp, "<td><strong>AUsuario</strong></td>");
-				fprintf(fp, "<td><strong>ARol</strong></td>");
-				fprintf(fp, "<td><strong>AClave</strong></td>");
+				fprintf(fp, "<td><strong>Profesor</strong></td>");
+				fprintf(fp, "<td><strong>Usuario</strong></td>");
+				fprintf(fp, "<td><strong>Rol</strong></td>");
+				fprintf(fp, "<td><strong>Clave</strong></td>");
 			fprintf(fp, "</tr>");
 
 			fprintf(fp, "<tr>");
@@ -1090,15 +1091,16 @@ void generarhtml(){
 	fprintf(fp, "</table>\n");
 	fprintf(fp, "<br />");
 	
-	list <Alumno> Auxiliar;
+	/*list <Alumno> Auxiliar;
 
 	Auxiliar=b.getAlumnos();
-	/*
+	
+	fprintf(fp, "<p>A Lista de Alumnos del sistema</p>");
 	list <Alumno>::iterator i;
 
 	for ( i=Auxiliar.begin(); i !=Auxiliar.end(); ++i){
 	
-		fprintf(fp, i->getNombre());
+		fprintf(fp, i->getNombre().c_str());
 
 	}
 	*/
