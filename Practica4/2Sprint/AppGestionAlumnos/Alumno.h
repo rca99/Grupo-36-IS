@@ -10,7 +10,7 @@ using namespace std;
 	
 	struct datosAlumno{
 			//Al leer ficheros, los métodos no aceptan bien tipos de archivo string y salía un segmentation fault al cargar el fichero
-			char nombre[30], dni[10],apellidos[30], fecha_nacimiento[10], email_corporativo[30], domicilio[30];
+			char nombre[40], dni[10],apellidos[40], fecha_nacimiento[20], email_corporativo[50], domicilio[60];
 			int curso, telefono, nota, equipo;
 			bool lider;
 

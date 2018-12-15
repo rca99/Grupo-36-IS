@@ -18,6 +18,10 @@
 //modificar alumnos
 //revisar función Copia seguridad externa
 //abrir carpeta listaAlumnos. Crear script
+//activar sleep acceso aplicación
+
+//bloquear acceso a funciones de ayudante y coordinador.
+
 
 //ASPECTOS A MEJORAR:
 
@@ -70,13 +74,13 @@ int main(int argc, char const *argv[]) {
 	limpiarPantalla();
 	cout<<BLINK<<BOLD_ON<<"ACCEDIENDO A LA APLICACIÓN"<<RESET<<endl;
 	
-	sleep(1);
+	//sleep(1);
 	saltoLinea();
 	cout<<"Se abrirá la carpeta donde se encuentran las instrucciones para acceder a la aplicación. "<<endl;
 	cout<<" Abra el archivo acceso.html y vuelve a la terminal para acceder a la Aplicación "<<endl;
-	sleep(3);
+	//sleep(3);
 	
-	//generarhtml();
+	generarhtml();
 	
 	Profesor p;//para acceso a la aplicación.
 	p.credencialesBin();// para guardar el fichero binario de las credenciales
@@ -132,7 +136,9 @@ int main(int argc, char const *argv[]) {
 
 					if (strcmp(cprof.rol, "coordinador")==0){
 						saltoLinea();
-						cout<<UNDERLINE_ON<<"\tBienvenido a la aplicación: "<<BOLD_ON<<cprof.nombreCompleto<<RESET<<endl;
+						cout<<UNDERLINE_ON<<"\tBienvenido a la aplicación:  "<<RESET<<endl;
+						saltoLinea();
+						cout<<BOLD_ON<<"\t - "<<COLOR_CYAN<<cprof.nombreCompleto<<RESET<<BOLD_ON<<" - "<<RESET<<endl;
 						mostrarOpciones();
 						saltoLinea();	
 						cout << "\t" << BOLD_ON << COLOR_LIGHTGREY <<"Introduzca una opción: " << COLOR_BRIGHTBLUE;
@@ -142,11 +148,20 @@ int main(int argc, char const *argv[]) {
 					}
 					else{
 						saltoLinea();
-						cout<<UNDERLINE_ON<<"\tBienvenido a la aplicación"<<BOLD_ON<<cprof.nombreCompleto<<RESET<<endl;
+						cout<<UNDERLINE_ON<<"\tBienvenido a la aplicación:  "<<RESET<<endl;
+						saltoLinea();
+						cout<<BOLD_ON<<"\t - "<<COLOR_BRIGHTGREEN<<cprof.nombreCompleto<<RESET<<BOLD_ON<<" - "<<RESET<<endl;
 						mostrarOpcionesAyudantes();
 						saltoLinea();
 						cout << "\t" << BOLD_ON << COLOR_LIGHTGREY <<"Introduzca una opción: " << COLOR_BRIGHTBLUE;
 						cin >> opc;
+						/*
+						if (opc==7||opc==8){
+							limpiarPantalla();
+							mostrarOpcionesAyudantes();
+						}
+						*/
+						
 						cout << RESET << endl;
 						limpiarPantalla();
 
@@ -188,18 +203,18 @@ int main(int argc, char const *argv[]) {
 								cin.ignore();
 								cin.getline(datos.dni, 10, '\n');
 								cout << COLOR_GREEN << "\tNombre : " << COLOR_BRIGHTBLUE;
-								cin.getline(datos.nombre, 30, '\n');
+								cin.getline(datos.nombre, 40, '\n');
 								cout << COLOR_GREEN << "\tApellidos : " << COLOR_BRIGHTBLUE;
-								cin.getline(datos.apellidos, 30, '\n');
+								cin.getline(datos.apellidos, 40, '\n');
 								cout << COLOR_GREEN << "\tFecha de nacimiento : " << COLOR_BRIGHTBLUE;
-								cin.getline(datos.fecha_nacimiento, 10, '\n');
+								cin.getline(datos.fecha_nacimiento, 20, '\n');
 								cout << COLOR_GREEN << "\tTelefono : " << COLOR_BRIGHTBLUE;
 								cin >> datos.telefono;
 								cout << COLOR_GREEN << "\tEmail corporativo : " << COLOR_BRIGHTBLUE;
 								cin.ignore();
-								cin.getline(datos.email_corporativo, 30, '\n');
+								cin.getline(datos.email_corporativo, 50, '\n');
 								cout << COLOR_GREEN << "\tDomicilio : " << COLOR_BRIGHTBLUE;
-								cin.getline(datos.domicilio, 30, '\n');
+								cin.getline(datos.domicilio, 60, '\n');
 								cout << COLOR_GREEN << "\tCurso : " << COLOR_BRIGHTBLUE;
 								cin >> datos.curso;
 
@@ -487,7 +502,7 @@ int main(int argc, char const *argv[]) {
 												if(miBD.buscarAlumnoApellido(listaBusqueda, z)){
 													limpiarPantalla();
 													saltoLinea();
-													cout<<COLOR_GREEN<<"Se ha encontrado los siguientes alumnos con el apellido: "<<z.getApellidos()<<RESET<<endl;	
+													cout<<COLOR_GREEN<<"Se han encontrado "<<RESET<<BOLD_ON<<listaBusqueda.size()<<RESET<<COLOR_GREEN<<" alumnos con el apellido: "<<z.getApellidos()<<RESET<<endl;	
 													saltoLinea();
 													cout<<"Indique cómo quiere mostrarlos"<<endl;
 													saltoLinea();	
@@ -664,41 +679,56 @@ int main(int argc, char const *argv[]) {
 							} break;
 						case 7: {	// GUARDAR BACKUP
 
-							if (miBD.getAlumnos().size()==contadorBackUp){
+							if (strcmp(cprof.rol, "coordinador")==0){
 
-								cout<<COLOR_RED<<"ANTES DE GUARDAR LA COPIA DE SEGURIDAD EXTERNA INTRODUZCA NUEVOS ALUMNOS EN LA BASE DE DATOS"<<RESET<<endl;
+								if (miBD.getAlumnos().size()==contadorBackUp){
+
+									cout<<COLOR_RED<<"ANTES DE GUARDAR LA COPIA DE SEGURIDAD EXTERNA INTRODUZCA NUEVOS ALUMNOS EN LA BASE DE DATOS"<<RESET<<endl;
+									saltoLinea();
+									cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+									limpiarPantalla();
+									break;
+								}
+								cout<<BOLD_ON<<BLINK<<"\tPreparando el sistema para realizar la copia externa"<<RESET<<endl;
+								sleep(4);
+
+								miBD.guardarBD();
+								getchar();
+								cout<<BOLD_ON<<"Pulse una tecla para continuar"<<endl;getchar();getchar();
+								miBD.guardarBackup();
+								saltoLinea();
+								saltoLinea();
+								cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+								contadorBackUp++;
+								limpiarPantalla();
+							}
+							else{
+								cout <<"\t"<<"OPCIÓN NO VÁLIDA" << endl;
+								cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+								limpiarPantalla();
+							}
+
+
+
+								} break;
+						case 8: {	// CARGAR BACKUP
+							
+							if (strcmp(cprof.rol, "coordinador")==0){
+								cout<<BOLD_ON<<BLINK<<"\tPreparando el sistema para cargar la copia externa"<<RESET<<endl;
+								sleep(2);
+								limpiarPantalla;
+								miBD.cargarBackup();
+								saltoLinea();
 								saltoLinea();
 								cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
 								limpiarPantalla();
-								break;
 							}
-							cout<<BOLD_ON<<BLINK<<"\tPreparando el sistema para realizar la copia externa"<<RESET<<endl;
-							sleep(4);
-
-							miBD.guardarBD();
-							getchar();
-							cout<<BOLD_ON<<"Pulse una tecla para continuar"<<endl;getchar();getchar();
-							miBD.guardarBackup();
-							saltoLinea();
-							saltoLinea();
-							cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-							contadorBackUp++;
-							limpiarPantalla();
-
-
-
-
-							} break;
-						case 8: {	// CARGAR BACKUP
-							cout<<BOLD_ON<<BLINK<<"\tPreparando el sistema para cargar la copia externa"<<RESET<<endl;
-							sleep(2);
-							limpiarPantalla;
-							miBD.cargarBackup();
-							saltoLinea();
-							saltoLinea();
-							cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-							limpiarPantalla();
-
+							
+							else{
+								cout <<"\t"<<"OPCIÓN NO VÁLIDA" << endl;
+								cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+								limpiarPantalla();
+							}
 
 							} break;	
 						case 9: {	// GESTION PERFIL
@@ -729,9 +759,7 @@ int main(int argc, char const *argv[]) {
 				intentosAcceso++;
 
 			}
-
-			
-			
+	
 
 	}
 	while(intentosAcceso<3);
@@ -744,13 +772,13 @@ int main(int argc, char const *argv[]) {
 void mostrarOpciones() {
 	cout.fill('*');
 	saltoLinea();
-	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<""<<endl;
+	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<" "<<endl;
 	cout.fill(' ');
 	saltoLinea();
 	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<left<<setw(40)<<"|::MENÚ APLICACIÓN::|"<<RESET<<endl;
 	saltoLinea();
 	cout.fill('*');
-	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<RESET<<""<<endl;
+	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<" "<<endl;
 	saltoLinea();
 	saltoLinea();
 	cout <<"\t"<<COLOR_DARKGREY<< "1. Insertar Alumno" << endl;
@@ -762,19 +790,19 @@ void mostrarOpciones() {
 	cout <<"\t"<<COLOR_DARKGREY<< "7. Guardar Backup"<< endl;
 	cout <<"\t"<<COLOR_LIGHTGREY<< "8. Cargar Backup" << endl;
 //	cout <<"\t"<<COLOR_DARKGREY<< "9. Gestion del Perfil" << endl;
-	cout <<"\t"<<COLOR_LIGHTGREY<< "10. Salir de la aplicacion" << endl;
+	cout <<"\t"<<COLOR_DARKGREY<< "10. Salir de la aplicacion" << endl;
 }
 
 void mostrarOpcionesAyudantes() {
 	cout.fill('*');
 	saltoLinea();
-	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<""<<endl;
+	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<" "<<endl;
 	cout.fill(' ');
 	saltoLinea();
 	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<left<<setw(40)<<"|::MENÚ APLICACIÓN::|"<<RESET<<endl;
 	saltoLinea();
 	cout.fill('*');
-	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<RESET<<""<<endl;
+	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<""<<endl;
 	saltoLinea();
 	saltoLinea();
 	cout <<"\t"<<COLOR_DARKGREY<< "1. Insertar Alumno" << endl;
@@ -1078,6 +1106,7 @@ void generarhtml(){
 	fprintf(fp, "<ul>");
 		fprintf(fp, "<li>El acceso a la aplicaci&oacute;n se realiza con sus credenciales de acceso normales a la Universidad</li>");
 		fprintf(fp, "<li>Tiene <strong>tres</strong> intentos de acceso</li>");
+		fprintf(fp, "<li>La contrase&ntilde;a distingue may&uacute;sculas y min&uacute;sculas</li>");
 		fprintf(fp, "<li>A continuaci&oacute;n le recordamos los usuarios y una pista de la contrase&ntilde;a para acceder a la aplicaci&oacute;n</li><br />");
 	fprintf(fp, "<ul>");
 

@@ -80,7 +80,7 @@ bool BD::cargarBD(){
 		aux.setApellidos(datoLectura.apellidos);
 		aux.setFecha_nacimiento(datoLectura.fecha_nacimiento);
 		aux.setDomicilio(datoLectura.nombre);
-		aux.setEmail_corporativo(datoLectura.nombre);
+		aux.setEmail_corporativo(datoLectura.email_corporativo);
 		aux.setTelefono(datoLectura.telefono);
 		aux.setCurso(datoLectura.curso);
 		aux.setNota(datoLectura.nota);

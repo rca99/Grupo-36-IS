@@ -329,7 +329,7 @@ void BD::mostrarAlumno(int opcOrden, string orden){
 
 	
 		char NombreFichero[50];
-		string nameBD="listaAlumnos.html";
+		string nameBD="./listaAlumnos/listaAlumnos.html";
 		strcpy(NombreFichero, nameBD.c_str());
 
 	
@@ -346,45 +346,92 @@ void BD::mostrarAlumno(int opcOrden, string orden){
 		fprintf(fp, "<p><a href='https://www.uco.es/eps/nodeorder/term/29' target='_blank'><img alt='' src='https://www.uco.es/eps/sites/default/files/info_general/logos/escudo_informatica.jpg' style='width: 150px; height: 150px;'' /></a></p>");
 		fprintf(fp, "<p><span style='color:#003399;''><span style='font-family:comic sans ms,cursive;''><span style='font-size:24px;''><strong>GestionAlumnos&nbsp; - Grupo 36 IS</strong></span></span></span></p>");
 		
+		char Opcion_OrdenFichero[20];
+		char OrdenFichero[20];
+		
+		strcpy(Opcion_OrdenFichero, OPCION_ORDEN.c_str());
+		strcpy(OrdenFichero, ORDEN.c_str());
+
 
 		fprintf(fp, "<p><strong> Lista de Alumnos del sistema </strong></p>");
+		fprintf(fp, "<p> <span style='font-size:12px;''>El o los alumnos se mostrar&aacute;n seg&uacute;n su %s y de forma %s </span></p>", Opcion_OrdenFichero, OrdenFichero);
 
-		fprintf(fp, "<ul>");
-			fprintf(fp, "<li></li>");
-			fprintf(fp, "<li>  </li>");
-			fprintf(fp, "<li></li><br />");
-		fprintf(fp, "<ul>");
-		
-		fprintf(fp, "<p></p>");
 
 		//tabla
-		fprintf(fp, "<table border='2' cellpadding='1' cellspacing='1' style='width:400px;'>");
+		fprintf(fp, "<table border='3' cellpadding='1' cellspacing='2' style='width:800px;'>");
 			fprintf(fp, "<tbody>");
 				//columnas
 				fprintf(fp, "<tr>");
-					fprintf(fp, "<td><strong> <span style='font-size:15px;''>NOMBRE   </strong></span></td>");
-					fprintf(fp, "<td><strong> <span style='font-size:15px;''>APELLIDOS   </strong></span></td>");
-					fprintf(fp, "<td><strong> <span style='font-size:15px;''>NOMBRE   </strong></span></td>");
+					fprintf(fp, "<td><strong> <span style='font-size:12px;''>DNI   </strong></span></td>");
+					fprintf(fp, "<td><strong> <span style='font-size:12px;''>NOMBRE   </strong></span></td>");
+					fprintf(fp, "<td><strong> <span style='font-size:12px;''>APELLIDOS   </strong></span></td>");
+					fprintf(fp, "<td><strong> <span style='font-size:12px;''>FECHA NACIMIENTO   </strong></span></td>");
+					fprintf(fp, "<td><strong> <span style='font-size:12px;''>CORREO ELECTRONICO   </strong></span></td>");
+					fprintf(fp, "<td><strong> <span style='font-size:12px;''>DOMICILIO   </strong></span></td>");
+					fprintf(fp, "<td><strong> <span style='font-size:12px;''>TELEFONO   </strong></span></td>");
+					fprintf(fp, "<td><strong> <span style='font-size:12px;''>CURSO   </strong></span></td>");
+					fprintf(fp, "<td><strong> <span style='font-size:12px;''>NOTA   </strong></span></td>");
+					fprintf(fp, "<td><strong> <span style='font-size:12px;''>EQUIPO   </strong></span></td>");
+					fprintf(fp, "<td style='text-align: center;''><strong> <span style='font-size:15px;''>LIDER   </strong></span></td>");
 					
 				fprintf(fp, "</tr>");
 				//filas
 				
-				char nombre[40];
-				char apellidos[40];
+
+				char nombre[40], dni[10],apellidos[40], fecha_nacimiento[20], email_corporativo[50], domicilio[60];
+				int curso, telefono, nota, equipo;
+				bool lider;
 				
 				for ( i=aux.begin(); i !=aux.end(); ++i){
 					//conversión para añadir alumnos al fichero
 					strcpy(nombre, i->getNombre().c_str());
 					strcpy(apellidos, i->getApellidos().c_str());
+					strcpy(dni, i->getDNI().c_str());
+					strcpy(fecha_nacimiento, i->getFecha_nacimiento().c_str());
+					strcpy(email_corporativo, i->getEmail_corporativo().c_str());
+					strcpy(domicilio, i->getDomicilio().c_str());
+					telefono=i->getTelefono();
+					curso=i->getCurso();
+					nota=i->getNota();
+					equipo=i->getEquipo();
+					lider=i->getLider();
 
 					//if para controlar si es líder y darle otro formato
+					if (lider==1){
+						fprintf(fp, "<tr>");
+						fprintf(fp, "<td><span style='font-family:tahoma,geneva,sans-serif;'><span style='color:#FF0000;'><span style='font-size:11px;''>%s</span></span></span> </td>", dni);
+						fprintf(fp, "<td><span style='font-family:tahoma,geneva,sans-serif;'><span style='color:#FF0000;'><span style='font-size:11px;''>%s</span></span></span> </td>", nombre);
+						fprintf(fp, "<td><span style='font-family:tahoma,geneva,sans-serif;'><span style='color:#FF0000;'><span style='font-size:11px;''>%s</span></span> </span></td>", apellidos);
+						fprintf(fp, "<td><span style='font-family:tahoma,geneva,sans-serif;'><span style='color:#FF0000;'><span style='font-size:11px;''>%s</span></span> </span></td>", fecha_nacimiento);
+						fprintf(fp, "<td><span style='font-family:tahoma,geneva,sans-serif;'><span style='color:#FF0000;'><span style='font-size:11px;''>%s</span></span>  </span></td>", email_corporativo);
+						fprintf(fp, "<td><span style='font-family:tahoma,geneva,sans-serif;'><span style='color:#FF0000;'><span style='font-size:11px;''>%s</span></span> </span> </td>", domicilio);
+						fprintf(fp, "<td><span style='font-family:tahoma,geneva,sans-serif;'><span style='color:#FF0000;'><span style='font-size:11px;''>%d</span></span> </span></td>", telefono);
+						fprintf(fp, "<td style='text-align: center;''><span style='font-family:tahoma,geneva,sans-serif;'><span style='color:#FF0000;'><span style='font-size:11px;''>%d</span></span> </span></td>", curso);
+						fprintf(fp, "<td style='text-align: center;''><span style='font-family:tahoma,geneva,sans-serif;'><span style='color:#FF0000;'><span style='font-size:11px;''>%d</span></span> </span></td>", nota);
+						fprintf(fp, "<td style='text-align: center;''><span style='font-family:tahoma,geneva,sans-serif;'><span style='color:#FF0000;'><span style='font-size:11px;''>%d</span></span> </span></td>", equipo);
+						fprintf(fp, "<td style='text-align: center;''><span style='font-family:tahoma,geneva,sans-serif;'><span style='color:#FF0000;'><span style='font-size:11px;''>%d</span></span> </span></td>", lider);
+						fprintf(fp, "</tr>");
 
-					fprintf(fp, "<tr>");
-					fprintf(fp, "<td>  '%s'   </td>", nombre);
-					fprintf(fp, "<td>  '%s'    </td>", apellidos);
-					fprintf(fp, "<td>   </td>");
-					fprintf(fp, "<td>    <td>");
-					fprintf(fp, "</tr>");
+
+
+					}
+					else{
+
+						fprintf(fp, "<tr>");
+						fprintf(fp, "<td><span style='font-family:tahoma,geneva,sans-serif;'><span style='font-size:11px;''>%s</span></span></td>", dni);
+						fprintf(fp, "<td><span style='font-family:tahoma,geneva,sans-serif;'><span style='font-size:11px;''>%s</span></span></td>", nombre);
+						fprintf(fp, "<td><span style='font-family:tahoma,geneva,sans-serif;'><span style='font-size:11px;''>%s</span></span></td>", apellidos);
+						fprintf(fp, "<td><span style='font-family:tahoma,geneva,sans-serif;'><span style='font-size:11px;''>%s</span></span></td>", fecha_nacimiento);
+						fprintf(fp, "<td><span style='font-family:tahoma,geneva,sans-serif;'><span style='font-size:11px;''>%s</span></span></td>", email_corporativo);
+						fprintf(fp, "<td><span style='font-family:tahoma,geneva,sans-serif;'><span style='font-size:11px;''>%s</span></span></td>", domicilio);
+						fprintf(fp, "<td><span style='font-family:tahoma,geneva,sans-serif;'><span style='font-size:11px;''>%d</span></span></td>", telefono);
+						fprintf(fp, "<td style='text-align: center;''><span style='font-family:tahoma,geneva,sans-serif;'><span style='font-size:11px;''>%d</span></span></td>", curso);
+						fprintf(fp, "<td style='text-align: center;''><span style='font-family:tahoma,geneva,sans-serif;'><span style='font-size:11px;''>%d</span></span></td>", nota);
+						fprintf(fp, "<td style='text-align: center;''><span style='font-family:tahoma,geneva,sans-serif;'><span style='font-size:11px;''>%d</span></span></td>", equipo);
+						fprintf(fp, "<td style='text-align: center;''><span style='font-family:tahoma,geneva,sans-serif;'><span style='font-size:11px;''>%i</span></span></td>", lider);
+						fprintf(fp, "</tr>");
+					}
+
 				}	
 				
 
@@ -411,6 +458,8 @@ void BD::mostrarAlumno(int opcOrden, string orden){
 		/* Cerrar el archivo antes de terminar el programa */
 		fclose(fp);
 		printf("Se ha creado el archivo: listaAlumnos.html \n");
+		system("chmod +x abrirCarpetaLista.sh");
+		system("./abrirCarpetaLista.sh");
 
 
 
