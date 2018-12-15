@@ -41,7 +41,7 @@ public:
 
 	
 	bool modificarAlumno(Alumno alumnox);
-	bool eliminarAlumno(Alumno alumnox);
+	bool eliminarAlumno(Alumno alumnox, string dni);
 
 	bool buscarAlumnos();
 	bool buscarAlumnoDNI(list <Alumno> &lista, Alumno a);

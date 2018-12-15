@@ -2,7 +2,7 @@
 // MENU PRINCIPAL
 // --------------
 
-//g++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BD.h Alumno.h Profesor.h guardarExterna.cc cargarExterna.cc guardarCredenciales.cc cargarCredenciales.cc
+//g++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc eliminarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BD.h Alumno.h Profesor.h guardarExterna.cc cargarExterna.cc guardarCredenciales.cc cargarCredenciales.cc
 
 
 
@@ -368,6 +368,8 @@ int main(int argc, char const *argv[]) {
 
 							list <Alumno> alumnoencontrado;
 							datosAlumno b;
+							string dni_1;
+							Alumno aux;
 							bool encontrado; 
 
 							cout << "Introduzca la opcion para buscar: " << endl;
@@ -380,6 +382,7 @@ int main(int argc, char const *argv[]) {
 
 								Alumno aux(b);
 								encontrado=miBD.buscarAlumnoDNI(alumnoencontrado, aux);
+								dni_1=aux.getDNI();
 							} 
 							else if (opcBusqueda==2) {
 								cout << "Apellido: ";
@@ -387,6 +390,7 @@ int main(int argc, char const *argv[]) {
 
 								Alumno aux(b);
 								encontrado=miBD.buscarAlumnoApellido(alumnoencontrado, aux);
+								dni_1=aux.getDNI();
 							} 
 							else {
 								cout << "Opcion no valida" << endl;
@@ -395,7 +399,7 @@ int main(int argc, char const *argv[]) {
 
 							if(encontrado==true) {
 							cout<<COLOR_BRIGHTGREEN<<"Alumno encontrado. Procediendo a eliminarlo"<<RESET<<endl;
-							// miBD.eliminarAlumno(aux);
+							miBD.eliminarAlumno(aux, dni_1);
 							cout << COLOR_CYAN << "Alumno eliminado correctamente" << endl;
 							}
 							else {
