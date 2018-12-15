@@ -13,6 +13,11 @@
 //errores al ittroducir en un int un char
 //instrucciones en html para compilar y ejecutar programa
 //En mostrar alumnos si no hay alumnos mensaje de error
+//al introducir  alumno, que busque por apellidos y dni sin preguntar
+//no funciona buscar por apellidos
+//insertar alumnos hermanos Arreglado
+//modificar alumnos
+
 
 #include <iostream>
 #include <string>
@@ -219,7 +224,7 @@ int main(int argc, char const *argv[]) {
 								if(opcBusqueda==1) {
 									encontrado=miBD.buscarAlumnoDNI(alumnosencontrados, aux);
 								} else if (opcBusqueda == 2) {
-									encontrado=miBD.buscarAlumnoApellido(alumnosencontrados, aux);
+									encontrado=(miBD.buscarAlumnoApellido(alumnosencontrados, aux)&&miBD.buscarAlumnoDNI(alumnosencontrados, aux));
 								} else {
 									cout << BOLD_RED << "\n\tERROR" << endl;
 									cout << COLOR_BRIGHTGREEN << "\n\tOPCION DE BUSQUEDA NO VALIDA" << endl;
@@ -327,7 +332,12 @@ int main(int argc, char const *argv[]) {
 									cin >> a.apellidos ;
 
 									Alumno aux(a);
-									encontrado=miBD.buscarAlumnoApellido(alumnosencontrados, aux);
+									//encontrado=miBD.buscarAlumnoApellido(alumnosencontrados, aux);
+									//para insertar alumnos hermanos
+									if (miBD.buscarAlumnoApellido(alumnosencontrados, aux)&&miBD.buscarAlumnoDNI(alumnosencontrados, aux)){
+										encontrado=true;
+									}
+
 								} else if (opcBusqueda==3) {
 									cout << "EQUIPO: ";
 									cin >> a.equipo ;
@@ -468,6 +478,8 @@ int main(int argc, char const *argv[]) {
 													limpiarPantalla();
 													saltoLinea();
 													cout<<COLOR_GREEN<<"Se ha encontrado los siguientes alumnos con el apellido: "<<z.getApellidos()<<RESET<<endl;	
+													saltoLinea();
+													cout<<"Indique cómo quiere mostrarlos"<<endl;
 													saltoLinea();	
 													miBD.ordenLista(listaBusqueda);
 
@@ -497,6 +509,8 @@ int main(int argc, char const *argv[]) {
 												saltoLinea();
 												cout<<COLOR_GREEN<<"Se han encontrado "<<listaBusqueda.size()<<" alumno/s que forman parte del equipo: "<<equipo<<RESET<<endl;	
 												saltoLinea();	
+												saltoLinea();
+												cout<<"Indique cómo quiere mostrarlos"<<endl;
 												miBD.ordenLista(listaBusqueda);
 
 											}

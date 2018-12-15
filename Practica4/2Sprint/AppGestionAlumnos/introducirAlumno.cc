@@ -7,6 +7,9 @@
 #include "BD.h"
 #include "Alumno.h"
 #include "consoleLinux.h"
+	
+string ConvertirMayuscula(string cadena);
+
 
 bool BD::introducirAlumno(Alumno &nuevoAlumno) {
 	if(nuevoAlumno.getLider()==true) {
@@ -22,9 +25,36 @@ bool BD::introducirAlumno(Alumno &nuevoAlumno) {
 			nuevoAlumno.setLider(false);
 		}
 	}
+	/*
+	Alumno alumnoMayusculas;
+	alumnoMayusculas=nuevoAlumno;
+
+	alumnoMayusculas.setNombre(ConvertirMayuscula(nuevoAlumno.getNombre()));
+	alumnoMayusculas.setApellidos(ConvertirMayuscula(nuevoAlumno.getApellidos()));
+	alumnoMayusculas.setDNI(ConvertirMayuscula(nuevoAlumno.getDNI()));
+	listaAlumnos_.push_back(alumnoMayusculas);
+	*/
 
 	listaAlumnos_.push_back(nuevoAlumno);
+	
+
 	numeroAlumnos_++;
 
 	return true;
+}
+
+string ConvertirMayuscula(string cadena){
+
+  	locale loc;
+ 	string s=cadena;
+ 	
+  	for (string::size_type i=0; i<s.length(); ++i){
+
+  		 s[i]=toupper((s)[i],loc);
+	
+  	}
+
+
+	return s;
+
 }

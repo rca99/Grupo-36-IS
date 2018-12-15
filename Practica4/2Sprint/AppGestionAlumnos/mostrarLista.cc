@@ -358,13 +358,13 @@ void BD::mostrarAlumno(int opcOrden, string orden){
 		fprintf(fp, "<p></p>");
 
 		//tabla
-		fprintf(fp, "<table border='1' cellpadding='1' cellspacing='1' style='width:500px;'>");
+		fprintf(fp, "<table border='2' cellpadding='1' cellspacing='1' style='width:400px;'>");
 			fprintf(fp, "<tbody>");
 				//columnas
 				fprintf(fp, "<tr>");
-					fprintf(fp, "<td><strong> <span style='font-size:10px;''>NOMBRE   </strong></span></td>");
-					fprintf(fp, "<td><strong> <span style='font-size:10px;''>APELLIDOS   </strong></span></td>");
-					fprintf(fp, "<td><strong> <span style='font-size:10px;''>NOMBRE   </strong></span></td>");
+					fprintf(fp, "<td><strong> <span style='font-size:15px;''>NOMBRE   </strong></span></td>");
+					fprintf(fp, "<td><strong> <span style='font-size:15px;''>APELLIDOS   </strong></span></td>");
+					fprintf(fp, "<td><strong> <span style='font-size:15px;''>NOMBRE   </strong></span></td>");
 					
 				fprintf(fp, "</tr>");
 				//filas
