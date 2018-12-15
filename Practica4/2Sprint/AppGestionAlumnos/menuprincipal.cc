@@ -556,6 +556,7 @@ void menuPrincipal(){
 			case 2: {	// MODIFICAR ALUMNO
 					vector <Alumno> alumnosencontrados;
 					datosAlumno a;
+					string mydni;
 					bool encontrado; 
 
 					cout << "Introduzca la opcion para buscar: " << endl;
@@ -577,8 +578,8 @@ void menuPrincipal(){
 					} else if (opcBusqueda==3) {
 						cout << "EQUIPO: ";
 						cin >> a.equipo ;
-						encontrado=miBD.buscarAlumnoEquipov2(alumnosencontrados, a.equipo);
 
+						encontrado=miBD.buscarAlumnoEquipov2(alumnosencontrados, a.equipo);
 					} else {
 						cout << "Opcion no valida" << endl;
 						break;
@@ -595,18 +596,16 @@ void menuPrincipal(){
 					}
 
 					if(alumnosencontrados.size()>1) {
-						int numAlumno=0, opcAlumno;
+						int numAlumno=0;
 						cout << "Se han encontrado los siguientes alumnos con los datos proporcionados: " << endl;
 						for(int i=0; i < alumnosencontrados.size(); i++) {
 							printAlumno(alumnosencontrados[i]);
 							cout << "NUM ALUMNO Encontrado: " << numAlumno << endl;
-							numAlumno++;
-							
 						}
 						cout << "INTRODUZCA EL NUMERO DEL ALUMNO A MODIFICAR: ";
 						cin >> opcAlumno;
 
-						if(opcAlumno < 0 or opcAlumno >= numAlumno) {
+						if(opcAlumno < 0 or opcAlumno >= alumnosencontrados.size()) {
 							cout << BOLD_RED << "\n\tERROR" << endl;
 							cout << COLOR_BRIGHTGREEN << "\n\tALUMNO INTRODUCIDO INCORRECTO" << endl;
 							cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
@@ -615,7 +614,11 @@ void menuPrincipal(){
 							limpiarPantalla();
 							break;
 						}
-					}
+
+						myAlumno = alumnosencontrados[numAlumno];
+					} else myAlumno = alumnosencontrados.front();
+
+					cout << "DESEA MODIFICAR ESTE ALUMNO" << endl;
 				} break;
 			case 3: {	// ELIMINAR ALUMNO
 					
@@ -705,7 +708,7 @@ void menuPrincipal(){
 									cout<<COLOR_RED<<"Tampoco Encontrado por apellido"<<endl;	
 								}
 
-							}
+							}	
 							saltoLinea();
 							cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();
 							listaBusqueda.clear();
