@@ -8,7 +8,7 @@
 #include "Alumno.h"
 #include "consoleLinux.h"
 	
-string ConvertirMayuscula(string cadena);
+//string ConvertirMayuscula(string cadena);
 
 
 bool BD::introducirAlumno(Alumno &nuevoAlumno) {
@@ -42,7 +42,7 @@ bool BD::introducirAlumno(Alumno &nuevoAlumno) {
 
 	return true;
 }
-
+/*
 string ConvertirMayuscula(string cadena){
 
   	locale loc;
@@ -58,3 +58,4 @@ string ConvertirMayuscula(string cadena){
 	return s;
 
 }
+*/

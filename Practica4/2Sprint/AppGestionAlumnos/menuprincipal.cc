@@ -14,9 +14,19 @@
 //instrucciones en html para compilar y ejecutar programa
 //En mostrar alumnos si no hay alumnos mensaje de error
 //al introducir  alumno, que busque por apellidos y dni sin preguntar
-//no funciona buscar por apellidos
 //insertar alumnos hermanos Arreglado
 //modificar alumnos
+//revisar función Copia seguridad externa
+//abrir carpeta listaAlumnos. Crear script
+
+//ASPECTOS A MEJORAR:
+
+//FUNCIONES sin cout
+// 
+
+
+//INSTRUCCIONES ACCESO Y USO APLICACIÓN
+//insertar y modificar indicar tipo de dato y como meterlo (por ejemplo DNI si se introduce letra sin espacios)
 
 
 #include <iostream>
@@ -63,8 +73,7 @@ int main(int argc, char const *argv[]) {
 	sleep(1);
 	saltoLinea();
 	cout<<"Se abrirá la carpeta donde se encuentran las instrucciones para acceder a la aplicación. "<<endl;
-	cout<<" Abra el archivo acceso.html "<<endl;
-	cout<<"y vuelva a la terminal para abrir la entrar en la aplicación";
+	cout<<" Abra el archivo acceso.html y vuelve a la terminal para acceder a la Aplicación "<<endl;
 	sleep(3);
 	
 	//generarhtml();
@@ -96,7 +105,7 @@ int main(int argc, char const *argv[]) {
 
 			//comprobar credenciales
 
-			Credencialesprofesor cprof=p.registro(user, password);
+			Credencialesprofesor cprof=p.registro(user, password);// para recoger datos del usuario que accede y poder controlar el menú que se carga
 
 
 			if(strcmp(cprof.usuario, user.c_str())==0 && strcmp(cprof.contrasenya, password.c_str())==0){
@@ -122,7 +131,8 @@ int main(int argc, char const *argv[]) {
 					limpiarPantalla();
 
 					if (strcmp(cprof.rol, "coordinador")==0){
-
+						saltoLinea();
+						cout<<UNDERLINE_ON<<"\tBienvenido a la aplicación: "<<BOLD_ON<<cprof.nombreCompleto<<RESET<<endl;
 						mostrarOpciones();
 						saltoLinea();	
 						cout << "\t" << BOLD_ON << COLOR_LIGHTGREY <<"Introduzca una opción: " << COLOR_BRIGHTBLUE;
@@ -131,8 +141,8 @@ int main(int argc, char const *argv[]) {
 						limpiarPantalla();
 					}
 					else{
-
-					
+						saltoLinea();
+						cout<<UNDERLINE_ON<<"\tBienvenido a la aplicación"<<BOLD_ON<<cprof.nombreCompleto<<RESET<<endl;
 						mostrarOpcionesAyudantes();
 						saltoLinea();
 						cout << "\t" << BOLD_ON << COLOR_LIGHTGREY <<"Introduzca una opción: " << COLOR_BRIGHTBLUE;
@@ -749,9 +759,9 @@ void mostrarOpciones() {
 	cout <<"\t"<<COLOR_LIGHTGREY<< "4. Mostrar Alumnos" << endl;
 	cout <<"\t"<<COLOR_DARKGREY<< "5. Guardar BD" << endl;
 	cout <<"\t"<<COLOR_LIGHTGREY<< "6. Cargar BD" << endl;
-	cout <<"\t"<<COLOR_DARKGREY<< "7. Guardar Backup (solo coordinador)"<< endl;
-	cout <<"\t"<<COLOR_LIGHTGREY<< "8. Cargar Backup (solo coordinador)" << endl;
-	cout <<"\t"<<COLOR_DARKGREY<< "9. Gestion del Perfil" << endl;
+	cout <<"\t"<<COLOR_DARKGREY<< "7. Guardar Backup"<< endl;
+	cout <<"\t"<<COLOR_LIGHTGREY<< "8. Cargar Backup" << endl;
+//	cout <<"\t"<<COLOR_DARKGREY<< "9. Gestion del Perfil" << endl;
 	cout <<"\t"<<COLOR_LIGHTGREY<< "10. Salir de la aplicacion" << endl;
 }
 
@@ -773,7 +783,7 @@ void mostrarOpcionesAyudantes() {
 	cout <<"\t"<<COLOR_LIGHTGREY<< "4. Mostrar Alumnos" << endl;
 	cout <<"\t"<<COLOR_DARKGREY<< "5. Guardar BD" << endl;
 	cout <<"\t"<<COLOR_LIGHTGREY<< "6. Cargar BD" << endl;
-	cout <<"\t"<<COLOR_DARKGREY<< "9. Gestion del Perfil" << endl;
+	//cout <<"\t"<<COLOR_DARKGREY<< "9. Gestion del Perfil" << endl;
 	cout <<"\t"<<COLOR_LIGHTGREY<< "10. Salir de la aplicacion" << endl;
 }
 

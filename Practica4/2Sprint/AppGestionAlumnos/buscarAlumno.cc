@@ -32,7 +32,6 @@ bool BD::buscarAlumnoDNI(list <Alumno> &lista, Alumno a){
 		if(dniLista.compare(dniAlumno)==0){
 			(lista).push_back(*i);
 			contador++;
-
 		}
 		/*
 		if((*i).getDNI()==a.getDNI()) {
@@ -52,7 +51,6 @@ bool BD::buscarAlumnoDNI(list <Alumno> &lista, Alumno a){
 
 bool BD::buscarAlumnoApellido(list <Alumno> &lista, Alumno a){
 	int contador=0;
-
 	/*//Convertir string a mayúsculas
 	string cadena;
 	getline(cin, cadena);
@@ -64,28 +62,22 @@ bool BD::buscarAlumnoApellido(list <Alumno> &lista, Alumno a){
 	list <Alumno> :: iterator i;
 	
 	string apellidoAlumno=convertirMayuscula(a.getApellidos());
-	cout<<"apellido que se busca: "<<apellidoAlumno<<endl;
-
-
-
+	//cout<<"apellido que se busca: "<<apellidoAlumno<<endl;
 
 	for(i=listaAlumnos_.begin(); i!=listaAlumnos_.end(); i++) {
 		string apellidoLista=convertirMayuscula((*i).getApellidos());
 
-		cout<<"apellido en lista: "<<apellidoLista<<endl;
+		//cout<<"apellido en lista: "<<apellidoLista<<endl;
 		/*este método de comparación no va bien supongo que es al acceder con punteros a la lista
 		if((*i).getApellidos()==a.getApellidos()) {
 			(lista).push_back(*i);
 			contador++;
 		}
 		*/
-
 		if(apellidoLista.compare(apellidoAlumno)==0){
 			(lista).push_back(*i);
 			contador++;
-
 		}
-
 	}
 	cout<<"Contador encontrados: "<<contador<<endl;
 	if (contador>0) {
