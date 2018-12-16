@@ -33,13 +33,16 @@ _Problemática encontrada_
 **Carlos Freire Caballero**
 
 Estimadas: 9 h
-Ejecutadas:  h
+Ejecutadas: 8 h
 
 Notas trabajo:
 
+* HU_03_Modificar Alumno|3|3
+* Interfaz InsertarAlumno|1|1
 
+*Problematica encontrada*
 
-	
+Demasiada demora en la interfaz de insertar alumno, se han empleado un mayor numero de horas del estimado.
 
 **Fernando Herrera Poch**
 
