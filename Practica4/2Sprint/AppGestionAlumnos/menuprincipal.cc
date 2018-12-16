@@ -5,22 +5,10 @@
 //g++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BD.h Alumno.h Profesor.h guardarExterna.cc cargarExterna.cc guardarCredenciales.cc cargarCredenciales.cc modificarAlumno.cc
 
 ////*****FERNANDO
-//Revisar todos los char que tengan el mismo tamaño
-//errores al ittroducir en un int un char
-//activar sleep acceso aplicación
-//**CU**cargar base de datos. Si hay alumnos dados de alta, pedir confirmación porque se borrarán los datos que haya actualmente
-//**CU** al cargar copia de seguridad hay que indicar los alumnos cargados en el sistema
-//Configurar aplicación para que funcionen las copias de seguridad externas en cualquier equipo Añadir en scrip git init git remote add origin <repositorio git> user name, email, git set-url
-//**CU** El sistema debe mostrar en blanco los datos del alumno no obligatorios que no hayan sido introducidos previamente.// no sé como se podría hacer. NO ME PREOCUPA
-//Aspecto menús
+
+//**CU** El sistema debe mostrar en blanco los datos del alumno no obligatorios que no hayan sido introducidos previamente.// no sé como se podría hacer.
 
 
-////*****CHARLII
-//al introducir  alumno, que busque por apellidos y dni sin preguntar
-//**CU** cuando se da de alta un alumno devuelve el número de alumnos el sistema
-//**CU**cuando se introduce un alumno hay que indicar que ha sido correcto y mostrar su nombre y dni 
-//**CU** En caso de devolver los alumnos del grupo, el sistema indicará si el grupo tiene líder o no lo tiene.// no sé si se puede hacer ahora. NO ME PREOCUPA
-//en modificar alumnos cuando se introduce mal el código de si se desea modificar se vuelve inestable. Hacer esta comprobación en todas las peticiones de datos
 
 ////*****RAFA
 //Interfaz Salir aplicación
@@ -146,6 +134,10 @@ int main(int argc, char const *argv[]) {
 					cout<<"\t"<<COLOR_GREEN<<"Existe una Base de datos almacenada"<<RESET;
 					cout<<BOLD_ON<<COLOR_DARKGREY"\t¿desea cargarla? (indique <1> o <0>: "<<COLOR_BRIGHTBLUE;cin>>OpccargarBD;
 					if (OpccargarBD==1){
+
+
+
+
 						if (miBD.cargarBD()){
 
 							cout<<COLOR_GREEN<<"Base de datos cargada correctamente"<<RESET<<endl;
@@ -1031,29 +1023,68 @@ int main(int argc, char const *argv[]) {
 							
 						case 6: {	// CARGAR BD
 
-							if (miBD.cargarBD()){
+							
+							if(miBD.getAlumnos().size()>0){
+								int confirmarCarga=0;
+								cout<<COLOR_RED<<"Existen alumnos en la base de datos, si decide cargar la base de datos, se borrarán los existentes"<<RESET<<endl;
+								cout<<BOLD_ON<<"Pusle <1> para confirmar la carga de la base de datos: "<<RESET;cout<<COLOR_BLUE;cin>>confirmarCarga;
+								if(confirmarCarga==1){
+									if (miBD.cargarBD()){
 
-								cout<<COLOR_GREEN<<"Base de datos cargada correctamente"<<RESET<<endl;
-								cout<<"vuelva al menú para introducir alumnos"<<endl;
-								saltoLinea();
-								cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-								limpiarPantalla();
-								break;
+										cout<<COLOR_GREEN<<"Base de datos cargada correctamente"<<RESET<<endl;
+										cout<<"vuelva al menú para introducir alumnos"<<endl;
+										saltoLinea();
+										cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+										limpiarPantalla();
+										break;
+									}
+
+									else{
+										cout<<COLOR_RED<<"No se encuentra el fichero o se ha producido un error cargar la base de datos"<<RESET<<endl;
+										cout<<"compruebe que exista el fichero de copia de seguridad, en caso contrario,"<<endl;
+										cout<<"vuelva al menú para introducir alumnos y cree una copia de seguridad antes de cargarla"<<endl;
+										saltoLinea();
+										cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+										limpiarPantalla();
+										break;
+									}
+
+								}
+								else{
+									break;
+								}
+
 							}
 
-							else{
-								cout<<COLOR_RED<<"No se encuentra el fichero o se ha producido un error cargar la base de datos"<<RESET<<endl;
-								cout<<"compruebe que exista el fichero de copia de seguridad, en caso contrario,"<<endl;
-								cout<<"vuelva al menú para introducir alumnos y cree una copia de seguridad antes de cargarla"<<endl;
-								saltoLinea();
-								cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-								limpiarPantalla();
-								break;
+
+							if(miBD.getAlumnos().size()==0){
+								if (miBD.cargarBD()){
+
+									cout<<COLOR_GREEN<<"Base de datos cargada correctamente"<<RESET<<endl;
+									cout<<"Acceda ahora a la aplicación"<<endl;
+									saltoLinea();
+									limpiarPantalla();
+								}
+
+								else{
+									cout<<COLOR_RED<<"Se ha producido un error cargar la base de datos"<<RESET<<endl;
+									cout<<"compruebe que exista el fichero de copia de seguridad, en caso contrario,"<<endl;
+									cout<<"Consulte con el administrador del sistema"<<endl;
+									saltoLinea();
+									cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+									limpiarPantalla();
+								}
 							}
 
 
+							
 
-							} break;
+
+
+
+
+
+						} break;
 						case 7: {	// GUARDAR BACKUP
 
 							if (strcmp(cprof.rol, "coordinador")==0){

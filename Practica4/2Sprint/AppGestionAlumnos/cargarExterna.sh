@@ -3,7 +3,10 @@
 #chmod +x guardarExterna.sh
 
 
-sleep 2;
+sleep 1;
+
+rm -r ./CopiaSeguridad/*.bin
+
 
 git remote set-url origin https://a52hepof:vn9rn7rz@github.com/rca99/Grupo-36-IS.git
 
