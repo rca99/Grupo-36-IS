@@ -31,13 +31,15 @@ _Problemática encontrada_
 **Carlos Freire Caballero**
 
 Estimadas: 9 h
-Ejecutadas:  h
+Ejecutadas: 16 h
 
 Notas trabajo:
 
+* Interfaz ModificarAlumno|5|3
 
+Además de la implementación de modificar alumno, se han realizado una revisión general al código para verificar que cumple con los requisitos establecidos por el cliente.
 
-	
+_Problemática encontrada_
 
 **Fernando Herrera Poch**
 
