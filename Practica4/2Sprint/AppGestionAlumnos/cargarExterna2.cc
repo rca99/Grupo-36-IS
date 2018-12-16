@@ -25,8 +25,7 @@ bool BD::cargarBackup(){
 
 	//el método de leer fichero recibe el nombre del fichero como tipo char
 	char NombreFicheroBin[50];
-	//system("cd CopiaSeguridad");
-	string nameBD="CopiaSeguridad/gestionAlumnos.bin";
+	string nameBD="../AppGestionAlumnos/CopiaSeguridad"+getNombreFichero()+".bin";
 	strcpy(NombreFicheroBin, nameBD.c_str());
 	
 	
@@ -38,7 +37,7 @@ bool BD::cargarBackup(){
 	ficheroLectura=fopen(NombreFicheroBin, "rb");
 	
 	if (ficheroLectura==NULL){
-		//return 0;
+		return 0;
 	} //si existe el fichero lo sobreescribe
 
 	datosAlumno datoLectura;
@@ -67,13 +66,13 @@ bool BD::cargarBackup(){
 		aux.setEquipo(datoLectura.equipo);
 		aux.setLider(datoLectura.lider);
 
-		introducirAlumnoCopiaExterna(aux);
+		introducirAlumno(aux);
 		//fread(p.getFicheroBD(), sizeof(datosAlumno), 1, ficheroLectura);//no funciona para el puntero hacia la base de datos definitdo en  Profesor.h
 		fread(&datoLectura, sizeof(datosAlumno), 1, ficheroLectura);
 	}
 	
 
-	cout<<"nº alumnos"<<listaAlumnos_.size()<<endl;
+	cout<<"Alumnos Cargados: "<<listaAlumnos_.size()<<endl;
 
 	list <Alumno>::iterator i;
 
