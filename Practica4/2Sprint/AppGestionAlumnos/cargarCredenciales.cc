@@ -16,15 +16,11 @@ using namespace std;
 /*
 guardar BD()
 
-Descripción: Guarda el contenido de la lista de alumnos en un fichero binario
+Descripción: 
 
-Si no existe el fichero binario de la copia de seguridad, lo crea y si existe lo sobreescribe 
-con los datos de la lista de alumnos.
+Valores devueltos: 
 
-Valores devueltos: 1 si ha guardado correctamente la base de datos.
-
-Parámetros: no recibe ningún parámetro. Accede a listaAlumnos_ para guardarla
-
+Parámetros: 
 */
 
 Credencialesprofesor Profesor::registro(string usuarioAcceso, string contrasenyaAcceso){
@@ -51,10 +47,6 @@ Credencialesprofesor Profesor::registro(string usuarioAcceso, string contrasenya
 
 	Credencialesprofesor cp;
 	Credencialesprofesor A;
-
-	
-
-
 	//fseek(ficheroLectura,0L, SEEK_SET);
 	
 	fread(&cp, sizeof(Credencialesprofesor), 1, ficheroLectura);
@@ -89,11 +81,17 @@ Credencialesprofesor Profesor::registro(string usuarioAcceso, string contrasenya
 			
 			
 		}
-		else{}
+		else{
+			
+		}
 
 	}
 	
+<<<<<<< HEAD
 	return cp;
+=======
+	return cp;     
+>>>>>>> da5ab4eb5b0a0e30d88eea1f7b0c3c02e2768ac6
  }
 
 

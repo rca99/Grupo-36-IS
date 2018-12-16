@@ -1,6 +1,11 @@
 #! /bin/bash
 
 #chmod +x guardarExterna.sh
+git init
+git config --global user.name "Fernando Herrera Poch"
+git config --global user.mail a52hepof@uco.es
+
+git remote add origin https://github.com/rca99/Grupo-36-IS.git
 
 git status;
 

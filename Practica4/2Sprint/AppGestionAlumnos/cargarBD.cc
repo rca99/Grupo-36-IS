@@ -46,8 +46,11 @@ bool BD::cargarBD(){
 	char NombreFicheroBin[50];
 	string nameBD=getNombreFichero()+".bin";
 	strcpy(NombreFicheroBin, nameBD.c_str());
-	
-	
+
+	int confirmacargar=0;
+
+
+
 	listaAlumnos_.clear();
 	cout<<listaAlumnos_.size()<<endl;
 
@@ -140,6 +143,8 @@ bool BD::cargarBD(){
 
       
   }
+
+  
 
 
 

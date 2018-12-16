@@ -17,10 +17,11 @@ using namespace std;
 		datos.telefono=-1;
 		datos.nota=-1;
 		datos.equipo=-1;
+		datos.lider=0;
 	}
 
 
-	Alumno::Alumno(string nif="", string nom="", string ape="", string fecha="", string email="", string dom="", int tlf=0, int cur=0, int calf=0, int eqp=0, bool lid=0){
+	Alumno::Alumno(string nif="", string nom="", string ape="", string fecha="", string email="", string dom="", int tlf=-1, int cur=-1, int calf=-1, int eqp=-1, bool lid=0){
 		dni_=nif;
 		nombre_=nom;
 		apellidos_=ape;

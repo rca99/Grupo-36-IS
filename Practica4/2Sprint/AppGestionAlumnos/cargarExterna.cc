@@ -35,10 +35,12 @@ bool BD::cargarBackup(){
 
 	//******leer fichero*********//
 	FILE *ficheroLectura;
-	ficheroLectura=fopen(NombreFicheroBin, "rb");
+	//ficheroLectura=fopen(NombreFicheroBin, "rb");
 	
-	if (ficheroLectura==NULL){
-		//return 0;
+	if ((ficheroLectura=fopen(NombreFicheroBin, "rb"))==NULL){
+		cout<<COLOR_BRIGHTRED<<"no existe copia de respaldo en el repositorio remoto"<<endl;
+		cout<<COLOR_NORMAL<<BOLD_ON<<BLINK<<"REALICE LA COPIA DE SEGURIDAD EXTERNA "<<RESET<<endl;
+		return 0;
 	} //si existe el fichero lo sobreescribe
 
 	datosAlumno datoLectura;

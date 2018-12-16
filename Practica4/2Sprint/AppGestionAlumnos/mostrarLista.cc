@@ -110,6 +110,8 @@ void BD::mostrarAlumno(list <Alumno> lista, int opcOrden, string orden){
 
 			if (i->getLider()==1){
 				cout.fill('-');
+
+				
 					
 				cout<<BOLD_ON<<COLOR_BRIGHTGREEN<<BLINK<<left<<setw(10)<<i->getDNI()<<//setiosflags (std::ios::showbase | std::ios::uppercase)
 												left<<setw(30)<<i->getApellidos()<<
