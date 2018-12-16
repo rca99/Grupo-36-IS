@@ -31,7 +31,7 @@ _Problemática encontrada_
 **Carlos Freire Caballero**
 
 Estimadas: 9 h
-Ejecutadas: 12 h
+Ejecutadas: 16 h
 
 Notas trabajo:
 
