@@ -33,13 +33,23 @@ Las dificultades en el planteamiento del desarrollo del código han provocado el
 **Carlos Freire Caballero**
 
 Estimadas: 9 h
-Ejecutadas:  h
+Ejecutadas: 3 h
 
 Notas trabajo:
 
+Se ha realizado:
 
+* Interfaz InsertarAlumno|1|1
+* HU_00_AccesoAplicacion|5|1
+* Interfaz AccesoAplicacion|5|1
 
-	
+Se ha realizado la interfaz de introducir alumno, para así poder disponer de su uso para el resto de funcionalidades. 
+
+También se ha llevado a cabo la funcionalidad de acceso a la aplicación, a partir de los credenciales proporcionados por la Universidad, tanto para los profesores ayudantes como para el coordinador, así como su implicación en la interfaz en menuprincipal.cc
+
+*Problematica Encontrada*
+
+Para comprobar la existencia de un alumno necesitaba de la funcion buscar.
 
 **Fernando Herrera Poch**
 
