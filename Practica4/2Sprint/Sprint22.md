@@ -58,7 +58,8 @@ Están finalizadas las funcionalidades encargadas
 * Interfaz CargarCopiaSeguridadExterna|5|1
 
 En relación al flujo de trabajo ha sido más que óptimo. El trabajo en las ramas personales facilita mucho y crea menos confusión.
-La funcionalidad de las copias externas funcionan bien, aunque habría que testearlas al máximo.
+La funcionalidad de las copias externas funcionan bien, aunque habría que testearlas al máximo ya que el repositorio está en la carpeta general y no esta en la que posiblemente se descargue
+para ejecutar el código. Habrá que testearlo en modo profesor
 
 _Problemática encontrada_
 

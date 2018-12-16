@@ -42,11 +42,11 @@ Notas trabajo:
 **Fernando Herrera Poch**
 
 Estimadas: 7,5 h
-Ejecutadas: 12 h
+Ejecutadas: 16 h
 
 Notas trabajo:
 
-Están finalizadas las funcionalidades encargadas 
+Se han mejorado tanto la interfaz como los controles de errores de las funciones
 
 * HU_05_MostrarAlumnos|3|4
 * Interfaz MostrarAlumnos|3|1
@@ -55,10 +55,13 @@ Están finalizadas las funcionalidades encargadas
 * HU_10_CargarCopiaSeguridadExterna|5|1
 * Interfaz CargarCopiaSeguridadExterna|5|1
 
-En relación al flujo de trabajo ha sido más que óptimo. El trabajo en las ramas personales facilita mucho y crea menos confusión.
-La funcionalidad de las copias externas funcionan bien, aunque habría que testearlas al máximo.
-
 _Problemática encontrada_
 
+No hemos previsto en nuestra planificación la cantidad de trabajo que supone realizar la interfaz de las funciones y las pruebas de las funciones
+necesarias para su correcta implantación. Esto ha provocado que hayamos superado con creces las horas previstas de ejecución del proyecto.
+
+En cuanto a las funcionalidades, no todas están implementadas con el mismo nivel de detalle y hay algunos requisitos que se han quedado pendientes 
+de ejecutar, como eliminar por Apellido o cuando se sale de la aplicación el hecho de preguntar si se desea guardar la copia de seguridad si se es profesor o 
+de guardar la copia externa. Se realiza directamente.
 
 
