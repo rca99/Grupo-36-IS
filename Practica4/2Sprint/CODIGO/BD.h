@@ -5,8 +5,8 @@
 #define BD_H
 
 #include <list>
-#include <string>
 #include <vector>
+#include <string>
 
 #include "Alumno.h"
 
@@ -43,13 +43,13 @@ public:
 
 	bool gestionLideres(Alumno alumnox, string dni="");
 
-	void mostrarAlumno();
-	void mostrarAlumno(list <Alumno> lista);
-	void mostrarAlumno(int opcOrden, string orden);
+	//void mostrarAlumno();
+	//void mostrarAlumno(list <Alumno> lista);
 	void mostrarAlumno(list <Alumno> lista,int opcOrden, string orden);
+	void mostrarAlumno(int opcOrden, string orden);
 
-	void mostrarAlumnoHtml(int opcOrden, string orden);
 	void mostrarAlumnoHtml(list <Alumno> lista,int opcOrden, string orden);
+	void mostrarAlumnoHtml(int opcOrden, string orden);
 
 	void ordenLista(list <Alumno> &lista);
 	void ordenLista();

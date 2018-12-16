@@ -35,6 +35,7 @@ public:
 	inline int getNumeroAlumnos() const {return numeroAlumnos_;}
 	inline void setNumeroAlumnos(int num) {numeroAlumnos_=num;}
 	inline void addNumeroAlumnos(){numeroAlumnos_++;};
+	inline bool introducirAlumnoCopiaExterna(Alumno nuevoAlumno){listaAlumnos_.push_back(nuevoAlumno);return 1;};
 	//bool introducirAlumno(Alumno nuevoAlumno){listaAlumnos_.push_back(nuevoAlumno);return 1;};
 
 	bool introducirAlumno(Alumno &nuevoAlumno);

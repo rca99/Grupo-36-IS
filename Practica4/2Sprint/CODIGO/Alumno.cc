@@ -2,10 +2,11 @@
 //Cuerpo de la clase Alumno
 
 #include <iostream>
-#include "Alumno.h"
-#include "BD.h"
 #include <string>
 #include <cstring>
+
+#include "Alumno.h"
+#include "BD.h"
 
 using namespace std;
 
@@ -118,5 +119,3 @@ int Alumno::operator<(const Alumno &rhs) const	{
    return 0;
 
 }
-
-
