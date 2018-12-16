@@ -2,6 +2,7 @@
 
 #chmod +x guardarExterna.sh
 
+
 git status;
 
 

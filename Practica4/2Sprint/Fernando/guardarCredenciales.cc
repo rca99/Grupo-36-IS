@@ -1,10 +1,7 @@
 // BD.cc
 // Cuerpo de la clase BD
 
-#include "BD.h" //para incluir la lista de alumnos y funciones BD 
-//#include "Profesor.h"//para incluir puntero a base de datos
-#include "Alumno.h"
-#include <list>
+#include "Profesor.h"//para incluir puntero a base de datos
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -12,6 +9,7 @@
 
 
 using namespace std;
+
 
 /*
 guardar BD()
@@ -27,55 +25,52 @@ Parámetros: no recibe ningún parámetro. Accede a listaAlumnos_ para guardarla
 
 */
 
-bool BD::guardarBD(){
+bool Profesor::credencialesBin(){
 
-	
 	//cout<<"tamaño lista: "<<listaAlumnos_.size()<<endl;
 
 	//el método de leer fichero recibe el nombre del fichero como tipo char
 	char NombreFicheroBin[50];
-	string nameBD=getNombreFichero()+".bin";
+	string nameBD="credenciales.bin";
 	strcpy(NombreFicheroBin, nameBD.c_str());
 
 
 
 	//*******Escribir Fichero **********//
 	FILE *fichero;
-	datosAlumno dato;
+	Credencialesprofesor p1;
+	Credencialesprofesor p2;
+	Credencialesprofesor c;
+	
+	strcpy(p1.nombreCompleto, "David Guijo");
+	strcpy(p1.usuario, "dguijo");
+	strcpy(p1.rol, "ayudante");
+	strcpy(p1.contrasenya, "1111");
+
+	strcpy(p2.nombreCompleto, "Antonio Durán");
+	strcpy(p2.usuario, "aduran");
+	strcpy(p2.rol, "ayudante");
+	strcpy(p2.contrasenya, "2222");
+
+	strcpy(c.nombreCompleto, "Isabel");
+	strcpy(c.usuario, "isa");
+	strcpy(c.rol, "coordinador");
+	strcpy(c.contrasenya, "0000");
 
 	fichero=fopen(NombreFicheroBin, "wa+b");
 	if (fichero==NULL){
 		cout<<"no existe"<<endl;
-	} //si existe el fichero lo sobreescribe
+	} 
 
 
-	list <Alumno>::iterator i;
+	fwrite(&p1, sizeof(Credencialesprofesor), 1, fichero);
+	fwrite(&p2, sizeof(Credencialesprofesor), 1, fichero);
+	fwrite(&c, sizeof(Credencialesprofesor), 1, fichero);
 
-	list <Alumno> aux;
-	list <Alumno> auxiliarEscribir;
-
-	aux=listaAlumnos_;
 	
-	for (i = aux.begin(); i!=aux.end(); ++i)
-	{
-	
-		cout<<i->getNombre()<<"-"<<i->getCurso()<<"-"<<i->getApellidos()<<endl;
-		//dato.nombre=i->getNombre();
-
-		strcpy(dato.nombre, i->getNombre().c_str());
-		//strcpy(dato.apellidos, i->getApellidos().c_str());
-		dato.curso=i->getCurso();
-
-
-
-
-		fwrite(&dato, sizeof(datosAlumno), 1, fichero);
-
-	}
 
 	fclose(fichero);
 	return 1;
 
 
 }
-

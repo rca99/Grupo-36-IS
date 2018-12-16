@@ -24,17 +24,17 @@ int main(){
 
 	a1.setNombre("Rodolfo Mateo");
 	a2.setNombre("Rodolfo Inurria");
-	a3.setNombre("Rodolfo Jaen");
+	a3.setNombre("Rodolfo Jaén");
 	a4.setNombre("Rodolfo");
 	
 	b.introducirAlumno(a1);
-	b.addNumeroAlumnos();
+	
 	b.introducirAlumno(a2);
-	b.addNumeroAlumnos();
+
 	b.introducirAlumno(a3);
-	b.addNumeroAlumnos();
+
 	b.introducirAlumno(a4);
-	b.addNumeroAlumnos();
+
 	cout<<BOLD_ON<<COLOR_YELLOW<<BLINK<<b.getNumeroAlumnos()<<RESET<<endl;
 
 
@@ -42,7 +42,7 @@ int main(){
 	fp = fopen("prueba.html", "w+");
 	fprintf(fp, "<html> \n");
 	fprintf(fp, "<head> \n");
-	fprintf(fp, "<title>LISTA DE ALUMNOS DE LA ASIGNATURA</title>\n");
+	fprintf(fp, "<title>LISTA DE ALUMNOS    jjjj     DE LA ASIGNATURA</title>\n");
 	fprintf(fp, "<head> \n");
 	fprintf(fp, "<body> \n");
 	fprintf(fp, "%s\n%s %s \n","<FONT SIZE='3'> 'Fernando Herrera Poch'<BR> ", "'a52hepof@uco.es'", "'30945741T'<BR> " );

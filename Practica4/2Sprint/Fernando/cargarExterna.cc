@@ -13,7 +13,8 @@
 
 
 bool BD::cargarBackup(){
-	system("chmod +x guardarExterna.sh");
+	getchar();
+	system("chmod +x cargarExterna.sh");
 	system("./cargarExterna.sh");
 	
 
@@ -24,7 +25,8 @@ bool BD::cargarBackup(){
 
 	//el método de leer fichero recibe el nombre del fichero como tipo char
 	char NombreFicheroBin[50];
-	string nameBD="../AppGestionAlumnos/"+getNombreFichero()+".bin";
+	//system("cd CopiaSeguridad");
+	string nameBD="CopiaSeguridad/gestionAlumnos.bin";
 	strcpy(NombreFicheroBin, nameBD.c_str());
 	
 	
@@ -33,9 +35,11 @@ bool BD::cargarBackup(){
 
 	//******leer fichero*********//
 	FILE *ficheroLectura;
-	ficheroLectura=fopen(NombreFicheroBin, "rb");
+	//ficheroLectura=fopen(NombreFicheroBin, "rb");
 	
-	if (ficheroLectura==NULL){
+	if ((ficheroLectura=fopen(NombreFicheroBin, "rb"))==NULL){
+		cout<<COLOR_BRIGHTRED<<"no existe copia de respaldo en el repositorio remoto"<<endl;
+		cout<<COLOR_NORMAL<<BOLD_ON<<BLINK<<"REALICE LA COPIA DE SEGURIDAD EXTERNA "<<RESET<<endl;
 		return 0;
 	} //si existe el fichero lo sobreescribe
 
@@ -65,13 +69,13 @@ bool BD::cargarBackup(){
 		aux.setEquipo(datoLectura.equipo);
 		aux.setLider(datoLectura.lider);
 
-		introducirAlumno(aux);
+		introducirAlumnoCopiaExterna(aux);
 		//fread(p.getFicheroBD(), sizeof(datosAlumno), 1, ficheroLectura);//no funciona para el puntero hacia la base de datos definitdo en  Profesor.h
 		fread(&datoLectura, sizeof(datosAlumno), 1, ficheroLectura);
 	}
 	
 
-	cout<<listaAlumnos_.size()<<endl;
+	cout<<"nº alumnos"<<listaAlumnos_.size()<<endl;
 
 	list <Alumno>::iterator i;
 
@@ -115,21 +119,6 @@ bool BD::cargarBackup(){
 
 
 	return 1;
-
-
-
-
-
-
-
-
-
-
-
-
-
-	return 1;
-
 }
 
 
