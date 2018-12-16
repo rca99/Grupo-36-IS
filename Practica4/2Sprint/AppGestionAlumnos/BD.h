@@ -60,7 +60,9 @@ public:
 	bool gestionLideres(Alumno alumnox, string dni="");
 
 	void mostrarAlumno(list <Alumno> lista,int opcOrden, string orden);
+	void mostrarAlumnoHtml(list <Alumno> lista,int opcOrden, string orden);
 	void mostrarAlumno(int opcOrden, string orden);
+	void mostrarAlumnoHtml(int opcOrden, string orden);
 	void ordenLista(list <Alumno> &lista);
 	void ordenLista();
 	bool buscarAlumno(list <Alumno> &lista, int equipo);
