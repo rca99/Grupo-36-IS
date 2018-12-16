@@ -57,8 +57,6 @@ Credencialesprofesor Profesor::registro(string usuarioAcceso, string contrasenya
 		//cout<<cp.nombreCompleto<<endl;
 		//cout<<cp.usuario<<endl;
 			
-		
-
 		listaProfesores.push_back(cp);
 		//fread(p.getFicheroBD(), sizeof(datosAlumno), 1, ficheroLectura);//no funciona para el puntero hacia la base de datos definitdo en  Profesor.h
 		fread(&cp, sizeof(Credencialesprofesor), 1, ficheroLectura);
@@ -89,7 +87,11 @@ Credencialesprofesor Profesor::registro(string usuarioAcceso, string contrasenya
 
 	}
 	
+<<<<<<< HEAD
+	return cp;
+=======
 	return cp;     
+>>>>>>> da5ab4eb5b0a0e30d88eea1f7b0c3c02e2768ac6
  }
 
 

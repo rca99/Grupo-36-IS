@@ -119,21 +119,6 @@ bool BD::cargarBackup(){
 
 
 	return 1;
-
-
-
-
-
-
-
-
-
-
-
-
-
-	return 1;
-
 }
 
 

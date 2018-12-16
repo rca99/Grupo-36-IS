@@ -52,6 +52,7 @@ bool BD::buscarAlumnoDNI(list <Alumno> &lista, Alumno a){
 
 bool BD::buscarAlumnoApellido(list <Alumno> &lista, Alumno a){
 	int contador=0;
+	
 	/*//Convertir string a mayúsculas
 	string cadena;
 	getline(cin, cadena);
@@ -80,7 +81,7 @@ bool BD::buscarAlumnoApellido(list <Alumno> &lista, Alumno a){
 			contador++;
 		}
 	}
-	cout<<"Contador encontrados: "<<contador<<endl;
+
 	if (contador>0) {
 		return true;
 	}
