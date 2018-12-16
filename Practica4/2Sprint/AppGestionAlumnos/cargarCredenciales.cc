@@ -87,11 +87,8 @@ Credencialesprofesor Profesor::registro(string usuarioAcceso, string contrasenya
 
 	}
 	
-<<<<<<< HEAD
 	return cp;
-=======
-	return cp;     
->>>>>>> da5ab4eb5b0a0e30d88eea1f7b0c3c02e2768ac6
+
  }
 
 

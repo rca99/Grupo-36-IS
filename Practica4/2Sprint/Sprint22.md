@@ -14,9 +14,20 @@ _Descripción del trabajo_
 **Rafael Cantero Alén**
 
 Estimadas: 5 h
-Ejecutadas: 1 h
+Ejecutadas: 3 h
 
 Notas trabajo:
+
+Se han finalizado las funcionalidades siguientes:
+
+* HU_02_BuscarAlumno|1|1
+* Interfaz BuscarAlumno|1|0,5
+* HU_11_SalirAplicación|5|0,25
+* Interfaz SalirAplicación|5|0,25
+
+Cuando se acostumbra al trabajo en ramas personales se ve favorecido el trabajo en equipo.
+
+_Problemática encontrada_
 
 
 **Carlos Freire Caballero**

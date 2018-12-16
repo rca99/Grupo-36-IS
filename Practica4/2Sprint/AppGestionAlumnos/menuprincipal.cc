@@ -2,13 +2,25 @@
 // MENU PRINCIPAL
 // --------------
 
-//g++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BD.h Alumno.h Profesor.h guardarExterna.cc cargarExterna.cc guardarCredenciales.cc cargarCredenciales.cc modificarAlumno.cc
+//g++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BD.h Alumno.h Profesor.h guardarExterna.cc cargarExterna.cc guardarCredenciales.cc cargarCredenciales.cc modificarAlumno.cc eliminarAlumno.cc
 
 ////*****FERNANDO
+//Revisar todos los char que tengan el mismo tamaño
+//errores al ittroducir en un int un char
+//activar sleep acceso aplicación
+//**CU**cargar base de datos. Si hay alumnos dados de alta, pedir confirmación porque se borrarán los datos que haya actualmente
+//**CU** al cargar copia de seguridad hay que indicar los alumnos cargados en el sistema
+//Configurar aplicación para que funcionen las copias de seguridad externas en cualquier equipo Añadir en scrip git init git remote add origin <repositorio git> user name, email, git set-url
+//**CU** El sistema debe mostrar en blanco los datos del alumno no obligatorios que no hayan sido introducidos previamente.// no sé como se podría hacer. NO ME PREOCUPA
+//Aspecto menús
 
-//**CU** El sistema debe mostrar en blanco los datos del alumno no obligatorios que no hayan sido introducidos previamente.// no sé como se podría hacer.
 
-
+////*****CHARLII
+//al introducir  alumno, que busque por apellidos y dni sin preguntar
+//**CU** cuando se da de alta un alumno devuelve el número de alumnos el sistema
+//**CU**cuando se introduce un alumno hay que indicar que ha sido correcto y mostrar su nombre y dni 
+//**CU** En caso de devolver los alumnos del grupo, el sistema indicará si el grupo tiene líder o no lo tiene.// no sé si se puede hacer ahora. NO ME PREOCUPA
+//en modificar alumnos cuando se introduce mal el código de si se desea modificar se vuelve inestable. Hacer esta comprobación en todas las peticiones de datos
 
 ////*****RAFA
 //Interfaz Salir aplicación
@@ -123,7 +135,6 @@ int main(int argc, char const *argv[]) {
 
 			//Comprobar base datos
 
-<<<<<<< HEAD
 			//******leer fichero*********//
 			FILE *ficheroLectura;
 			ficheroLectura=fopen(NombreFicheroBin, "rb");
@@ -139,37 +150,6 @@ int main(int argc, char const *argv[]) {
 						cout<<"Acceda ahora a la aplicación"<<endl;
 						saltoLinea();
 						limpiarPantalla();
-=======
-				//******leer fichero*********//
-				FILE *ficheroLectura;
-				ficheroLectura=fopen(NombreFicheroBin, "rb");
-				
-				int OpccargarBD;
-				if (ficheroLectura!=NULL){
-					cout<<"\t"<<COLOR_GREEN<<"Existe una Base de datos almacenada"<<RESET;
-					cout<<BOLD_ON<<COLOR_DARKGREY"\t¿desea cargarla? (indique <1> o <0>: "<<COLOR_BRIGHTBLUE;cin>>OpccargarBD;
-					if (OpccargarBD==1){
-
-
-
-
-						if (miBD.cargarBD()){
-
-							cout<<COLOR_GREEN<<"Base de datos cargada correctamente"<<RESET<<endl;
-							cout<<"Acceda ahora a la aplicación"<<endl;
-							saltoLinea();
-							limpiarPantalla();
-						}
-
-						else{
-							cout<<COLOR_RED<<"Se ha producido un error cargar la base de datos"<<RESET<<endl;
-							cout<<"compruebe que exista el fichero de copia de seguridad, en caso contrario,"<<endl;
-							cout<<"Consulte con el administrador del sistema"<<endl;
-							saltoLinea();
-							cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-							limpiarPantalla();
-						}
->>>>>>> da5ab4eb5b0a0e30d88eea1f7b0c3c02e2768ac6
 					}
 
 					else{
@@ -747,17 +727,54 @@ int main(int argc, char const *argv[]) {
 						} break;
 					case 3: {	// ELIMINAR ALUMNO
 							
+						list <Alumno> alumnoencontrado;
+						datosAlumno b;
+						string dni_1;
+						Alumno aux;
+						bool encontrado; 
 
+						cout << "Introduzca la opcion para buscar: " << endl;
+						cout << "1. DNI\n2. Apellidos" << endl;
+						cin >> opcBusqueda;
 
+						if(opcBusqueda==1) {
+							cout << "DNI: ";
+							cin >> b.dni ;
 
+							Alumno aux(b);
+							encontrado=miBD.buscarAlumnoDNI(alumnoencontrado, aux);
+							dni_1=aux.getDNI();
+						} 
+						else if (opcBusqueda==2) {
+							cout << "Apellido: ";
+							cin >> b.apellidos ;
 
+							Alumno aux(b);
+							encontrado=miBD.buscarAlumnoApellido(alumnoencontrado, aux);
+							dni_1=aux.getDNI();
+						} 
+						else {
+							cout << "Opcion no valida" << endl;
+							break;
+						}
 
+						if(encontrado==true) {
+						cout<<COLOR_BRIGHTGREEN<<"Alumno encontrado. Procediendo a eliminarlo"<<RESET<<endl;
+						miBD.eliminarAlumno(aux, dni_1);
+						cout << COLOR_CYAN << "Alumno eliminado correctamente" << endl;
+						}
+						else {
+							cout << BOLD_RED << "\n\tERROR" << RESET << endl;
+							cout << COLOR_YELLOW << "Alumno no encontrado" << endl;
+						}
 
+						cout << COLOR_NORMAL << BOLD_ON << "\nPULSE UNA TECLA PARA VOLVER AL MENÚ";
+						cin.ignore();
+						cin.get();
+						limpiarPantalla(); 
+								
+						}break;
 
-
-
-
-						} break;
 					case 4: {	// MOSTRAR ALUMNOS
 
 							
@@ -1005,7 +1022,6 @@ int main(int argc, char const *argv[]) {
 							}while(cargar!= 'C'||cargar!='c'||cargar!= 'M'||cargar!='m');
 						}
 
-<<<<<<< HEAD
 						else{
 
 							cout<<"pulse una tecla para guardar la BD"<<endl;
@@ -1019,82 +1035,17 @@ int main(int argc, char const *argv[]) {
 								limpiarPantalla();
 								break;
 								//miBD.cargarBD();
-=======
-							
-							if(miBD.getAlumnos().size()>0){
-								int confirmarCarga=0;
-								cout<<COLOR_RED<<"Existen alumnos en la base de datos, si decide cargar la base de datos, se borrarán los existentes"<<RESET<<endl;
-								cout<<BOLD_ON<<"Pusle <1> para confirmar la carga de la base de datos: "<<RESET;cout<<COLOR_BLUE;cin>>confirmarCarga;
-								if(confirmarCarga==1){
-									if (miBD.cargarBD()){
-
-										cout<<COLOR_GREEN<<"Base de datos cargada correctamente"<<RESET<<endl;
-										cout<<"vuelva al menú para introducir alumnos"<<endl;
-										saltoLinea();
-										cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-										limpiarPantalla();
-										break;
-									}
-
-									else{
-										cout<<COLOR_RED<<"No se encuentra el fichero o se ha producido un error cargar la base de datos"<<RESET<<endl;
-										cout<<"compruebe que exista el fichero de copia de seguridad, en caso contrario,"<<endl;
-										cout<<"vuelva al menú para introducir alumnos y cree una copia de seguridad antes de cargarla"<<endl;
-										saltoLinea();
-										cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-										limpiarPantalla();
-										break;
-									}
-
-								}
-								else{
-									break;
-								}
-
-							}
-
-
-							if(miBD.getAlumnos().size()==0){
-								if (miBD.cargarBD()){
-
-									cout<<COLOR_GREEN<<"Base de datos cargada correctamente"<<RESET<<endl;
-									cout<<"Acceda ahora a la aplicación"<<endl;
-									saltoLinea();
-									limpiarPantalla();
-								}
-
-								else{
-									cout<<COLOR_RED<<"Se ha producido un error cargar la base de datos"<<RESET<<endl;
-									cout<<"compruebe que exista el fichero de copia de seguridad, en caso contrario,"<<endl;
-									cout<<"Consulte con el administrador del sistema"<<endl;
-									saltoLinea();
-									cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-									limpiarPantalla();
-								}
->>>>>>> da5ab4eb5b0a0e30d88eea1f7b0c3c02e2768ac6
 							}
 
 							else{cout<<COLOR_RED<<"Error al guardar la Base de Datos"<<RESET<<endl;}
 						}
 
-<<<<<<< HEAD
 					} break;
 					
 
 				
 						
 					case 6: {	// CARGAR BD
-=======
-							
-
-
-
-
-
-
-						} break;
-						case 7: {	// GUARDAR BACKUP
->>>>>>> da5ab4eb5b0a0e30d88eea1f7b0c3c02e2768ac6
 
 						if (miBD.cargarBD()){
 
@@ -1174,8 +1125,55 @@ int main(int argc, char const *argv[]) {
 
 						} break;	
 					case 9: {	// SALIR DE LA APLICACION
-						cout<< COLOR_BRIGHTGREEN << "Hasta luego Lucas"<< RESET << endl << endl;
+
+						int confsalida;
+						int confguardar;
+						int opcguard;
+						cout << COLOR_DARKGREY << "\tPulse 1 si desea salir de la aplicación: " << RESET;
+						cin >> confsalida;
+
+						if(confsalida==1){
+							cout << "\tPulse 1 si desea guardar los cambios en la base de datos o en una copia de seguridad externa : " << COLOR_DARKGREY << RESET;
+							cin >> confguardar;
+
+							if(confguardar==1){
+								cout << "Introduzca la opción de guardado: " << endl;
+								cout << "1. Guardar BD\n2. Guardar Backup" << endl;
+								cin >> opcguard;
+
+								if(opcguard==1) {
+									miBD.guardarBD();
+									cout << COLOR_RED << "Hasta luego Lucas" << RESET << endl;
+										exit(-1);
+								}
+
+								else if(opcguard==2){
+									miBD.guardarBackup();
+									cout << COLOR_RED << "Hasta luego Lucas" << RESET << endl;
+									exit(-1);
+								}
+
+								else{
+									cout << "Opción no válida. Abortando..." << endl;
+									cin.ignore();
+									cin.get();
+									break;
+								}
+							}
+
+							else{
+								cout << COLOR_RED << "Hasta luego Lucas" << RESET << endl;
+								exit(-1);
+							}
+						}
+
+						else{
+							cout << COLOR_NORMAL << BOLD_ON << "\nPULSE UNA TECLA PARA VOLVER AL MENÚ";getchar();getchar();
+							limpiarPantalla();
+						}
+
 						} break;
+
 					default: { // OPC NO VALIDA
 						saltoLinea();
 						cout <<"\t"<<"OPCIÓN NO VÁLIDA" << endl;
