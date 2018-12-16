@@ -5,6 +5,7 @@
 #include "Alumno.h"
 #include "consoleLinux.h"
 #include <iostream>
+#include <vector>
 #include <string>
 #include <cstring>
 #include <locale>//para función pasar a mayúscula
@@ -52,6 +53,7 @@ bool BD::buscarAlumnoDNI(list <Alumno> &lista, Alumno a){
 
 bool BD::buscarAlumnoApellido(list <Alumno> &lista, Alumno a){
 	int contador=0;
+
 	/*//Convertir string a mayúsculas
 	string cadena;
 	getline(cin, cadena);
@@ -80,7 +82,6 @@ bool BD::buscarAlumnoApellido(list <Alumno> &lista, Alumno a){
 			contador++;
 		}
 	}
-	cout<<"Contador encontrados: "<<contador<<endl;
 
 	// Si hay varios alumnos con el mismo apellido, busca por dni 
 	if (contador>0){
@@ -136,4 +137,40 @@ string convertirMayuscula(string cadena){
 
 	return s;
 
+}
+
+bool BD::buscarAlumnoDNIv2(vector <Alumno> &vector, Alumno a) {
+	list <Alumno> :: iterator i;
+
+	for(i=listaAlumnos_.begin(); i!=listaAlumnos_.end(); i++)
+		if((*i).getDNI()==a.getDNI())
+			vector.push_back(*i);
+
+	if (vector.size()>0)
+		return true;
+	else return false;
+}
+
+bool BD::buscarAlumnoApellidov2(vector <Alumno> &vector, Alumno a) {
+	list <Alumno> :: iterator i;
+
+	for(i=listaAlumnos_.begin(); i!=listaAlumnos_.end(); i++)
+		if((*i).getApellidos()==a.getApellidos())
+			vector.push_back(*i);
+
+	if (vector.size()>0)
+		return true;
+	else return false;
+}
+
+bool BD::buscarAlumnoEquipov2(vector <Alumno> &vector, int equipo) {
+	list <Alumno> :: iterator i;
+
+	for(i=listaAlumnos_.begin(); i!=listaAlumnos_.end(); i++)
+		if((*i).getEquipo()==equipo)
+			vector.push_back(*i);
+
+	if (vector.size()>0)
+		return true;
+	else return false;
 }

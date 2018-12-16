@@ -18,6 +18,17 @@ Ejecutadas: 1 h
 
 Notas trabajo:
 
+Se han realizado parcialmente:
+
+* HU_02_BuscarAlumno|1|1
+* Interfaz BuscarAlumno|1|0,5
+
+Se han realizado con éxito las funciones buscar por dni y buscar por apellidos.
+
+_Problemática encontrada_
+
+Las dificultades en el planteamiento del desarrollo del código han provocado el retraso de esta funcionalidad.
+
 
 **Carlos Freire Caballero**
 

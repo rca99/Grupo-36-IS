@@ -14,9 +14,18 @@ _Descripción del trabajo_
 **Rafael Cantero Alén**
 
 Estimadas: 5 h
-Ejecutadas: 1 h
+Ejecutadas: 4 h
 
 Notas trabajo:
+
+Se han finalizado las funcionalidades siguientes:
+
+* HU_06_EliminarAlumno|3|2
+* Interfaz EliminarAlumno|3|1
+
+Con ello quedan finalizadas todas las funcionalidades asignadas.
+
+_Problemática encontrada_
 
 
 **Carlos Freire Caballero**

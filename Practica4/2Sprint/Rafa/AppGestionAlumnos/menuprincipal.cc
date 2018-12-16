@@ -2,28 +2,34 @@
 // MENU PRINCIPAL
 // --------------
 
-//g++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc eliminarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BD.h Alumno.h Profesor.h guardarExterna.cc cargarExterna.cc guardarCredenciales.cc cargarCredenciales.cc
+//g++ menuprincipal.cc Alumno.cc cargarBD.cc introducirAlumno.cc mostrarLista.cc buscarAlumno.cc guardarBD.cc Profesor.cc gestionLideres.cc BD.h Alumno.h Profesor.h guardarExterna.cc cargarExterna.cc guardarCredenciales.cc cargarCredenciales.cc modificarAlumno.cc eliminarAlumno.cc
 
-
-
-
+////*****FERNANDO
 //Revisar todos los char que tengan el mismo tamaño
-//por defecto lider_=0;
-//valores que no se cumplimentan deben aparecer en blanco
 //errores al ittroducir en un int un char
-//instrucciones en html para compilar y ejecutar programa
-//En mostrar alumnos si no hay alumnos mensaje de error
+//activar sleep acceso aplicación
+//**CU**cargar base de datos. Si hay alumnos dados de alta, pedir confirmación porque se borrarán los datos que haya actualmente
+//**CU** al cargar copia de seguridad hay que indicar los alumnos cargados en el sistema
+//Configurar aplicación para que funcionen las copias de seguridad externas en cualquier equipo Añadir en scrip git init git remote add origin <repositorio git> user name, email, git set-url
+//**CU** El sistema debe mostrar en blanco los datos del alumno no obligatorios que no hayan sido introducidos previamente.// no sé como se podría hacer. NO ME PREOCUPA
+//Aspecto menús
+
+
+////*****CHARLII
 //al introducir  alumno, que busque por apellidos y dni sin preguntar
-//insertar alumnos hermanos Arreglado
-//modificar alumnos
-//revisar función Copia seguridad externa
-//abrir carpeta listaAlumnos. Crear script
+//**CU** cuando se da de alta un alumno devuelve el número de alumnos el sistema
+//**CU**cuando se introduce un alumno hay que indicar que ha sido correcto y mostrar su nombre y dni 
+//**CU** En caso de devolver los alumnos del grupo, el sistema indicará si el grupo tiene líder o no lo tiene.// no sé si se puede hacer ahora. NO ME PREOCUPA
+//en modificar alumnos cuando se introduce mal el código de si se desea modificar se vuelve inestable. Hacer esta comprobación en todas las peticiones de datos
 
-//ASPECTOS A MEJORAR:
+////*****RAFA
+//Interfaz Salir aplicación
+//Interfaz Eliminar Alumnos
 
+
+
+//Aspectos a mejorar
 //FUNCIONES sin cout
-// 
-
 
 //INSTRUCCIONES ACCESO Y USO APLICACIÓN
 //insertar y modificar indicar tipo de dato y como meterlo (por ejemplo DNI si se introduce letra sin espacios)
@@ -55,6 +61,8 @@ void saltoLinea();
 void mostrarOpciones();
 void OpcionesMostrar();
 void OpcionesInsertar();
+void OpcionesModificar();
+void OpcionesGenerarLista();
 void limpiarPantalla();
 bool datosBusqueda(datosAlumno &datos);
 void OpcionesOrden();
@@ -68,224 +76,522 @@ void generarhtml();
 int main(int argc, char const *argv[]) {
 
 	limpiarPantalla();
+	/*
 	cout<<BLINK<<BOLD_ON<<"ACCEDIENDO A LA APLICACIÓN"<<RESET<<endl;
 	
-	sleep(1);
+	//sleep(1);
 	saltoLinea();
 	cout<<"Se abrirá la carpeta donde se encuentran las instrucciones para acceder a la aplicación. "<<endl;
 	cout<<" Abra el archivo acceso.html y vuelve a la terminal para acceder a la Aplicación "<<endl;
-	sleep(3);
-	
-	//generarhtml();
+	//sleep(3);
+	generarhtml();
+	*/
 	
 	Profesor p;//para acceso a la aplicación.
 	p.credencialesBin();// para guardar el fichero binario de las credenciales
-
 	int intentosAcceso=0;//para controlar el número de intentos de acceso
+	BD bAcceso;//para consultar fichero base de datos
+
+	char NombreFicheroBin[50];
+	string nameBD=bAcceso.getNombreFichero()+".bin";
+	strcpy(NombreFicheroBin, nameBD.c_str());
+
+	int opc=0; // OPCION INTRODUCIDA EN EL MENU PRINCIPAL
+
+
 
 	//introducir datos acceso
 
 	do{
+		limpiarPantalla();
+		string user;
+		string password;
+
+		int intentosRestantes;
+		intentosRestantes=INTENTOS_ACCESO_APLICACION-intentosAcceso;
+		saltoLinea();
+		cout<<"\tTiene "<<BOLD_ON<<COLOR_GREEN<<intentosRestantes<<RESET<<" intentos para acceder a la aplicación"<<endl;
+		saltoLinea();
+		cout<<"\tInserte su usuario: ";cout<<COLOR_BLUE;getline(cin, user);
+		cout<<RESET;
+		saltoLinea();
+		cout<<"\tInserte su clave de acceso: ";cout<<COLOR_BLUE;getline(cin, password);
+		
+		//cout<<user<<"-"<<password<<endl;
+		sleep(0.75);
+
+		//comprobar credenciales
+
+		Credencialesprofesor cprof=p.registro(user, password);// para recoger datos del usuario que accede y poder controlar el menú que se carga
+
+
+		if(strcmp(cprof.usuario, user.c_str())==0 && strcmp(cprof.contrasenya, password.c_str())==0){
+
+			cout<<COLOR_BRIGHTGREEN<<BLINK<<"ACCESO AUTORIZADO"<<RESET<<endl;
+
+			cout<<cprof.contrasenya<<"-"<<cprof.usuario<<"-"<<cprof.rol<<endl;// la clase registro ha de devolver una estructura profesor
+
 			limpiarPantalla();
-			string user;
-			string password;
 
-			int intentosRestantes;
-			intentosRestantes=INTENTOS_ACCESO_APLICACION-intentosAcceso;
-			saltoLinea();
-			cout<<"\tTiene "<<BOLD_ON<<COLOR_GREEN<<intentosRestantes<<RESET<<" intentos para acceder a la aplicación"<<endl;
-			saltoLinea();
-			cout<<"\tInserte su usuario: ";cout<<COLOR_BLUE;getline(cin, user);
-			cout<<RESET;
-			saltoLinea();
-			cout<<"\tInserte su clave de acceso: ";cout<<COLOR_BLUE;getline(cin, password);
+			//Comprobar base datos
+
+			//******leer fichero*********//
+			FILE *ficheroLectura;
+			ficheroLectura=fopen(NombreFicheroBin, "rb");
 			
-			//cout<<user<<"-"<<password<<endl;
-			sleep(0.75);
+			int OpccargarBD;
+			if (ficheroLectura!=NULL){
+				cout<<"\t"<<COLOR_GREEN<<"Existe una Base de datos almacenada"<<RESET;
+				cout<<BOLD_ON<<COLOR_DARKGREY"\t¿desea cargarla? (indique <1> o <0>: "<<COLOR_BRIGHTBLUE;cin>>OpccargarBD;
+				if (OpccargarBD==1){
+					if (miBD.cargarBD()){
 
-			//comprobar credenciales
+						cout<<COLOR_GREEN<<"Base de datos cargada correctamente"<<RESET<<endl;
+						cout<<"Acceda ahora a la aplicación"<<endl;
+						saltoLinea();
+						limpiarPantalla();
+					}
 
-			Credencialesprofesor cprof=p.registro(user, password);// para recoger datos del usuario que accede y poder controlar el menú que se carga
+					else{
+						cout<<COLOR_RED<<"Se ha producido un error cargar la base de datos"<<RESET<<endl;
+						cout<<"compruebe que exista el fichero de copia de seguridad, en caso contrario,"<<endl;
+						cout<<"Consulte con el administrador del sistema"<<endl;
+						saltoLinea();
+						cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+						limpiarPantalla();
+					}
+				}
+				else{
+					cout<<BOLD_ON<<"Acceda ahora a la aplicación"<<endl;
+					limpiarPantalla();
+				}
 
+			}
+			
 
-			if(strcmp(cprof.usuario, user.c_str())==0 && strcmp(cprof.contrasenya, password.c_str())==0){
+			//Acceso al menú principal si credenciales son válidas
 
-				cout<<COLOR_BRIGHTGREEN<<BLINK<<"ACCESO AUTORIZADO"<<RESET<<endl;
+			int opcBusqueda=0;
+			int opcMostrar=0;
 
-				cout<<cprof.contrasenya<<"-"<<cprof.usuario<<"-"<<cprof.rol<<endl;// la clase registro ha de devolver una estructura profesor
-
-				limpiarPantalla();
+			do {
 				
+				saltoLinea();
+				
+				limpiarPantalla();
 
-				//Acceso al menú principal si credenciales son válidas
-
-				int opc=0;
-				int opcBusqueda=0;
-				int opcMostrar=0;
-
-				do {
-					
+				if (strcmp(cprof.rol, "coordinador")==0){
 					saltoLinea();
-
+					cout<<UNDERLINE_ON<<"\tBienvenido a la aplicación:  "<<RESET<<endl;
+					saltoLinea();
+					cout<<BOLD_ON<<"\t - "<<COLOR_CYAN<<cprof.nombreCompleto<<RESET<<BOLD_ON<<" - "<<RESET<<endl;
+					mostrarOpciones();
+					saltoLinea();	
+					cout << "\t" << BOLD_ON << COLOR_LIGHTGREY <<"Introduzca una opción: " << COLOR_BRIGHTBLUE;
+					cin >> opc;
+					cout << RESET << endl;
+					limpiarPantalla();
+				}
+				else{
+					saltoLinea();
+					cout<<UNDERLINE_ON<<"\tBienvenido a la aplicación:  "<<RESET<<endl;
+					saltoLinea();
+					cout<<BOLD_ON<<"\t - "<<COLOR_BRIGHTGREEN<<cprof.nombreCompleto<<RESET<<BOLD_ON<<" - "<<RESET<<endl;
+					mostrarOpcionesAyudantes();
+					saltoLinea();
+					cout << "\t" << BOLD_ON << COLOR_LIGHTGREY <<"Introduzca una opción: " << COLOR_BRIGHTBLUE;
+					cin >> opc;
+					/*
+					if (opc==7||opc==8){
+						limpiarPantalla();
+						mostrarOpcionesAyudantes();
+					}
+					*/
 					
+					cout << RESET << endl;
 					limpiarPantalla();
 
-					if (strcmp(cprof.rol, "coordinador")==0){
+				
+				}
+
+				
+				switch(opc) {
+					case 1: {	// INSERTAR ALUMNO
+
+						// COMPRUEBA NºALUMNOS < 150 ···
+						if(miBD.getNumeroAlumnos()==150) {
+							cout << BOLD_RED << "\n\tERROR\n";
+							cout << COLOR_BRIGHTGREEN << "\n\tNUMERO MAXIMO DE ALUMNOS (" << miBD.getNumeroAlumnos() << ") ALCANZADO\n";
+							cout << COLOR_NORMAL << BOLD_ON  << "\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+							cin.ignore();
+							cin.get();
+							limpiarPantalla();
+							break;
+						} 
+
+						// MENU INSERTAR ···
+						OpcionesInsertar();
+						cout << "\tNUMERO DE ALUMNOS: " << COLOR_GREEN << miBD.getNumeroAlumnos() << RESET;
+						cout.fill('-');
 						saltoLinea();
-						cout<<UNDERLINE_ON<<"\tBienvenido a la aplicación: "<<BOLD_ON<<cprof.nombreCompleto<<RESET<<endl;
-						mostrarOpciones();
-						saltoLinea();	
-						cout << "\t" << BOLD_ON << COLOR_LIGHTGREY <<"Introduzca una opción: " << COLOR_BRIGHTBLUE;
-						cin >> opc;
-						cout << RESET << endl;
+						saltoLinea();
+									
+						// PIDE DATOS OBLIGATORIOS ···
+						datosAlumno datos;
+						inicializardatos(datos);
+
+						cout.fill(' ');
+						cout << COLOR_CYAN << BOLD_ON << UNDERLINE_ON << setw(75) 
+							 << "\tINTRODUZCA LOS DATOS OBLIGATORIOS DEL NUEVO ALUMNO"
+							 << endl << endl << endl << RESET;
+
+						cout << COLOR_GREEN << BOLD_ON << "\tDNI : " << COLOR_BRIGHTBLUE;
+						cin.ignore();
+						cin.getline(datos.dni, 10, '\n');
+						cout << COLOR_GREEN << "\tNombre : " << COLOR_BRIGHTBLUE;
+						cin.getline(datos.nombre, 40, '\n');
+						cout << COLOR_GREEN << "\tApellidos : " << COLOR_BRIGHTBLUE;
+						cin.getline(datos.apellidos, 40, '\n');
+						cout << COLOR_GREEN << "\tFecha de nacimiento : " << COLOR_BRIGHTBLUE;
+						cin.getline(datos.fecha_nacimiento, 20, '\n');
+						cout << COLOR_GREEN << "\tTelefono : " << COLOR_BRIGHTBLUE;
+						cin >> datos.telefono;
+						cout << COLOR_GREEN << "\tEmail corporativo : " << COLOR_BRIGHTBLUE;
+						cin.ignore();
+						cin.getline(datos.email_corporativo, 50, '\n');
+						cout << COLOR_GREEN << "\tDomicilio : " << COLOR_BRIGHTBLUE;
+						cin.getline(datos.domicilio, 60, '\n');
+						cout << COLOR_GREEN << "\tCurso : " << COLOR_BRIGHTBLUE;
+						cin >> datos.curso;
+
+						cout << RESET ;
+
+						if( strlen(datos.dni)==0 || strlen(datos.nombre)==0 || strlen(datos.apellidos)==0 || strlen(datos.fecha_nacimiento)==0 || strlen(datos.email_corporativo)==0 || strlen(datos.domicilio)==0) {
+							cout << BOLD_RED << "\n\tERROR" << endl;
+							cout << COLOR_BRIGHTGREEN << "\n\tALGUN PARAMETRO NO SE HA INTRODUCIDO" << endl;
+							cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+							cin.ignore();
+							cin.get();
+							limpiarPantalla();
+							break;
+						}
+
+						Alumno aux(datos); // Constructor con estructura
+						
+						cout << endl << "\t***" << endl << endl;
+						// COMPRUEBA QUE EL ALUMNO NO HA SIDO INTRODUCIDO ANTERIORMENTE ···
+						list <Alumno> alumnosencontrados;
+						bool encontrado;
+
+
+						cout << COLOR_CYAN << BOLD_ON << "\tComprobando que el alumno no esta dado de alta..." << endl;
+
+						encontrado=miBD.buscarAlumnoDNI(alumnosencontrados, aux);
+						
+						if(encontrado==true) {	// ALUMNO YA INTRODUCIDO
+							cout << BOLD_RED << "\n\tERROR" << endl;
+							cout << COLOR_BRIGHTGREEN << "\n\tEL ALUMNO YA SE ENCUENTRA EN LA BD" << endl;
+							cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+							cin.ignore();
+							cin.get();
+							limpiarPantalla();
+							break;
+						} 
+
+						// ALUMNO NUEVO ···
+						cout << RESET << COLOR_GREEN << "\n\tEl alumno no esta dado de alta" << endl;
+						cout << RESET ;
+
+
+						cout << endl << "\t***" << endl << endl;
+						// DATOS ADICIONALES ···
+						cout << COLOR_CYAN << BOLD_ON << "\t¿Desea introducir datos adicionales?" << endl;
+						cout << "\tDATOS ADICIONALES:" << endl;
+						cout << "\t\tNOTA\n\t\tEQUIPO\n\t\tLIDER\n";
+						cout << "\tPulse 1 si desea introducir datos adicionales: " << COLOR_BRIGHTBLUE;	
+
+						int datosAd;
+						cin >> datosAd;
+						cout << RESET ;
+
+						if(datosAd == 1) {
+							limpiarPantalla();
+							OpcionesInsertar();
+							cout.fill(' ');
+							cout << COLOR_CYAN << BOLD_ON << UNDERLINE_ON << setw(75) 
+							 	 << "\tINTRODUZCA LOS DATOS ADICIONALES DEL NUEVO ALUMNO"
+							 	 << endl << endl << endl << RESET;
+							cout << COLOR_DARKGREY << BOLD_ON << "\tNota : " << COLOR_BRIGHTBLUE;
+							cin >> datos.nota;
+							cout << COLOR_DARKGREY << "\tEquipo : " << COLOR_BRIGHTBLUE;
+							cin >> datos.equipo;
+							cout << COLOR_DARKGREY << "\tLider (1: Si; 0: No): " << COLOR_BRIGHTBLUE;
+							cin >> datos.lider;
+
+							if(cin.fail()) {
+								cout << BOLD_RED << "\n\tERROR" << endl;
+								cout << COLOR_BRIGHTGREEN << "\n\tINTRODUCCION DE LIDER INCORRECTA" << endl;
+								cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+	  							//cin.ignore(numeric_limits<int>::max());
+	  							cin.clear();
+	  							cin.ignore();
+	  							cin.get();
+	  							limpiarPantalla();
+	  							break;
+							}
+							
+							aux.setNota(datos.nota);
+							aux.setEquipo(datos.equipo);
+							aux.setLider(datos.lider);
+						}
+
+						// MUESTRA LOS DATOS DEL ALUMNO A INTRODUCIR ···
 						limpiarPantalla();
-					}
-					else{
+						OpcionesInsertar();
 						saltoLinea();
-						cout<<UNDERLINE_ON<<"\tBienvenido a la aplicación"<<BOLD_ON<<cprof.nombreCompleto<<RESET<<endl;
-						mostrarOpcionesAyudantes();
-						saltoLinea();
-						cout << "\t" << BOLD_ON << COLOR_LIGHTGREY <<"Introduzca una opción: " << COLOR_BRIGHTBLUE;
-						cin >> opc;
-						cout << RESET << endl;
+						printAlumno(aux);
+						
+						cout << endl << "\t***" << endl << endl;
+						cout << COLOR_LIGHTGREY << "\tINTRODUCIENDO :·:·:·:·:·:·:·:\n";
+						cout << endl << "\t***" << endl << endl;
+
+						// INTENTA INTRODUCIR EL ALUMNO ···
+						if(!miBD.introducirAlumno(aux)) {
+							cout << BOLD_RED  << "\n\tNO SE HA INTRODUCIDO EL ALUMNO" << endl;
+						} else {
+							cout << COLOR_GREEN << "\n\tAlumno introducido correctamente" << endl;
+							cout << BOLD_ON << COLOR_CYAN << "\n\tNUMERO DE ALUMNOS: " << COLOR_GREEN << miBD.getNumeroAlumnos() << RESET << endl;
+						}
+
+						cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+						cin.ignore();
+						cin.get();
 						limpiarPantalla();
 
-					
-					}
+						} break;
+					case 2: {	// MODIFICAR ALUMNO
+			
+						// COMPRUEBA QUE HAYA ALUMNOS ···
+						if(!miBD.buscarAlumnos()) {
+							cout << BOLD_RED << "\n\tERROR" << endl;
+							cout << COLOR_BRIGHTGREEN << "\n\tLA BD ESTA VACIA" << endl;
+							cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+							cin.ignore();
+							cin.get();
+							limpiarPantalla();
+							break;
+						}
 
-					
-					switch(opc) {
-						case 1: {	// INSERTAR ALUMNO
+						// VARIABLES ···
+						vector <Alumno> alumnosencontrados;
+						alumnosencontrados.clear();
+						datosAlumno datos;
+						int opcAlumno;
+						Alumno myAlumno;
+						string mydni;
+						bool encontrado;
 
-								// COMPRUEBA NºALUMNOS < 150 ···
-								if(miBD.getNumeroAlumnos()==150) {
-									cout << BOLD_RED << "\n\tERROR\n";
-									cout << COLOR_BRIGHTGREEN << "\n\tNUMERO MAXIMO DE ALUMNOS (" << miBD.getNumeroAlumnos() << ") ALCANZADO\n";
-									cout << COLOR_NORMAL << BOLD_ON  << "\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
-									cin.ignore();
-									cin.get();
-									limpiarPantalla();
-									break;
-								} 
+						// MENU MODIFICAR ···
+						OpcionesModificar();
 
-								// MENU INSERTAR ···
-								OpcionesInsertar();
-								cout << "\tNUMERO DE ALUMNOS: " << COLOR_GREEN << miBD.getNumeroAlumnos() << RESET;
-								cout.fill('-');
-								saltoLinea();
-								saltoLinea();
-											
-								// PIDE DATOS OBLIGATORIOS ···
-								datosAlumno datos;
-								inicializardatos(datos);
+						// BUSCAR ALUMNO ···
+						cout << "\tIntroduzca la opcion para buscar: " << endl << endl;
+						cout << "\t1. DNI\n\t2. Apellidos\n\t3. Grupo\n\n\tOPCION: " << RESET << COLOR_BRIGHTRED;
+						cin >> opcBusqueda;
 
-								cout.fill(' ');
-								cout << COLOR_CYAN << BOLD_ON << UNDERLINE_ON << setw(75) 
-									 << "\tINTRODUZCA LOS DATOS OBLIGATORIOS DEL NUEVO ALUMNO"
-									 << endl << endl << endl << RESET;
+						if(opcBusqueda==1) { // POR DNI ···
+							cout << BOLD_ON << COLOR_BRIGHTBLUE << "\n\tDNI A BUSCAR: " << RESET << COLOR_BRIGHTRED;
+							cin >> datos.dni ;
 
-								cout << COLOR_GREEN << BOLD_ON << "\tDNI : " << COLOR_BRIGHTBLUE;
+							Alumno aux(datos);
+							encontrado=miBD.buscarAlumnoDNIv2(alumnosencontrados, aux);
+						} else if (opcBusqueda==2) { // POR APELLIDO
+							cout << BOLD_ON << COLOR_BRIGHTBLUE << "\n\tAPELLIDO A BUSCAR: " << RESET << COLOR_BRIGHTRED;
+							cin >> datos.apellidos ;
+
+							Alumno aux(datos);
+							encontrado=miBD.buscarAlumnoApellidov2(alumnosencontrados, aux);
+						} else if (opcBusqueda==3) { // POR GRUPO
+							cout << BOLD_ON << COLOR_BRIGHTBLUE << "\n\tEQUIPO A BUSCAR: " << RESET << COLOR_BRIGHTRED;
+							cin >> datos.equipo ;
+
+							encontrado=miBD.buscarAlumnoEquipov2(alumnosencontrados, datos.equipo);
+						} else { // OPCION DE BUSQUEDA NO VALIDA
+							cout << BOLD_RED << "\n\tERROR" << endl;
+							cout << COLOR_BRIGHTGREEN << "\n\tOPCION NO VALIDA" << endl;
+							cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+							cin.ignore();
+							cin.get();
+							limpiarPantalla();
+							break;
+						}
+
+						if(encontrado==false) { // NO ENCUENTRA ALUMNOS
+							cout << BOLD_RED << "\n\tERROR" << endl;
+							cout << COLOR_BRIGHTGREEN << "\n\tEL ALUMNO NO SE ENCUENTRA EN LA BD" << endl;
+							cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+							cin.ignore();
+							cin.get();
+							limpiarPantalla();
+							break;
+						}
+
+						if(alumnosencontrados.size()>1) { // ENCUENTRA MÁS DE UN ALUMNO
+							int numAlumno=0;
+							limpiarPantalla();
+							OpcionesModificar();
+							cout << BOLD_ON << COLOR_BRIGHTBLUE"\tCon los datos propuestos se han encontrado los siguiente alumnos: " << endl << endl;
+							for(int i=0; i < alumnosencontrados.size(); i++) {
+								printAlumno(alumnosencontrados[i]);
+								cout << BOLD_ON << "\n\t--NUM ALUMNO ENCONTRADO--: " << COLOR_BRIGHTRED << numAlumno << endl << endl;
+								numAlumno++;
+							}					
+							
+							cout << BOLD_ON << COLOR_BRIGHTBLUE << "\tINTRODUZCA EL NUMERO DEL ALUMNO A MODIFICAR: " << RESET << COLOR_BRIGHTRED;
+							cin >> opcAlumno;
+
+							if(opcAlumno < 0 or opcAlumno >= alumnosencontrados.size()) {
+								cout << BOLD_RED << "\n\tERROR" << endl;
+								cout << COLOR_BRIGHTGREEN << "\n\tALUMNO INTRODUCIDO INCORRECTO" << endl;
+								cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
 								cin.ignore();
-								cin.getline(datos.dni, 10, '\n');
-								cout << COLOR_GREEN << "\tNombre : " << COLOR_BRIGHTBLUE;
-								cin.getline(datos.nombre, 30, '\n');
-								cout << COLOR_GREEN << "\tApellidos : " << COLOR_BRIGHTBLUE;
-								cin.getline(datos.apellidos, 30, '\n');
-								cout << COLOR_GREEN << "\tFecha de nacimiento : " << COLOR_BRIGHTBLUE;
-								cin.getline(datos.fecha_nacimiento, 10, '\n');
-								cout << COLOR_GREEN << "\tTelefono : " << COLOR_BRIGHTBLUE;
-								cin >> datos.telefono;
-								cout << COLOR_GREEN << "\tEmail corporativo : " << COLOR_BRIGHTBLUE;
-								cin.ignore();
-								cin.getline(datos.email_corporativo, 30, '\n');
-								cout << COLOR_GREEN << "\tDomicilio : " << COLOR_BRIGHTBLUE;
-								cin.getline(datos.domicilio, 30, '\n');
-								cout << COLOR_GREEN << "\tCurso : " << COLOR_BRIGHTBLUE;
-								cin >> datos.curso;
+								cin.get();
+								limpiarPantalla();
+								break;
+							}
 
-								cout << RESET ;
+							myAlumno = alumnosencontrados[opcAlumno];
+							mydni = myAlumno.getDNI();
 
-								if( strlen(datos.dni)==0 || strlen(datos.nombre)==0 || strlen(datos.apellidos)==0 || strlen(datos.fecha_nacimiento)==0 || strlen(datos.email_corporativo)==0 || strlen(datos.domicilio)==0) {
-									cout << BOLD_RED << "\n\tERROR" << endl;
-									cout << COLOR_BRIGHTGREEN << "\n\tALGUN PARAMETRO NO SE HA INTRODUCIDO" << endl;
-									cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+						} else { // ENCUENTRA SOLO UN ALUMNO
+							saltoLinea();
+							myAlumno = alumnosencontrados.front();
+							mydni = myAlumno.getDNI();
+						}
+
+						// CONFIRMA MODIFICAR ALUMNO
+						limpiarPantalla();
+						OpcionesModificar();
+						printAlumno(myAlumno);
+						cout << BOLD_ON << COLOR_BRIGHTBLUE << "\n\tPULSE 1 SI DESEA MODIFICAR ESTE ALUMNO: " << RESET << COLOR_BRIGHTRED;
+						cin >> opcAlumno;
+
+						if(opcAlumno!=1) { // NO CONFIRMA MODIFICAR ALUMNO
+							cout << BOLD_ON << COLOR_BRIGHTGREEN << "\n\tNO SE MODIFICO NINGUN ALUMNO" << endl;
+							cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+							cin.ignore();
+							cin.get();
+							limpiarPantalla();
+							break;
+						}
+
+						// PREGUNTA FORMA DE MODIFICAR ···
+						cout << RESET << COLOR_BRIGHTBLUE << "\n\tCOMO QUIERE MODIFICAR?" << endl;
+						cout <<"\n\t1. Un solo dato\n\t2. Todos los datos\n\tOPCION: " << COLOR_BRIGHTRED;
+						cin >> opcAlumno;
+
+						if(opcAlumno==1) { // MODIFICA UN SOLO DATO ···
+							int opcDato, fallo=0;
+							cout << COLOR_BRIGHTBLUE << "\n\tPULSE PARA MODIFICAR:\n";
+							cout << "\n\t1. DNI\n\t2. Nombre\n\t3. Apellidos\n\t4. Fecha Nacimiento\n\t5. Email\n\t6. Domicilio\n\t7. Telefono\n\t8. Curso\n\t9. Nota\n\t10. Equipo\n\t11. Lider";
+							cout << "\n\tOPC: " << COLOR_BRIGHTRED;
+							cin >> opcDato;
+
+							switch(opcDato) { // ELIGE DATO A MODIFICAR
+								case 1: { // DNI
+									list <Alumno> aux;
+									cout << COLOR_BRIGHTBLUE << "\n\tDNI : " << COLOR_BRIGHTRED;
 									cin.ignore();
-									cin.get();
-									limpiarPantalla();
-									break;
-								}
-
-								Alumno aux(datos); // Constructor con estructura
-								
-								cout << endl << "\t***" << endl << endl;
-								// COMPRUEBA QUE EL ALUMNO NO HA SIDO INTRODUCIDO ANTERIORMENTE ···
-								list <Alumno> alumnosencontrados;
-								bool encontrado;
-
-
-								cout << COLOR_CYAN << BOLD_ON << "\tComprobando que el alumno no esta dado de alta..." << endl;
-								cout << "\tOPCIONES DE BUSQUEDA:" << endl;
-								cout << "\t\t1. DNI\n\t\t2. Apellidos\n\n";
-								cout << "\t¿Como desea buscar? : " << COLOR_BRIGHTBLUE;
-								cin >> opcBusqueda;
-
-								cout << RESET ;
-
-								if(opcBusqueda==1) {
-									encontrado=miBD.buscarAlumnoDNI(alumnosencontrados, aux);
-								} else if (opcBusqueda == 2) {
-									encontrado=(miBD.buscarAlumnoApellido(alumnosencontrados, aux)&&miBD.buscarAlumnoDNI(alumnosencontrados, aux));
-								} else {
-									cout << BOLD_RED << "\n\tERROR" << endl;
-									cout << COLOR_BRIGHTGREEN << "\n\tOPCION DE BUSQUEDA NO VALIDA" << endl;
-									cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+									cin.getline(datos.dni, 10, '\n');
+									myAlumno.setDNI(datos.dni);
+									if(miBD.buscarAlumnoDNI(aux, myAlumno)) {
+										fallo=1;
+										cout << BOLD_RED << "\n\tERROR" << endl;
+										cout << COLOR_BRIGHTGREEN << "\n\tYA HAY UN ALUMNO CON ESE DNI" << endl;
+										cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+										cin.ignore();
+										cin.get();
+										limpiarPantalla();
+										break;
+									}
+								} break;
+								case 2: { // NOMBRE
+									cout << COLOR_BRIGHTBLUE << "\n\tNombre : " << COLOR_BRIGHTRED;
 									cin.ignore();
-									cin.get();
-									limpiarPantalla();
-									break;
-								}
-
-								if(encontrado==true) {	// ALUMNO YA INTRODUCIDO
-									cout << BOLD_RED << "\n\tERROR" << endl;
-									cout << COLOR_BRIGHTGREEN << "\n\tEL ALUMNO YA SE ENCUENTRA EN LA BD" << endl;
-									cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+									cin.getline(datos.nombre, 30, '\n');
+									myAlumno.setNombre(datos.nombre);
+								} break;
+								case 3: { // APELLIDOS
+									cout << COLOR_BRIGHTBLUE << "\n\tApellidos : " << COLOR_BRIGHTRED;
 									cin.ignore();
-									cin.get();
-									limpiarPantalla();
-									break;
-								} 
+									cin.getline(datos.apellidos, 30, '\n');
+									myAlumno.setApellidos(datos.apellidos);
 
-								// ALUMNO NUEVO ···
-								cout << COLOR_GREEN << "\n\tEl alumno no esta dado de alta" << endl;
-								cout << RESET ;
+								} break;
+								case 4: { // FECHA NACIMIENTO
+									cout << COLOR_BRIGHTBLUE << "\n\tFecha de nacimiento : " << COLOR_BRIGHTRED;
+									cin.ignore();
+									cin.getline(datos.fecha_nacimiento, 10, '\n');
+									myAlumno.setFecha_nacimiento(datos.fecha_nacimiento);
 
+								} break;
+								case 5: { // EMAIL CORPORATIVO
+									cout << COLOR_BRIGHTBLUE << "\n\tEmail corporativo : " << COLOR_BRIGHTRED;
+									cin.ignore();
+									cin.getline(datos.email_corporativo, 30, '\n');
+									myAlumno.setEmail_corporativo(datos.email_corporativo);
+								} break;
+								case 6: { // DOMICILIO
+									cout << COLOR_BRIGHTBLUE << "\n\tDomicilio : " << COLOR_BRIGHTRED;
+									cin.ignore();
+									cin.getline(datos.domicilio, 30, '\n');
+									myAlumno.setDomicilio(datos.domicilio);
+								} break;
+								case 7: { // TELEFONO
+									cout << COLOR_BRIGHTBLUE << "\n\tTelefono : " << COLOR_BRIGHTRED;
+									cin >> datos.telefono;
+									myAlumno.setTelefono(datos.telefono);
+								} break;
+								case 8: { // CURSO
+									cout << COLOR_BRIGHTBLUE << "\tCurso : " << COLOR_BRIGHTRED;
+									cin >> datos.curso;
+									myAlumno.setCurso(datos.curso);
 
-								cout << endl << "\t***" << endl << endl;
-								// DATOS ADICIONALES ···
-								cout << COLOR_CYAN << BOLD_ON << "\t¿Desea introducir datos adicionales?" << endl;
-								cout << "\tDATOS ADICIONALES:" << endl;
-								cout << "\t\tNOTA\n\t\tEQUIPO\n\t\tLIDER\n";
-								cout << "\tPulse 1 si desea introducir datos adicionales: " << COLOR_BRIGHTBLUE;	
-
-								int datosAd;
-								cin >> datosAd;
-								cout << RESET ;
-
-								if(datosAd == 1) {
-									limpiarPantalla();
-									OpcionesInsertar();
-									cout.fill(' ');
-									cout << COLOR_CYAN << BOLD_ON << UNDERLINE_ON << setw(75) 
-									 	 << "\tINTRODUZCA LOS DATOS ADICIONALES DEL NUEVO ALUMNO"
-									 	 << endl << endl << endl << RESET;
-									cout << COLOR_DARKGREY << BOLD_ON << "\tNota : " << COLOR_BRIGHTBLUE;
+								} break;
+								case 9: { // NOTA
+									cout << COLOR_DARKGREY << BOLD_ON << "\n\tNota : " << COLOR_BRIGHTRED;
 									cin >> datos.nota;
-									cout << COLOR_DARKGREY << "\tEquipo : " << COLOR_BRIGHTBLUE;
+									myAlumno.setNota(datos.nota);
+								} break;
+								case 10: { // EQUIPO
+									cout << COLOR_DARKGREY << "\n\tEquipo : " << COLOR_BRIGHTRED;
 									cin >> datos.equipo;
-									cout << COLOR_DARKGREY << "\tLider (1: Si; 0: No): " << COLOR_BRIGHTBLUE;
+									myAlumno.setEquipo(datos.equipo);
+
+								} break;
+								case 11: { // LIDER
+									if(myAlumno.getEquipo() == -1) { // SI MODIFICA EL LIDER, ALUMNO DEBE PERTENECER A UN EQUIPO
+										cout << BOLD_RED << "\n\tERROR" << endl;
+										cout << COLOR_BRIGHTGREEN << "\n\tEL ALUMNO NO TIENE EQUIPO, DESEA INTRODUCIRLO?" << endl;
+										cin >> opcAlumno;
+										if(opcAlumno!=1) {
+											fallo=1;
+											cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+											cin.ignore();
+											cin.get();
+											limpiarPantalla();
+											break;
+										} else {
+											cout << COLOR_DARKGREY << "\n\tEquipo : " << COLOR_BRIGHTBLUE;
+											cin >> datos.equipo;
+											myAlumno.setEquipo(datos.equipo);
+										}
+									}
+
+									cout << COLOR_DARKGREY << "\n\tLider (1: Si; 0: No): " << COLOR_BRIGHTBLUE;
 									cin >> datos.lider;
 
-									if(cin.fail()) {
+									if(cin.fail()) {	// CONTROL DE ERRORES AL INTRODUCIR LIDER
 										cout << BOLD_RED << "\n\tERROR" << endl;
 										cout << COLOR_BRIGHTGREEN << "\n\tINTRODUCCION DE LIDER INCORRECTA" << endl;
 										cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
@@ -297,419 +603,476 @@ int main(int argc, char const *argv[]) {
 			  							break;
 									}
 									
-									aux.setNota(datos.nota);
-									aux.setEquipo(datos.equipo);
-									aux.setLider(datos.lider);
+									myAlumno.setLider(datos.lider);
+								} break;
+								default:  {	// OPCION DE DATO A MODIFICAR NO VALIDA
+									fallo=1;
+									cout << BOLD_RED << "\n\tERROR" << endl;
+									cout << COLOR_BRIGHTGREEN << "\n\tOPCION NO VALIDA" << endl;
+									cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+									cin.ignore();
+									cin.get();
+									limpiarPantalla();
 								}
+							}
 
-								// MUESTRA LOS DATOS DEL ALUMNO A INTRODUCIR ···
-								limpiarPantalla();
-								OpcionesInsertar();
-								saltoLinea();
-								printAlumno(aux);
-								
-								cout << endl << "\t***" << endl << endl;
-								cout << COLOR_LIGHTGREY << "\tINTRODUCIENDO :·:·:·:·:·:·:·:\n";
-								cout << endl << "\t***" << endl << endl;
-								// INTENTA INTRODUCIR EL ALUMNO ···
-								if(!miBD.introducirAlumno(aux)) {
-									cout << BOLD_RED  << "\n\tNO SE HA INTRODUCIDO EL ALUMNO" << endl;
-								} else cout << COLOR_GREEN << "\tAlumno introducido correctamente" << endl;
+							if(fallo) break; // SI SE PRODUCE UN FALLO EN LOS DATOS SALE
 
+						} else if (opcAlumno==2) { // MODIFICA TODO ···
+
+							limpiarPantalla();
+							OpcionesModificar();
+							printAlumno(myAlumno);
+
+							cout << COLOR_BRIGHTBLUE << "\n\tNUEVOS DATOS:" << endl;
+
+							cout << COLOR_GREEN << BOLD_ON << "\tDNI : " << COLOR_BRIGHTBLUE;
+							cin.ignore();
+							cin.getline(datos.dni, 10, '\n');
+							cout << COLOR_GREEN << "\tNombre : " << COLOR_BRIGHTBLUE;
+							cin.getline(datos.nombre, 30, '\n');
+							cout << COLOR_GREEN << "\tApellidos : " << COLOR_BRIGHTBLUE;
+							cin.getline(datos.apellidos, 30, '\n');
+							cout << COLOR_GREEN << "\tFecha de nacimiento : " << COLOR_BRIGHTBLUE;
+							cin.getline(datos.fecha_nacimiento, 10, '\n');
+							cout << COLOR_GREEN << "\tTelefono : " << COLOR_BRIGHTBLUE;
+							cin >> datos.telefono;
+							cout << COLOR_GREEN << "\tEmail corporativo : " << COLOR_BRIGHTBLUE;
+							cin.ignore();
+							cin.getline(datos.email_corporativo, 30, '\n');
+							cout << COLOR_GREEN << "\tDomicilio : " << COLOR_BRIGHTBLUE;
+							cin.getline(datos.domicilio, 30, '\n');
+							cout << COLOR_GREEN << "\tCurso : " << COLOR_BRIGHTBLUE;
+							cin >> datos.curso;
+
+							cout << RESET ;
+
+							if( strlen(datos.dni)==0 || strlen(datos.nombre)==0 || strlen(datos.apellidos)==0 || strlen(datos.fecha_nacimiento)==0 || strlen(datos.email_corporativo)==0 || strlen(datos.domicilio)==0) {
+								cout << BOLD_RED << "\n\tERROR" << endl;
+								cout << COLOR_BRIGHTGREEN << "\n\tALGUN PARAMETRO NO SE HA INTRODUCIDO" << endl;
 								cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
 								cin.ignore();
 								cin.get();
 								limpiarPantalla();
-
-							} break;
-						case 2: {	// MODIFICAR ALUMNO
-								list <Alumno> alumnosencontrados;
-								datosAlumno a;
-								bool encontrado; 
-
-								cout << "Introduzca la opcion para buscar: " << endl;
-								cout << "1. DNI\n2. Apellidos\n3. Grupo" << endl;
-								cin >> opcBusqueda;
-
-								if(opcBusqueda==1) {
-									cout << "DNI: ";
-									cin >> a.dni ;
-
-									Alumno aux(a);
-									encontrado=miBD.buscarAlumnoDNI(alumnosencontrados, aux);
-								} else if (opcBusqueda==2) {
-									cout << "Apellido: ";
-									cin >> a.apellidos ;
-
-									Alumno aux(a);
-									//encontrado=miBD.buscarAlumnoApellido(alumnosencontrados, aux);
-									//para insertar alumnos hermanos
-									if (miBD.buscarAlumnoApellido(alumnosencontrados, aux)&&miBD.buscarAlumnoDNI(alumnosencontrados, aux)){
-										encontrado=true;
-									}
-
-								} else if (opcBusqueda==3) {
-									cout << "EQUIPO: ";
-									cin >> a.equipo ;
-									encontrado=miBD.buscarAlumnoEquipo(alumnosencontrados, a.equipo);
-
-								} else {
-									cout << "Opcion no valida" << endl;
-									break;
-								}
-
-								if(encontrado==true) {
-
-								}
-
-
-							} break;
-						case 3: {	// ELIMINAR ALUMNO
-
-							list <Alumno> alumnoencontrado;
-							datosAlumno b;
-							string dni_1;
-							Alumno aux;
-							bool encontrado; 
-
-							cout << "Introduzca la opcion para buscar: " << endl;
-							cout << "1. DNI\n2. Apellidos" << endl;
-							cin >> opcBusqueda;
-
-							if(opcBusqueda==1) {
-								cout << "DNI: ";
-								cin >> b.dni ;
-
-								Alumno aux(b);
-								encontrado=miBD.buscarAlumnoDNI(alumnoencontrado, aux);
-								dni_1=aux.getDNI();
-							} 
-							else if (opcBusqueda==2) {
-								cout << "Apellido: ";
-								cin >> b.apellidos ;
-
-								Alumno aux(b);
-								encontrado=miBD.buscarAlumnoApellido(alumnoencontrado, aux);
-								dni_1=aux.getDNI();
-							} 
-							else {
-								cout << "Opcion no valida" << endl;
 								break;
 							}
 
-							if(encontrado==true) {
-							cout<<COLOR_BRIGHTGREEN<<"Alumno encontrado. Procediendo a eliminarlo"<<RESET<<endl;
-							miBD.eliminarAlumno(aux, dni_1);
-							cout << COLOR_CYAN << "Alumno eliminado correctamente" << endl;
-							}
-							else {
-								cout << BOLD_RED << "\n\tERROR" << RESET << endl;
-								cout << COLOR_YELLOW << "Alumno no encontrado" << endl;
+							myAlumno.setDNI(datos.dni);
+							myAlumno.setNombre(datos.nombre);
+							myAlumno.setApellidos(datos.apellidos);
+							myAlumno.setFecha_nacimiento(datos.fecha_nacimiento);
+							myAlumno.setEmail_corporativo(datos.email_corporativo);
+							myAlumno.setDomicilio(datos.domicilio);
+							myAlumno.setTelefono(datos.telefono);
+							myAlumno.setCurso(datos.curso);
+
+							cout << COLOR_BRIGHTBLUE << BOLD_ON << "\t¿Desea modificar los datos adicionales?" << endl;
+							cout << "\tPulse 1 si desea modificar datos adicionales: " << COLOR_BRIGHTRED;	
+
+							int datosAd;
+							cin >> datosAd;
+							cout << RESET ;
+
+							if(datosAd == 1) {
+								limpiarPantalla();
+								OpcionesInsertar();
+								cout.fill(' ');
+								cout << COLOR_BRIGHTBLUE << BOLD_ON << UNDERLINE_ON << setw(75) 
+								 	 << "\tINTRODUZCA LOS DATOS ADICIONALES DEL ALUMNO"
+								 	 << endl << endl << endl << RESET;
+								cout << COLOR_DARKGREY << BOLD_ON << "\tNota : " << COLOR_BRIGHTBLUE;
+								cin >> datos.nota;
+								cout << COLOR_DARKGREY << "\tEquipo : " << COLOR_BRIGHTBLUE;
+								cin >> datos.equipo;
+								cout << COLOR_DARKGREY << "\tLider (1: Si; 0: No): " << COLOR_BRIGHTBLUE;
+								cin >> datos.lider;
+
+								if(cin.fail()) {
+									cout << BOLD_RED << "\n\tERROR" << endl;
+									cout << COLOR_BRIGHTGREEN << "\n\tINTRODUCCION DE LIDER INCORRECTA" << endl;
+									cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+		  							//cin.ignore(numeric_limits<int>::max());
+		  							cin.clear();
+		  							cin.ignore();
+		  							cin.get();
+		  							limpiarPantalla();
+		  							break;
+								}
+								
+								myAlumno.setNota(datos.nota);
+								myAlumno.setEquipo(datos.equipo);
+								myAlumno.setLider(datos.lider);
 							}
 
-							cout << COLOR_NORMAL << BOLD_ON << "\nPULSE UNA TECLA PARA VOLVER AL MENÚ";
+						} else { // OPCION DE MODIFICAR NO VALIDA ···
+							cout << BOLD_RED << "\n\tERROR" << endl;
+							cout << COLOR_BRIGHTGREEN << "\n\tOPCION NO VALIDA" << endl;
+							cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
 							cin.ignore();
 							cin.get();
-							limpiarPantalla(); 
-								
-							}break;
+							limpiarPantalla();
+							break;
+						}
 
-						case 4: {	// MOSTRAR ALUMNOS
+						// MODIFICA EL ALUMNO EN LA LISTA ···
+						if(!miBD.modificarAlumno(myAlumno, mydni)) {
+							cout << BOLD_RED  << "\n\tNO SE HA MODIFICADO EL ALUMNO" << endl;
+						} else cout << COLOR_GREEN << "\n\tAlumno modificado correctamente" << endl;
 
-								
-							Alumno z;
-							string DNI;
-							string Apellidos;
-							int equipo;
-
-							if (miBD.getAlumnos().size()==0){
-								cout<<"No hay datos que guardar"<<endl;
-								char cargar;//opciones para cargar o salir al menú	
-
-								do{
-
-									cout<<COLOR_DARKGREY<<"Indique si Desea cargar la base de datos"<<endl;
-									cout<<"pulse C si desea cargar la base de datos o M si desea salir al menú"<<COLOR_BLUE<<endl;
-									cin>>cargar;
-									cout<<RESET<<endl;
-
-									saltoLinea();
-									if (cargar=='C' or cargar=='c'){
-										
-										if (miBD.cargarBD()){
-
-											cout<<COLOR_GREEN<<"Base de datos cargada correctamente"<<RESET<<endl;
-											cout<<"vuelva al menú para introducir alumnos"<<endl;
-											saltoLinea();
-											cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-											limpiarPantalla();
-
-											break;
-										}
-
-										else{
-											cout<<COLOR_RED"No se encuentra el fichero o se ha producido un error cargar la base de datos"<<RESET<<endl;
-											cout<<"compruebe que exista el fichero de copia de seguridad, en caso contrario,"<<endl;
-											cout<<"vuelva al menú para introducir alumnos y cree una copia de seguridad antes de cargarla"<<endl;
-											saltoLinea();
-											cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-											limpiarPantalla();
-
-											break;
-										}
-									}
-
-									if (cargar=='M' or cargar=='m'){
-											cout<<"Vuelva al menú para introducir alumnos antes de guardar la base de datos"<<endl;
-											break;
-									}
-								}while(cargar!= 'C'||cargar!='c'||cargar!= 'M'||cargar!='m');
-							}
-
-							else{
-
-
-								do{
-									OpcionesMostrar();
-									saltoLinea();
-									cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique qué desea mostrar: "<<COLOR_BRIGHTBLUE;cin>>opcMostrar;
-									cout<<RESET<<endl;
-									limpiarPantalla();
-
-									switch(opcMostrar) {
-										case 1: {
-											list <Alumno> listaBusqueda;
-											/*
-											cin>>DNI;
-											getchar();
-											cout<<"DNI: "<<z.getDNI();	
-											*/
-											
-											/*Prueba búsqueda
-											z.setDNI("30");
-											cout<<"DNI: "<<z.getDNI();							
-											if (miBD.buscarAlumnoDNI(listaBusqueda, z)){
-												cout<<"Encontrado"<<endl;	
-											}
-											*/
-											//introducir DNI que buscar
-											cout<<COLOR_DARKGREY<<"Indique el DNI del alumno que desea mostrar: "<<COLOR_BLUE;cin>>DNI;getchar();
-											z.setDNI(DNI);	
-											cout<<RESET<<endl;
-
-											
-											if (miBD.buscarAlumnoDNI(listaBusqueda, z)){
-												saltoLinea();
-
-												if(listaBusqueda.size()>1){
-
-													cout<<COLOR_RED<<"**ATENCIÓN: PUEDE HABER ALUMNOS DUPLICADOS- hay más de un alumno con DNI: "<<z.getDNI()<<RESET<<endl;
-
-												}
-												else{
-													saltoLinea();
-													cout<<COLOR_GREEN<<"El alumno con DNI: "<<z.getDNI()<<" ha sido encontrado."<<RESET<<endl;
-													
-
-												}
-
-												saltoLinea();
-												miBD.ordenLista(listaBusqueda);
-												
-											}
-											
-											else{
-												saltoLinea();
-												cout<<COLOR_RED<<"No Encontrado por DNI"<<RESET<<endl;	
-												saltoLinea();
-												//Introducir el apellido que buscar
-												cout<<COLOR_DARKGREY<<"Indique ahora el apellido: "<<COLOR_BLUE;getline(cin,Apellidos);
-												cout<<RESET<<endl;
-												z.setApellidos(Apellidos);
-
-
-												//fgets (Apellidos , 80 , stdin);
-												//quitarEspacios(Apellidos);
-												//fflush(stdin);
-												if(miBD.buscarAlumnoApellido(listaBusqueda, z)){
-													limpiarPantalla();
-													saltoLinea();
-													cout<<COLOR_GREEN<<"Se ha encontrado los siguientes alumnos con el apellido: "<<z.getApellidos()<<RESET<<endl;	
-													saltoLinea();
-													cout<<"Indique cómo quiere mostrarlos"<<endl;
-													saltoLinea();	
-													miBD.ordenLista(listaBusqueda);
-
-												}
-												else{
-													saltoLinea();
-													cout<<COLOR_RED<<"Tampoco Encontrado por apellido"<<endl;	
-												}
-
-											}
-											saltoLinea();
-											cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();
-											listaBusqueda.clear();
-											limpiarPantalla();
-
-										}break;
-
-
-										case 2: {
-											list <Alumno> listaBusqueda;
-											saltoLinea();
-											cout<<COLOR_DARKGREY<<"Indique el Equipo de alumnos que desea mostrar: "<<COLOR_BLUE;cin>>equipo;getchar();
-											cout<<RESET<<endl;
-											
-											if(miBD.buscarAlumnoEquipo(listaBusqueda, equipo)){
-												limpiarPantalla();
-												saltoLinea();
-												cout<<COLOR_GREEN<<"Se han encontrado "<<listaBusqueda.size()<<" alumno/s que forman parte del equipo: "<<equipo<<RESET<<endl;	
-												saltoLinea();	
-												saltoLinea();
-												cout<<"Indique cómo quiere mostrarlos"<<endl;
-												miBD.ordenLista(listaBusqueda);
-
-											}
-											else{
-												saltoLinea();
-												cout<<COLOR_RED<<"El equipo "<<equipo<<" no tiene alumnos"<<endl;	
-											}
-
-											saltoLinea();
-											cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-											limpiarPantalla();
-										
-										
-										}break;
-
-
-										case 3: {
-											saltoLinea();
-											miBD.ordenLista();
-											saltoLinea();
-											cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-											limpiarPantalla();
-										
-										}break;
-
-
-										case 4: {
-											break;	
-										
-										}
-
-										default: {
-											saltoLinea();
-											cout <<"\t"<<"OPCIÓN NO VÁLIDA" << endl;
-											cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-											limpiarPantalla();
-
-										}	
-									}
-
-								}while (opcMostrar!=4);
-							}
-						}break;
-
-							
-
-						case 5: {	// GUARDAR BD
-
-									
-							if (miBD.getAlumnos().size()==0){
-								cout<<"No hay datos que guardar"<<endl;
-								char cargar;//opciones para cargar o salir al menú	
-
-								do{
-
-									cout<<COLOR_DARKGREY<<"Indique si Desea cargar la base de datos"<<endl;
-									cout<<"pulse C si desea cargar la base de datos o M si desea salir al menú"<<COLOR_BLUE<<endl;
-									cin>>cargar;
-									cout<<RESET<<endl;
-
-									saltoLinea();
-									if (cargar=='C' or cargar=='c'){
-										
-										if (miBD.cargarBD()){
-
-											cout<<COLOR_GREEN<<"Base de datos cargada correctamente"<<RESET<<endl;
-											cout<<"vuelva al menú para introducir alumnos"<<endl;
-											saltoLinea();
-											cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-											limpiarPantalla();
-
-											break;
-										}
-
-										else{
-											cout<<COLOR_RED"No se encuentra el fichero o se ha producido un error cargar la base de datos"<<RESET<<endl;
-											cout<<"compruebe que exista el fichero de copia de seguridad, en caso contrario,"<<endl;
-											cout<<"vuelva al menú para introducir alumnos y cree una copia de seguridad antes de cargarla"<<endl;
-											saltoLinea();
-											cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-											limpiarPantalla();
-
-											break;
-										}
-									}
-
-									if (cargar=='M' or cargar=='m'){
-											cout<<"Vuelva al menú para introducir alumnos antes de guardar la base de datos"<<endl;
-											break;
-									}
-								}while(cargar!= 'C'||cargar!='c'||cargar!= 'M'||cargar!='m');
-							}
-
-							else{
-
-								cout<<"pulse una tecla para guardar la BD"<<endl;
-								getchar();
-								//sleep(4);
-								if(miBD.guardarBD()){
-
-									cout<<COLOR_GREEN<<"base de datos guardada correctamente"<<RESET<<endl;
-									saltoLinea();
-									cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-									limpiarPantalla();
-									break;
-									//miBD.cargarBD();
-								}
-
-								else{cout<<COLOR_RED<<"Error al guardar la Base de Datos"<<RESET<<endl;}
-							}
+						cout << COLOR_NORMAL << BOLD_ON << "\n\tPULSE UNA TECLA PARA VOLVER AL MENÚ";
+						cin.ignore();
+						cin.get();
+						limpiarPantalla();
 
 						} break;
+					case 3: {	// ELIMINAR ALUMNO
+							
+						list <Alumno> alumnoencontrado;
+						datosAlumno b;
+						string dni_1;
+						Alumno aux;
+						bool encontrado; 
+
+						cout << "Introduzca la opcion para buscar: " << endl;
+						cout << "1. DNI\n2. Apellidos" << endl;
+						cin >> opcBusqueda;
+
+						if(opcBusqueda==1) {
+							cout << "DNI: ";
+							cin >> b.dni ;
+
+							Alumno aux(b);
+							encontrado=miBD.buscarAlumnoDNI(alumnoencontrado, aux);
+							dni_1=aux.getDNI();
+						} 
+						else if (opcBusqueda==2) {
+							cout << "Apellido: ";
+							cin >> b.apellidos ;
+
+							Alumno aux(b);
+							encontrado=miBD.buscarAlumnoApellido(alumnoencontrado, aux);
+							dni_1=aux.getDNI();
+						} 
+						else {
+							cout << "Opcion no valida" << endl;
+							break;
+						}
+
+						if(encontrado==true) {
+						cout<<COLOR_BRIGHTGREEN<<"Alumno encontrado. Procediendo a eliminarlo"<<RESET<<endl;
+						miBD.eliminarAlumno(aux, dni_1);
+						cout << COLOR_CYAN << "Alumno eliminado correctamente" << endl;
+						}
+						else {
+							cout << BOLD_RED << "\n\tERROR" << RESET << endl;
+							cout << COLOR_YELLOW << "Alumno no encontrado" << endl;
+						}
+
+						cout << COLOR_NORMAL << BOLD_ON << "\nPULSE UNA TECLA PARA VOLVER AL MENÚ";
+						cin.ignore();
+						cin.get();
+						limpiarPantalla(); 
+								
+						}break;
+
+					case 4: {	// MOSTRAR ALUMNOS
+
+							
+						Alumno z;
+						string DNI;
+						string Apellidos;
+						int equipo;
+
+						if (miBD.getAlumnos().size()==0){
+							cout<<"No hay datos que guardar"<<endl;
+							char cargar;//opciones para cargar o salir al menú	
+
+							do{
+
+								cout<<COLOR_DARKGREY<<"Indique si Desea cargar la base de datos"<<endl;
+								cout<<"pulse C si desea cargar la base de datos o M si desea salir al menú"<<COLOR_BLUE<<endl;
+								cin>>cargar;
+								cout<<RESET<<endl;
+
+								saltoLinea();
+								if (cargar=='C' or cargar=='c'){
+									
+									if (miBD.cargarBD()){
+
+										cout<<COLOR_GREEN<<"Base de datos cargada correctamente"<<RESET<<endl;
+										cout<<"vuelva al menú para introducir alumnos"<<endl;
+										saltoLinea();
+										cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+										limpiarPantalla();
+
+										break;
+									}
+
+									else{
+										cout<<COLOR_RED"No se encuentra el fichero o se ha producido un error cargar la base de datos"<<RESET<<endl;
+										cout<<"compruebe que exista el fichero de copia de seguridad, en caso contrario,"<<endl;
+										cout<<"vuelva al menú para introducir alumnos y cree una copia de seguridad antes de cargarla"<<endl;
+										saltoLinea();
+										cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+										limpiarPantalla();
+
+										break;
+									}
+								}
+
+								if (cargar=='M' or cargar=='m'){
+										cout<<"Vuelva al menú para introducir alumnos antes de guardar la base de datos"<<endl;
+										break;
+								}
+							}while(cargar!= 'C'||cargar!='c'||cargar!= 'M'||cargar!='m');
+						}
+
+						else{
+
+
+							do{
+								OpcionesMostrar();
+								saltoLinea();
+								cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique qué desea mostrar: "<<COLOR_BRIGHTBLUE;cin>>opcMostrar;
+								cout<<RESET<<endl;
+								limpiarPantalla();
+
+								switch(opcMostrar) {
+									case 1: {
+										list <Alumno> listaBusqueda;
+										/*
+										cin>>DNI;
+										getchar();
+										cout<<"DNI: "<<z.getDNI();	
+										*/
+										
+										/*Prueba búsqueda
+										z.setDNI("30");
+										cout<<"DNI: "<<z.getDNI();							
+										if (miBD.buscarAlumnoDNI(listaBusqueda, z)){
+											cout<<"Encontrado"<<endl;	
+										}
+										*/
+										//introducir DNI que buscar
+										cout<<COLOR_DARKGREY<<"Indique el DNI del alumno que desea mostrar: "<<COLOR_BLUE;cin>>DNI;getchar();
+										z.setDNI(DNI);	
+										cout<<RESET<<endl;
+
+										
+										if (miBD.buscarAlumnoDNI(listaBusqueda, z)){
+											saltoLinea();
+
+											if(listaBusqueda.size()>1){
+
+												cout<<COLOR_RED<<"**ATENCIÓN: PUEDE HABER ALUMNOS DUPLICADOS- hay más de un alumno con DNI: "<<z.getDNI()<<RESET<<endl;
+
+											}
+											else{
+												saltoLinea();
+												cout<<COLOR_GREEN<<"El alumno con DNI: "<<z.getDNI()<<" ha sido encontrado."<<RESET<<endl;
+												
+
+											}
+
+											saltoLinea();
+											miBD.ordenLista(listaBusqueda);
+											
+										}
+										
+										else{
+											saltoLinea();
+											cout<<COLOR_RED<<"No Encontrado por DNI"<<RESET<<endl;	
+											saltoLinea();
+											//Introducir el apellido que buscar
+											cout<<COLOR_DARKGREY<<"Indique ahora el apellido: "<<COLOR_BLUE;getline(cin,Apellidos);
+											cout<<RESET<<endl;
+											z.setApellidos(Apellidos);
+
+
+											//fgets (Apellidos , 80 , stdin);
+											//quitarEspacios(Apellidos);
+											//fflush(stdin);
+											if(miBD.buscarAlumnoApellido(listaBusqueda, z)){
+												limpiarPantalla();
+												saltoLinea();
+												cout<<COLOR_GREEN<<"Se han encontrado "<<RESET<<BOLD_ON<<listaBusqueda.size()<<RESET<<COLOR_GREEN<<" alumnos con el apellido: "<<z.getApellidos()<<RESET<<endl;	
+												saltoLinea();
+												cout<<"Indique cómo quiere mostrarlos"<<endl;
+												saltoLinea();	
+												miBD.ordenLista(listaBusqueda);
+
+											}
+											else{
+												saltoLinea();
+												cout<<COLOR_RED<<"Tampoco Encontrado por apellido"<<endl;	
+											}
+
+										}
+										saltoLinea();
+										cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();
+										listaBusqueda.clear();
+										limpiarPantalla();
+
+									}break;
+
+
+									case 2: {
+										list <Alumno> listaBusqueda;
+										saltoLinea();
+										cout<<COLOR_DARKGREY<<"Indique el Equipo de alumnos que desea mostrar: "<<COLOR_BLUE;cin>>equipo;getchar();
+										cout<<RESET<<endl;
+										
+										if(miBD.buscarAlumnoEquipo(listaBusqueda, equipo)){
+											limpiarPantalla();
+											saltoLinea();
+											cout<<COLOR_GREEN<<"Se han encontrado "<<listaBusqueda.size()<<" alumno/s que forman parte del equipo: "<<equipo<<RESET<<endl;	
+											saltoLinea();	
+											saltoLinea();
+											cout<<"Indique cómo quiere mostrarlos"<<endl;
+											miBD.ordenLista(listaBusqueda);
+
+										}
+										else{
+											saltoLinea();
+											cout<<COLOR_RED<<"El equipo "<<equipo<<" no tiene alumnos"<<endl;	
+										}
+
+										saltoLinea();
+										cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+										limpiarPantalla();
+									
+									
+									}break;
+
+
+									case 3: {
+										saltoLinea();
+										miBD.ordenLista();
+										saltoLinea();
+										cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+										limpiarPantalla();
+									
+									}break;
+
+
+									case 4: {
+										break;	
+									
+									}
+
+									default: {
+										saltoLinea();
+										cout <<"\t"<<"OPCIÓN NO VÁLIDA" << endl;
+										cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+										limpiarPantalla();
+
+									}	
+								}
+
+							}while (opcMostrar!=4);
+						}
+					}break;
+
 						
 
+					case 5: {	// GUARDAR BD
+
+								
+						if (miBD.getAlumnos().size()==0){
+							cout<<"No hay datos que guardar"<<endl;
+							char cargar;//opciones para cargar o salir al menú	
+
+							do{
+
+								cout<<COLOR_DARKGREY<<"Indique si Desea cargar la base de datos"<<endl;
+								cout<<"pulse C si desea cargar la base de datos o M si desea salir al menú"<<COLOR_BLUE<<endl;
+								cin>>cargar;
+								cout<<RESET<<endl;
+
+								saltoLinea();
+								if (cargar=='C' or cargar=='c'){
+									
+									if (miBD.cargarBD()){
+
+										cout<<COLOR_GREEN<<"Base de datos cargada correctamente"<<RESET<<endl;
+										cout<<"vuelva al menú para introducir alumnos"<<endl;
+										saltoLinea();
+										cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+										limpiarPantalla();
+
+										break;
+									}
+
+									else{
+										cout<<COLOR_RED"No se encuentra el fichero o se ha producido un error cargar la base de datos"<<RESET<<endl;
+										cout<<"compruebe que exista el fichero de copia de seguridad, en caso contrario,"<<endl;
+										cout<<"vuelva al menú para introducir alumnos y cree una copia de seguridad antes de cargarla"<<endl;
+										saltoLinea();
+										cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+										limpiarPantalla();
+
+										break;
+									}
+								}
+
+								if (cargar=='M' or cargar=='m'){
+										cout<<"Vuelva al menú para introducir alumnos antes de guardar la base de datos"<<endl;
+										break;
+								}
+							}while(cargar!= 'C'||cargar!='c'||cargar!= 'M'||cargar!='m');
+						}
+
+						else{
+
+							cout<<"pulse una tecla para guardar la BD"<<endl;
+							getchar();
+							//sleep(4);
+							if(miBD.guardarBD()){
+
+								cout<<COLOR_GREEN<<"base de datos guardada correctamente"<<RESET<<endl;
+								saltoLinea();
+								cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+								limpiarPantalla();
+								break;
+								//miBD.cargarBD();
+							}
+
+							else{cout<<COLOR_RED<<"Error al guardar la Base de Datos"<<RESET<<endl;}
+						}
+
+					} break;
 					
-							
-						case 6: {	// CARGAR BD
 
-							if (miBD.cargarBD()){
+				
+						
+					case 6: {	// CARGAR BD
 
-								cout<<COLOR_GREEN<<"Base de datos cargada correctamente"<<RESET<<endl;
-								cout<<"vuelva al menú para introducir alumnos"<<endl;
-								saltoLinea();
-								cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-								limpiarPantalla();
-								break;
-							}
+						if (miBD.cargarBD()){
 
-							else{
-								cout<<COLOR_RED<<"No se encuentra el fichero o se ha producido un error cargar la base de datos"<<RESET<<endl;
-								cout<<"compruebe que exista el fichero de copia de seguridad, en caso contrario,"<<endl;
-								cout<<"vuelva al menú para introducir alumnos y cree una copia de seguridad antes de cargarla"<<endl;
-								saltoLinea();
-								cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-								limpiarPantalla();
-								break;
-							}
+							cout<<COLOR_GREEN<<"Base de datos cargada correctamente"<<RESET<<endl;
+							cout<<"vuelva al menú para introducir alumnos"<<endl;
+							saltoLinea();
+							cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+							limpiarPantalla();
+							break;
+						}
+
+						else{
+							cout<<COLOR_RED<<"No se encuentra el fichero o se ha producido un error cargar la base de datos"<<RESET<<endl;
+							cout<<"compruebe que exista el fichero de copia de seguridad, en caso contrario,"<<endl;
+							cout<<"vuelva al menú para introducir alumnos y cree una copia de seguridad antes de cargarla"<<endl;
+							saltoLinea();
+							cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+							limpiarPantalla();
+							break;
+						}
 
 
 
-							} break;
-						case 7: {	// GUARDAR BACKUP
+						} break;
+					case 7: {	// GUARDAR BACKUP
+
+						if (strcmp(cprof.rol, "coordinador")==0){
 
 							if (miBD.getAlumnos().size()==contadorBackUp){
 
@@ -731,12 +1094,19 @@ int main(int argc, char const *argv[]) {
 							cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
 							contadorBackUp++;
 							limpiarPantalla();
-
+						}
+						else{
+							cout <<"\t"<<"OPCIÓN NO VÁLIDA" << endl;
+							cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+							limpiarPantalla();
+						}
 
 
 
 							} break;
-						case 8: {	// CARGAR BACKUP
+					case 8: {	// CARGAR BACKUP
+						
+						if (strcmp(cprof.rol, "coordinador")==0){
 							cout<<BOLD_ON<<BLINK<<"\tPreparando el sistema para cargar la copia externa"<<RESET<<endl;
 							sleep(2);
 							limpiarPantalla;
@@ -745,107 +1115,103 @@ int main(int argc, char const *argv[]) {
 							saltoLinea();
 							cout<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
 							limpiarPantalla();
-
-
-							} break;	
-						case 9: {	// GESTION PERFIL
-
-							} break;
-						case 10: {	// SALIR DE LA APLICACION
-
-							int confsalida;
-							int confguardar;
-							int opcguard;
-							cout << COLOR_DARKGREY << "\tPulse 1 si desea salir de la aplicación: " << RESET;
-							cin >> confsalida;
-
-							if(confsalida==1){
-								cout << "\tPulse 1 si desea guardar los cambios en la base de datos o en una copia de seguridad externa : " << COLOR_DARKGREY << RESET;
-								cin >> confguardar;
-
-								if(confguardar==1){
-									cout << "Introduzca la opción de guardado: " << endl;
-									cout << "1. Guardar BD\n2. Guardar Backup" << endl;
-									cin >> opcguard;
-
-									if(opcguard==1) {
-										miBD.guardarBD();
-										cout << COLOR_RED << "Hasta luego Lucas" << RESET << endl;
-										exit(-1);
-									}
-
-									else if(opcguard==2){
-										miBD.guardarBackup();
-										cout << COLOR_RED << "Hasta luego Lucas" << RESET << endl;
-										exit(-1);
-									}
-
-									else{
-										cout << "Opción no válida. Abortando..." << endl;
-										cin.ignore();
-										cin.get();
-										break;
-									}
-								}
-
-								else{
-									cout << COLOR_RED << "Hasta luego Lucas" << RESET << endl;
-									exit(-1);
-								}
-							}
-
-							else{
-								cout << COLOR_NORMAL << BOLD_ON << "\nPULSE UNA TECLA PARA VOLVER AL MENÚ";
-								cin.ignore();
-								cin.get();
-								limpiarPantalla();
-							}
-
-						} break;
-
-						default: {
-							saltoLinea();
+						}
+						
+						else{
 							cout <<"\t"<<"OPCIÓN NO VÁLIDA" << endl;
 							cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
 							limpiarPantalla();
 						}
-						// OPC NO VALIDA
+
+						} break;	
+					case 9: {	// SALIR DE LA APLICACION
+
+						int confsalida;
+						int confguardar;
+						int opcguard;
+						cout << COLOR_DARKGREY << "\tPulse 1 si desea salir de la aplicación: " << RESET;
+						cin >> confsalida;
+
+						if(confsalida==1){
+							cout << "\tPulse 1 si desea guardar los cambios en la base de datos o en una copia de seguridad externa : " << COLOR_DARKGREY << RESET;
+							cin >> confguardar;
+
+							if(confguardar==1){
+								cout << "Introduzca la opción de guardado: " << endl;
+								cout << "1. Guardar BD\n2. Guardar Backup" << endl;
+								cin >> opcguard;
+
+								if(opcguard==1) {
+									miBD.guardarBD();
+									cout << COLOR_RED << "Hasta luego Lucas" << RESET << endl;
+										exit(-1);
+								}
+
+								else if(opcguard==2){
+									miBD.guardarBackup();
+									cout << COLOR_RED << "Hasta luego Lucas" << RESET << endl;
+									exit(-1);
+								}
+
+								else{
+									cout << "Opción no válida. Abortando..." << endl;
+									cin.ignore();
+									cin.get();
+									break;
+								}
+							}
+
+							else{
+								cout << COLOR_RED << "Hasta luego Lucas" << RESET << endl;
+								exit(-1);
+							}
+						}
+
+						else{
+							cout << COLOR_NORMAL << BOLD_ON << "\nPULSE UNA TECLA PARA VOLVER AL MENÚ";
+							cin.ignore();
+							cin.get();
+							limpiarPantalla();
+						}
+
+						} break;
+
+					default: { // OPC NO VALIDA
+						saltoLinea();
+						cout <<"\t"<<"OPCIÓN NO VÁLIDA" << endl;
+						cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+						limpiarPantalla();
 					}
-				} 
-				while(opc !=10);
-
-			}
-			else{
-				
-				limpiarPantalla();
-				cout<<COLOR_RED<<"ACCESO DENEGADO"<<RESET<<endl;
-				cout<<"Consulte sus credenciales de acceso y vuelva a entrar en la aplicación"<<endl;
-				cout<<"Hasta luego Lucas"<<endl;
-				intentosAcceso++;
-
-			}
-
+				}
+			} while(opc !=9);
+		}
+		
+		else{
 			
-			
+			limpiarPantalla();
+			cout<<COLOR_RED<<"ACCESO DENEGADO"<<RESET<<endl;
+			cout<<"Consulte sus credenciales de acceso y vuelva a entrar en la aplicación"<<endl;
+			cout<<"Hasta luego Lucas"<<endl;
+			intentosAcceso++;
 
-	}
-	while(intentosAcceso<3);
-
-	//salida de aplicación 
-	exit(-1);
+		}
+	
+	} while((intentosAcceso<3) and (opc!=9));
+	
+	//SALIDA DE APLICACION 
 	return 0;
 }
 
 void mostrarOpciones() {
 	cout.fill('*');
 	saltoLinea();
-	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<""<<endl;
+	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<" "<<endl;
 	cout.fill(' ');
 	saltoLinea();
 	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<left<<setw(40)<<"|::MENÚ APLICACIÓN::|"<<RESET<<endl;
 	saltoLinea();
 	cout.fill('*');
-	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<RESET<<""<<endl;
+	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<" "<<endl;
 	saltoLinea();
 	saltoLinea();
 	cout <<"\t"<<COLOR_DARKGREY<< "1. Insertar Alumno" << endl;
@@ -856,20 +1222,19 @@ void mostrarOpciones() {
 	cout <<"\t"<<COLOR_LIGHTGREY<< "6. Cargar BD" << endl;
 	cout <<"\t"<<COLOR_DARKGREY<< "7. Guardar Backup"<< endl;
 	cout <<"\t"<<COLOR_LIGHTGREY<< "8. Cargar Backup" << endl;
-//	cout <<"\t"<<COLOR_DARKGREY<< "9. Gestion del Perfil" << endl;
-	cout <<"\t"<<COLOR_LIGHTGREY<< "10. Salir de la aplicacion" << endl;
+	cout <<"\t"<<COLOR_DARKGREY<< "9. Salir de la aplicacion" << endl;
 }
 
 void mostrarOpcionesAyudantes() {
 	cout.fill('*');
 	saltoLinea();
-	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<""<<endl;
+	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<" "<<endl;
 	cout.fill(' ');
 	saltoLinea();
 	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<left<<setw(40)<<"|::MENÚ APLICACIÓN::|"<<RESET<<endl;
 	saltoLinea();
 	cout.fill('*');
-	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<RESET<<""<<endl;
+	cout<<"\t"<<BOLD_ON<<COLOR_LIGHTGREY<<setw(40)<<""<<endl;
 	saltoLinea();
 	saltoLinea();
 	cout <<"\t"<<COLOR_DARKGREY<< "1. Insertar Alumno" << endl;
@@ -878,8 +1243,7 @@ void mostrarOpcionesAyudantes() {
 	cout <<"\t"<<COLOR_LIGHTGREY<< "4. Mostrar Alumnos" << endl;
 	cout <<"\t"<<COLOR_DARKGREY<< "5. Guardar BD" << endl;
 	cout <<"\t"<<COLOR_LIGHTGREY<< "6. Cargar BD" << endl;
-	//cout <<"\t"<<COLOR_DARKGREY<< "9. Gestion del Perfil" << endl;
-	cout <<"\t"<<COLOR_LIGHTGREY<< "10. Salir de la aplicacion" << endl;
+	cout <<"\t"<<COLOR_DARKGREY<< "9. Salir de la aplicacion" << endl;
 }
 
 
@@ -899,25 +1263,18 @@ void OpcionesMostrar() {
 	cout <<"\t"<<COLOR_BRIGHTGREEN<<  "2. Mostrar Alumnos de un grupo" << endl;
 	cout <<"\t"<<COLOR_GREEN<< "3. Mostrar todos los alumnos" << endl;
 	cout <<"\t"<<COLOR_BRIGHTGREEN<<  "4. Volver al menú principal" << endl;
-
-
 }
 
 void limpiarPantalla(){
 	system("clear");
-
-
 }
 
 void saltoLinea(){
 	cout<<endl;
-
-
 }
 
 
 void OpcionesOrden(){
-	
 	cout.fill('*');
 	saltoLinea();
 	cout<<"\t"<<BOLD_ON<<COLOR_CYAN<<UNDERLINE_ON<<left<<setw(40)<<"Opciones Orden"<<RESET<<endl;
@@ -928,8 +1285,17 @@ void OpcionesOrden(){
 	cout <<"\t"<<COLOR_CYAN<< "3. Ordenar por Grupo" << endl;
 	cout <<"\t"<<COLOR_LIGTHCYAN<<  "4. Ordenar por Curso más alto matriculado" << endl;
 	cout <<"\t"<<COLOR_CYAN<<  "5. Volver al menú de Mostrar Alumnos" << endl;
+}
 
-
+void OpcionesGenerarLista(){
+	cout.fill('*');
+	saltoLinea();
+	cout<<"\t"<<BOLD_ON<<COLOR_CYAN<<UNDERLINE_ON<<left<<setw(40)<<"Opciones Orden"<<RESET<<endl;
+	saltoLinea();
+	saltoLinea();
+	cout <<"\t"<<COLOR_CYAN<< "1. Mostrar lista por terminal" << RESET<<endl;
+	cout <<"\t"<<COLOR_LIGTHCYAN<<  "2. Generar html" << endl;
+	cout <<"\t"<<COLOR_CYAN<<  "3. Volver al menú de Mostrar Alumnos" << endl;
 }
 
 
@@ -950,6 +1316,7 @@ void BD::ordenLista(list <Alumno> &lista){
 				break;
 			}
 			*/
+			int opcGenerarLista=0;
 			OpcionesOrden();
 			saltoLinea();
 			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique el orden en que quiere mostrar el alumno o alumnos: "<<COLOR_BRIGHTBLUE;cin>>opcOrden;
@@ -967,10 +1334,43 @@ void BD::ordenLista(list <Alumno> &lista){
 
 			if ((opcOrden==1||opcOrden==2||opcOrden==3||opcOrden==4)&&(orden=="ASC"||orden=="DESC")){
 				
-				miBD.mostrarAlumno(lista,opcOrden, orden);
-				saltoLinea();
-				cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-				limpiarPantalla();
+				
+				do{
+					saltoLinea();
+					OpcionesGenerarLista();
+					cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique ahora cómo desea su lista: "<<COLOR_BRIGHTBLUE;cin>>opcGenerarLista;
+					cout<<RESET;
+
+					if(opcGenerarLista==1){
+						saltoLinea();
+						miBD.mostrarAlumno(lista,opcOrden, orden);
+
+						saltoLinea();
+						cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+						limpiarPantalla();
+						break;
+
+					}
+					if(opcGenerarLista==2){
+
+						saltoLinea();
+						miBD.mostrarAlumnoHtml(lista,opcOrden, orden);
+
+						saltoLinea();
+						cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+						limpiarPantalla();
+						break;
+
+					}
+					if(opcGenerarLista==3){
+
+						saltoLinea();
+						cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+						limpiarPantalla();
+						break;
+
+					}		
+				}while(opcGenerarLista!=1||opcGenerarLista!=2||opcGenerarLista!=3);
 			}
 
 			
@@ -986,6 +1386,8 @@ void BD::ordenLista(){
 	
 
 		do{
+			int opcGenerarLista=0;
+			
 			OpcionesOrden();
 			saltoLinea();
 			cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique el orden en que quiere mostrar el alumno o alumnos: "<<COLOR_BRIGHTBLUE;cin>>opcOrden;
@@ -1005,10 +1407,42 @@ void BD::ordenLista(){
 
 			if ((opcOrden==1||opcOrden==2||opcOrden==3||opcOrden==4)&&(orden=="ASC"||orden=="DESC")){
 				
-				miBD.mostrarAlumno(opcOrden, orden);
-				saltoLinea();
-				cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
-				limpiarPantalla();
+				do{
+					saltoLinea();
+					OpcionesGenerarLista();
+					cout<<"\t"<<BOLD_ON<<COLOR_DARKGREY<<"Indique ahora cómo desea su lista: "<<COLOR_BRIGHTBLUE;cin>>opcGenerarLista;
+					cout<<RESET;
+
+					if(opcGenerarLista==1){
+						saltoLinea();
+						miBD.mostrarAlumno(opcOrden, orden);
+
+						saltoLinea();
+						cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+						limpiarPantalla();
+						break;
+
+					}
+					if(opcGenerarLista==2){
+
+						saltoLinea();
+						miBD.mostrarAlumnoHtml(opcOrden, orden);
+
+						saltoLinea();
+						cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+						limpiarPantalla();
+						break;
+
+					}
+					if(opcGenerarLista==3){
+
+						saltoLinea();
+						cout<<"\t"<<BOLD_ON<<"PULSE UNA TECLA PARA VOLVER AL MENÚ"<<endl;getchar();getchar();
+						limpiarPantalla();
+						break;
+
+					}		
+				}while(opcGenerarLista!=1||opcGenerarLista!=2||opcGenerarLista!=3);
 			}
 			
 		
@@ -1034,10 +1468,23 @@ void OpcionesInsertar() {
 	saltoLinea();
 }
 
+void OpcionesModificar() {
+	cout.fill('*');
+	saltoLinea();
+	cout<<"\t"<<BOLD_ON<<COLOR_BRIGHTBLUE<<setw(40)<<""<<endl;
+	cout.fill(' ');
+	saltoLinea();
+	cout<<"\t"<<RESET<<COLOR_BRIGHTRED<<left<<setw(40)<<"|::MODIFICAR ALUMNOS::|"<< RESET<<endl;
+	saltoLinea();
+	cout.fill('*');
+	cout<<"\t"<<BOLD_ON<<COLOR_BRIGHTBLUE<<setw(40)<<""<<endl;
+	saltoLinea();
+}
+
 void printAlumno(Alumno aux) {
 	cout.fill(' ');
 	cout << COLOR_CYAN << BOLD_ON << UNDERLINE_ON << setw(75) 
-	 	 << "\tDATOS DEL ALUMNO A INTRODUCIR"
+	 	 << "\tDATOS DEL ALUMNO"
 	 	 << endl << endl << endl << RESET;
 	cout << COLOR_BRIGHTGREEN << BOLD_ON << "\tDNI: " << COLOR_BRIGHTBLUE << aux.getDNI() << endl;
 	cout << COLOR_BRIGHTGREEN << "\tNombre: " << COLOR_BRIGHTBLUE << aux.getNombre() << endl;
@@ -1048,7 +1495,7 @@ void printAlumno(Alumno aux) {
 	cout << COLOR_BRIGHTGREEN << "\tTelefono: " << COLOR_BRIGHTBLUE << aux.getTelefono() << endl;
 	cout << COLOR_BRIGHTGREEN << "\tCurso: " << COLOR_BRIGHTBLUE << aux.getCurso() << endl;
 	cout << COLOR_DARKGREY << "\tNota: " << COLOR_BRIGHTBLUE << aux.getNota() << endl;
-	cout << COLOR_DARKGREY << "\tEquipo: " << COLOR_BRIGHTBLUE << aux.getNota() << endl;
+	cout << COLOR_DARKGREY << "\tEquipo: " << COLOR_BRIGHTBLUE << aux.getEquipo() << endl;
 	cout << COLOR_DARKGREY << "\tLider: " << COLOR_BRIGHTBLUE << aux.getLider() << endl << RESET;
 }
 
@@ -1120,8 +1567,8 @@ void guardarBD(){
 
 }
 
-
 void generarhtml(){
+
 
 	FILE *fp;
 
@@ -1173,6 +1620,7 @@ void generarhtml(){
 	fprintf(fp, "<ul>");
 		fprintf(fp, "<li>El acceso a la aplicaci&oacute;n se realiza con sus credenciales de acceso normales a la Universidad</li>");
 		fprintf(fp, "<li>Tiene <strong>tres</strong> intentos de acceso</li>");
+		fprintf(fp, "<li>La contrase&ntilde;a distingue may&uacute;sculas y min&uacute;sculas</li>");
 		fprintf(fp, "<li>A continuaci&oacute;n le recordamos los usuarios y una pista de la contrase&ntilde;a para acceder a la aplicaci&oacute;n</li><br />");
 	fprintf(fp, "<ul>");
 
@@ -1235,7 +1683,5 @@ void generarhtml(){
 	
 	system("chmod +x abrirWeb.sh");
 	system("./abrirWeb.sh");
-
-
 }
 
