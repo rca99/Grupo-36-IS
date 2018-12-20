@@ -6,14 +6,15 @@ En este último sprint se realizará la verificación de los requisitos incluyen
 
 El miembro del equipo **Rafael Cantero Alén**, como **Scrum Master**, se encargará de realizar las siguientes tareas:
 
-PruebasCasosUso|5|2
 DocumentaciónFinal_Practica3_DiagramaClases|5|2
 DocumentaciónFinal_Scrum|5|1
 
 El miembro del equipo **Carlos Freire Caballero**, como integrante del *equipo de desarrollo*, se ocupará de:
 
+PruebasCasosUso|5|2
 DocumentaciónFinal_Practica2_DiagramasSecuencia|5|2
 DocumentaciónFinal_MatricesValidación|5|1
+
 
 El integrante del equipo **Fernando Herrera Poch**, como parte del *equipo de desarrollo*, se hará cargo de:
 
