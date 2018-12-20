@@ -35,7 +35,9 @@ Se han realizado las matrices de trazabilidad de Requisitos Funcionales frente a
 
 _Problemática encontrada_
 
-    Duda acerca del Requisito Funcional de Introducir Alumno, Modificar Alumno y Eliminar Alumno sobre si son cubiertos unicamente por su respectivo Caso de Uso o también por el Caso de Uso de Buscar Alumno. De igual forma ocurriría con la Gestión de Líderes para Introducir y Modificar
+~~~
+Duda acerca del Requisito Funcional de Introducir Alumno, Modificar Alumno y Eliminar Alumno sobre si son cubiertos unicamente por su respectivo Caso de Uso o también por el Caso de Uso de Buscar Alumno. De igual forma ocurriría con la Gestión de Líderes para Introducir y Modificar
+~~~
 
 **Fernando Herrera Poch**
 
