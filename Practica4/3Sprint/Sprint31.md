@@ -14,6 +14,7 @@ _Descripción del trabajo_
 **Rafael Cantero Alén**
 
 Estimadas: 4 h
+
 Ejecutadas: 
 
 Notas trabajo:
@@ -26,7 +27,8 @@ _Problemática encontrada_
 
 **Carlos Freire Caballero**
 
-Estimadas: 5
+Estimadas: 5 h
+
 Ejecutadas: 
 
 Notas trabajo:
@@ -40,6 +42,7 @@ Para comprobar la existencia de un alumno necesitaba de la funcion buscar.
 **Fernando Herrera Poch**
 
 Estimadas: 4 h
+
 Ejecutadas: 1 h
 
 Notas trabajo:
