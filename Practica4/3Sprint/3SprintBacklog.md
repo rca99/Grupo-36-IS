@@ -12,7 +12,7 @@ El miembro del equipo **Rafael Cantero Alén**, como **Scrum Master**, se encarg
 El miembro del equipo **Carlos Freire Caballero**, como integrante del *equipo de desarrollo*, se ocupará de:
 
 * PruebasCasosUso|5|2
-* DocumentaciónFinal_Practica2_DiagramasSecuencia
+* DocumentaciónFinal_Practica3_DiagramasSecuencia
 * DocumentaciónFinal_MatricesValidación
 
 
