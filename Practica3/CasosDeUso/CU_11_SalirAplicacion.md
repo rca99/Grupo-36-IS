@@ -1,6 +1,6 @@
-## Guardar Copia de Seguridad Externa
+## Salir Aplicación
 
-**ID: 10**
+**ID: 11**
 
 **Breve descripción: El profesor podrá salir de la aplicación.**
 
