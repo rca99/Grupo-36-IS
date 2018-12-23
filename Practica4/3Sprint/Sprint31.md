@@ -15,7 +15,7 @@ _Descripción del trabajo_
 
 Estimadas: 4 h
 
-Ejecutadas: 
+Ejecutadas: 1 h
 
 Notas trabajo:
 

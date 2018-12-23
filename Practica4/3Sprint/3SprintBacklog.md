@@ -1,8 +1,8 @@
 # SPRINT BACKLOG
 
 
-En este último sprint se realizará la verificación de los requisitos incluyendo pruebas específicas de los casos de uso
-, así como la preparación de la documentación a entregar junto co la versión final del código.
+En este último sprint se realizará la verificación de los requisitos incluyendo pruebas específicas de los casos de uso,
+así como la preparación de la documentación a entregar junto con la versión final del código.
 
 El miembro del equipo **Rafael Cantero Alén**, como **Scrum Master**, se encargará de realizar las siguientes tareas:
 
