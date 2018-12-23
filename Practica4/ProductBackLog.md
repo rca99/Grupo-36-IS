@@ -28,13 +28,13 @@ HU_10_CargarCopiaSeguridadExterna|5|1
 Interfaz CargarCopiaSeguridadExterna|5|1
 HU_11_SalirAplicación|5|1
 Interfaz SalirAplicación|5|1
-VerificacionRequisitos|1|2
-PruebasCasosUso|1|2
-DocumentaciónFinal_Practica2|1|2
-DocumentaciónFinal_Practica3_DiagramaClases|1|2
-DocumentaciónFinal_Practica3_DiagramasSecuencia|1|2
-DocumentaciónFinal_Scrum|1|1
-DocumentaciónFinal_MatricesValidación|1|1
+VerificacionRequisitos|5|2
+PruebasCasosUso|5|2
+DocumentaciónFinal_Practica2|5|2
+DocumentaciónFinal_Practica3_DiagramaClases|5|2
+DocumentaciónFinal_Practica3_DiagramasSecuencia|5|2
+DocumentaciónFinal_Scrum|5|1
+DocumentaciónFinal_MatricesValidación|5|1
 DocumentacionFinal_Documento|5|2
 
 
