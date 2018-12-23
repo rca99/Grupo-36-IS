@@ -22,8 +22,8 @@ Se han finalizado las funcionalidades siguientes:
 
 * HU_02_BuscarAlumno|1|1
 * Interfaz BuscarAlumno|1|0,5
-* HU_11_SalirAplicación|5|0,25
-* Interfaz SalirAplicación|5|0,25
+* HU_11_SalirAplicación|4|0,25
+* Interfaz SalirAplicación|4|0,25
 
 Cuando se acostumbra al trabajo en ramas personales se ve favorecido el trabajo en equipo.
 
