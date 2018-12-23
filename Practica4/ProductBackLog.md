@@ -26,8 +26,8 @@ HU_09_GuardarCopiaSeguridadExterna|5|0,25
 Interfaz GuardarCopiaSeguridadExterna|5|0,25
 HU_10_CargarCopiaSeguridadExterna|5|1
 Interfaz CargarCopiaSeguridadExterna|5|1
-HU_11_SalirAplicación|5|1
-Interfaz SalirAplicación|5|1
+HU_11_SalirAplicación|4|1
+Interfaz SalirAplicación|4|1
 VerificacionRequisitos|5|2
 PruebasCasosUso|5|2
 DocumentaciónFinal_Practica2|5|2
