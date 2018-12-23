@@ -40,8 +40,8 @@ Notas trabajo:
 Se ha realizado:
 
 * Interfaz InsertarAlumno|1|1
-* HU_00_AccesoAplicacion|5|1
-* Interfaz AccesoAplicacion|5|1
+* HU_00_AccesoAplicacion|4|1
+* Interfaz AccesoAplicacion|4|1
 
 Se ha realizado la interfaz de introducir alumno, para así poder disponer de su uso para el resto de funcionalidades. 
 
