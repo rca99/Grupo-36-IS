@@ -1,6 +1,6 @@
 Sprint1.1.md
 
-# Proyecto:: ** Gestión de Alumnos IS 2018-2019**
+# Proyecto:: **Gestión de Alumnos IS 2018-2019**
  
 ## Sprint:1
 
