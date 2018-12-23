@@ -29,15 +29,14 @@ _Problemática encontrada_
 
 Estimadas: 5 h
 
-Ejecutadas: 
+Ejecutadas: 3 h
 
 Notas trabajo:
 
-
+Se ha realizado la revisión de los SD, también se han modificado las matrices de validación y finalmente se han dado algunos retoques al código.
 
 _Problemática encontrada_
 
-Para comprobar la existencia de un alumno necesitaba de la funcion buscar.
 
 **Fernando Herrera Poch**
 
