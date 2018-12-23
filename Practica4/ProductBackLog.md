@@ -13,7 +13,7 @@ Interfaz GuardarBaseDatos|2|0,5
 HU_08_CargarBaseDatos|2|1
 Interfaz CargarBaseDatos|2|0,5
 HU_04_GestionDeLideres|2|1
-Interfaz GestionDeLideres|1|0,5
+Interfaz GestionDeLideres|2|0,5
 HU_03_ModificarAlumno|3|3
 Interfaz ModificarAlumno|3|1
 HU_05_MostrarAlumnos|3|4
