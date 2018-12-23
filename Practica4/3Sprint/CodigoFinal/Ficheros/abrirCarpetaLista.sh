@@ -1,0 +1,4 @@
+echo 
+
+xdg-open  listaAlumnos/;
+	
