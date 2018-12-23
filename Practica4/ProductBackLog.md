@@ -32,7 +32,7 @@ VerificacionRequisitos|1|2
 PruebasCasosUso|1|2
 DocumentaciónFinal_Practica2|1|2
 DocumentaciónFinal_Practica3_DiagramaClases|1|2
-DocumentaciónFinal_Practica2_DiagramasSecuencia|1|2
+DocumentaciónFinal_Practica3_DiagramasSecuencia|1|2
 DocumentaciónFinal_Scrum|1|1
 DocumentaciónFinal_MatricesValidación|1|1
 DocumentacionFinal_Documento|5|2
