@@ -6,7 +6,7 @@ Sprint3.3.md
 
 ### Reunión: 3
 
-**Fecha reunión:22/12/2018 22:00**
+**Fecha reunión:23/12/2018 23:00**
 
 
 _Descripción del trabajo_
