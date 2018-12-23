@@ -1,12 +1,14 @@
+
 Sprint3.3.md
 
 # Proyecto:: **Gestión de Alumnos IS 2018-2019**
  
 ## Sprint:3
 
-### Reunión: 2
+### Reunión: 3
 
-**Fecha reunión:22/12/2018 22:00**
+
+**Fecha reunión:23/12/2018 23:00**
 
 
 _Descripción del trabajo_
@@ -19,6 +21,22 @@ Ejecutadas:
 
 Notas trabajo:
 
+
+<<<<<<< HEAD
+
+_Problemática encontrada_
+
+
+
+**Carlos Freire Caballero**
+
+Estimadas: 5 h
+
+Ejecutadas: 3 h
+
+Notas trabajo:
+
+Se ha realizado la revisión de los SD, también se han modificado las matrices de validación y finalmente se han dado algunos retoques al código.
 
 _Problemática encontrada_
 
@@ -39,9 +57,11 @@ _Problemática encontrada_
 
 Estimadas: 4 h
 
-Ejecutadas: 
+Ejecutadas: 4 h
 
 Notas trabajo:
+
+Se finaliza el trabajo con la inclusión de las referencias bibliográficas y la revisión del documento final.
 
 
 _Problemática encontrada_
