@@ -4,7 +4,7 @@ Sprint3.3.md
  
 ## Sprint:3
 
-### Reunión: 2
+### Reunión: 3
 
 **Fecha reunión:22/12/2018 22:00**
 
