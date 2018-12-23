@@ -1,6 +1,6 @@
 Sprint3.1.md
 
-# Proyecto:: ** Gestión de Alumnos IS 2018-2019**
+# Proyecto:: **Gestión de Alumnos IS 2018-2019**
  
 ## Sprint:3
 
@@ -24,20 +24,22 @@ Notas trabajo:
 _Problemática encontrada_
 
 
-
 **Carlos Freire Caballero**
 
 Estimadas: 5 h
-
-Ejecutadas: 
+Ejecutadas: 1 h
 
 Notas trabajo:
 
-
+Se han realizado las matrices de trazabilidad de Requisitos Funcionales frente a Casos de Uso y de Casos de Uso frente a Clases.
 
 _Problemática encontrada_
 
-Para comprobar la existencia de un alumno necesitaba de la funcion buscar.
+~~~
+Duda acerca del Requisito Funcional de Introducir Alumno, Modificar Alumno y Eliminar Alumno sobre 
+si son cubiertos unicamente por su respectivo Caso de Uso o también por el Caso de Uso de Buscar Alumno. 
+De igual forma ocurriría con la Gestión de Líderes para Introducir y Modificar
+~~~
 
 **Fernando Herrera Poch**
 
