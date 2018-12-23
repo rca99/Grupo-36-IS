@@ -1,6 +1,6 @@
 Sprint1.1.md
 
-# Proyecto:: ** Gestión de Alumnos IS 2018-2019**
+# Proyecto:: **Gestión de Alumnos IS 2018-2019**
  
 ## Sprint:2
 
@@ -52,10 +52,10 @@ Se han mejorado tanto la interfaz como los controles de errores de las funciones
 
 * HU_05_MostrarAlumnos|3|4
 * Interfaz MostrarAlumnos|3|1
-* HU_09_GuardarCopiaSeguridadExterna|5|0,25
-* Interfaz GuardarCopiaSeguridadExterna|5|0,25
-* HU_10_CargarCopiaSeguridadExterna|5|1
-* Interfaz CargarCopiaSeguridadExterna|5|1
+* HU_09_GuardarCopiaSeguridadExterna|4|0,25
+* Interfaz GuardarCopiaSeguridadExterna|4|0,25
+* HU_10_CargarCopiaSeguridadExterna|4|1
+* Interfaz CargarCopiaSeguridadExterna|4|1
 
 _Problemática encontrada_
 

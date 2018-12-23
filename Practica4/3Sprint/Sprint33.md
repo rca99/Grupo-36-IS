@@ -1,12 +1,14 @@
-Sprint3.2.md
+
+Sprint3.3.md
 
 # Proyecto:: **Gestión de Alumnos IS 2018-2019**
  
 ## Sprint:3
 
-### Reunión: 2
+### Reunión: 3
 
-**Fecha reunión:22/12/2018 22:00**
+
+**Fecha reunión:23/12/2018 23:00**
 
 
 _Descripción del trabajo_
@@ -15,11 +17,13 @@ _Descripción del trabajo_
 
 Estimadas: 4 h
 
-Ejecutadas: 1,5 h
+Ejecutadas: 3 h
 
 Notas trabajo:
 
-Se ha modificado el diagrama de clases y se ha realizado la documentación referente al mismo.
+Se ha realizado la documentación correspondiente a la metodología Scrum.
+
+<<<<<<< HEAD
 
 _Problemática encontrada_
 
@@ -27,9 +31,9 @@ _Problemática encontrada_
 
 **Carlos Freire Caballero**
 
-Estimadas: 7 h
+Estimadas: 5 h
 
-Ejecutadas: 5 h
+Ejecutadas: 3 h
 
 Notas trabajo:
 
@@ -38,16 +42,28 @@ Se ha realizado la revisión de los SD, también se han modificado las matrices 
 _Problemática encontrada_
 
 
+**Carlos Freire Caballero**
+
+Estimadas: 7 h
+
+Ejecutadas: 
+
+Notas trabajo:
+
+
+_Problemática encontrada_
+
+
 **Fernando Herrera Poch**
 
 Estimadas: 4 h
 
-Ejecutadas: 3 h
+Ejecutadas: 4 h
 
 Notas trabajo:
 
-Se ha incluido en la documentación los requisitos de la aplicación, las historias de usuario y los casos de uso. 
-Falta por mejorar las referencias bibliográficas y las relaciones de las tablas e ilustraciones.
+Se finaliza el trabajo con la inclusión de las referencias bibliográficas y la revisión del documento final.
+
 
 _Problemática encontrada_
 
