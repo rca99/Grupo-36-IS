@@ -15,6 +15,8 @@ Tuvimos poco tiempo para ir analizando los problemas y los tuvimos que ir resolv
 * Ha habido ocasiones en que hemos tenido que desarrollar funciones que no nos eran propias para poder evolucionar en nuestras funcionalidadades. Después las poníamos en común y las acababa de
 desarrollar quién tuviera esa funcioanalidad. El hecho de no estar trabajando en el mismo horario ni estar disponibles cuando el compañero lo necesitase ha hecho que tengamos que utilizar funciones tipo STUB no completamente definidas de acuerdo a las 
 
+* La metodología, bien llevada a cabo, es muy efectiva, pues nos permite a los integrantes del equipo ver como avanzan o no los progresos de nuestros compañeros, así como una comunicación fluida y rápida acerca de lo que se está trabajando.
+
 ASPECTOS A MEJORAR
 
 * El primer Sprint no fue muy productivo ya que quedaron funciones sin desarrollar plenamente, ya que no tuvieron ningún proceso de validación, simplemente se codificaron sin probarlas de ninguna manera. Después de este primer Sprint, se empezó a crear una interfaz con la que poder probar las funciones que se iban codificando. Esta interfaz finalmente se convirtió en el menú de la aplicación.
@@ -33,4 +35,6 @@ Este hecho fundamentalmente se ha debido a nuestra poca experiencia programando,
 
 * Durante el desarrollo del código nos ha ocurrido, sobre todo al final, que la modificación de una función, ha afectado a otras partes del código. Ha sido el caso de la función de insertarAlumno(Alumno nuevoAlumno);. Si hay una función definida de una forma, es mejor preguntar si alguien la está usando en otra parte del código, antes de modificarla. En caso de duda, es mejor crear otra nueva para la funcionalidad que se esté desarrollando ya que no sabemos si la modificación puede afectar a otra parte del código.
 
-* 
+* Debido a que es la primera vez que trabajamos con ramas en git, nos ha costado, sobre todo al inicio del desarrollo del código, adaptarnos a esta nueva forma de trabajo, provocando que trabajasemos un poco más lentos e inseguros, hasta que nos hemos acostumbrado plenamente a esta dinámica.
+
+* La comunicación no ha sido tan buena como cabría esperar, dando lugar a errores del tipo: modificar parte de una funcionalidad que está realizando un compañero, o tener trabajo adelantado en la rama individual que debería estar en la rama master. Entendemos que se necesita más práctica y más trabajo. Pese a todo, el trabajo en general ha dado buenos frutos, pues en un tiempo relativamente corto se ha llevado a cabo la realización de un "software" capaz de gestionar los alumnos de una asignatura.

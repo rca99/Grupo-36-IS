@@ -15,11 +15,11 @@ _Descripción del trabajo_
 
 Estimadas: 4 h
 
-Ejecutadas: 
+Ejecutadas: 1,5 h
 
 Notas trabajo:
 
-
+Se ha modificado el diagrama de clases y se ha realizado la documentación referente al mismo.
 
 _Problemática encontrada_
 
