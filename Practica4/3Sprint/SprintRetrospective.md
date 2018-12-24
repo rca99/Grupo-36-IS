@@ -33,4 +33,6 @@ Este hecho fundamentalmente se ha debido a nuestra poca experiencia programando,
 
 * Durante el desarrollo del código nos ha ocurrido, sobre todo al final, que la modificación de una función, ha afectado a otras partes del código. Ha sido el caso de la función de insertarAlumno(Alumno nuevoAlumno);. Si hay una función definida de una forma, es mejor preguntar si alguien la está usando en otra parte del código, antes de modificarla. En caso de duda, es mejor crear otra nueva para la funcionalidad que se esté desarrollando ya que no sabemos si la modificación puede afectar a otra parte del código.
 
+* Debido a que es la primera vez que trabajamos con ramas en git, nos ha costado, sobre todo al inicio del desarrollo del código, adaptarnos a esta nueva forma de trabajo, provocando que trabajasemos un poco más lentos e inseguros, hasta que nos hemos acostumbrado plenamente a esta dinámica.
+
 * 
