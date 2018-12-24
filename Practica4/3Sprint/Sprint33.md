@@ -31,10 +31,11 @@ _Problemática encontrada_
 
 Estimadas: 7 h
 
-Ejecutadas: 
+Ejecutadas: 7 h
 
 Notas trabajo:
 
+Se han realizado la inclusión de la documentación pertinente en el documento final.
 
 _Problemática encontrada_
 
