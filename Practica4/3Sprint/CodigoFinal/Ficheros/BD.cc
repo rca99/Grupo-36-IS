@@ -41,15 +41,6 @@ bool BD::introducirAlumno(Alumno &nuevoAlumno) {
 			nuevoAlumno.setLider(false);
 		}
 	}
-	/*
-	Alumno alumnoMayusculas;
-	alumnoMayusculas=nuevoAlumno;
-
-	alumnoMayusculas.setNombre(ConvertirMayuscula(nuevoAlumno.getNombre()));
-	alumnoMayusculas.setApellidos(ConvertirMayuscula(nuevoAlumno.getApellidos()));
-	alumnoMayusculas.setDNI(ConvertirMayuscula(nuevoAlumno.getDNI()));
-	listaAlumnos_.push_back(alumnoMayusculas);
-	*/
 
 	listaAlumnos_.push_back(nuevoAlumno);
 	
