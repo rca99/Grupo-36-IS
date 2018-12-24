@@ -35,7 +35,7 @@ Ejecutadas: 7 h
 
 Notas trabajo:
 
-Se han realizado la inclusión de la documentación pertinente en el documento final.
+Inclusión de la documentación pertinente (matrices de validación y diagramas de secuencia) en el documento final.
 
 _Problemática encontrada_
 
