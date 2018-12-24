@@ -23,21 +23,6 @@ Notas trabajo:
 
 Se ha realizado la documentación correspondiente a la metodología Scrum.
 
-<<<<<<< HEAD
-
-_Problemática encontrada_
-
-
-
-**Carlos Freire Caballero**
-
-Estimadas: 5 h
-
-Ejecutadas: 3 h
-
-Notas trabajo:
-
-Se ha realizado la revisión de los SD, también se han modificado las matrices de validación y finalmente se han dado algunos retoques al código.
 
 _Problemática encontrada_
 
@@ -63,7 +48,6 @@ Ejecutadas: 4 h
 Notas trabajo:
 
 Se finaliza el trabajo con la inclusión de las referencias bibliográficas y la revisión del documento final.
-
 
 _Problemática encontrada_
 
